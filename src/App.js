@@ -11,7 +11,7 @@ function App() {
       hi 
 
     </h1>
-    <Button>heloo from bootsrtab</Button>
+    <Button className=''>heloo from bootsrtab</Button>
     </div>
   );
 }
