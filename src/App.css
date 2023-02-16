@@ -34,7 +34,11 @@
   }
   to {
     transform: rotate(360deg);
-  }
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+}
 }
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
 
