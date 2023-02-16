@@ -4,14 +4,10 @@
   .box{
       margin: 100px auto;
       background-color: rgb(255, 255, 255);
-      width: fit-content;
-      height: 250px;
+      width: 100%;
+      min-height: 250px;
       padding: 15px;
-  /*     overflow: hidden; */
-    /*background-color: #27302C;*/
-    /* color:#fff; */
-  
-  
+ 
   
       position: relative;
       border-radius: 20px;
@@ -68,7 +64,7 @@
       display: block;
       margin-bottom: 21px;
       transition: all 2s;
-      margin-top: -110px;
+      margin-top: -40%;
 
      
   } 
