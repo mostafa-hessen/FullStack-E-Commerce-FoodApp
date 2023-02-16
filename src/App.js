@@ -2,12 +2,9 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Bestfood from './Component/HomeUser/Bestfood/Bestfood';
 import FilterItems from './Component/HomeUser/FilterItems/FilterItems';
-import FoodCard from './Component/HomeUser/FoodCard/FoodCard';
-import Header from './Component/HomeUser/Header/Header'
+import FoodCard from './Component/HomeUser/FoodCard/FoodCard'
 
 
-// or less ideally
-// import { Button } from 'react-bootstrap';
 function App() {
   return (
     <div className="App">
@@ -22,9 +19,7 @@ function App() {
     <FilterItems/> 
     <Bestfood/>
     
-    
     </div>
-    
   );
 }
 

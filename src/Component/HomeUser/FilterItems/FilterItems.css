@@ -1,6 +1,6 @@
 .Filter {
-    background-color:white;
-    width: 500px;
+    /* background-color:white; */
+    max-width: 500px;
     height: 150px;
     margin: auto;
     position: relative;
@@ -8,11 +8,12 @@
     align-items: center;
     justify-content: center;
     gap: 10px 20px;
+    margin-bottom: 50px;
 
     /*   grid-template-columns:repeat(4,auto) */
 }
 
-.Filter>.filterItem {
+.Filter .filterItem {
     /*      position:absolute; */
     background-color: rgb(1, 81, 1);
     /*height: fit-content;*/

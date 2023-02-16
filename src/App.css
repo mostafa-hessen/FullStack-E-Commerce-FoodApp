@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+
+
+.App{
+
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-family: 'El Messiri', sans-serif;
+
+}
