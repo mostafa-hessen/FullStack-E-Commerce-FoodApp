@@ -17,7 +17,7 @@
     /*      position:absolute; */
     background-color: rgb(1, 81, 1);
     /*height: fit-content;*/
-    width: 13%;
+    width: 15%;
     margin-top: 10px;
     border-radius: 50px;
     transition: 1s all;
@@ -27,10 +27,19 @@
     text-transform: capitalize;
     height:95px;
     cursor: pointer;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
       
 
 }
 .filterItem:hover ,.filterItem.active{
     background-color:rgb(71, 131, 71) ;
+}
+.Filter img{
+    max-height: 70%;
+    max-width: 70%;
+
+
 }

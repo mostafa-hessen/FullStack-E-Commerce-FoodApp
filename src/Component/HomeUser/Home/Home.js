@@ -2,7 +2,7 @@ import React from "react";
 import Bestfood from "../Bestfood/Bestfood";
 import FilterItems from "../FilterItems/FilterItems";
 import FoodCard from "../FoodCard/FoodCard";
-
+import Header from '../Header/Header';
 function Home() {
   return (
       
@@ -12,7 +12,9 @@ function Home() {
         <Bestfood className="d-none"/>
       </div>
       <div className="col-12 col-lg-8 p-4"   >
-        <FilterItems  />
+        <Header/>
+        
+        <FilterItems/>
         <FoodCard />
       </div>
     </div>

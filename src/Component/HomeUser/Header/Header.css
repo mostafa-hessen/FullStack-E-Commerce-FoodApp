@@ -1,0 +1,39 @@
+.search-box{
+    background-color: rgb(197, 197, 197);
+    padding: 10px;
+    overflow: hidden;
+    width: 40px;
+    border-radius: 20px;
+    transition: all 1s;
+    direction:rtl;
+    margin-left: auto;
+
+    
+    /* width: fit-content; */
+
+
+}
+
+
+.search-box input{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    visibility:hidden;
+    transition: all 0.5s;
+   
+    
+
+}
+.search-box:hover {
+    width: 200px;
+    border-radius: 10px;
+    
+    
+
+}
+
+.search-box:hover input{
+    display: block;
+    visibility:visible;
+}
