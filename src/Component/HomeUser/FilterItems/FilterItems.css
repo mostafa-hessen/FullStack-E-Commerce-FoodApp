@@ -1,0 +1,35 @@
+.Filter {
+    background-color:white;
+    width: 500px;
+    height: 150px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 20px;
+
+    /*   grid-template-columns:repeat(4,auto) */
+}
+
+.Filter>.filterItem {
+    /*      position:absolute; */
+    background-color: rgb(1, 81, 1);
+    /*height: fit-content;*/
+    width: 13%;
+    margin-top: 10px;
+    border-radius: 50px;
+    transition: 1s all;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    text-transform: capitalize;
+    height:95px;
+    cursor: pointer;
+    
+      
+
+}
+.filterItem:hover ,.filterItem.active{
+    background-color:rgb(71, 131, 71) ;
+}
