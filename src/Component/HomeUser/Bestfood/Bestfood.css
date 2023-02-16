@@ -1,0 +1,40 @@
+.BestFoods {
+    background-color: rgb(205, 225, 212);
+    width: 100%;
+    height: 400px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+        /*   grid-template-columns:repeat(4,auto) */
+}
+
+.BestFoods .food {
+    /*      position:absolute; */
+    background-color: green;
+    height: 10%;
+    width: 90%;
+    margin-top: 10px;
+    border-radius: 20px;
+    transition: 1s all ;
+    background-size: cover;
+    background-position: center;
+    
+
+
+    /*      height:90vh */
+
+}
+
+.BestFoods>.active {
+    height: 55%;
+    background-color: blue;
+    border-radius: 10px
+}
+
+.BestFoods>.food:hover {
+    height: 55%
+}
+

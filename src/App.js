@@ -1,19 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Button from 'react-bootstrap/Button';
+import "./App.css";
+import Main from "./Component/Main/Main";
 
-// or less ideally
-// import { Button } from 'react-bootstrap';
+
 function App() {
   return (
     <div className="App">
-    <h1>
-      hi 
-
-    </h1>
-    <Button>heloo from bootsrtab</Button>
+    <div className="container-fluid  py-4 px-5" style={{backgroundColor:'rgb(112, 139, 112)',overflow:"hidden",height:'100vh'}}>
+      <Main/>
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
