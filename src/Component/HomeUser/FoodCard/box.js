@@ -1,12 +1,13 @@
 import React from 'react'
 import foodimg1 from '../../../assets/6.png'
+import './box.css'
 
 
 
 function Box() {
   return (
     <div className="box">
-    <div><img src={foodimg1}/></div>
+    <div className='boximg'><img src={foodimg1}/></div>
     <div className='boxDetails'>
     <h4>سلطه خضار </h4>
     <p className="p-content">اخلط كُل من الخيار، الطماطم خلط كُل من الخيار، الطماطم</p>

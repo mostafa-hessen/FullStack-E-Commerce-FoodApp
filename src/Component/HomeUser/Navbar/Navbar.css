@@ -1,4 +1,4 @@
-.ul{
+nav .ul{
     list-style:none;
      max-width:400px;
      min-height:100px; 
@@ -9,7 +9,7 @@
      
      
    }
-   .icon{
+   nav .icon{
    width:40px;
      height:40px;
      background-color:green;
@@ -21,9 +21,9 @@
      justify-content: center;
      align-items: center;
    }
-   .image{
+   nav .image{
      
-     background-color:green;
+     background-color:white;
      padding:8px;
      width:100px;
      height:100px;
@@ -36,7 +36,7 @@
    
    }
    
-   .image img{
+   nav .image img{
      width:100%;
      border-radius:15px;
      display: block;
@@ -44,7 +44,7 @@
      
    }
    
-   .ul li  {
+   nav .ul li  {
      padding:10px;
      display: flex;
      justify-content: space-between;
@@ -53,7 +53,7 @@
      text-align: right;
      
    }
-   .ul li span{
+   nav .ul li span{
     text-align: right;
     display: block;
     margin-left: auto;

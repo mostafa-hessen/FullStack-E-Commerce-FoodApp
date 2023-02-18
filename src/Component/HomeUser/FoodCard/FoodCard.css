@@ -73,69 +73,11 @@
     transform: scale(1.1);
     
   }
-   .box:hover {
-    
-  }
-   
-  
-  
-  /*========== START MENUE ==========*/
-  .menue {
-    margin-bottom: 107px;
-  }
-  
-  .menue .row2 {
-    justify-content: center;
-  }
-  
-  .menue .box {
-    background-color: rgb(255, 255, 255);
-    width: fit-content;
-    height: 260px;
-    padding: 15px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0 0.2rem 1rem rgb(0 0 0 / 13%);
-  
-  }
-  
-  .menue .box img {
-    width: 54%;
-    margin: auto;
-    display: block;
-    margin-top: 10px;
-    ;
-    margin-bottom: 19px;
-  }
-  
-  .menue .box h6 {
-    font-weight: bold;
-  }
-  
-  .menue .box p {
-    font-size: 13.4px;
-  }
-  
-  .menue .box a {
-    background-color: #069C54;
-    display: block;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    right: -10%;
-    top: 90%;
-    border-radius: 8px;
-  
-  }
-  
-  .menue .box a i {
-    color: #fff;
-    font-size: 11px;
-    /* text-align: center;background-color: red; */
-    transform: translate(-10%);
-    padding: 0px 10px;
-  
-  }
-  
-  /*========== END  MENUE ==========*/
+    @media (min-width : 590px) and (max-width:768px) { 
+      .box  img{
+         width: 40% !important;
+         margin-top: -30%;
+        
+      }
+      
+    }

@@ -1,0 +1,72 @@
+.boxOffer{
+    margin: 70px auto 30px ;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    min-height: 130px;
+    padding: 10px;
+
+
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 0.2rem 1rem rgb(0 0 0 / 13%);
+    display: flex;
+   
+    
+    justify-content: space-between;
+    transition: all 2s;
+    align-items: center;
+
+
+}
+.boxOffer .boxOfferDetails{
+ text-align: right;
+ margin-right: 15px;
+ padding-top: 5px; 
+ font-size: 18px;
+ display: flex;
+ flex-direction: column;
+
+ 
+
+
+}
+/* .box .p-content{
+  font-size: 11px;
+  color: #848484;
+  max-width: 200px;
+  text-align: right;
+  margin:17px 0px;
+  margin-left: auto;
+} */
+ 
+
+ 
+
+ .boxOffer img{
+  
+      width: 90%;
+    /* margin: right auto; */
+    display: block;
+    margin-bottom: 21px;
+    transition: all 2s;
+    margin-top: -40%;
+
+
+   
+} 
+.boxOffer .image{
+  flex-basis: 50%;
+  /* transform: scaleX(-1); */
+  transform: rotateY(180deg);
+}
+.boxOffer:hover img{
+  
+  transform: scale(1.1);
+  
+}
+ .boxOffer:hover {
+  
+}
+ 
+
+
