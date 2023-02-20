@@ -1,0 +1,33 @@
+/* #con{
+
+background-image: url('../../images/home.jpg') ;
+background-size: cover;
+background-repeat: no-repeat;
+width: 100%;
+height: 1000px;
+overflow: hidden;
+text-align: left;
+max-width: 100%;
+} */
+#home{
+    margin-top: 50px;
+max-width: 90%;
+   max-height: 500px;
+    border-radius: 700px;
+
+ 
+
+}
+#text{
+ direction: rtl;
+
+font-family: 'El Messiri', sans-serif; 
+    font-weight: bold;
+    color:orange;
+}
+@media (max-width:768px )   {
+    #text{
+        text-align: center;
+        margin-top: 70px;
+    }
+}

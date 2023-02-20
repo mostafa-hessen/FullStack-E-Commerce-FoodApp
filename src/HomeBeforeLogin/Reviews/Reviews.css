@@ -1,0 +1,139 @@
+
+
+.sec-sub-title {
+    text-transform: uppercase;
+    display: inline-block;
+    background: #f3f3f5;
+    box-shadow: 9px 9px 12px #e4e4e4, -9px -9px 12px #ffffff;
+    padding: 3px 20px;
+    border-radius: 60px;
+    color: #ff8243;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.h2-title {
+    font-size: 46px;
+    line-height: 56px;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.h2-title span, .h3-title span, .h4-title span, .h5-title span, .sub-title span {
+    display: block;
+}
+.sec-wp {
+    position: relative;
+    z-index: 4;
+}
+
+
+.testimonials-img img {
+ 
+margin: 0;
+    margin-top: 110px;
+ 
+    width:100%;
+    height: auto;
+    max-width: initial;
+    margin-bottom: 10px;
+}
+
+.testimonials-box {
+    display: flow-root;
+    position: relative;
+    padding: 30px;
+    padding-top: 0;
+    border-radius: 30px;
+    margin: 50px 0 30px;
+    background:  #ffffff ;
+    box-shadow: rgba(227, 127, 12, 0.35) 0px 5px 15px;
+    transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
+.testimonials-box:hover {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.testimonial-box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    background:  #ffffff ;
+}
+.t2{
+    background-image: url("../../assets/1.png");
+    background-size: cover;
+    
+        min-width: 100px;
+        min-height: 100px;
+        border-radius: 50%;
+        margin-top: -50px;
+}
+.t1{
+    background-image: url("../../assets/4.png");
+    background-size: cover;
+    
+        min-width: 100px;
+        min-height: 100px;
+        border-radius: 50%;
+        margin-top: -50px;
+      
+}
+.t3{
+    background-image: url("../../assets/5.png");
+    background-size: cover;
+    
+        min-width: 100px;
+        min-height: 100px;
+        border-radius: 50%;
+        margin-top: -50px;
+      
+}
+.t4{
+    background-image: url("../../assets/6.png");
+    background-size: cover;
+    
+        min-width: 100px;
+        min-height: 100px;
+        border-radius: 50%;
+        margin-top: -50px;
+     
+}
+.testimonials-box-img  {
+
+
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+    margin-top: -50px;
+ 
+}
+
+.testimonials-box-text .h3-title {
+    background:  #ffffff ;
+    margin-bottom: 0px;
+    text-transform: capitalize;
+}
+
+.testimonials-box-text p {
+    background:  #ffffff ;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.fa-solid{
+
+    color: orange;
+    padding: 3px;
+}
+.fa-regular{
+    background:  #ffffff ;
+    color: orange;
+    padding: 3px;
+}
