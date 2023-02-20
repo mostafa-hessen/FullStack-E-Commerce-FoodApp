@@ -39,7 +39,7 @@ function Header() {
                 <div className="col-9 d-flex justify-content-between align-items-center">
                      <div class="image  d-flex align-items-center">
                            <img  className='d-lg-none' src="https://via.placeholder.com/50/09f/fff.png " alt="D" />
-                           <i className=" ms-3 fa-regular fa-bell fa-lg "></i>
+                           <i className="notificationIcon ms-3 fa-regular fa-bell fa-lg "></i>
                      </div>
                     <div className="search-box d-flex align-items-center">
                         <div className="search-btn">
