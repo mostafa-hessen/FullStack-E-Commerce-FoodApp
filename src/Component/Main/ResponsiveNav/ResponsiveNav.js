@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import theSvg from "./circles.svg";
 
-import homeImg from '../../assets/animatedIcon/63-home-outline.gif'
-import favouriteImg from '../../assets/animatedIcon/20-love-heart-outline (1).gif'
-import signOuttImg from '../../assets/animatedIcon/1725-exit-sign-outline.gif'
-import cartImg from '../../assets/animatedIcon/146-basket-trolley-shopping-card-outline (2).gif'
-import avatarImg from '../../assets/animatedIcon/21-avatar-outline.gif'
-import avatarChefImg from '../../assets/animatedIcon/268-avatar-man-outline.gif'
+import homeImg from '../../..//assets/animatedIcon/63-home-outline.gif'
+import favouriteImg from '../../../assets/animatedIcon/20-love-heart-outline (1).gif'
+import signOuttImg from '../../../assets/animatedIcon/1725-exit-sign-outline.gif'
+import cartImg from '../../../assets/animatedIcon/146-basket-trolley-shopping-card-outline (2).gif'
+import avatarImg from '../../../assets/animatedIcon/21-avatar-outline.gif'
+import avatarChefImg from '../../../assets/animatedIcon/268-avatar-man-outline.gif'
 import "./ResponsiveNav.css";
 function ResponsiveNav() {
   const [open, setopen] = useState("");
