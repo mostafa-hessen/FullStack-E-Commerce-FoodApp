@@ -1,0 +1,39 @@
+
+#app{
+    margin-top: 50px;
+max-width: 100%;
+   max-height: 500px;
+    border-radius: 100px;
+
+ 
+
+}
+.apple{
+  width:200px;
+  height: auto;
+  margin-top: 30px;
+
+}
+@media (max-width:768px){
+  .Hungry{
+    justify-content: center;
+   
+  }
+}
+@media (min-width:768px)and(max-width:992px){
+  .Hungry{
+    justify-content: center;
+   
+  }
+  .apple{
+    width:100px;
+    height: auto;
+    margin-top: 30px;
+    
+ 
+  }
+}
+
+ 
+  
+  

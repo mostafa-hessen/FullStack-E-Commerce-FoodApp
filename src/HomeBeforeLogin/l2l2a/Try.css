@@ -1,0 +1,31 @@
+.MyBorder{
+ 
+    width: 300px;
+    height: 300px;
+    background-image: url("../../assets/Try.jpg");
+    background-size: cover;
+    margin: auto;
+    border-radius: 190px 115px 115px 115px;
+-webkit-border-radius: 190px 115px 115px 115px;
+-moz-border-radius: 190px 115px 115px 115px;
+transition: 1s all ease-in-out;
+animation-name: l2l2a;
+animation-duration: 3s;
+animation-direction: alternate;
+animation-iteration-count: infinite;
+}
+@keyframes l2l2a {
+    0%{
+        border-radius: 190px 115px 115px 115px;
+    }
+    20%{
+        border-radius: 165px 178px 115px 115px;
+    }
+    50%{
+        border-radius: 165px 178px 115px 172px;
+    }
+    100%{
+        border-radius: 190px 115px 115px 115px;
+    }
+}
+
