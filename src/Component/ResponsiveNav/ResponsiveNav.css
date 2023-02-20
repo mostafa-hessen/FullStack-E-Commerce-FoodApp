@@ -1,0 +1,134 @@
+ 
+  
+  @media screen and (max-width: 992px) {
+    .line {
+      width: 30px;
+      height: 3px;
+      background: #302a2a;
+      margin: 5px;
+    }
+    nav {
+      position: relative;
+    }
+  
+    .hamburger {
+      position: absolute;
+      cursor: pointer;
+      left: 5%;
+      top: 50%;
+      transform: translate(-5%, -50%);
+      z-index: 2;
+    }
+
+    .nav-links {
+      position: fixed;
+      background: #5b78c7;
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      /* clip-path: circle(0px at 90% -10%); */
+      -webkit-clip-path: circle(100px at -10% -20%);
+      transition: all 1s ease-out;
+      pointer-events: none;
+      -webkit-transition: all 1s ease-out;
+      -moz-transition: all 1s ease-out;
+      -ms-transition: all 1s ease-out;
+      -o-transition: all 1s ease-out;
+     color: #fff;
+  z-index: 12;
+
+}
+
+
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+.nav-links li {
+  opacity: 0;
+}
+.nav-links li a {
+  font-size: 25px;
+  text-decoration: none;
+  color: #fff;
+}
+.nav-links li:nth-child(1) {
+  transition: all 0.5s ease 0.2s;
+}
+.nav-links li:nth-child(2) {
+  transition: all 0.5s ease 0.4s;
+}
+.nav-links li:nth-child(3) {
+  transition: all 0.5s ease 0.6s;
+}
+  }
+  /* .hamburger:hover ~ .nav-links{
+    
+  }  */
+
+
+
+  .nav-links.open{
+    clip-path: circle(1000px at 90% 10%);
+    -webkit-clip-path: circle(1500px at 100% 10%);
+    pointer-events: all;
+    z-index: 12;
+  }
+  
+
+   .nav-links li.fade{
+    opacity: 1;
+  }
+
+  .nav-links .closeIcon{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+
+  }
+
+/* 
+  
+  .nav-links {
+    position: fixed;
+    background: #5b78c7;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(100px at 90% -10%);
+    -webkit-clip-path: circle(100px at 90% -10%);
+    transition: all 1s ease-out;
+    pointer-events: none;
+  }
+  .nav-links.open {
+    clip-path: circle(1000px at 90% -10%);
+    -webkit-clip-path: circle(1000px at 90% -10%);
+    pointer-events: all;
+  }
+  .landing {
+    flex-direction: column;
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .nav-links li a {
+    font-size: 25px;
+  }
+  .nav-links li:nth-child(1) {
+    transition: all 0.5s ease 0.2s;
+  }
+  .nav-links li:nth-child(2) {
+    transition: all 0.5s ease 0.4s;
+  }
+  .nav-links li:nth-child(3) {
+    transition: all 0.5s ease 0.6s;
+  }
+  li.fade {
+    opacity: 1;
+  } */
