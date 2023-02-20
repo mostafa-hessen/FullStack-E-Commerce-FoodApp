@@ -3,8 +3,7 @@
   font-family: "El Messiri", sans-serif;
 }
 
-.App .appContainer {
-  /* background-color: #fff !important; */
+/* .App .appContainer {
 
   background-color: rgb(112, 139, 112) !important;
   overflow: hidden;
@@ -14,7 +13,6 @@
 
 @media (max-width:992px) {
   .App .appContainer {
-    /* background-color: #fff !important; */
   
     background-color: rgb(255, 255, 255) !important;
     overflow: hidden;
@@ -23,4 +21,4 @@
   }
   
   
-}
+} */
