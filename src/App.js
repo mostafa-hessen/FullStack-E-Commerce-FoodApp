@@ -1,3 +1,4 @@
+
 import React from "react"
 import Signup from "./Component/Signup"
 import { Container } from "react-bootstrap"
@@ -31,6 +32,7 @@ function App() {
         </div>
     </Container>
   )
-}
+  }
+
 
 export default App
