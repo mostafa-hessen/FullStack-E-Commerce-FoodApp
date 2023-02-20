@@ -4,9 +4,9 @@ import filter1 from '../../../assets/menu-1.png';
 import filter6 from '../../../assets/img10.png';
 
 import filter2 from '../../../assets/menu-2.png';
-import filter3 from '../../../assets/img6.png';
-import filter4 from '../../../assets/img7.png';
-import filter5 from '../../../assets/X.png';
+import filter3 from '../../../assets/menu-3.png';
+import filter4 from '../../../assets/menu-4.png';
+import filter5 from '../../../assets/menu-1.png';
 
 
 
@@ -15,7 +15,7 @@ function FilterItems() {
         <>
             <div className="Filter">
                 <div className="filterItem " >
-                    <img src={filter1} width='80%' style={{paddingTop:'20px',paddingBottom:'10px'}}/>
+                    <img src={filter1}   />
                     <p>مكرونه</p>
                 </div>
                 <div className="filterItem">
