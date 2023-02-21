@@ -9,6 +9,9 @@ body {
   -moz-osx-font-smoothing: grayscale; */
   font-family: 'El Messiri', sans-serif;
 
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #faf9f1;
+  font-family: 'El Messiri', sans-serif;
 }
 
 code {
@@ -16,7 +19,9 @@ code {
     monospace;
   font-family: 'El Messiri', sans-serif;
 
+  font-family: 'El Messiri', sans-serif;
 }
+
 
 
 
