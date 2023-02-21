@@ -1,0 +1,26 @@
+nav{
+    width: 100%;
+    border-radius:  0px;
+    max-width: 100%;
+    height: auto;
+
+
+}
+nav a{
+  font-family: 'El Messiri', sans-serif  !important;
+  
+  color:black   !important;
+  font-weight: bold  !important;
+  font-size: 25px  !important;
+
+
+ 
+}
+
+.img{
+    max-width: 100%;
+    height: 80px;
+    width:80px;
+    border-radius: 1000px;
+    padding-left: 5px;
+}

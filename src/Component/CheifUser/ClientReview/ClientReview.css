@@ -1,0 +1,17 @@
+.zoom {
+    transition: transform .2s; 
+  }
+  
+  .zoom:hover {
+    transform: scale(1.02); 
+  }
+  .shadow {
+    border-radius: 15px;
+    box-shadow: 5px 10px 25px #4e4c4c;
+  }
+
+  @media  (max-width:575) {
+    .smallscreen{
+        width: 200px;
+    }
+  }

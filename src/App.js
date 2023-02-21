@@ -1,15 +1,20 @@
-import "./App.css";
-import Main from "./Component/Main/Main";
+
+import HomeAfterLoginForUser from "./HomeAfterLoginForUser/HomeAfterLoginForUser";
+// import Main from "./Component/Main/Main";
 
 
+import logo from './logo.svg';
+import './App.css';
+import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
 function App() {
   return (
     <div className="App">
-    <div className="container-fluid appContainer  ">
-      <Main/>
+        <HomeAfterLoginForUser/>
+        {/* <Homebeforelogin/> */}
     </div>
-  </div>
-);
+
+
+  );
 }
 
 export default App;

@@ -1,0 +1,18 @@
+#img{
+    margin-top: 50px;
+max-width: 80%;
+   max-height: 300px;
+border-radius: 50%;
+
+ 
+
+}
+.chef{
+  
+  margin-right: 165px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 90px;
+    align-items: center;
+}
