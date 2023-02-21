@@ -1,0 +1,73 @@
+.service{
+  margin: 0;
+    max-width: 100%;
+    height: auto;
+    text-align: left;
+    overflow: hidden;
+} 
+.service h1{
+    color: black;
+    font-weight: bold;
+   
+    margin :auto;
+    font-family: 'El Messiri', sans-serif; 
+   
+   
+}
+.service .text{
+    color: orange !important;
+    font-weight: bold;
+text-align: center;
+    margin :auto;
+    font-family: 'El Messiri', sans-serif; 
+   
+   
+}
+
+.service ul li{
+    list-style-type: none;
+    font-family: 'El Messiri', sans-serif; 
+  color: black;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 90px;
+  align-items: center;
+
+}
+.service ul li p{
+   margin: 0;
+   margin-left: auto;
+   margin-right: 8px;
+
+}
+.service ul{
+    padding-left: 70px;
+}
+.service {
+    color: orange ;
+    padding-left: 10px;
+  background-color: #faf9f1 !important;
+}
+.service img{
+    width: 100%;
+}
+
+
+
+
+.h2-title {
+    font-size: 46px;
+    line-height: 56px;
+ margin-bottom: 5px !important;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.h2-title span, .h3-title span, .h4-title span, .h5-title span, .sub-title span {
+    display: block;
+}
+.sec-wp {
+    position: relative;
+    z-index: 4;
+}
