@@ -18,7 +18,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      history.push("/Home")
     } catch {
       setError("Failed to log in")
     }
@@ -46,7 +46,7 @@ export default function Login() {
             </Button>
           </Form>
           <div className="w-100 text-center mt-3">
-            <Link to="/forgot-password">Forgot Password?</Link>
+            <Link to="/forgotpassword">Forgot Password?</Link>
           </div>
         </Card.Body>
       </Card>
