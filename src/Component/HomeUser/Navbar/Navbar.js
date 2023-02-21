@@ -12,19 +12,17 @@ function Navbar() {
 
           <ul class="ul">
             <li>
-              {" "}
               <i class="fa-solid fa-house icon"></i> <span>الرئيسيه</span>
             </li>
             <li>
-              {" "}
+          
               <i class="fa-regular fa-heart icon"></i> <span>المفضله</span>
             </li>
             <li>
-              {" "}
+        
               <i class="fa-solid fa-cart-shopping icon"></i> <span>السله</span>
             </li>
             <li>
-              {" "}
               <i class="fa-solid fa-utensils icon"></i> <span>الشيف</span>
             </li>
           </ul>
