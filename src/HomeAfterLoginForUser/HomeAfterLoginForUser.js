@@ -7,7 +7,7 @@ function HomeAfterLoginForUser() {
   return (
     <div className='HomeAfterLoginForUser' >
      <div className="container-fluid appContainer  ">
-      <Main/>
+         <Main kindOfuser={"user"} />
     </div>
     </div>
 
