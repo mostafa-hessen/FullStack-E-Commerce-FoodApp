@@ -23,7 +23,7 @@ export default function CheifMenu() {
     return (
         <div dir="rtl" className="container justify-content-center rounded-5 mt-5 p-4" style={{ backgroundColor: '#dce6d5' }}>
             <div className="row" >
-                <div className="col-lg-3 me-lg-4 mx-sm-auto mt-4 mb-4 col-sm-12 col-md-12">
+                <div className="col-12 col-md-6 col-lg-3 me-lg-4 mx-sm-auto mt-4 mb-4">
                     <h3>الأطعمة المتاحة</h3>
                 </div>
             </div>
