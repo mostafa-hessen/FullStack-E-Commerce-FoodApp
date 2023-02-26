@@ -10,6 +10,7 @@ import CheifList from '../../HomeAfterLoginForUser/CheifList/CheifList'
 import CheifPage from '../../HomeAfterLoginForUser/CheifPageForUser/CheifPage'
 import Details from '../../HomeAfterLoginForUser/Details/Details'
 import Basket from '../../HomeAfterLoginForUser/Basket/BasketComponent'
+import FoodForm from '../../HomeForCookerAfterLogin/Menu/AddFood/FoodForm/FoodForm'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function Main(props) {
@@ -45,6 +46,7 @@ function Main(props) {
             {/* <CheifPage/> */}
             {/* <Basket/>  */}
    
+            <FoodForm/>
          
         </div>
 
