@@ -1,0 +1,133 @@
+@media (min-width : 590px)and(max-width:768px) { 
+    .box .boximg img{
+       width: 60% !important;
+    }
+    
+  }
+  
+
+  
+  .box{
+   margin: 95px auto 65px;
+   background-color: rgb(255, 255, 255);
+   width: 100%;
+   min-height: 250px;
+   padding: 30px 15px 0px;
+
+
+   position: relative;
+   border-radius: 20px;
+   box-shadow: 0 0.2rem 1rem rgb(0 0 0 / 13%);
+   display: flex;
+   flex-direction: column;
+   
+   justify-content: space-between;
+   transition: all 2s;
+
+
+}
+.box .boxDetails{
+text-align: center;
+margin-right: 10px;
+}
+.box .p-content{
+text-align: center;
+ font-size: 17px;
+ color: #848484;
+ max-width: 200px;
+
+ margin:17px auto;
+
+}
+.box a {
+    background-color: orange !important;
+    clip-path: circle(50% at 51% 50%);
+ display: block;
+  width: 33px;
+ height: 33px; 
+ position: absolute;
+ right: 3.5%;
+ top: 3%;
+ transition: 1s all;
+ /* border-radius: 50%; */
+ display: flex;
+ flex-direction: column;
+ /* align-items: center; */
+ justify-content: center;
+ text-decoration: none;
+
+}
+.box a .openicon{
+    transition: 1s all;
+
+}
+.box a:hover .openicon{
+opacity: 0;
+}
+.box a:hover .icons{
+   display: block;
+    }
+
+.box a:hover{
+    clip-path: circle(100% at 51% 50%);
+    width:100%;
+    height: 100%;
+    border-radius: 20px;
+    top:0%;
+    right:0px;
+    justify-content: center;
+    
+}
+.box .icons{
+   display: flex;
+   flex-direction: column;
+   display: none;
+}
+.box a i {
+ color: #fff;
+ font-size: 17.5px;
+ /* text-align: center;background-color: red; */
+ /* transform: translate(-10%); */
+ /*padding: 0px 10px;*/
+
+}
+
+.boximg{
+  background-position: center;
+  background-size: cover;
+
+    border-radius: 50%;
+    background-color: red;
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    margin: auto;
+    margin-bottom: 12px;
+
+}
+
+.box img{
+  object-position: center;
+ border-radius: 0%;
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+   display: block;
+  
+ 
+   margin-top: 0% !important;
+
+  
+} 
+.box .fa-bowl-food{
+    color:rgb(112, 139, 112) ;
+}
+
+ @media (min-width : 590px) and (max-width:768px) { 
+   .box  img{
+      width: 100% !important;
+      margin-top: 0%;
+     
+   }
+   
+ }

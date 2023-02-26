@@ -11,14 +11,18 @@ import CheifPage from '../../HomeAfterLoginForUser/CheifPageForUser/CheifPage'
 import Details from '../../HomeAfterLoginForUser/Details/Details'
 import Basket from '../../HomeAfterLoginForUser/Basket/BasketComponent'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
+import DeleteFood from '../../HomeForCookerAfterLogin/DeleteFood/DeleteFood'
+import CardFood from '../../HomeForCookerAfterLogin/Menu/CooKerCard/CardFood'
 
 function Main(props) {
   return (
        <div className="row homNavContainer  rounded-3 " style={{backgroundColor:'rgb(155, 193, 155)'}} >
         <div className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4" style={{backgroundColor:'#fff',overflowY:"scroll"}}>
           <ResponsiveNav />
-
+          {/* <AddToFav /> */}
+          {/* <Home/> */}
     
+    <CardFood/>
           {/* <Route exact path="/Home"> */}
             {/* <CheifPage /> */}
           {/* </Route> */}
@@ -51,7 +55,7 @@ function Main(props) {
         <div className='col-2 d-none d-lg-flex' >
         {props.kindOfuser=="user"? <NavbarForUser/>:<NavbarForCooker/>} 
         </div>
-      
+    
       </div> 
   )
 }
