@@ -8,11 +8,11 @@ import mahshi from '../../../assets/mahshi.jpg'
 import burger from '../../../assets/photo_2023-02-14_19-47-18.jpg'
 import pizza from '../../../assets/photo_2023-02-14_19-47-58.jpg'
 import kofta from '../../../assets/potatoKofta.jpg'
-
+import Popupeditefood from './PopUpEditeFoodForm/Popupeditefood';
 
 
 import { border } from '@mui/system'
-import DeleteFood from '../../DeleteFood/DeleteFood';
+import DeleteFood from './DeleteFood/DeleteFood';
 
 export default function CardFood() {
     const [show, setShow] = useState(false);
@@ -43,7 +43,8 @@ export default function CardFood() {
                     <div className='col-lg-4 col-md-6 col-sm-6'>
                         
                   <div className="box">
-       <a href="#"><i class="fa-solid fa-ellipsis-vertical  openicon" ></i> <div className='icons '><i class="fa-solid fa-pen-to-square"></i>
+       <a href="#"><i class="fa-solid fa-ellipsis-vertical  openicon" ></i> <div className='icons '>
+        <Popupeditefood/>
       
       <DeleteFood />
        </div></a>
