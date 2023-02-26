@@ -12,7 +12,7 @@ function ClientReview() {
     return (
         <div className="container rounded-5 mt-5" style={{ backgroundColor: '#dce6d5' }}>
             <div className="row " dir="rtl">
-                <div className=" col-lg-3 col-sm-6 p-4 mx-sm-auto" >
+                <div className="col-6 col-lg-3 p-4 mx-sm-auto" >
                     <h3 dir="rtl">تقييم عميلنا</h3>
                 </div>
             </div>
@@ -21,7 +21,7 @@ function ClientReview() {
                 {
                     users.map((user, index)=>{
                         return(
-                            <div className="col-6 col-lg-3 col-md-4 col-sm-6 shadow  zoom m-2 mb-4 smallscreen" key={index}>
+                            <div className="col-6 col-md-4 col-lg-3 shadow  zoom m-2 mb-4 smallscreen" key={index}>
                                 <div className="row justify-content-center bg-white  rounded-4">
                                   <div className="row justify-content-center w-100">
                                    <div className="col-7">

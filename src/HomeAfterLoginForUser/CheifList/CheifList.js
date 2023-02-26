@@ -1,8 +1,8 @@
 import React from "react";
-import Bestfood from "../../HomeUser/Bestfood/Bestfood";
-import Header from "../../HomeUser/Header/Header";
-import Offer from "../../HomeUser/Offer/Offer";
-import Cheif from "../Cheif/Cheif";
+import Bestfood from "../HomeUser/Bestfood/Bestfood";
+import Header from "../HomeUser/Header/Header";
+import Offer from "../HomeUser/Offer/Offer";
+import Cheif from "./Cheif/Cheif";
 
 function CheifList() {
   return (
