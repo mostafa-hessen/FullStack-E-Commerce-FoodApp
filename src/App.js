@@ -9,8 +9,8 @@ import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
 function App() {
   return (
     <div className="App">
-        <HomeAfterLoginForUser/>
-        {/* <Homebeforelogin/> */}
+        <HomeAfterLoginForUser/> 
+        {/* <Homebeforelogin/>  */}
     </div>
 
 
