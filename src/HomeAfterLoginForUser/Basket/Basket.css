@@ -17,7 +17,6 @@
 }
 .homeContainer{
   max-height :90vh !important;
-  
 
 }
 
@@ -25,7 +24,6 @@
   .homNavContainer{
     padding: 30px ;
     height: 96.5vh !important;
-    
   }
 
   @media (max-width:992px) {
@@ -44,4 +42,14 @@
   }
 
  
+  }
+
+
+
+  .zoom {
+    transition: transform .2s; 
+  }
+  
+  .zoom:hover {
+    transform: scale(1.02); 
   }
