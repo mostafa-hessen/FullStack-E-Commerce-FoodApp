@@ -2,7 +2,7 @@ import React from 'react';
 import './Navbar.css'
 import { Navbar ,Container ,Nav } from 'react-bootstrap';
 import logo from '../../assets/logo.png'
-import Delivery from '../../Component/HomeUser/Delivery/Delivery';
+import Delivery from './Delivery/Delivery';
 const Navs =()=>{
     return(
       <>
