@@ -5,9 +5,9 @@ import './AddToFav.css'
 function AddToFav() {
 const [myactive, setmyactive] = useState("")
   return (
-    <div className='bg-danger parent' >
+    <div className=' parent' >
   <h1> <i class="fa-solid fa-star"></i>المفضلة لديك </h1>
-    <div className='bg-warning md-auto cardparent' style={{maxWidth: '540px'}}><i class="fa-solid fa-trash bg-danger"></i>
+    <div className=' md-auto cardparent' style={{maxWidth: '540px'}}><a><i class="fa-solid fa-trash "></i></a>
     <div className={`card1 mycard ${myactive} align-items-center d-flex flex-direction-row`} style={{width:'100%'}} onClick={()=>myactive=="active"?setmyactive(""):setmyactive("active")}>
     <i class="fa-solid fa-ellipsis-vertical" style={{}}></i>
 <img src="https://codingyaar.com/wp-content/uploads/bootstrap-4-card-image-left-demo-image.jpg" alt="..."/>
