@@ -10,6 +10,7 @@ import CheifList from '../../HomeAfterLoginForUser/CheifList/CheifList'
 import CheifPage from '../../HomeAfterLoginForUser/CheifPageForUser/CheifPage'
 import Details from '../../HomeAfterLoginForUser/Details/Details'
 import Basket from '../../HomeAfterLoginForUser/Basket/BasketComponent'
+import Menue from '../../HomeForCookerAfterLogin/Menu/Menue'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function Main(props) {
@@ -18,7 +19,7 @@ function Main(props) {
         <div className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4" style={{backgroundColor:'#fff',overflowY:"scroll"}}>
           <ResponsiveNav />
 
-    
+            <Menue/>
           {/* <Route exact path="/Home"> */}
             {/* <CheifPage /> */}
           {/* </Route> */}

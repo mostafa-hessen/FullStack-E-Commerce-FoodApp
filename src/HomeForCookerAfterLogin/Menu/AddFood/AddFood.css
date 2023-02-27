@@ -1,0 +1,43 @@
+.addFood{
+    height: 55px;
+    /*width: 70%;
+    */position: relative;
+    transition: 1s all ease-in-out;
+    -webkit-transition: 1s all ease-in-out;
+    -moz-transition: 1s all ease-in-out;
+    -ms-transition: 1s all ease-in-out;
+    -o-transition: 1s all ease-in-out;
+    cursor: pointer;
+    margin: auto;
+    overflow: hidden;
+    border: 1px dashed black !important;
+
+}
+
+@media (min-width:992px) {
+    .addFood{
+        width: 60%;
+    }
+    
+}
+.addFood:hover{
+    height: 900px;
+    width: 100%;
+    border: 1px dashed rgb(35, 147, 35) !important;
+}
+.addFood header{
+    /* direction: rtl; */
+    /* max-width: 80% ; */
+    /* background: red; */
+    justify-content: end;
+    min-width: 320px;
+    align-items: center;
+
+}
+
+
+.addFood header .icon{
+    cursor: pointer;
+    /* background-color: green; */
+
+}
