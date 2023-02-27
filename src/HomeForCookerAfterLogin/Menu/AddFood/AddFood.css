@@ -2,16 +2,17 @@
     height: 55px;
     /*width: 70%;
     */position: relative;
-    transition: 1s all ease-in-out;
-    -webkit-transition: 1s all ease-in-out;
-    -moz-transition: 1s all ease-in-out;
-    -ms-transition: 1s all ease-in-out;
-    -o-transition: 1s all ease-in-out;
+    transition: 1.4s all ease-in-out;
+    -webkit-transition: 1.4s all ease-in-out;
+    -moz-transition: 1.4s all ease-in-out;
+    -ms-transition: 1.4s all ease-in-out;
+    -o-transition: 1.4s all ease-in-out;
     cursor: pointer;
     margin: auto;
     overflow: hidden;
-    border: 1px dashed black !important;
-
+    /*width: 100%;
+    *//*height: 800px;
+    */border: 1px dashed black !important;
 }
 
 @media (min-width:992px) {
@@ -21,9 +22,22 @@
     
 }
 .addFood:hover{
-    height: 900px;
+    height: 800px;
     width: 100%;
     border: 1px dashed rgb(35, 147, 35) !important;
+}
+.foodForm{
+    opacity:0;
+    transition: 2s all  ease-in;
+    -webkit-transition: 2s all  ease-in;
+    -moz-transition: 2s all  ease-in;
+    -ms-transition: 2s all  ease-in;
+    -o-transition: 2s all  ease-in;
+    transition-delay: .4s,0s;
+}
+.addFood:hover .foodForm{
+    /* background-color: red; */
+    opacity: 1;
 }
 .addFood header{
     /* direction: rtl; */
@@ -32,7 +46,8 @@
     justify-content: end;
     min-width: 320px;
     align-items: center;
-
+margin-bottom: 25px;
+justify-content: center;
 }
 
 
@@ -40,4 +55,17 @@
     cursor: pointer;
     /* background-color: green; */
 
+}
+
+
+@media (max-width: 576px){
+    .addFood {
+        height: 800px;
+        /* cursor: pointer; */
+        /* background-color: green; */
+    
+    }
+    .addFood .foodForm{
+        opacity: 1;
+    }
 }

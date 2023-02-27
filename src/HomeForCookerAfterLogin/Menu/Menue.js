@@ -3,7 +3,7 @@ import AddFood from './AddFood/AddFood'
 
 function Menue() {
   return (
-    <div className='container r'>
+    <div className='container-fluid r'>
         <AddFood/>
     </div>
   )

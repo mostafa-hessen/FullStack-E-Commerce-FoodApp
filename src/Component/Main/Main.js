@@ -24,9 +24,9 @@ function Main(props) {
           {/* <AddToFav /> */}
           {/* <Home/> */}
     
-    <CardFood/>
-
             <Menue/>
+           <CardFood/>
+
           {/* <Route exact path="/Home"> */}
             {/* <CheifPage /> */}
           {/* </Route> */}

@@ -1,7 +1,7 @@
 
-  .formContainer {
+.baseFoodForm .formContainer {
     /* background-color: #a7bcff; */
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,7 @@
   .formContainer .formWrapper form input {
     padding: 8px;
     /* border: none; */
-    width: 400px;
+    max-width: 400px;
     border-bottom: 1px solid #a7bcff;
     direction: rtl;
     border:1px solid #5b8d61;
@@ -118,7 +118,8 @@
   .formContainer .formWrapper form .imageForm .prevImg{
     /* background-size: cover;
     background-position: center; */
-    height: 100px; ;width: 400px; ;background-color:'gray';
+    height: 100px; ;
+    max-width: 400px; ;background-color:'gray';
     overflow: hidden;
     border:2px dashed #5b8d61 ;
     border-radius: 10px;
@@ -155,3 +156,31 @@
   }
   
 
+
+  @media (max-width:576px) {
+
+  .formContainer .formWrapper {
+    padding: 10px !important;
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  }
+
+
+  @media (max-width:490px) 
+    {
+    .formContainer .formWrapper{
+      border: none !important;
+      /* background-color: red; */
+
+}
+      .formContainer .formWrapper form .imageForm .prevImg,
+        .formContainer .formWrapper form input,.formContainer #Cateogry,
+        
+        .formWrapper .foodImages,.formWrapper textarea,.formWrapper .price,.formWrapper .price .pricee{
+     width: 250px !important;
+    }
+      
+    
+  }

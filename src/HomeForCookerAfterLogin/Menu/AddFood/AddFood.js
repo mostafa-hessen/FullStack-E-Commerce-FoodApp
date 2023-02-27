@@ -1,6 +1,7 @@
 import React from "react";
 import CheifList from "../../../HomeAfterLoginForUser/CheifList/CheifList";
 import "./AddFood.css";
+import FoodForm from "./FoodForm/FoodForm";
 function AddFood() {
   return (
     <div className="addFood mt-5 border d-flex align-items-center flex-column">
@@ -14,8 +15,9 @@ function AddFood() {
           ></lord-icon>
         </div>
       </header>
-      <section>
-        <CheifList/>
+      <section className="foodForm">
+        {/* <CheifList/> */}
+        <FoodForm />
       </section>
 
 
