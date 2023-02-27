@@ -9,7 +9,7 @@ import burger from '../../../assets/photo_2023-02-14_19-47-18.jpg'
 import pizza from '../../../assets/photo_2023-02-14_19-47-58.jpg'
 import kofta from '../../../assets/potatoKofta.jpg'
 import Popupeditefood from './PopUpEditeFoodForm/Popupeditefood';
-
+import ve from "../../../assets/animatedIcon/original-0525abb512e57734018fefe96706d1e0.mp4"
 
 import { border } from '@mui/system'
 import DeleteFood from './DeleteFood/DeleteFood';
