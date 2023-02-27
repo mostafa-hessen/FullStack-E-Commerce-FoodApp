@@ -6,7 +6,7 @@ const Eat =()=>{
 return(
 <>
 
-     <div className='container mt-5' id="con">
+     <div className='container mt-5' id="list">
         <div className='row align-items-center Eat' >
        
         <div className='col-12 col-md-6 '>

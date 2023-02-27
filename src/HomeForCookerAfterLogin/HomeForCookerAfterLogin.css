@@ -1,3 +1,8 @@
+
+html{
+  scroll-behavior: smooth;
+
+}
 .HomeForCookerAfterLogin .appContainer {
 
     background-color: rgb(112, 139, 112) !important;

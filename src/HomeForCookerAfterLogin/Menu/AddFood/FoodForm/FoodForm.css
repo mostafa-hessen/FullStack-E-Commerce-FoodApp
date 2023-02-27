@@ -1,0 +1,186 @@
+
+.baseFoodForm .formContainer {
+    /* background-color: #a7bcff; */
+    /* height: 100vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .formContainer .formWrapper {
+    box-shadow: rgba(79, 132, 74, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    border:2px solid #5b8d61;
+  }
+  .formContainer .formWrapper .logo {
+    color: #5b8d61;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 50px;
+  }
+  .formContainer .formWrapper .title {
+    color: #5d5b8d;
+    font-size: 12px;
+  }
+  .formContainer .formWrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .formContainer .formWrapper form input {
+    padding: 8px;
+    /* border: none; */
+    max-width: 400px;
+    border-bottom: 1px solid #a7bcff;
+    direction: rtl;
+    border:1px solid #5b8d61;
+    border-radius: 8px;
+
+  }
+  .formContainer .formWrapper form input::placeholder {
+    color: #afafaf;
+  }
+  .formContainer .formWrapper form button {
+    background-color: #5b8d61;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+  .formContainer .formWrapper form label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5b8d61;
+    font-size: 12px;
+    cursor: pointer;
+    direction: rtl;
+  }
+  .formContainer .formWrapper form label img {
+    width: 32px;
+  }
+  .formContainer .formWrapper p {
+    color: #5b8d61;
+    font-size: 12px;
+    /* margin-top: 10px; */
+  }
+
+  .formContainer .formWrapper form select {
+    direction: rtl;
+    padding: 6px;
+    border-radius: 8px;
+  }
+
+  .formContainer .formWrapper form textarea {
+    direction: rtl;
+    border-radius: 8px;
+    padding: 6px;
+  }
+
+  .formContainer .formWrapper form .price{
+    border: 1px solid #5b8d61 ;
+    padding: 6px;
+    border-radius: 8px;
+    display: flex;
+    direction: rtl;
+    justify-content: space-between;
+    
+  }
+
+  .formContainer .formWrapper form .price input{
+    width: 40px;
+    padding: 4px;
+
+
+  }
+
+  .formContainer .formWrapper form .price .pricee{
+     display: flex;
+     padding: 6px;
+  }
+  .formContainer .formWrapper form .price .pricee input{
+    margin-right: 5px;
+  }
+
+  .formContainer .formWrapper form .imageForm{
+
+
+
+  }
+  .formContainer .formWrapper form .imageForm .prevImg{
+    /* background-size: cover;
+    background-position: center; */
+    height: 100px; ;
+    max-width: 400px; ;background-color:'gray';
+    overflow: hidden;
+    border:2px dashed #5b8d61 ;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .formContainer .formWrapper form .imageForm .prevImg .file{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+  
+
+
+
+  }
+  .formContainer .formWrapper form .imageForm .prevImg .file p{
+    margin: 0;
+  }
+
+  .formContainer .formWrapper form .imageForm .prevImg i{
+    font-size: 40px;
+    color:#3e6642 ;
+ 
+   
+  }
+  .formContainer .formWrapper form .imageForm .prevImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  
+
+
+  @media (max-width:576px) {
+
+  .formContainer .formWrapper {
+    padding: 10px !important;
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  }
+
+
+  @media (max-width:490px) 
+    {
+    .formContainer .formWrapper{
+      border: none !important;
+      /* background-color: red; */
+
+}
+      .formContainer .formWrapper form .imageForm .prevImg,
+        .formContainer .formWrapper form input,.formContainer #Cateogry,
+        
+        .formWrapper .foodImages,.formWrapper textarea,.formWrapper .price,.formWrapper .price .pricee{
+     width: 250px !important;
+    }
+      
+    
+  }

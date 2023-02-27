@@ -10,7 +10,18 @@ import CheifList from '../../HomeAfterLoginForUser/CheifList/CheifList'
 import CheifPage from '../../HomeAfterLoginForUser/CheifPageForUser/CheifPage'
 import Details from '../../HomeAfterLoginForUser/Details/Details'
 import Basket from '../../HomeAfterLoginForUser/Basket/BasketComponent'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Orders from '../../HomeForCookerAfterLogin/Orders/Orders'
+import FoodForm from '../../HomeForCookerAfterLogin/Menu/AddFood/FoodForm/FoodForm'
+import Menue from '../../HomeForCookerAfterLogin/Menu/Menue'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import CardFood from '../../HomeForCookerAfterLogin/Menu/CooKerCard/CardFood'
+import Login from '../../LoginSignupPopUp/tab/Login/Login'
+import Signup from '../../LoginSignupPopUp/tab/Signup/Signup'
+import Tab from '../../LoginSignupPopUp/tab/Tab'
+import LoginSignupPopUp from '../../LoginSignupPopUp/LoginSignupPopUp'
+import ChiefHome from '../../HomeForCookerAfterLogin/shiefBage/chiefHome'
 
 function Main(props) {
   return (
@@ -18,17 +29,26 @@ function Main(props) {
         <div className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4" style={{backgroundColor:'#fff',overflowY:"scroll"}}>
           <ResponsiveNav />
 
-    
+          {/* <Orders/> */}
+         {/*  <Route exact path="/Home">
+             <CheifPage />
+            </Route> */}
+
+          {/* <AddToFav /> */}
+          {/* <Home/> */}
+{/*     
+            <Menue/>
+           <CardFood/> */}
+
           {/* <Route exact path="/Home"> */}
             {/* <CheifPage /> */}
           {/* </Route> */}
 
-{/* 
-          <Route path="/fav">
+          {/*<Route path="/fav">
             <AddToFav />
           </Route>
 
-       
+       <C
           <Route path="/chieflist">
             <CheifList />
           </Route>
@@ -39,19 +59,27 @@ function Main(props) {
            
           <Route path="/det">
             <Details />
-          </Route>
-            */}
+          </Route>*/}
+            
             {/* <Details /> */}
             {/* <CheifPage/> */}
             {/* <Basket/>  */}
+            
    
+            {/* <FoodForm/> */}
+            {/* <Login/>
+            <Signup/> */}
+            {/* <Tab/> */}
+            {/* <PopUp/> */}
+            {/* <LoginSignupPopUp/> */}
          
+         <ChiefHome/>
         </div>
 
         <div className='col-2 d-none d-lg-flex' >
         {props.kindOfuser=="user"? <NavbarForUser/>:<NavbarForCooker/>} 
         </div>
-      
+    
       </div> 
   )
 }

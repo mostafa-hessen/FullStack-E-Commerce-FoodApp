@@ -28,20 +28,16 @@
 .cardparent{
   position: relative;
 }
-.cardparent i{
-  position: absolute;
-  left:0px;
-  top:50%;
-}
+
 .mycard {
-background-color: aqua;
+background-color:white;
 position: relative;
 z-index: 10;
   direction: rtl;
-
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   flex-direction: row;
   border: 1px solid rgba(0, 0, 0, 0.064);
-  border-radius: 5px;
+  border-radius: 20px;
   transition: 1s all ease-in-out;
 }
 .mycard.active{
@@ -59,5 +55,8 @@ padding: 10px;
   max-width: 12em;
   height: 100%;
   border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius:20px;
+
   border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: 20px;
 }
