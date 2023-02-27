@@ -10,6 +10,8 @@ import CheifList from '../../HomeAfterLoginForUser/CheifList/CheifList'
 import CheifPage from '../../HomeAfterLoginForUser/CheifPageForUser/CheifPage'
 import Details from '../../HomeAfterLoginForUser/Details/Details'
 import Basket from '../../HomeAfterLoginForUser/Basket/BasketComponent'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Orders from '../../HomeForCookerAfterLogin/Orders/Orders'
 import FoodForm from '../../HomeForCookerAfterLogin/Menu/AddFood/FoodForm/FoodForm'
 import Menue from '../../HomeForCookerAfterLogin/Menu/Menue'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -21,6 +23,12 @@ function Main(props) {
        <div className="row homNavContainer  rounded-3 " style={{backgroundColor:'rgb(155, 193, 155)'}} >
         <div className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4" style={{backgroundColor:'#fff',overflowY:"scroll"}}>
           <ResponsiveNav />
+
+          <Orders/>
+         {/*  <Route exact path="/Home">
+             <CheifPage />
+            </Route> */}
+
           {/* <AddToFav /> */}
           {/* <Home/> */}
     
@@ -31,8 +39,7 @@ function Main(props) {
             {/* <CheifPage /> */}
           {/* </Route> */}
 
-{/* 
-          <Route path="/fav">
+          {/*<Route path="/fav">
             <AddToFav />
           </Route>
 
@@ -47,11 +54,12 @@ function Main(props) {
            
           <Route path="/det">
             <Details />
-          </Route>
-            */}
+          </Route>*/}
+            
             {/* <Details /> */}
             {/* <CheifPage/> */}
             {/* <Basket/>  */}
+            
    
             {/* <FoodForm/> */}
          
