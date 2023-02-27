@@ -2,6 +2,7 @@ import React from 'react';
 import './Nav.css'
 import { Navbar ,Container ,Nav } from 'react-bootstrap';
 import logo from '../../assets/logo.png'
+import LoginSignupPopUp from '../../LoginSignupPopUp/LoginSignupPopUp';
 const Navs =()=>{
     return(
         <Navbar  style={{direction:'rtl'}} expand="lg">
@@ -21,6 +22,7 @@ const Navs =()=>{
             <Nav.Link href="#home" >الصفحة الرئيسية </Nav.Link>
             <Nav.Link href="#link">قائمة الطعام</Nav.Link>
             <Nav.Link href="#link" >نبذه</Nav.Link>
+            <Nav.Link href="#link" ><LoginSignupPopUp/></Nav.Link>
           
 
            

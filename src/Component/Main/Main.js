@@ -17,6 +17,10 @@ import Menue from '../../HomeForCookerAfterLogin/Menu/Menue'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import CardFood from '../../HomeForCookerAfterLogin/Menu/CooKerCard/CardFood'
+import Login from '../../LoginSignupPopUp/tab/Login/Login'
+import Signup from '../../LoginSignupPopUp/tab/Signup/Signup'
+import Tab from '../../LoginSignupPopUp/tab/Tab'
+import LoginSignupPopUp from '../../LoginSignupPopUp/LoginSignupPopUp'
 
 function Main(props) {
   return (
@@ -62,6 +66,11 @@ function Main(props) {
             
    
             {/* <FoodForm/> */}
+            {/* <Login/>
+            <Signup/> */}
+            <Tab/>
+            {/* <PopUp/> */}
+            <LoginSignupPopUp/>
          
         </div>
 
