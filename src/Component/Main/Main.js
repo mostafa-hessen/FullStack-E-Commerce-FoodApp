@@ -21,6 +21,7 @@ import Login from '../../LoginSignupPopUp/tab/Login/Login'
 import Signup from '../../LoginSignupPopUp/tab/Signup/Signup'
 import Tab from '../../LoginSignupPopUp/tab/Tab'
 import LoginSignupPopUp from '../../LoginSignupPopUp/LoginSignupPopUp'
+import ChiefHome from '../../HomeForCookerAfterLogin/shiefBage/chiefHome'
 
 function Main(props) {
   return (
@@ -28,7 +29,7 @@ function Main(props) {
         <div className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4" style={{backgroundColor:'#fff',overflowY:"scroll"}}>
           <ResponsiveNav />
 
-          <Orders/>
+          {/* <Orders/> */}
          {/*  <Route exact path="/Home">
              <CheifPage />
             </Route> */}
@@ -47,7 +48,7 @@ function Main(props) {
             <AddToFav />
           </Route>
 
-       
+       <C
           <Route path="/chieflist">
             <CheifList />
           </Route>
@@ -68,10 +69,11 @@ function Main(props) {
             {/* <FoodForm/> */}
             {/* <Login/>
             <Signup/> */}
-            <Tab/>
+            {/* <Tab/> */}
             {/* <PopUp/> */}
-            <LoginSignupPopUp/>
+            {/* <LoginSignupPopUp/> */}
          
+         <ChiefHome/>
         </div>
 
         <div className='col-2 d-none d-lg-flex' >

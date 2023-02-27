@@ -20,9 +20,10 @@ const Navs =()=>{
               
 
             <Nav.Link href="#home" >الصفحة الرئيسية </Nav.Link>
-            <Nav.Link href="#link">قائمة الطعام</Nav.Link>
-            <Nav.Link href="#link" >نبذه</Nav.Link>
-            <Nav.Link href="#link" ><LoginSignupPopUp/></Nav.Link>
+            <Nav.Link href="#list">قائمة الطعام</Nav.Link>
+            <Nav.Link href="#reviews" >عملاؤنا</Nav.Link>
+            <Nav.Link href="#app" >التطبيق</Nav.Link>
+            <Nav.Link href="#" ><LoginSignupPopUp/></Nav.Link>
           
 
            

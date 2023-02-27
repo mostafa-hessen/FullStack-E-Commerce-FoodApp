@@ -14,6 +14,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #faf9f1;
   font-family: 'El Messiri', sans-serif;
+
+}
+
+html{
+  scroll-behavior: smooth;
+
 }
 
 code {
