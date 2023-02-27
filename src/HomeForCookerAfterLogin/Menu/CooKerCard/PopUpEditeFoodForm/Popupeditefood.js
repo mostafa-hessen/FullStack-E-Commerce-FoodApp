@@ -14,7 +14,7 @@ export default function Popupeditefood() {
      
       <i class="fa-solid fa-pen-to-square" onClick={handleShow}></i>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal  show={show} onHide={handleClose}>
       
         <Modal.Body >
         <Modal.Header closeButton>

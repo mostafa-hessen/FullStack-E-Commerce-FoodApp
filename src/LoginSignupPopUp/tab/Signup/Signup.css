@@ -1,0 +1,156 @@
+.formContainer {
+    /* background-color: #a7bcff; */
+    /* height: 100vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .formContainer .formWrapper1 {
+    /* box-shadow: rgba(79, 132, 74, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    /* border:2px solid #5b8d61;  */
+  }
+  .formContainer .formWrapper1 .logo {
+    color: #5b8d61;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 50px;
+  }
+  .formContainer .formWrapper1 .title {
+    color: #5d5b8d;
+    font-size: 12px;
+  }
+  .formContainer .formWrapper1 form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .formContainer .formWrapper1 form input {
+    padding: 8px;
+    /* border: none; */
+    width: 400px;
+    border-bottom: 1px solid #a7bcff;
+    direction: rtl;
+    border:1px solid #5b8d61;
+    border-radius: 8px;
+
+  }
+  .formContainer .formWrapper1 form input::placeholder {
+    color: #afafaf;
+  }
+  .formContainer .formWrapper1 form button {
+    background-color: #5b8d61;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+  .formContainer .formWrapper1 form label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5b8d61;
+    font-size: 12px;
+    cursor: pointer;
+    direction: rtl;
+  }
+  .formContainer .formWrapper1 form label img {
+    width: 32px;
+  }
+  .formContainer .formWrapper1 p {
+    color: #5b8d61;
+    font-size: 12px;
+    /* margin-top: 10px; */
+  }
+
+  .formContainer .formWrapper1 form select {
+    direction: rtl;
+    padding: 6px;
+    border-radius: 8px;
+  }
+
+  .formContainer .formWrapper1 form textarea {
+    direction: rtl;
+    border-radius: 8px;
+    padding: 6px;
+  }
+
+  .formContainer .formWrapper1 form .price{
+    border: 1px solid #5b8d61 ;
+    padding: 6px;
+    border-radius: 8px;
+    display: flex;
+    direction: rtl;
+    justify-content: space-between;
+    
+  }
+
+  .formContainer .formWrapper1 form .price input{
+    width: 40px;
+    padding: 4px;
+
+
+  }
+
+  .formContainer .formWrapper1 form .price .pricee{
+     display: flex;
+     padding: 6px;
+  }
+  .formContainer .formWrapper1 form .price .pricee input{
+    margin-right: 5px;
+  }
+
+  .formContainer .formWrapper1 form .imageForm{
+
+
+
+  }
+  .formContainer .formWrapper1 form .imageForm .prevImg{
+    /* background-size: cover;
+    background-position: center; */
+    height: 100px; ;width: 400px; ;background-color:'gray';
+    overflow: hidden;
+    border:2px dashed #5b8d61 ;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .formContainer .formWrapper1 form .imageForm .prevImg .file{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+  
+
+
+
+  }
+  .formContainer .formWrapper1 form .imageForm .prevImg .file p{
+    margin: 0;
+  }
+
+  .formContainer .formWrapper1 form .imageForm .prevImg i{
+    font-size: 40px;
+    color:#3e6642 ;
+ 
+   
+  }
+  .formContainer .formWrapper1 form .imageForm .prevImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  
+
