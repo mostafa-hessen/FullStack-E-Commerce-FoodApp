@@ -72,8 +72,9 @@ function Main(props) {
             {/* <Tab/> */}
             {/* <PopUp/> */}
             {/* <LoginSignupPopUp/> */}
-         l
-         <ChiefHome/>
+         
+         {/* <ChiefHome/> */}
+         <Menue/>
         </div>
 
         <div className='col-2 d-none d-lg-flex' >
