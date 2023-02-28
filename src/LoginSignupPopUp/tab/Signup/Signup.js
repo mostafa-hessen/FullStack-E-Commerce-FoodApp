@@ -116,7 +116,7 @@ export default function Signup() {
                    <div className='d-flex justify-content-between' >
                     <input required type="text" placeholder="الاسم الثاني " autoComplete="name" name="lName"    style={{width:'49%'}} onChange={(e) => changeData(e)} onBlur={(e)=>afterLeaveInput(e)}/>
                {console.log(data.lastName,rgex['lastName'].test(data.lastName))}
-                    { errorMessage.lName?'':<span className='text-warning'>{errorMessage}</span>}
+                    { errorMessage.lName?'':<span className='text-warning'></span>}
                     <input required type="text" placeholder="الاسم الاول" autoComplete="name"  name='fName' value={data.fName} style={{width:'49%'}} onChange={(e) => changeData(e)}/>
                    </div>
                     <input required type="email" placeholder="البريد الالكتروني"  name="email" pattern='/\S+@\S+\.\S+/' />

@@ -1,12 +1,11 @@
+
 .formContainer {
-    /* background-color: #a7bcff; */
-    /* height: 100vh; */
+    
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .formContainer .formWrapper1 {
-    /* box-shadow: rgba(79, 132, 74, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
     background-color: white;
     padding: 20px 60px;
     border-radius: 10px;
@@ -14,7 +13,6 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    /* border:2px solid #5b8d61;  */
   }
   .formContainer .formWrapper1 .logo {
     color: #5b8d61;
@@ -33,14 +31,13 @@
   }
   .formContainer .formWrapper1 form input {
     padding: 8px;
-    /* border: none; */
     width: 400px;
     border-bottom: 1px solid #a7bcff;
     direction: rtl;
     border:1px solid #5b8d61;
     border-radius: 8px;
 
-    outline: none;
+    outline:none ;
 
   }
   .formContainer .formWrapper1 form input::placeholder {
@@ -71,7 +68,6 @@
   .formContainer .formWrapper1 p {
     color: #5b8d61;
     font-size: 12px;
-    /* margin-top: 10px; */
   }
 
   .formContainer .formWrapper1 form select {
@@ -117,8 +113,6 @@
 
   }
   .formContainer .formWrapper1 form .imageForm .prevImg{
-    /* background-size: cover;
-    background-position: center; */
     height: 100px; ;width: 400px; ;background-color:'gray';
     overflow: hidden;
     border:2px dashed #5b8d61 ;
@@ -155,4 +149,5 @@
     object-position: top;
   }
   
+ 
 

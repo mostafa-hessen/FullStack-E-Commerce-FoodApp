@@ -16,6 +16,7 @@ export default function Tab() {
 
 
             <div className="containers">
+
                 <div className="bloc-tabs">
                     <button
                         className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
@@ -37,6 +38,8 @@ export default function Tab() {
                         className={toggleState === 1 ? "content  active-content" : "content"}
                     >
                        <Login/>
+                       {/* <Signup/> */}
+
                     </div>
 
                     <div

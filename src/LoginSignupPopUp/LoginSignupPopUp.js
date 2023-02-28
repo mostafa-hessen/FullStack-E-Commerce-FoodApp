@@ -31,15 +31,27 @@
 // }
 
 
-import React from 'react'
+import React ,{useState} from 'react'
 import './PopUp.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Tab from './tab/Tab';
 import {RxAvatar} from 'react-icons/rx'
+// import Signup from './tab/Signup/Signup';
 
 function PopUp(props) {
+  const [modalShow, setModalShow] = useState(false);
+
   return (
+    <>
+       <RxAvatar  onClick={() => setModalShow(true)} style={{fontSize:'35px'}}></RxAvatar>
+      {/* <Signup/> */}
+      
+
+      <PopUp
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     <Modal className='signloginpop'
       {...props}
       size="lg"
@@ -50,16 +62,20 @@ function PopUp(props) {
       </Modal.Header>
       <Modal.Body>
         <Tab/>
+        {/* <Signup/> */}
+
       </Modal.Body>
       {/* <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer> */}
     </Modal>
+
+    </>
   );
 }
 
 export default function LoginSignupPopUp() {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <>
@@ -67,6 +83,7 @@ export default function LoginSignupPopUp() {
         Launch vertically centered modal
       </Button> */}
       <RxAvatar  onClick={() => setModalShow(true)} style={{fontSize:'35px'}}></RxAvatar>
+      {/* <Signup/> */}
       
 
       <PopUp
