@@ -8,6 +8,7 @@ import './App.css';
 import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomeForCookerAfterLogin from "./HomeForCookerAfterLogin/HomeForCookerAfterLogin";
+import SignupPage from "./LoginSignupPopUp/SignupPage";
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,10 @@ function App() {
        
           <Route path="/HomeCooker">
             <HomeForCookerAfterLogin />
+          </Route>
+
+          <Route path="/SignupPage">
+           <SignupPage/>
           </Route>
           
            
