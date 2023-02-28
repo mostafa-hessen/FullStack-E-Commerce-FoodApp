@@ -40,6 +40,8 @@
     border:1px solid #5b8d61;
     border-radius: 8px;
 
+    outline: none;
+
   }
   .formContainer .formWrapper1 form input::placeholder {
     color: #afafaf;
