@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import './deletedFormPopup.css'
 export default function DeleteFood() {
   const [show, setShow] = useState(false);
 
@@ -12,7 +12,7 @@ export default function DeleteFood() {
     <>
      <i class="fa-solid fa-trash"  onClick={handleShow}>  </i>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal className='mydeletePopUp' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
        
         </Modal.Header>

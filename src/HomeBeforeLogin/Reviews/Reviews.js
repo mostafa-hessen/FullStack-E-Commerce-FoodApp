@@ -5,7 +5,7 @@ import Reviewss from '../../assets/Reviewss.jpg'
 import './Reviews.css'
 export default function Reviews() {
     return (
-        <section className='Reviews section '>
+        <section className='Reviews section ' id='reviews'>
             <div class="sec-wp">
                 <div class="container">
                     <div className='row'>

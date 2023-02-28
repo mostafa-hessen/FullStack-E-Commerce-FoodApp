@@ -1,0 +1,15 @@
+.my .modal-content {
+  background-color: transparent !important;
+  border: none !important;
+}
+.my .modal-header {
+  border: none !important;
+}
+ .my .modal-header .btn-close {
+  background-color: rgb(75, 206, 79) !important;
+  border-radius: 50% !important ;
+  -webkit-border-radius: 50% !important ;
+  -moz-border-radius: 50% !important ;
+  -ms-border-radius: 50% !important ;
+  -o-border-radius: 50% !important ;
+}

@@ -8,7 +8,7 @@
 
 
     return(
-        <>
+        <div className='baseFoodForm'>
         <div className="formContainer">
       <div className="formWrapper">
         <span className="logo">🤤اضف اكله جديده </span>
@@ -54,9 +54,6 @@
           <img src={imageForm1} height={'80px'} width={'100px'} style={{margin:'10px',borderRadius:'6px'}}/>
           <img src={imageForm2} height={'80px'} width={'100px'} style={{margin:'10px',borderRadius:'6px'}}/>
 
-          
-
-         
          
           </div>
 
@@ -103,7 +100,7 @@
         
         
         
-        </>
+        </div>
     )
 
  }

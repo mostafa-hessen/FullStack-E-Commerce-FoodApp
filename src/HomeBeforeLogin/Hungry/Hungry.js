@@ -9,7 +9,7 @@ const Hungry =()=>{
 return(
 <>
 
-     <div className='container'>
+     <div className='container' id="app">
         <div className='row align-items-center Hungry'>
        
         <div className='col-12 col-md-6 '>

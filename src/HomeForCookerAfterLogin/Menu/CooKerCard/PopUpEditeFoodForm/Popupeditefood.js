@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import EditeFoodForm from './EditeFoodForm';
+import './popupFood.css'
 export default function Popupeditefood() {
   const [show, setShow] = useState(false);
 
@@ -12,13 +13,12 @@ export default function Popupeditefood() {
   return (
     <>
      
-      <i class="fa-solid fa-pen-to-square" onClick={handleShow}></i>
+      <i className="fa-solid fa-pen-to-square" onClick={handleShow}></i>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className="my" >
       
-        <Modal.Body >
-        <Modal.Header closeButton>
-       
+        <Modal.Body style={{background:""}} >
+        <Modal.Header  style={{background:"transaprent"}} closeButton>
         </Modal.Header>
           <EditeFoodForm />
         </Modal.Body>
