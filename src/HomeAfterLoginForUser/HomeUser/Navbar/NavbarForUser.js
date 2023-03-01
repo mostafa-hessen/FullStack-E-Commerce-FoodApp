@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import Delivery from "../Delivery/Delivery";
+import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <>
@@ -16,8 +17,11 @@ function Navbar() {
               <i class="fa-solid fa-house icon"></i> <span>الرئيسيه</span>
             </li>
             <li>
-              {" "}
-              <i class="fa-regular fa-heart icon"></i> <span>المفضله</span>
+              
+            <Link to="/sss">
+               <i class="fa-regular fa-heart icon"></i> <span>المفضله</span>
+            </Link>
+            
             </li>
             <li>
               {" "}

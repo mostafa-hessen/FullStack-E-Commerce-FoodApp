@@ -74,7 +74,19 @@ function Main(props) {
             {/* <LoginSignupPopUp/> */}
          
          {/* <ChiefHome/> */}
+
+          
          <Menue/>
+
+         <BrowserRouter>
+      <Switch>
+          <Route exact path=":sss">
+            <AddToFav/>
+          </Route>
+
+ 
+        </Switch>
+      </BrowserRouter>
         </div>
 
         <div className='col-2 d-none d-lg-flex' >
