@@ -9,9 +9,11 @@ import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { doc, setDoc } from "@firebase/firestore";
 import { useHistory } from "react-router-dom";
 
+// import { doc } from "prettier";
+// import { log } from 'console';
 
 export default function Signup() {
-  let navigate = useHistory();
+  let navigate= useHistory()
   let rgex = {
     fName: /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     lastName:
@@ -62,10 +64,10 @@ export default function Signup() {
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
               await console.log(downloadURL);
 
-              await updateProfile(res.user, {
-                displayName: `${data.fName}${data.lName}@${data.kindUser}`,
-                photoURL: downloadURL,
-              });
+            await updateProfile(res.user, {
+              displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
+              photoURL: downloadURL,
+            });
 
 
               if (data.kindUser == "cook") {
@@ -79,33 +81,24 @@ export default function Signup() {
                   kindUser: data.kindUser,
                   photo: downloadURL,
 
-                });
-              } else {
-                await setDoc(doc(db, "users", res.user.uid), {
-                  userid: res.user.uid,
-                  fullName: data.fName + " " + data.lName,
-                  email: data.email,
-                  phone: data.phone,
-                  address: data.address,
-                  country: data.country,
-                  kindUser: data.kindUser,
-                  photo: downloadURL,
-                  cart: [],
-                  favourite: [],
-                });
-              }
-              await setShow(true)
-                 //  function MyNvigateFun(){
-              //   if (show){
-              //     data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
-              //     console.log("hhh")
-              //    }
-              //    else{
-              //     console.log(show+ "jj")
-              //    }
-              
-              // }
-              // await MyNvigateFun();  
+              });
+            } else {
+              await setDoc(doc(db, "users", res.user.uid), {
+                userid: res.user.uid,
+                fullName: data.fName +" "+data.lName,
+                email: data.email,
+                phone: data.phone,
+                address:data.address,
+                country: data.country,
+                kindUser:data.kindUser,
+                photo: downloadURL,
+                cart: [],
+                favourite: [],
+              });
+            }
+           await setShow(true)
+           await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
+  
             });
              data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
            
@@ -461,19 +454,21 @@ export default function Signup() {
               </div>
             </div>
 
-            <label htmlFor="kindUser">نوع الحساب:</label>
-            <select
-              name="kindUser"
-              id="kindUser"
-              onChange={(e) => changeData(e)}
-              required
-            >
-              <option value="user">عميل</option>
-              <option value="cook">طباخ</option>
-            </select>
-            <small className="text-danger" style={{ textAlign: "right" }}>
-              {errorMessage.kindUserErr}
-            </small>
+          <label htmlFor="kindUser">نوع الحساب:</label>
+          <select
+            name="kindUser"
+            id="kindUser"
+            onChange={(e) => changeData(e)}
+            required
+          >
+           <option value="" >اختر نوع حسابك</option>
+
+            <option value="user">عميل</option>
+            <option value="cook">طباخ</option>
+          </select>
+          <small className="text-danger" style={{ textAlign: "right" }}>
+            {errorMessage.kindUserErr}
+          </small>
 
             <input
               style={{ display: "none" }}
