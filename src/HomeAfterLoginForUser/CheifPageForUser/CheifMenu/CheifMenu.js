@@ -8,6 +8,7 @@ import mahshi from "../../../assets/mahshi.jpg";
 import hamam from "../../../assets/hamam.jpg";
 import fish from "../../../assets/fish.jpg";
 import './CheifMenu.css'
+import { Link } from 'react-router-dom';
 export default function CheifMenu() {
     const food1 = [
         {img:chicken, offer:'فرخة كيلو ونصف مشويه علي الفحم بسعر ١٢٠  جنية'},
@@ -37,7 +38,7 @@ export default function CheifMenu() {
                         <Card.Text  style={{textAlign:'right'}}>
                           {item.offer}
                        </Card.Text>
-                       <a href='' className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></a>
+                       <Link to={`/HomeUser/ChiefList/Cheif/details/${index}`} style={{textDecoration:'none'}} className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></Link>
                        <Button className='btnCar' style={{ backgroundColor:'#7e8e72', borderColor:'#6e7c63' }}><i class="fa-solid fa-cart-shopping" style={{color:'#fff'}}></i></Button>
                        <a href='' className='star'><i className="fa-solid fa-star"></i></a>
                     </Card.Body>
@@ -57,7 +58,7 @@ export default function CheifMenu() {
                         <Card.Text style={{textAlign:'right'}}>
                           {item.offer}
                        </Card.Text>
-                       <a href='' className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></a>
+                       <Link to={`/HomeUser/ChiefList/Cheif/details/${index}`} style={{textDecoration:'none'}} className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></Link>
                        <Button className='btnCar' style={{ backgroundColor:'#7e8e72', borderColor:'#6e7c63' }}><i class="fa-solid fa-cart-shopping" style={{color:'#fff'}}></i></Button>
                        <a href='' className='star'><i className="fa-solid fa-star"></i></a>
                     </Card.Body>

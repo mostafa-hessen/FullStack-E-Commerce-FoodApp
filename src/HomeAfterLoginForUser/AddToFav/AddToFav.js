@@ -5,9 +5,14 @@ import sec from '../../assets/chicken.jpg'
 
 import { useState } from 'react';
 import './AddToFav.css'
-function AddToFav() {
+import { Redirect } from 'react-router-dom';
+function AddToFav({authorized}) {
 const [myactive, setmyactive] = useState("")
 const [second, setsecond] = useState("")
+
+if(!authorized){
+  return <Redirect to = '/SignPage'/>
+}
 
   return (
     <div className=' parent' >
