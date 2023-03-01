@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import { Link } from 'react-router-dom';
 import shape from '../../../assets/shape.svg';
 import team1 from '../../../assets/team1.jpg';
 import team2 from '../../../assets/team2.jpg';
@@ -53,7 +54,9 @@ function Cheif() {
                                 </div>
                             </div>
                             <div className="team-text">
+                            <Link to={`/HomeUser/ChiefList/Cheif/${index}`} style={{textDecoration:'none'}}>
                                 <h2>{CheifItem.name}</h2>   
+                            </Link>
                             </div>
                         </div>
                     </div>

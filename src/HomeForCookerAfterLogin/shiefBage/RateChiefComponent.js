@@ -23,17 +23,17 @@ function RateChiefComponent() {
                             </div>
                             </div>
                             <div className="col-7 text-center">
-                                <h4>اسماء علي</h4>
+                                <h4>أسماء علي</h4>
                             </div>
                             <div dir='rtl' className="col-11 ">
-                                <p>الاكل طعمه جميل ونظيف ومرتب دقة في المواعيد </p>
+                                <p>الأكل طعمه جميل ونظيف ومرتب دقة في المواعيد </p>
                             </div>
                             <div dir="rtl" className="col-11 m-1 text-center mb-4">
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaRegStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaRegStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaRegStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaRegStar></span>
 
 
                             </div>
@@ -48,17 +48,17 @@ function RateChiefComponent() {
                             </div>
                             </div>
                             <div className="col-7 text-center">
-                                <h4>اميرة علي</h4>
+                                <h4>أميرة علي</h4>
                             </div>
                             <div dir='rtl' className="col-11 ">
-                                <p>الاكل طعمه جميل ونظيف ومرتب دقة في المواعيد </p>
+                                <p>الأكل طعمه جميل ونظيف ومرتب دقة في المواعيد </p>
                             </div>
                             <div dir="rtl" className="col-11 m-1 text-center mb-4">
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaRegStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaRegStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaRegStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaRegStar></span>
 
 
                             </div>
@@ -76,17 +76,17 @@ function RateChiefComponent() {
                             </div>
                             </div>
                             <div className="col-7 text-center">
-                                <h4>ازهار علي</h4>
+                                <h4>أزهار علي</h4>
                             </div>
                             <div dir='rtl' className="col-11 ">
-                                <p>الاكل طعمه جميل ونظيف ومرتب دقة في المواعيد </p>
+                                <p>الأكل طعمه جميل ونظيف ومرتب دقة في المواعيد </p>
                             </div>
                             <div dir="rtl" className="col-11 m-1 text-center mb-4">
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaStar></span>
-                                <span><FaRegStar style={{ color: '#FFFF00', fontSize: 25, marginRight: 6 }}></FaRegStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaStar></span>
+                                <span><FaRegStar style={{ color: '#fbaf32', fontSize: 25, marginRight: 6 }}></FaRegStar></span>
 
 
                             </div>

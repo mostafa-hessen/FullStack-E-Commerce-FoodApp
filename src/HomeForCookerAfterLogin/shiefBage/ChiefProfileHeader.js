@@ -16,7 +16,7 @@ function HeaderComponent() {
          
         <div className='col-lg-3 col-md-4 col-5  ' dir='rtl' >
             <h5 className='col-12'>تقوي علي</h5>
-            <p className='col-12'>اكل بيتي <span><MdFastfood></MdFastfood></span></p>
+            <p className='col-12'>أكل بيتي <span><MdFastfood></MdFastfood></span></p>
           </div>
           <div className='col-lg-2 col-md-3 col-4 '>
 
