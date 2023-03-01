@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-// import { createUserWithEmailAndPassword } from "firebase/auth";
-// import { Auth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth,storage ,db} from '../../../firebase';
 import "./Signup.css";
 import { ElementFlags } from "typescript";
-import { Alert } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
+import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
+import { doc, setDoc } from "@firebase/firestore";
+// import { doc } from "prettier";
 // import { log } from 'console';
 
 export default function Signup() {
@@ -17,14 +20,101 @@ export default function Signup() {
       /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     phone: /^01[0125][0-9]{8}$/,
   };
+  const [show, setShow] = useState(false);
 
-  const handleClick = (e) => {
+
+  const handleClick = async (e) => {
     e.preventDefault();
     console.log("d");
     console.log("func", vaildition());
 
     if (vaildition()) {
       ///sernd to firebase
+      //auth=getauth() , creatWithEmailAndPAsword(auth,email,password)
+
+      try {
+
+        // ==== auth ==== 
+        const res = await createUserWithEmailAndPassword(
+          auth,
+          data.email,
+          data.password
+        );
+  
+
+console.log(res.user);
+
+// mostafa.png sohail.png sohaila166389189209202.png => 
+let date =Date.now()
+
+        // ==== upload img and get this  url 
+        const storageRef = ref(storage, `${data.lName}${date}`);
+
+        const uploadTask = uploadBytesResumable(storageRef, data.photo);
+  
+        uploadTask.on(
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            await  console.log(downloadURL);
+
+            await updateProfile(res.user, {
+              displayName: `${data.fName}${data.lName}@${data.kindUser}`,
+              photoURL: downloadURL,
+            });
+
+
+            if (data.kindUser == "cook") {
+              await setDoc(doc(db, "cookers", res.user.uid), {
+                userid: res.user.uid,
+                fullName: data.fName +" "+data.lName,
+                email: data.email,
+                phone: data.phone,
+                address:data.address,
+                country: data.country,
+                kindUser:data.kindUser,
+                photo: downloadURL,
+
+              });
+            } else {
+              await setDoc(doc(db, "users", res.user.uid), {
+                userid: res.user.uid,
+                fullName: data.fName +" "+data.lName,
+                email: data.email,
+                phone: data.phone,
+                address:data.address,
+                country: data.country,
+                kindUser:data.kindUser,
+                photo: downloadURL,
+                cart: [],
+                favourite: [],
+              });
+            }
+           await setShow(true)
+
+
+
+
+
+
+
+             
+            });
+          }
+         
+
+
+          
+        );
+
+
+
+
+
+      } catch {}
+
 
 
     } else {
@@ -47,7 +137,6 @@ export default function Signup() {
 
       console.log(e.target.files);
     }
- 
   };
 
   const [data, setData] = useState({
@@ -226,8 +315,19 @@ export default function Signup() {
     }
   };
 
+
   return (
+    <>
+ {
+   <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
+   <Alert.Heading>success</Alert.Heading>
+   {/* <Button onClick={() => setShow(false)} variant="outline-success">
+            Close me y'all!
+          </Button> */}
+ </Alert>
+ }
     <div className="formContainer">
+      
       <div className="formWrapper1">
         <span className="logo">الاكيله</span>
         <form onSubmit={handleClick}>
@@ -396,5 +496,6 @@ export default function Signup() {
         </form>
       </div>
     </div>
+    </>
   );
 }
