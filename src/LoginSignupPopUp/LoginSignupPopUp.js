@@ -95,7 +95,6 @@ export default function LoginSignupPopUp() {
       {/* <i className="fa-solid fa-pen-to-square" onClick={handleShow}></i> */}
     <RxAvatar   onClick={handleShow} style={{fontSize:'35px'}}></RxAvatar>
 
-
       <Modal show={show} onHide={handleClose} className="my" >
       
         <Modal.Body style={{background:""}} >

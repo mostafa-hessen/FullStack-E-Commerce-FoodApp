@@ -1,8 +1,10 @@
 import "./Navbar.css";
 import Delivery from "../Delivery/Delivery";
+import { useHistory } from "react-router-dom";
 function Navbar() {
+  let history = useHistory();
+
   return (
-    <>
       <nav className="d-flex flex-column justify-content-between">
         <div>
           <div class="image">
@@ -11,27 +13,22 @@ function Navbar() {
           <h4 className="text-center">سهيله حماده</h4>
 
           <ul class="ul">
-            <li>
-              {" "}
-              <i class="fa-solid fa-house icon"></i> <span>الرئيسيه</span>
+            <li onClick={()=>{history.push('/HomeUser/Home')}}>
+              <i class="fa-solid fa-house icon"></i> <span>الرئيسية</span>
             </li>
-            <li>
-              {" "}
-              <i class="fa-regular fa-heart icon"></i> <span>المفضله</span>
+            <li onClick={()=>{history.push('/HomeUser/AddToFav')}}>
+              <i class="fa-regular fa-heart icon"></i> <span>المفضلة</span>
             </li>
-            <li>
-              {" "}
-              <i class="fa-solid fa-cart-shopping icon"></i> <span>السله</span>
+            <li onClick={()=>{history.push('/HomeUser/Cart')}}>
+              <i class="fa-solid fa-cart-shopping icon"></i> <span>سلة التسوق</span>
             </li>
-            <li>
-              {" "}
-              <i class="fa-solid fa-utensils icon"></i> <span>الشيف</span>
+            <li onClick={()=>{history.push('/HomeUser/ChiefList')}}>
+              <i class="fa-solid fa-utensils icon"></i> <span>الطباخين</span>
             </li>
           </ul>
         </div>
         <Delivery />
       </nav>
-    </>
   );
 }
 export default Navbar;

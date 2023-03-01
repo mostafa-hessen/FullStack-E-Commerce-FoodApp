@@ -93,29 +93,13 @@ let date =Date.now()
               });
             }
            await setShow(true)
-
-
-
-
-
-
-
-             
+  
             });
           }
-         
-
-
-          
+            
         );
 
-
-
-
-
       } catch {}
-
-
 
     } else {
       data.kindUser == ""
@@ -348,7 +332,7 @@ let date =Date.now()
               <input
                 required
                 type="text"
-                placeholder="الاسم الاول"
+                placeholder="الاسم الأول"
                 autoComplete="name"
                 name="fName"
                 value={data.fName}
@@ -363,7 +347,7 @@ let date =Date.now()
           <input
             required
             type="email"
-            placeholder="البريد الالكتروني"
+            placeholder="البريد الإلكتروني"
             name="email"
             onChange={(e) => changeData(e)}
           />
@@ -373,7 +357,7 @@ let date =Date.now()
           <input
             required
             type="password"
-            placeholder="كلمه السر"
+            placeholder="كلمة المرور"
             name="password"
             onChange={(e) => changeData(e)}
           />
@@ -464,8 +448,8 @@ let date =Date.now()
             onChange={(e) => changeData(e)}
             required
           >
-            <option value="user">العميل</option>
-            <option value="cook">الطباخ</option>
+            <option value="user">عميل</option>
+            <option value="cook">طباخ</option>
           </select>
           <small className="text-danger" style={{ textAlign: "right" }}>
             {errorMessage.kindUserErr}
@@ -482,17 +466,17 @@ let date =Date.now()
           <label htmlFor="file">
             <span className="d-flex align-items-center">
               <i
-                class="fa-solid fa-camera-retro"
+                className="fa-solid fa-camera-retro"
                 style={{ fontSize: "25px", color: "#5b8d61" }}
               ></i>{" "}
-              ارفع صورتك
+              إرفع صورتك
             </span>
           </label>
           <small className="text-danger" style={{ textAlign: "right" }}>
             {errorMessage.photoErr}
           </small>
 
-          <input type="submit" />
+          <input type="submit" value="إنشاء حساب"/>
         </form>
       </div>
     </div>

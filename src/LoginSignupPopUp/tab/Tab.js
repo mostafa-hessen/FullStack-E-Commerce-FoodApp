@@ -13,8 +13,6 @@ export default function Tab() {
     };
     return (
         <>
-
-
             <div className="containers">
 
                 <div className="bloc-tabs">
@@ -28,7 +26,7 @@ export default function Tab() {
                         className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
                         onClick={() => toggleTab(2)}
                     >
-                        انشاء حساب
+                        إنشاء حساب
                     </button>
                    
                 </div>
@@ -49,10 +47,6 @@ export default function Tab() {
                     </div>
                 </div>
             </div>
-
-
-
-
 
         </>
     )

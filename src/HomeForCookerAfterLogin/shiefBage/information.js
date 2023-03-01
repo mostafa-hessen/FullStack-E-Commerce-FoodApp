@@ -31,7 +31,7 @@ function InformationComponent() {
                 </div>
                 
                 <div className='col-4 '>
-                <h5>اهناسيا بني سويف</h5>
+                <h5>أهناسيا بني سويف</h5>
                 </div>
                 <div className='col-1'>
                 <MdEdit style={{fontSize:30}}></MdEdit>
@@ -61,7 +61,7 @@ function InformationComponent() {
                 </div>
                 
                 <div className='col-4 '>
-                <h5 >تفاصيل اكتر </h5>
+                <h5 >تفاصيل أكثر </h5>
                 </div>
                 <div className='col-1'>
                 <MdEdit style={{fontSize:30}}></MdEdit>
