@@ -15,7 +15,7 @@ import Orders from '../../HomeForCookerAfterLogin/Orders/Orders'
 import FoodForm from '../../HomeForCookerAfterLogin/Menu/AddFood/FoodForm/FoodForm'
 import Menue from '../../HomeForCookerAfterLogin/Menu/Menue'
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Login from '../../Login/Login'
+
 import CardFood from '../../HomeForCookerAfterLogin/Menu/CooKerCard/CardFood'
 import Login from '../../LoginSignupPopUp/tab/Login/Login'
 import Signup from '../../LoginSignupPopUp/tab/Signup/Signup'
@@ -28,7 +28,7 @@ function Main(props) {
        <div className="row homNavContainer  rounded-3 " style={{backgroundColor:'rgb(155, 193, 155)'}} >
         <div className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4" style={{backgroundColor:'#fff',overflowY:"scroll"}}>
           <ResponsiveNav />
-
+{/* <CardFood/> */}
           {/* <Orders/> */}
          {/*  <Route exact path="/Home">
              <CheifPage />
