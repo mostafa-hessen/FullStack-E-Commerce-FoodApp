@@ -22,7 +22,8 @@ const Navs =()=>{
             <ScrollLink to="list" spy={true} smooth={true} offset={-70} duration={400} className='link me-3'>قائمة الطعام</ScrollLink>
             <ScrollLink to="reviews" spy={true} smooth={true} offset={-50} duration={400} className='link me-3'>عملاؤنا</ScrollLink>
             <ScrollLink to="app" spy={true} smooth={true} offset={30} duration={400} className='link me-3'>التطبيق</ScrollLink>
-            <RouterLink to={`/SignPage`} className='link me-3'><PopUp/></RouterLink>
+            {/* <RouterLink to={`/SignPage`} className='link me-3'><PopUp/></RouterLink> */}
+             <PopUp/>  
           
           </Nav>
           </Navbar.Collapse>

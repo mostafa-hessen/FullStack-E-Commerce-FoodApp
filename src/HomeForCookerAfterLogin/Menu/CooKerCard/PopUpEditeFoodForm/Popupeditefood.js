@@ -21,8 +21,8 @@ export default function Popupeditefood() {
         <Modal.Body style={{background:""}} >
         <Modal.Header  style={{background:"transaprent"}} closeButton>
         </Modal.Header>
-          {/* <EditeFoodForm /> */}
-          <Tab/>
+          <EditeFoodForm />
+          {/* <Tab/> */}
         </Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
