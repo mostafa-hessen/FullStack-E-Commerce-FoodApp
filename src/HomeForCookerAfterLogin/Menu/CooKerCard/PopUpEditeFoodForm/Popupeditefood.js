@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import Tab from '../../../../LoginSignupPopUp/tab/Tab';
 import EditeFoodForm from './EditeFoodForm';
 import './popupFood.css'
 export default function Popupeditefood() {
@@ -21,6 +22,7 @@ export default function Popupeditefood() {
         <Modal.Header  style={{background:"transaprent"}} closeButton>
         </Modal.Header>
           <EditeFoodForm />
+          {/* <Tab/> */}
         </Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

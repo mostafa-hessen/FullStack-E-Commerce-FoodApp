@@ -9,7 +9,9 @@ import pashamel from '../../assets/pashamel.jpg';
 import pea from '../../assets/pea.jpg';
 import { useState } from 'react';
 import Order from './order';
-function Orders() {
+import { Redirect } from 'react-router-dom';
+function Orders({authorized}) {
+
   const orders = [
     {
       name: 'علي محمد', meal: chickenMeal, time: '١بعد الظهر ٢/٢٥', details: [
@@ -45,6 +47,10 @@ function Orders() {
     activeOrder[status]= 'orderActive'
 
     setActiveOrderState(activeOrder)
+  }
+  
+  if(!authorized){
+    return <Redirect to = '/SignPage'/>
   }
 
   return (

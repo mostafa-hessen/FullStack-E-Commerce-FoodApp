@@ -1,12 +1,13 @@
 import React from 'react'
 import './Details.css'
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 // import FormGroup from '@mui/material/FormGroup';
 // import FormControlLabel from '@mui/material/FormControlLabel';
 // import Checkbox from '@mui/material/Checkbox';
 
 
-export default function Details() {
+export default function Details({authorized}) {
   const imgs = [
 
 
@@ -20,6 +21,11 @@ export default function Details() {
     const wordSlider = imgs[index];
     setWordData(wordSlider)
   }
+
+  if(!authorized){
+    return <Redirect to = '/SignPage'/>
+  }
+
   return (
     <>
       <div className="main">

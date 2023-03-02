@@ -1,10 +1,15 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import Bestfood from "../Bestfood/Bestfood";
 import FilterItems from "../FilterItems/FilterItems";
 import FoodCard from "../FoodCard/FoodCard";
 import Header from '../Header/Header';
 import Offer from '../Offer/Offer'
-function Home() {
+function Home({authorized}) {
+  if(!authorized){
+    return <Redirect to = '/SignPage'/>
+  }
+
   return (
       
       <div className="row " >

@@ -13,9 +13,8 @@ export default function Tab() {
     };
     return (
         <>
-
-
             <div className="containers">
+
                 <div className="bloc-tabs">
                     <button
                         className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
@@ -27,7 +26,7 @@ export default function Tab() {
                         className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
                         onClick={() => toggleTab(2)}
                     >
-                        انشاء حساب
+                        إنشاء حساب
                     </button>
                    
                 </div>
@@ -37,6 +36,8 @@ export default function Tab() {
                         className={toggleState === 1 ? "content  active-content" : "content"}
                     >
                        <Login/>
+                       {/* <Signup/> */}
+
                     </div>
 
                     <div
@@ -46,10 +47,6 @@ export default function Tab() {
                     </div>
                 </div>
             </div>
-
-
-
-
 
         </>
     )
