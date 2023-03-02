@@ -6,10 +6,13 @@ import { ElementFlags } from "typescript";
 import { Alert, Button } from "react-bootstrap";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { doc, setDoc } from "@firebase/firestore";
+import { useHistory } from "react-router-dom";
+
 // import { doc } from "prettier";
 // import { log } from 'console';
 
 export default function Signup() {
+  let navigate= useHistory()
   let rgex = {
     fName: /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     lastName:
@@ -61,7 +64,7 @@ let date =Date.now()
             await  console.log(downloadURL);
 
             await updateProfile(res.user, {
-              displayName: `${data.fName}${data.lName}@${data.kindUser}`,
+              displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
               photoURL: downloadURL,
             });
 
@@ -93,6 +96,7 @@ let date =Date.now()
               });
             }
            await setShow(true)
+           await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
   
             });
           }
@@ -448,6 +452,8 @@ let date =Date.now()
             onChange={(e) => changeData(e)}
             required
           >
+           <option value="" >اختر نوع حسابك</option>
+
             <option value="user">عميل</option>
             <option value="cook">طباخ</option>
           </select>
