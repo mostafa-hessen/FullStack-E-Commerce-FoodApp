@@ -39,7 +39,7 @@ if(!authorized){
 </div>
 </div>
     </div>
-    <div className=' md-auto cardparent mt-4' style={{maxWidth: '700px'}}><a><i class="fa-solid fa-trash "  style={{ position:'absolute', left:'0%', top:'50%',cursor:'pointer'}}></i></a>
+    {/* <div className=' md-auto cardparent mt-4' style={{maxWidth: '700px'}}><a><i class="fa-solid fa-trash "  style={{ position:'absolute', left:'0%', top:'50%',cursor:'pointer'}}></i></a>
     <div className={`card1 mycard ${myactive} align-items-center d-flex flex-direction-row`} style={{width:'100%'}} >
     <i class="fa-solid fa-ellipsis-vertical" style={{ position:'absolute', left:'3%', top:'5%',cursor:'pointer'}} onClick={()=>myactive=="active"?setmyactive(""):setmyactive("active")}></i>
 <img src={first} alt="..."/>
@@ -49,7 +49,7 @@ if(!authorized){
 
 </div>
 </div>
-    </div>
+    </div> */}
 </div>
    
   );

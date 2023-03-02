@@ -11,7 +11,7 @@
         <>
         <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">🤤اضف اكله جديده </span>
+        <span className="logo">🤤اضف التعديل</span>
         {/* <span className="title">add</span> */}
         {/* <img src=""/> */}
 
