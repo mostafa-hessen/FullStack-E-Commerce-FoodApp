@@ -101,7 +101,6 @@ export default function Signup() {
   
             });
              data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
-           
           }
           
 

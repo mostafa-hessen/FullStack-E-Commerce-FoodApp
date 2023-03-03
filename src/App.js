@@ -8,6 +8,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomeForCookerAfterLogin from "./HomeForCookerAfterLogin/HomeForCookerAfterLogin";
 import SignPage from "./LoginSignupPopUp/SignPage";
 function App() {
+  let authFromSessionUser=sessionStorage.getItem('authorizeduser')?JSON.parse(sessionStorage.getItem('authorizeduser')):true
+
+  console.log(authFromSessionUser);
+  // let authFromSessionCooker=sessionStorage.getItem('authorizedcook')?JSON.parse(sessionStorage.getItem('authorizedcook')):false
   return (
     <div className="App">
     <BrowserRouter>
@@ -16,12 +20,12 @@ function App() {
             <Homebeforelogin />
           </Route>
 
-          <Route path="/HomeUser">
-            <HomeAfterLoginForUser />
+          <Route path="/HomeUser" >
+            <HomeAfterLoginForUser authorized={authFromSessionUser} />
           </Route>
 
           <Route path="/HomeCooker">
-            <HomeForCookerAfterLogin />
+            <HomeForCookerAfterLogin  authorized={false}  />
           </Route>
 
           <Route path="/SignPage">

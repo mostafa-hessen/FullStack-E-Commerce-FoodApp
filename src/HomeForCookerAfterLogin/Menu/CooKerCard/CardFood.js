@@ -35,15 +35,15 @@ export default function CardFood() {
             <div className="team">
             <div className="container">
                 <div className="row">
-                <h1 style={{color:'black'}}><i class="fa-solid fa-bowl-food" ></i> أكلاتي </h1>
+                <h1 style={{color:'black'}}><i className="fa-solid fa-bowl-food" ></i> أكلاتي </h1>
                     {
                     Cheifs.map((CheifItem, index)=>{
                         return(
                  
-                    <div className='col-lg-4 col-md-6 col-sm-6'>
+                    <div key={index} className='col-lg-4 col-md-6 col-sm-6'>
                         
                   <div className="box">
-       <a href="#"><i class="fa-solid fa-ellipsis-vertical  openicon" ></i> <div className='icons '>
+       <a href="#"><i className="fa-solid fa-ellipsis-vertical  openicon" ></i> <div className='icons '>
         <Popupeditefood/>
       
       <DeleteFood />
