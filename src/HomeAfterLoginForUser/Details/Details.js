@@ -7,10 +7,8 @@ import { Redirect } from 'react-router-dom';
 // import Checkbox from '@mui/material/Checkbox';
 
 
-export default function Details({authorized}) {
+export default function Details() {
   const imgs = [
-
-
     { id: 0, value: "http://static1.squarespace.com/static/5f14d04ebd60fa3de12e3960/t/5fdcc21b84630471db04a0e9/1608303136517/IMG_9417.jpeg?format=1500w" },
     { id: 1, value: "  https://i.pinimg.com/736x/46/93/78/469378234e538dd09d187b54172c8663--eggplants-tomatoes.jpg" },
     { id: 2, value: "https://img.atlasobscura.com/v0bPaqaz_yHfNRw_jfScfX1c4sGXG13Pr_1cSy_hgOw/rs:fill:580:580:1/g:ce/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS8y/MDE3LzExLzEzLzE3/LzMzLzA3L2RiMTg4/YmMxLTg1ODktNDE4/Zi04ZjA2LTMwZTU4/Y2Q0YzBhNy9maWxl/LmpwZw.jpg" },
@@ -20,10 +18,6 @@ export default function Details({authorized}) {
     console.log(index)
     const wordSlider = imgs[index];
     setWordData(wordSlider)
-  }
-
-  if(!authorized){
-    return <Redirect to = '/SignPage'/>
   }
 
   return (

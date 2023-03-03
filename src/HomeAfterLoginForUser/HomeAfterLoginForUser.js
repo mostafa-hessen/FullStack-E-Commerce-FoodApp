@@ -4,9 +4,9 @@ import Main from '../Component/Main/Main'
 import './HomeAfterLoginForUser.css'
 // import Main from "./Main/Main";
 
-function HomeAfterLoginForUser({authrized}) {
-  if(!authrized){
-    return <Redirect to = '/SignPage'/>
+function HomeAfterLoginForUser({authorized}) {
+  if(!authorized){
+    return <Redirect to = '/'/>
   }
 
   return (

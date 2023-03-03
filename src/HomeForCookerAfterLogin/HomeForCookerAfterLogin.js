@@ -2,9 +2,9 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import Main from "../Component/Main/Main";
 import "./HomeForCookerAfterLogin.css" 
-function HomeForCookerAfterLogin({authrized}) {
-  if(!authrized){
-    return <Redirect to = '/SignPage'/>
+function HomeForCookerAfterLogin({authorized}) {
+  if(!authorized){
+    return <Redirect to = '/'/>
   }
 
   return (

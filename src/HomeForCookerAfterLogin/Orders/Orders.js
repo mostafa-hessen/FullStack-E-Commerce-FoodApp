@@ -10,7 +10,7 @@ import pea from '../../assets/pea.jpg';
 import { useState } from 'react';
 import Order from './order';
 import { Redirect } from 'react-router-dom';
-function Orders({authorized}) {
+function Orders() {
 
   const orders = [
     {
@@ -47,10 +47,6 @@ function Orders({authorized}) {
     activeOrder[status]= 'orderActive'
 
     setActiveOrderState(activeOrder)
-  }
-  
-  if(!authorized){
-    return <Redirect to = '/SignPage'/>
   }
 
   return (

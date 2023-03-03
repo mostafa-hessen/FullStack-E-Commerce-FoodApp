@@ -106,12 +106,15 @@ export default function Signup() {
 
         );
 
-    
-        
-        
+      }
+      catch (err){ 
+        console.log(err)
+        setMessage({
+          ...errorMessage,
+          emailErr:"البريد الإلكتروني مسجل سابقاً"
+        });
 
       }
-      catch { }
 
     } else {
       data.kindUser == ""
