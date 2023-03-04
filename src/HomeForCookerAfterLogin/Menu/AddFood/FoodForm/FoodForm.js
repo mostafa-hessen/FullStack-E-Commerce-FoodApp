@@ -37,7 +37,7 @@ function FoodForm() {
 
     console.log(selectedFiles);
     const selectedFilesArray = Array.from(selectedFiles);
-    console.log(selectedFilesArray);
+    //console.log(selectedFilesArray);
 
     const imagesArray = selectedFilesArray.map((file) => {
       return URL.createObjectURL(file);

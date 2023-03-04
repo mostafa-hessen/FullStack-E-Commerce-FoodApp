@@ -131,3 +131,6 @@ opacity: 0;
    }
    
  }
+ .team .boxDetails{
+   word-wrap: break-word;
+ }
