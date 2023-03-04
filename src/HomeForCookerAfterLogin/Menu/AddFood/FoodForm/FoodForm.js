@@ -37,7 +37,7 @@ function FoodForm() {
 
     console.log(selectedFiles);
     const selectedFilesArray = Array.from(selectedFiles);
-    console.log(selectedFilesArray);
+    //console.log(selectedFilesArray);
 
     const imagesArray = selectedFilesArray.map((file) => {
       return URL.createObjectURL(file);
@@ -193,9 +193,11 @@ function FoodForm() {
           bigPrice: data.bigPrice,
           smallPrice: data.smallPrice,
           middlePrice: data.middlePrice,
+          foodDiscription:data.foodTextarea,
           timestamP: myserverTimestamp,
           userName: user.displayName,
           userid: user.uid,
+          
         });
 
      

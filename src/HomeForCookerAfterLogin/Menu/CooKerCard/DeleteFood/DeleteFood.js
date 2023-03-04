@@ -1,13 +1,25 @@
+import { deleteDoc, doc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { db } from '../../../../firebase';
 import './deletedFormPopup.css'
-export default function DeleteFood() {
+export default function DeleteFood(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+   const handleDelete=()=>{
+    setShow(false)
+    console.log(props.targetitem)
+ /*    deleteDoc(doc(db,"foods",`${props.targetitem.id}`))
+    .then(() => {
+      console.log("Entire Document has been deleted successfully.");
+    })
+    .catch((error) => {
+      console.log(error);
+    }); */
+   }
   return (
     <>
      <i class="fa-solid fa-trash"  onClick={handleShow}>  </i>
@@ -22,7 +34,7 @@ export default function DeleteFood() {
           <Button variant="success" onClick={handleClose}>
          إلغاء
           </Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" onClick={handleDelete}>
             حذف
           </Button>
         </Modal.Footer>
