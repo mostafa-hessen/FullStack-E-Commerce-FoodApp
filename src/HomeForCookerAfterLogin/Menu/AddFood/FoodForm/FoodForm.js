@@ -229,11 +229,7 @@ function FoodForm() {
           })
           setSelectedImages([])
           textarea.current.value=""
-    //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
-
-    
-
-        
+       //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
       }
        catch {
         console.log("errrrrrrrrrrrrrrrrrrrrr");
