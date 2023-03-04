@@ -1,0 +1,95 @@
+.info{
+  
+    transform: rotateY(0deg);
+    
+    animation-duration:1.2s ;
+    animation-iteration-count: infinite;
+    position: relative;
+  }
+.info:hover{
+
+    animation-name :anim;
+} 
+@keyframes anim{
+    0%{left:0 ; top: 0;}
+    100%{left:25px ; top: 0;}
+   }
+
+   .zoom {
+    transition: transform .2s; 
+  }
+  
+  .zoom:hover {
+    transform: scale(1.02); 
+  }
+  headerprofile{
+
+  }
+  .headerprofile  .backprofile{
+   width: 100%;
+   height: 40vh;
+   background-color: red;
+   border-radius: 8px;
+   overflow: hidden;
+  }
+  .headerprofile  .backprofile img{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+  }
+  .headerprofile .profile{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+   
+    margin-top: -30%;
+    overflow: hidden;
+  }
+  .headerprofile .profile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+
+  }
+  .rate{
+
+  }
+  .rate .userimage{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+   background-color: brown;
+    overflow: hidden;
+  }
+  .rate .userimage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+  }
+  .infosize {}
+  @media (min-width :992px) {
+    .headerprofile  .backprofile{
+    
+      height: 50vh;
+     
+   
+     }
+
+  
+  }
+  @media (max-width :576px) {
+    .headerprofile .profile{
+      width: 120px;
+      height: 120px;
+  
+    }
+    .infosize{
+
+      font-size: 20px;
+    }
+    
+  }

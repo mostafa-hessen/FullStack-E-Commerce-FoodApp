@@ -13,23 +13,10 @@ import Login from "./Component/Login"
 import PrivateRoute from "./Component/PrivateRoute"
 import ForgotPassword from "./Component/ForgotPassword"
 import UpdateProfile from "./Component/UpdateProfile"
-<<<<<<< HEAD
-import HomeAfterLoginForUser from "./HomeAfterLoginForUser/HomeAfterLoginForUser"
-function App() {
-  return (
-  
-       
-        <Router>
-          <AuthProvider>
-            <Switch>
-              <PrivateRoute path="/Home" component={HomeAfterLoginForUser} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/forgotpassword" component={ForgotPassword} />
-=======
 
-import logo from './logo.svg';
 import './App.css';
+import BasketHome from "./Component/Basket/Home";
+import Main from "./Component/Main/Main";
 
 function App() {
   return (
@@ -38,21 +25,17 @@ function App() {
         <Router>
           <AuthProvider>
             <Switch>
+           
               <PrivateRoute exact path="/HomeAfterLoginForUser" component={HomeAfterLoginForUser} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <Route path="/signup" component={Signup} />
               <Route path="/forgot-password" component={ForgotPassword} />
->>>>>>> master
-              <Route path="/" component={Login} />
+              <Route path="/" component={Main} />
+              {/* <Route path="/" component={Login} /> */}
              
             </Switch>
           </AuthProvider>
         </Router>
-<<<<<<< HEAD
-        
-=======
->>>>>>> master
-  
   )
   }
 
