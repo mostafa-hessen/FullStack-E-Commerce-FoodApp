@@ -11,20 +11,22 @@ import { db, myserverTimestamp, storage } from "../../../../firebase";
 import { async } from "@firebase/util";
 
 function EditFoodForm(props) {
+  const ArbicCategory={pizza:"بيتزا", chicken:"فراخ", meet:"لحمة" , chees:"جبن" , sweet:"حلويات" }
   const user = JSON.parse(localStorage.getItem("user"));
   const [ImageUrlsFromFireBase, setImageUrlsFromFireBase] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
+  const [selectedImages, setSelectedImages] = useState(props.targetEditeItem.foodImg?props.targetEditeItem.foodImg:[]);
   const [myimages, setmyimages] = useState([]);
   const textarea = useRef('')
+
   const onSelectFile = (event) => {
     const selectedFiles = event.target.files;//2 images file
-
+// console.log(selectedFiles + "1")
     if(selectedFiles.length<=3)
     {
 
-    console.log(selectedFiles);
+    // console.log(selectedFiles + "2");
     const selectedFilesArray = Array.from(selectedFiles);
-    console.log(selectedFilesArray);
+   
 
     const imagesArray = selectedFilesArray.map((file) => {
       return URL.createObjectURL(file);
@@ -33,11 +35,13 @@ function EditFoodForm(props) {
     setSelectedImages((previousImages) => previousImages.concat(imagesArray)); // 2 urls 
     setmyimages((previousImages) => previousImages.concat(selectedFilesArray));// 2 files
     event.target.value = "";
+    console.log(selectedImages + "selectedimageses")
+    console.log(myimages +"myimages")
   }
 
   else{
     alert("you must choos only three images")
-    console.log(myimages);
+    // console.log(myimages + "3");
   }
   };
 
@@ -316,7 +320,8 @@ function EditFoodForm(props) {
               id="Cateogry"
               onChange={(e) => changeData(e)}
             >
-              <option value="" selected disabled hidden> {data.cateogry}</option>
+
+              <option value="" selected hidden > {ArbicCategory[`${data.cateogry}`]} </option>
               <option value="pizza" >بيتزا</option>
               <option value="chicken">فراخ</option>
               <option value="meet">لحمه</option>
@@ -392,7 +397,7 @@ function EditFoodForm(props) {
               ref={textarea}
               placeholder="تفاصيل الاكله"
            >
-              {/* تفاصيل الاكله */}
+        {data.foodTextarea}
             </textarea>
             <small className="text-danger">
               {errorMessage.foodTextareaErr}
@@ -405,6 +410,7 @@ function EditFoodForm(props) {
                 <input
                   type="number"
                   name="bigPrice"
+                  defaultValue={data.bigPrice}
                   placeholder="1"
                   min={1}
                   onChange={(e) => changeData(e)}
@@ -416,6 +422,7 @@ function EditFoodForm(props) {
                 <input
                   type="number"
                   name="middlePrice"
+                  defaultValue={data.middlePrice}
                   placeholder="1"
                   min={1}
                   onChange={(e) => changeData(e)}
@@ -426,6 +433,7 @@ function EditFoodForm(props) {
                 <label htmlFor="price3">صغير : </label>
                 <input
                   type="number"
+                  defaultValue={data.smallPrice}
                   name="smallPrice"
                   placeholder="1"
                   min={1}
