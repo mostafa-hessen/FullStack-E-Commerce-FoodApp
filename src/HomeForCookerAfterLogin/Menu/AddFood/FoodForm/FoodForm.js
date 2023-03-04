@@ -218,7 +218,7 @@ function FoodForm() {
            
           }
         }
-          setData(   {
+          setData({
             foodName: "",
             foodTextarea: "",
             cateogry: "",
@@ -231,6 +231,7 @@ function FoodForm() {
           textarea.current.value=""
     //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
 
+    
 
         
       } catch {
