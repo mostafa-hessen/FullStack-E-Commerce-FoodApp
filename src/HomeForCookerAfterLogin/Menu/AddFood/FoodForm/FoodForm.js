@@ -193,9 +193,11 @@ function FoodForm() {
           bigPrice: data.bigPrice,
           smallPrice: data.smallPrice,
           middlePrice: data.middlePrice,
+          foodDiscription:data.foodTextarea,
           timestamP: myserverTimestamp,
           userName: user.displayName,
           userid: user.uid,
+          
         });
 
      
