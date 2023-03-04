@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth,storage ,db} from '../../../firebase';
+import { auth, storage, db } from '../../../firebase';
+
 import "./Signup.css";
 import { ElementFlags } from "typescript";
 import { Alert, Button } from "react-bootstrap";
@@ -43,25 +44,25 @@ export default function Signup() {
           data.email,
           data.password
         );
-  
 
-console.log(res.user);
 
-// mostafa.png sohail.png sohaila166389189209202.png => 
-let date =Date.now()
+        console.log(res.user);
+
+        // mostafa.png sohail.png sohaila166389189209202.png => 
+        let date = Date.now()
 
         // ==== upload img and get this  url 
         const storageRef = ref(storage, `${data.lName}${date}`);
 
         const uploadTask = uploadBytesResumable(storageRef, data.photo);
-  
+
         uploadTask.on(
           (error) => {
             console.log(error);
           },
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await  console.log(downloadURL);
+              await console.log(downloadURL);
 
             await updateProfile(res.user, {
               displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
@@ -69,16 +70,16 @@ let date =Date.now()
             });
 
 
-            if (data.kindUser == "cook") {
-              await setDoc(doc(db, "cookers", res.user.uid), {
-                userid: res.user.uid,
-                fullName: data.fName +" "+data.lName,
-                email: data.email,
-                phone: data.phone,
-                address:data.address,
-                country: data.country,
-                kindUser:data.kindUser,
-                photo: downloadURL,
+              if (data.kindUser == "cook") {
+                await setDoc(doc(db, "cookers", res.user.uid), {
+                  userid: res.user.uid,
+                  fullName: data.fName + " " + data.lName,
+                  email: data.email,
+                  phone: data.phone,
+                  address: data.address,
+                  country: data.country,
+                  kindUser: data.kindUser,
+                  photo: downloadURL,
 
               });
             } else {
@@ -99,29 +100,39 @@ let date =Date.now()
            await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
   
             });
+             data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
           }
-            
+          
+
         );
 
-      } catch {}
+      }
+      catch (err){ 
+        console.log(err)
+        setMessage({
+          ...errorMessage,
+          emailErr:"البريد الإلكتروني مسجل سابقاً"
+        });
+
+      }
 
     } else {
       data.kindUser == ""
         ? setMessage({
-            ...errorMessage,
-            kindUserErr: "يجب أن تختر نوع حسابك",
-          })
+          ...errorMessage,
+          kindUserErr: "يجب أن تختر نوع حسابك",
+        })
         : data.country == ""
-        ? setMessage({
+          ? setMessage({
             ...errorMessage,
             countryErr: "يجب أن تختر بلدتك ",
           })
-        : !data.photo
-        ? setMessage({
-            ...errorMessage,
-            photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
-          })
-        : console.log("done");
+          : !data.photo
+            ? setMessage({
+              ...errorMessage,
+              photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
+            })
+            : console.log("done");
 
       console.log(e.target.files);
     }
@@ -165,8 +176,8 @@ let date =Date.now()
           e.target.value.length === 0
             ? "يجب أن تدخل الاسم"
             : rgex["fName"].test(e.target.value)
-            ? null
-            : "الاسم يجب أن لا يقل عن ٣ أحرف",
+              ? null
+              : "الاسم يجب أن لا يقل عن ٣ أحرف",
       });
     } else if (e.target.name == "lName") {
       setData({
@@ -182,8 +193,8 @@ let date =Date.now()
           e.target.value.length === 0
             ? "يجب أن تدخل الاسم"
             : rgex["lastName"].test(e.target.value)
-            ? null
-            : "الاسم يجب أن لا يقل عن ٣  أحرف",
+              ? null
+              : "الاسم يجب أن لا يقل عن ٣  أحرف",
       });
     } else if (e.target.name == "email") {
       setData({
@@ -199,8 +210,8 @@ let date =Date.now()
           e.target.value.length === 0
             ? "يجب أن تدخل البريد الإلكتروني"
             : rgex["email"].test(e.target.value)
-            ? null
-            : "البريد الإلكتروني غير صحيح",
+              ? null
+              : "البريد الإلكتروني غير صحيح",
       });
     } else if (e.target.name == "password") {
       setData({
@@ -216,8 +227,8 @@ let date =Date.now()
           e.target.value.length === 0
             ? "يجب أن تدخل كلمة المرور"
             : rgex["password"].test(e.target.value)
-            ? null
-            : "كلمة المرور يجب أن تحتوي علي الأقل ٨ أحرف إنجليزية، حرف كبير علي الأقل، حرف صغير علي الأقل، رقم واحد علي الأقل، علامة ترقيم واحدة علي الأقل.",
+              ? null
+              : "كلمة المرور يجب أن تحتوي علي الأقل ٨ أحرف إنجليزية، حرف كبير علي الأقل، حرف صغير علي الأقل، رقم واحد علي الأقل، علامة ترقيم واحدة علي الأقل.",
       });
     } else if (e.target.name == "phone") {
       setData({
@@ -233,8 +244,8 @@ let date =Date.now()
           e.target.value.length === 0
             ? "يجب أن تدخل رقم الموبايل"
             : rgex["phone"].test(e.target.value)
-            ? null
-            : "رقم الموبايل غير صحيح",
+              ? null
+              : "رقم الموبايل غير صحيح",
       });
     } else if (e.target.name == "street-address") {
       setData({
@@ -250,8 +261,8 @@ let date =Date.now()
           e.target.value.length === 0
             ? "يجب أن تدخل العنوان"
             : rgex["address"].test(e.target.value)
-            ? null
-            : "العنوان غير صحيح",
+              ? null
+              : "العنوان غير صحيح",
       });
     } else if (e.target.name == "country") {
       setData({
@@ -306,144 +317,144 @@ let date =Date.now()
 
   return (
     <>
- {
-   <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
-   <Alert.Heading>success</Alert.Heading>
-   {/* <Button onClick={() => setShow(false)} variant="outline-success">
+      {
+        <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>success</Alert.Heading>
+          {/* <Button onClick={() => setShow(false)} variant="outline-success">
             Close me y'all!
           </Button> */}
- </Alert>
- }
-    <div className="formContainer">
-      
-      <div className="formWrapper1">
-        <span className="logo">الاكيله</span>
-        <form onSubmit={handleClick}>
-          <div className="d-flex justify-content-between">
-            <div className="d-flex flex-column" style={{ width: "49%" }}>
-              <input
-                required
-                type="text"
-                placeholder="الاسم الثاني "
-                autoComplete="name"
-                name="lName"
-                style={{ width: "100%" }}
-                onChange={(e) => changeData(e)}
-              />
-              <small className="text-danger">{errorMessage.LNameErr}</small>
-            </div>
-            <div className="d-flex flex-column" style={{ width: "49%" }}>
-              <input
-                required
-                type="text"
-                placeholder="الاسم الأول"
-                autoComplete="name"
-                name="fName"
-                value={data.fName}
-                style={{ width: "100%" }}
-                onChange={(e) => changeData(e)}
-              />
-              <small className="text-danger " style={{ textAlign: "right" }}>
-                {errorMessage.FNameErr}
-              </small>
-            </div>
-          </div>
-          <input
-            required
-            type="email"
-            placeholder="البريد الإلكتروني"
-            name="email"
-            onChange={(e) => changeData(e)}
-          />
-          <small className="text-danger" style={{ textAlign: "right" }}>
-            {errorMessage.emailErr}
-          </small>
-          <input
-            required
-            type="password"
-            placeholder="كلمة المرور"
-            name="password"
-            onChange={(e) => changeData(e)}
-          />
-          <small
-            className="text-danger"
-            style={{
-              textAlign: "right",
-              fontSize: "12px",
-              maxWidth: "320px",
-              marginLeft: "auto",
-            }}
-          >
-            {errorMessage.passwordErr}
-          </small>
-          <input
-            required
-            type="tel"
-            placeholder=" رقم التليفون"
-            name="phone"
-            onChange={(e) => changeData(e)}
-          />
-          <small className="text-danger" style={{ textAlign: "right" }}>
-            {errorMessage.phoneErr}
-          </small>
-          <div className="d-flex justify-content-between">
-            <div className="d-flex flex-column" style={{ width: "49%" }}>
-              <input
-                type="text"
-                name="street-address"
-                id="street-address"
-                autoComplete="street-address"
-                placeholder="العنوان"
-                style={{ width: "100%" }}
-                onChange={(e) => changeData(e)}
-              ></input>
-              <small className="text-danger" style={{ textAlign: "right" }}>
-                {errorMessage.addressErr}
-              </small>
-            </div>
+        </Alert>
+      }
+      <div className="formContainer">
 
-            <div style={{ width: "49%" }} className="d-flex flex-column">
-              <select
-                id="country"
-                name="country"
-                autoComplete="country"
-                style={{ width: "100%" }}
-                onChange={(e) => changeData(e)}
-              >
-                <option>الغربية</option>
-                <option>الإسكندرية</option>
-                <option>الإسماعيلية</option>
-                <option>كفر الشيخ</option>
-                <option>أسوان</option>
-                <option>أسيوط</option>
-                <option>الأقصر</option>
-                <option>الوادي الجديد</option>
-                <option>شمال سيناء</option>
-                <option>البحيرة</option>
-                <option>بني سويف</option>
-                <option>بورسعيد</option>
-                <option>البحر الأحمر</option>
-                <option>الجيزة</option>
-                <option>الدقهلية</option>
-                <option>جنوب سيناء</option>
-                <option>دمياط</option>
-                <option>سوهاج</option>
-                <option>السويس</option>
-                <option>الشرقية</option>
-                <option>الغربية</option>
-                <option>الفيوم</option>
-                <option>القاهرة</option>
-                <option>القليوبية</option>
-                <option>قنا</option>
-                <option>مطروح</option>
-                <option>المنوفية</option>
-                <option>المنيا</option>
-              </select>
-              <small className="text-danger" style={{ textAlign: "right" }}>
-                {errorMessage.countryErr}
-              </small>
+        <div className="formWrapper1">
+          <span className="logo">الاكيله</span>
+          <form onSubmit={handleClick}>
+            <div className="d-flex justify-content-between">
+              <div className="d-flex flex-column" style={{ width: "49%" }}>
+                <input
+                  required
+                  type="text"
+                  placeholder="الاسم الثاني "
+                  autoComplete="name"
+                  name="lName"
+                  style={{ width: "100%" }}
+                  onChange={(e) => changeData(e)}
+                />
+                <small className="text-danger">{errorMessage.LNameErr}</small>
+              </div>
+              <div className="d-flex flex-column" style={{ width: "49%" }}>
+                <input
+                  required
+                  type="text"
+                  placeholder="الاسم الأول"
+                  autoComplete="name"
+                  name="fName"
+                  value={data.fName}
+                  style={{ width: "100%" }}
+                  onChange={(e) => changeData(e)}
+                />
+                <small className="text-danger " style={{ textAlign: "right" }}>
+                  {errorMessage.FNameErr}
+                </small>
+              </div>
             </div>
-          </div>
+            <input
+              required
+              type="email"
+              placeholder="البريد الإلكتروني"
+              name="email"
+              onChange={(e) => changeData(e)}
+            />
+            <small className="text-danger" style={{ textAlign: "right" }}>
+              {errorMessage.emailErr}
+            </small>
+            <input
+              required
+              type="password"
+              placeholder="كلمة المرور"
+              name="password"
+              onChange={(e) => changeData(e)}
+            />
+            <small
+              className="text-danger"
+              style={{
+                textAlign: "right",
+                fontSize: "12px",
+                maxWidth: "320px",
+                marginLeft: "auto",
+              }}
+            >
+              {errorMessage.passwordErr}
+            </small>
+            <input
+              required
+              type="tel"
+              placeholder=" رقم التليفون"
+              name="phone"
+              onChange={(e) => changeData(e)}
+            />
+            <small className="text-danger" style={{ textAlign: "right" }}>
+              {errorMessage.phoneErr}
+            </small>
+            <div className="d-flex justify-content-between">
+              <div className="d-flex flex-column" style={{ width: "49%" }}>
+                <input
+                  type="text"
+                  name="street-address"
+                  id="street-address"
+                  autoComplete="street-address"
+                  placeholder="العنوان"
+                  style={{ width: "100%" }}
+                  onChange={(e) => changeData(e)}
+                ></input>
+                <small className="text-danger" style={{ textAlign: "right" }}>
+                  {errorMessage.addressErr}
+                </small>
+              </div>
+
+              <div style={{ width: "49%" }} className="d-flex flex-column">
+                <select
+                  id="country"
+                  name="country"
+                  autoComplete="country"
+                  style={{ width: "100%" }}
+                  onChange={(e) => changeData(e)}
+                >
+                  <option>الغربية</option>
+                  <option>الإسكندرية</option>
+                  <option>الإسماعيلية</option>
+                  <option>كفر الشيخ</option>
+                  <option>أسوان</option>
+                  <option>أسيوط</option>
+                  <option>الأقصر</option>
+                  <option>الوادي الجديد</option>
+                  <option>شمال سيناء</option>
+                  <option>البحيرة</option>
+                  <option>بني سويف</option>
+                  <option>بورسعيد</option>
+                  <option>البحر الأحمر</option>
+                  <option>الجيزة</option>
+                  <option>الدقهلية</option>
+                  <option>جنوب سيناء</option>
+                  <option>دمياط</option>
+                  <option>سوهاج</option>
+                  <option>السويس</option>
+                  <option>الشرقية</option>
+                  <option>الغربية</option>
+                  <option>الفيوم</option>
+                  <option>القاهرة</option>
+                  <option>القليوبية</option>
+                  <option>قنا</option>
+                  <option>مطروح</option>
+                  <option>المنوفية</option>
+                  <option>المنيا</option>
+                </select>
+                <small className="text-danger" style={{ textAlign: "right" }}>
+                  {errorMessage.countryErr}
+                </small>
+              </div>
+            </div>
 
           <label htmlFor="kindUser">نوع الحساب:</label>
           <select
@@ -461,31 +472,31 @@ let date =Date.now()
             {errorMessage.kindUserErr}
           </small>
 
-          <input
-            style={{ display: "none" }}
-            type="file"
-            accept="image/*"
-            id="file"
-            name="photo"
-            onChange={(e) => changeData(e)}
-          />
-          <label htmlFor="file">
-            <span className="d-flex align-items-center">
-              <i
-                className="fa-solid fa-camera-retro"
-                style={{ fontSize: "25px", color: "#5b8d61" }}
-              ></i>{" "}
-              إرفع صورتك
-            </span>
-          </label>
-          <small className="text-danger" style={{ textAlign: "right" }}>
-            {errorMessage.photoErr}
-          </small>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              accept="image/*"
+              id="file"
+              name="photo"
+              onChange={(e) => changeData(e)}
+            />
+            <label htmlFor="file">
+              <span className="d-flex align-items-center">
+                <i
+                  className="fa-solid fa-camera-retro"
+                  style={{ fontSize: "25px", color: "#5b8d61" }}
+                ></i>{" "}
+                إرفع صورتك
+              </span>
+            </label>
+            <small className="text-danger" style={{ textAlign: "right" }}>
+              {errorMessage.photoErr}
+            </small>
 
-          <input type="submit" value="إنشاء حساب"/>
-        </form>
+            <input type="submit" value="إنشاء حساب" />
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 }

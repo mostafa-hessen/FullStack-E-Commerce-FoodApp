@@ -36,7 +36,7 @@ export default function Tab() {
                         className={toggleState === 1 ? "content  active-content" : "content"}
                     >
                        <Login/>
-                       {/* <Signup/> */}
+                      
 
                     </div>
 

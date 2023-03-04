@@ -3,7 +3,7 @@ import { MdEditLocationAlt,MdFastfood ,MdEdit} from "react-icons/md";
 import{ FaMedapps,FaPhone} from "react-icons/fa";
 import {TbListDetails} from "react-icons/tb";
 import './ChiefBage.css'
-function InformationComponent() {
+function InformationComponent(props) {
   return (
     <>
      <div className='container'>
@@ -31,7 +31,7 @@ function InformationComponent() {
                 </div>
                 
                 <div className='col-4 '>
-                <h5>أهناسيا بني سويف</h5>
+                <h5>{props.country}, {props.address}</h5>
                 </div>
                 <div className='col-1'>
                 <MdEdit style={{fontSize:30}}></MdEdit>
@@ -46,7 +46,7 @@ function InformationComponent() {
                 </div>
                 
                 <div className='col-4 '>
-                <h5>01147791094 </h5>
+                <h5>{props.phone}</h5>
                 </div>
                 <div className='col-1'>
                 <MdEdit style={{fontSize:30}}></MdEdit>

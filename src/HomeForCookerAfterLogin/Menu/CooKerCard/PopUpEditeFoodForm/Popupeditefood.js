@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Tab from '../../../../LoginSignupPopUp/tab/Tab';
 import EditeFoodForm from './EditeFoodForm';
 import './popupFood.css'
-export default function Popupeditefood() {
+export default function Popupeditefood(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -21,7 +21,7 @@ export default function Popupeditefood() {
         <Modal.Body style={{background:""}} >
         <Modal.Header  style={{background:"transaprent"}} closeButton>
         </Modal.Header>
-          <EditeFoodForm />
+          <EditeFoodForm targetEditeItem={props.targetEditeItem}/>
           {/* <Tab/> */}
         </Modal.Body>
         {/* <Modal.Footer>

@@ -4,10 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import item1 from '../../assets/photo_2023-02-14_19-46-55.jpg'
 import './Basket.css'
-function Basket({authorized}) {
-  if(!authorized){
-    return <Redirect to = '/SignPage'/>
-  }
+function Basket() {
   return (
     <>
       <div dir="rtl" className='container'>

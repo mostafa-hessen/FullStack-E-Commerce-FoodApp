@@ -9,19 +9,19 @@ function UserRoutes() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/HomeUser/" component={() => <Home authorized={true}/>}/>
+                <Route exact path="/HomeUser/" component={Home}/>
                 
-                <Route exact path="/HomeUser/Home"  component={() => <Home authorized={true}/>}/>
+                <Route exact path="/HomeUser/Home"  component={Home}/>
 
-                <Route exact path="/HomeUser/ChiefList" component={() => <CheifList authorized={true}/>}/>
+                <Route exact path="/HomeUser/ChiefList" component={CheifList}/>
 
-                <Route exact path="/HomeUser/ChiefList/Cheif/:id" component={() => <CheifPage authorized={true}/>}/>
+                <Route exact path="/HomeUser/ChiefList/Cheif/:id" component={CheifPage}/>
 
-                <Route exact path="/HomeUser/ChiefList/Cheif/details/:id" component={() => <Details authorized={true}/>}/>
+                <Route exact path="/HomeUser/ChiefList/Cheif/details/:id" component={Details}/>
 
-                <Route exact path="/HomeUser/AddToFav" component={() => <AddToFav authorized={true}/>}/>
+                <Route exact path="/HomeUser/AddToFav" component={AddToFav}/>
 
-                <Route exact path="/HomeUser/Cart" component={() => <Basket authorized={true}/>}/>
+                <Route exact path="/HomeUser/Cart" component={Basket}/>
             </Switch>
         </BrowserRouter>
     )

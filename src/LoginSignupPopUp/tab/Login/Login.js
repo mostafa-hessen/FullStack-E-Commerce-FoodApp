@@ -19,9 +19,11 @@ function Login(){
       console.log(y);
       let x= res.user.displayName.split('@')[1]
       localStorage.setItem('user',JSON.stringify(res.user))
+      sessionStorage.setItem(`authorized${x}`,true)
       console.log(x)
 
      x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker")
+
     } catch (err) {
       console.log(err);
       setErr(true);

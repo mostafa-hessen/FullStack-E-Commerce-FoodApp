@@ -6,13 +6,13 @@ function CookerRoutes() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/HomeCooker/" component={() => <ChiefHome authorized={true}/>}/>
+                <Route exact path="/HomeCooker/" component={ChiefHome}/>
 
-                <Route exact path="/HomeCooker/Home" component={() => <ChiefHome authorized={true}/>}/>
+                <Route exact path="/HomeCooker/Home" component={ChiefHome}/>
 
-                <Route exact path="/HomeCooker/Menue" component={() => <Menue authorized={true}/>}/>
+                <Route exact path="/HomeCooker/Menue" component={Menue}/>
 
-                <Route exact path="/HomeCooker/Orders" component={() => <Orders authorized={true}/>}/>
+                <Route exact path="/HomeCooker/Orders" component={Orders}/>
             </Switch>
         </BrowserRouter>
     )
