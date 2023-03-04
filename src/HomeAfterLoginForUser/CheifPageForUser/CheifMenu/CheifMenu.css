@@ -1,0 +1,27 @@
+.card-item{
+    box-shadow: 0px 0px 20px #6e7c63d8;
+}
+
+.menu-img{
+    transition: transform .2s; 
+    height: 120px !important;
+}
+.menu-img:hover{
+    transform: scale(1.07); 
+}
+.btnCar{
+    border-radius:20px !important; 
+    padding-left:20px !important;
+    padding-right:20px !important;
+    transition: transform .2s; 
+}
+.btnCar:hover{
+    box-shadow: 0px 0px 10px #6e7c63b4;
+    transform: scale(1.05); 
+}
+.star{
+    margin-right: 5px; 
+}
+.open{
+    margin-left: 5px;
+}

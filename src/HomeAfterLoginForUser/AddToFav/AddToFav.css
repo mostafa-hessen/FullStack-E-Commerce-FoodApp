@@ -1,0 +1,62 @@
+/* 
+  .animation:before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transform: translateX(-100%);
+
+  }
+  .animation  {
+    display: block;
+  
+  }
+  .animation:hover:before {
+    transform: translateX(0);
+
+  }
+
+  .animation:hover  {
+    transform: translateX(100%);
+  } */
+  @media screen and (max-width: 567px) {
+  .card-text {
+    margin-bottom: 0.5em;
+  }
+}
+.cardparent{
+  position: relative;
+}
+
+.mycard {
+background-color:white;
+position: relative;
+z-index: 10;
+  direction: rtl;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  flex-direction: row;
+  border: 1px solid rgba(0, 0, 0, 0.064);
+  border-radius: 20px;
+  transition: 1s all ease-in-out;
+}
+.mycard.active{
+transform: translateX(50px);
+
+}
+.parent{
+  flex-direction: column;
+display: flex;
+align-items: center;
+padding: 10px;
+}
+
+.card1.mycard img {
+  max-width: 12em;
+  height: 100%;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius:20px;
+
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: 20px;
+}

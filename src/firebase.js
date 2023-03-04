@@ -1,15 +1,29 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 
-const app = firebase.initializeApp({
-    apiKey: "AIzaSyB7GvG1wLPy44_du5pC-s7WOFmq0VciNNc",
-    authDomain: "iti-finalproject.firebaseapp.com",
-    projectId: "iti-finalproject",
-    storageBucket: "iti-finalproject.appspot.com",
-    messagingSenderId: "288469290570",
-    appId: "1:288469290570:web:061a76f27d55e28c8320b3"
-})
 
-export const auth = app.auth()
-export default app
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+import { getStorage} from "firebase/storage";
+import {getFirestore,serverTimestamp} from 'firebase/firestore'
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC2Cjpy4uipD5mRSwTG4X2gyoNy62hGtik",
+  authDomain: "finalproject-iti.firebaseapp.com",
+  projectId: "finalproject-iti",
+  storageBucket: "finalproject-iti.appspot.com",
+  messagingSenderId: "888002134030",
+  appId: "1:888002134030:web:30943c22093a4d9cda3c5f"
+};
+
+
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth();
+export const storage = getStorage();
+export const db = getFirestore();
+export const myserverTimestamp=serverTimestamp()
+
+
+
+// [{naden:{
+//   name:""
+// }},{alaa:{}}]

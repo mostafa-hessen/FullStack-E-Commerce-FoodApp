@@ -3,18 +3,13 @@ nav{
     border-radius:  0px;
     max-width: 100%;
     height: auto;
-
-
 }
-nav a{
+.link{
   font-family: 'El Messiri', sans-serif  !important;
-  
+  text-decoration: none;
   color:black   !important;
   font-weight: bold  !important;
-  font-size: 25px  !important;
-
-
- 
+  font-size: 25px  !important; 
 }
 
 .img{

@@ -1,0 +1,74 @@
+.card-style{
+    border: 1px solid rgb(236, 236, 236);
+    background-color: whitesmoke;
+    box-shadow: #d2d2d2 2.4px 2.4px 3.2px;
+    height:150px;
+    overflow: hidden;
+    transition: all 1s;
+}
+.card-style:hover{
+    box-shadow: #d2d2d2 2.4px 2.4px 6px;
+    
+    scale: 1.02;
+}
+.orderActive{
+    height: 560px;
+}
+.orderImg{
+    
+    width: 110px; 
+    height: 110px;
+    border-radius: 50%;
+    border: #aeceae solid 2px;
+}
+@keyframes vibrate {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-15deg); }
+    20% { transform: rotate(15deg); }
+    30% { transform: rotate(0deg); }
+    40% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    60% { transform: rotate(0deg); }
+    70% { transform: rotate(-15deg); }
+    80% { transform: rotate(15deg); }
+    90% { transform: rotate(0deg); }
+    100% { transform: rotate(-15deg); }
+}
+.orderImg:hover{
+    animation: vibrate 5s;
+    animation-iteration-count: infinite;
+}
+.txt-in{
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+.box-style{
+    border: 2px solid #bbbbbb;
+    background-color: whitesmoke;
+}
+.order-item{
+    display: inline-block;   
+    margin-top:15px;
+
+}
+.mealImg{
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    border: #bbbbbb solid 2px;
+}
+.mealImg:hover{
+    scale: 1.03;
+}
+.open-card-style{
+    border: 1px solid rgb(236, 236, 236);
+    background-color: whitesmoke;
+    box-shadow: #d2d2d2 2.4px 2.4px 3.2px;
+}
+.open-card-style:hover{
+    box-shadow: #d2d2d2 2.4px 2.4px 6px;
+}
+.choose:hover{
+    font-size: 36px !important;
+}

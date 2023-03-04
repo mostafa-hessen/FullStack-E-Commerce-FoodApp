@@ -1,42 +1,40 @@
 
 
 import HomeAfterLoginForUser from "./HomeAfterLoginForUser/HomeAfterLoginForUser";
-
-import React from "react"
-import Signup from "./Component/Signup"
-import { Container } from "react-bootstrap"
-import { AuthProvider } from "./contexts/AuthContext"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Dashboard from "./Component/Dashboard"
-
-import Login from "./Component/Login"
-import PrivateRoute from "./Component/PrivateRoute"
-import ForgotPassword from "./Component/ForgotPassword"
-import UpdateProfile from "./Component/UpdateProfile"
-
+// import Main from "./Component/Main/Main";
+//import logo from './logo.svg';
 import './App.css';
-import BasketHome from "./Component/Basket/Home";
-import Main from "./Component/Main/Main";
-
-function App() {
+import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import HomeForCookerAfterLogin from "./HomeForCookerAfterLogin/HomeForCookerAfterLogin";
+import SignPage from "./LoginSignupPopUp/SignPage";
+import { useEffect } from "react";
+function  App() {
+  //let authFromSessionUser = setTimeout(sessionStorage.getItem('authorizeduser')?JSON.parse(sessionStorage.getItem('authorizeduser')):false,400)
+ // let authFromSessionCooker = setTimeout(sessionStorage.getItem('authorizedcook')?JSON.parse(sessionStorage.getItem('authorizedcook')):false,400)
   return (
+    <div className="App">
+    <BrowserRouter>
+      <Switch>
+          <Route exact path="/">
+            <Homebeforelogin />
+          </Route>
 
-      
-        <Router>
-          <AuthProvider>
-            <Switch>
-           
-              <PrivateRoute exact path="/HomeAfterLoginForUser" component={HomeAfterLoginForUser} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/forgot-password" component={ForgotPassword} />
-              <Route path="/" component={Main} />
-              {/* <Route path="/" component={Login} /> */}
-             
-            </Switch>
-          </AuthProvider>
-        </Router>
+          <Route path="/HomeUser" >
+          <HomeAfterLoginForUser  authorized={setTimeout(sessionStorage.getItem('authorizeduser')?JSON.parse(sessionStorage.getItem('authorizeduser')):false,400)}/>
+          </Route>
+
+         <Route path="/HomeCooker">
+            <HomeForCookerAfterLogin  authorized={setTimeout(sessionStorage.getItem('authorizedcook')?JSON.parse(sessionStorage.getItem('authorizedcook')):false,400)}  />
+         </Route>
+
+          <Route path="/SignPage">
+           <SignPage/>
+          </Route>
+          
+        </Switch>
+      </BrowserRouter>
+    </div>
   )
-  }
-
-export default App
+}
+export default App;

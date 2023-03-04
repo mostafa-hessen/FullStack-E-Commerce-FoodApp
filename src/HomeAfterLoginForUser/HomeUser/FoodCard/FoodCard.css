@@ -1,0 +1,83 @@
+
+
+  
+  .FoodCardForUser .box{
+      margin: 95px auto 65px;
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      min-height: 250px;
+      padding: 15px;
+ 
+  
+      position: relative;
+      border-radius: 20px;
+      box-shadow: 0 0.2rem 1rem rgb(0 0 0 / 13%);
+      display: flex;
+      flex-direction: column;
+      
+      justify-content: space-between;
+      transition: all 2s;
+
+
+  }
+  .FoodCardForUser .box .boxDetails{
+   text-align: right;
+   margin-right: 10px;
+  }
+  .FoodCardForUser .box .p-content{
+    font-size: 11px;
+    color: #848484;
+    max-width: 200px;
+    text-align: right;
+    margin:17px 0px;
+    margin-left: auto;
+  }
+   .FoodCardForUser .box a {
+    background-color: #069C54;
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 5%;
+    top: 80%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  
+  }
+  
+   .FoodCardForUser .box a i {
+    color: #fff;
+    font-size: 15px;
+    /* text-align: center;background-color: red; */
+    /* transform: translate(-10%); */
+    /*padding: 0px 10px;*/
+  
+  }
+  
+   .FoodCardForUser .box img{
+    
+        width: 70%;
+      margin: auto;
+      display: block;
+      margin-bottom: 21px;
+      transition: all 2s;
+      margin-top: -40%;
+
+     
+  } 
+  .FoodCardForUser .box:hover img{
+    
+    transform: scale(1.1);
+    
+  }
+    @media (min-width : 590px) and (max-width:768px) { 
+      .box  img{
+         width: 40% !important;
+         margin-top: -30%;
+        
+      }
+      
+    }

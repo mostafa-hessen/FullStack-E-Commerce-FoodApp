@@ -1,16 +1,15 @@
 import React from 'react';
-import { Rating } from 'react-simple-star-rating';
 
 import shape from "../../assets/shape.svg"
 import Reviewss from '../../assets/Reviewss.jpg'
 import './Reviews.css'
 export default function Reviews() {
     return (
-        <section className='Reviews section '>
+        <section className='Reviews section ' id='reviews'>
             <div class="sec-wp">
                 <div class="container">
                     <div className='row'>
-                        <div className='col-12  '>
+                        <div className='col-12'>
                             <div className='sec-title text-center mb-5'>
                                 <p className='sec-sub-title '>
                                     الاراء
