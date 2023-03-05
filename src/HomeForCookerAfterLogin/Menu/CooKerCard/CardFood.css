@@ -40,8 +40,8 @@ text-align: center;
 
 }
 .team .box .a-container {
- background-color: orange !important;
- clip-path: circle(50% at 51% 50%);
+    background-color: orange !important;
+    clip-path: circle(50% at 51% 50%);
  display: block;
  width: 33px;
  height: 33px;
