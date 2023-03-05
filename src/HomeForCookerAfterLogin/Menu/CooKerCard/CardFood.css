@@ -39,7 +39,7 @@ text-align: center;
  margin:17px auto;
 
 }
-.team .box a {
+.team .box .a-container {
     background-color: orange !important;
     clip-path: circle(50% at 51% 50%);
  display: block;
