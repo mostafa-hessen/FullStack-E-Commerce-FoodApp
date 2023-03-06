@@ -1,5 +1,5 @@
 import './Login.css'
-import {   useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
@@ -15,6 +15,7 @@ JSON.parse(localStorage.getItem("user"))
     e.preventDefault();
     const displayEmail = e.target[0].value;
     const displayPassword = e.target[1].value;
+
     try {
       const res= await signInWithEmailAndPassword(auth, displayEmail, displayPassword);
       let y= res.user.displayName

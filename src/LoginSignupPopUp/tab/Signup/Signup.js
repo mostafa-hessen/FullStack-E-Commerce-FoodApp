@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, storage, db } from '../../../firebase';
+import { auth, storage, db, myserverTimestamp } from '../../../firebase';
 
 import "./Signup.css";
 import { ElementFlags } from "typescript";
@@ -91,9 +91,22 @@ export default function Signup() {
               photoURL: downloadURL,
             });
 
+            console.log("res.kindUser",data.kindUser)
+            await setDoc(doc(db, `${data.kindUser == "cook" ? "cookers":"users"}`, res.user.uid), {
+              userid: res.user.uid,
+              fullName: data.fName + " " + data.lName,
+              email: data.email,
+              phone: data.phone,
+              address: data.address,
+              country: data.country,
+              kindUser: data.kindUser,
+              photo: downloadURL,
+              registerTime: myserverTimestamp
+            })
+
             localStorage.setItem("user",JSON.stringify(res.user))
 
-              if (data.kindUser == "cook") {
+            {/* if (data.kindUser == "cook") {
                 await setDoc(doc(db, "cookers", res.user.uid), {
                   userid: res.user.uid,
                   fullName: data.fName + " " + data.lName,
@@ -102,7 +115,8 @@ export default function Signup() {
                   address: data.address,
                   country: data.country,
                   kindUser: data.kindUser,
-                  photo: downloadURL,
+                 //photo: downloadURL,
+                  registerTime: myserverTimestamp
 
               });
             } else {
@@ -118,12 +132,12 @@ export default function Signup() {
                 cart: [],
                 favourite: [],
               });
-            }
+            }*/}
            await setShow(true)
            await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
   
             });
-             data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
+            // data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
 
              
           }

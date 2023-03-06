@@ -3,10 +3,7 @@ import { Redirect } from 'react-router-dom'
 import Main from '../Component/Main/Main'
 import './HomeAfterLoginForUser.css'
 
-function HomeAfterLoginForUser({authorized}) {
-  if(!authorized){
-    return <Redirect to = '/'/>
-  }
+function HomeAfterLoginForUser() {
 
   return (
     <div className='HomeAfterLoginForUser' >
