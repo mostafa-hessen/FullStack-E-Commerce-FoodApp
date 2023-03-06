@@ -13,7 +13,7 @@ import ve from "../../../assets/animatedIcon/original-0525abb512e57734018fefe967
 /* 
 import { border } from '@mui/system' */
 import DeleteFood from './DeleteFood/DeleteFood';
-import { collection, doc, getDoc, getDocs, query } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, onSnapshot } from 'firebase/firestore';
 import { db } from '../../../firebase';
 import FoodDetailsCooker from './FoodDetailsCooker/FoodDetailsCooker'
 import { Link } from 'react-router-dom';
@@ -80,7 +80,8 @@ export default function CardFood() {
            .catch((error) => {
              console.log(error);
            }); */
-    const getData = async () => {
+
+  /*///  const getData = async () => {
       const q = query(collection(db, "foods"));
       const snapshot = await getDocs(q);
       const data = snapshot.docs.map((doc) => ({
@@ -89,7 +90,18 @@ export default function CardFood() {
       }));
       setuserfood(data);
     };
-    getData();
+    getData();////*/
+
+    const q = query(collection(db, "foods"));
+    onSnapshot(q, (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setuserfood(data);
+        
+      })
+
 
     // console.log(data);
     //const data = snapshot.docs
@@ -98,9 +110,8 @@ export default function CardFood() {
           })) */
         // setuserfood(data);
 
-
-
     }, [])
+
     return (
         <>
 
@@ -123,22 +134,14 @@ export default function CardFood() {
 
                                                 <DeleteFood targetitem={CheifItem}/>
                                                 <Link to={`/HomeCooker/FoodDetailsCooker/${CheifItem.id}`}>  <i class="fa-solid fa-arrow-up-right-from-square"
-                              style={{ color: "#4f5b47" }} ></i></Link>
-                                                 
-
-
-
-
-
+                                                style={{ color: "#4f5b47" }} ></i></Link>
 
                                                 {/* <FoodDetailsCooker/> */}
 
-                                            </div>
-                                            
+                                            </div>              
                                             </a>
-                                            
 
-                                            <div className='boximg' style={{ backgroundImage: `url(${CheifItem.foodImg[0]})` }}>
+                                            <div className='boximg' style={{ backgroundImage: `url(${CheifItem.foodImg&&CheifItem.foodImg[0]})` }}>
                                                 <img src={CheifItem.img} />
                                             </div>
                                             <div className='boxDetails'>
