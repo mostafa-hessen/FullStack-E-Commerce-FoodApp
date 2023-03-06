@@ -19,10 +19,12 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-image-gallery": "^1.2.11",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
     "react-simple-star-rating": "^5.1.7",
+    "redux": "^4.2.1",
     "typescript": "latest",
     "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
