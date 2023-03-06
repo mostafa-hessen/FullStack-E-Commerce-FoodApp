@@ -19,7 +19,7 @@ function InformationComponent(props) {
                 </div>
                 
                 <div className='col-6 '>
-                <h5>    {`  ${props.alldata.amcooker}   ${props.alldata.amcooker}  ${props.alldata.pmcookerselect} ${props.alldata.amcookerselect} ` }</h5>
+                <h5>    {`  ${props.alldata?.amcooker}   ${props.alldata?.amcooker}  ${props.alldata?.pmcookerselect} ${props.alldata?.amcookerselect} ` }</h5>
                 </div>
                
             </div>
@@ -33,7 +33,7 @@ function InformationComponent(props) {
                 </div>
                 
                 <div className='col-6 '>
-                   <h5>{props.country}, {props.address}</h5>
+                   <h5>{props?.country}, {props?.address}</h5>
                 </div>
               
             </div>
@@ -46,7 +46,7 @@ function InformationComponent(props) {
                 </div>
                 
                 <div className='col-6 '>
-                <h5>{props.phone}</h5>
+                <h5>{props?.phone}</h5>
                 </div>
                 <div className='col-1'>
                 </div>
@@ -60,7 +60,7 @@ function InformationComponent(props) {
                 </div>
                 
                 <div className='col-6 '>
-                <h5 >{props.alldata.detailscooker}  </h5>
+                <h5 >{props.alldata?.detailscooker}  </h5>
                 </div>
                
             </div>
