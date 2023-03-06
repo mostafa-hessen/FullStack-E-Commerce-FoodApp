@@ -56,25 +56,32 @@
     /*padding: 0px 10px;*/
   
   }
-  
+  .FoodCardForUser .boximg{
+    margin: auto;
+    margin-top: -40%;
+    transition: all 2s;
+    cursor: pointer;
+    width:70%;
+    height: 100px;
+
+  }
    .FoodCardForUser .box img{
     
-        width: 70%;
+        /* width: 70%;
       margin: auto;
       display: block;
       margin-bottom: 21px;
-      transition: all 2s;
-      margin-top: -40%;
+      transition: all 2s; */
 
      
   } 
-  .FoodCardForUser .box:hover img{
+  .FoodCardForUser .box:hover {
     
     transform: scale(1.1);
     
   }
     @media (min-width : 590px) and (max-width:768px) { 
-      .box  img{
+      .boxImg  {
          width: 40% !important;
          margin-top: -30%;
         
