@@ -1,23 +1,28 @@
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import { Link } from 'react-router-dom';
 import shape from '../../../assets/shape.svg';
-import team1 from '../../../assets/team1.jpg';
-import team2 from '../../../assets/team2.jpg';
-import team3 from '../../../assets/team3.jpg';
-import team4 from '../../../assets/team4.jpg';
-import team5 from '../../../assets/team5.jpg';
-import team6 from '../../../assets/team6.jpg';
+import { collection, query, onSnapshot } from 'firebase/firestore';
 import './Cheif.css';
+import { db } from '../../../firebase';
+import { useEffect, useState } from 'react';
+import { orderBy } from "firebase/firestore"; 
+
 function Cheif() {
-    const Cheifs = [
-    {img:team1, name:'محمود الشافعي'}, 
-    {img:team2, name:'أدم محروس'},
-    {img:team3, name:'أمجد السيد'},
-    {img:team4, name:'عائشة'},
-    {img:team5, name:'ناديه'},
-    {img:team6, name:'مريم'}
-    ];
+    const [cookers, setCookers] = useState([]);
+
+    useEffect(() => {
+    const q = query(collection(db, "cookers"), orderBy("registerTime", "desc"));
+    onSnapshot(q, (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setCookers(data);
+      })
+
+    }, [])
+
+    console.log(cookers,"data")
+
     return (
         <>
             <div className="sec-wp">
@@ -39,12 +44,12 @@ function Cheif() {
             <div className="container">
                 <div className="row">
                     {
-                    Cheifs.map((CheifItem, index)=>{
+                   cookers.map((CheifItem, index)=>{
                         return(
                     <div className="col-lg-4 col-md-6 col-sm-6"  key={index}>
                         <div className="team-item">
                             <div className="team-img">
-                                <img src={CheifItem.img} alt="Cheif Image"/>
+                                <img src={CheifItem.photo} alt="Cheif Image"/>
                                 <div className="team-rate">
                                     <a href="">  <i className="fa-solid fa-star" ></i></a>
                                     <a href="">  <i className="fa-solid fa-star" ></i></a>
@@ -54,8 +59,8 @@ function Cheif() {
                                 </div>
                             </div>
                             <div className="team-text">
-                            <Link to={`/HomeUser/ChiefList/Cheif/${index}`} style={{textDecoration:'none'}}>
-                                <h2>{CheifItem.name}</h2>   
+                            <Link to={`/HomeUser/ChiefList/Cheif/${CheifItem.userid}`} style={{textDecoration:'none'}}>
+                                <h2>{CheifItem.fullName}</h2>   
                             </Link>
                             </div>
                         </div>
