@@ -3,7 +3,20 @@ import './EditChiefPersonalForm.css'
 import { useEffect, useRef, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import { validate } from 'uuid';
-export default function () {
+import PopUpEditCheifPerson from './PopUpEditCheifPerson';
+import { uploadBytes, listAll, list } from "firebase/storage";
+import { v4 } from "uuid";
+
+import { db } from "../../../firebase"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
+
+
+import { async } from "@firebase/util";
+export default function (props) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const ArbicCategorycook = { am: "صَبَاحًا", pm: "مَساءً" }
+  const textarea = useRef('')
   let rgex = {
     namecooker:
       /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
@@ -16,15 +29,15 @@ export default function () {
     phonecooker: /^01[0125][0-9]{8}$/,
   };
   const [data, setData] = useState({
-    namecooker: "",
-    typeofworkcooker: "",
-    detailscooker: "",
-    addresscooker: "",
-    phonecooker: "",
-    amcooker: "",
-    pmcooker: "",
-    amcookerselect:"",
-    pmcookerselect:""
+    namecooker: props.cookerpersonal.fullName,
+    typeofworkcooker: props.cookerpersonal.typeofworkcooker ? props.cookerpersonal.typeofworkcooker : "طباخ",
+    detailscooker:props.cookerpersonal.detailscooker ? props.cookerpersonal.detailscooker : "معلومات عني",
+    addresscooker: props.cookerpersonal.address,
+    phonecooker: props.cookerpersonal.phone,
+    amcooker: props.cookerpersonal.amcooker ? props.cookerpersonal.amcooker : "3",
+    pmcooker: props.cookerpersonal.pmcooker ? props.cookerpersonal.pmcooker : "11",
+    amcookerselect: props.cookerpersonal.amcookerselect ? props.cookerpersonal.amcookerselect : "am",
+    pmcookerselect: props.cookerpersonal.pmcookerselect ? props.cookerpersonal.pmcookerselect : "pm",
   });
   const [errorMessage, setMessage] = useState({
     namecookerErr: "",
@@ -34,8 +47,8 @@ export default function () {
     phonecookerErr: "",
     amcookerErr: "",
     pmcookerErr: "",
-    amcookerselectErr:"",
-    pmcookerselectErr:""
+    amcookerselectErr: "",
+    pmcookerselectErr: ""
   });
   //Validation
   const changeData = (e) => {
@@ -134,7 +147,7 @@ export default function () {
 
       setMessage({
         ...errorMessage,
-        amcookerErr: e.target.value.lenght == 0 ? "يجب تدخل المعاد المتاح لك " : "",
+        amcookerErr: e.target.value<= 0 || e.target.value >=13 ? "يجب تدخل المعاد المتاح لك  من 1 حتي 12" : "",
       });
     } else if (e.target.name == "pmcooker") {
       setData({
@@ -144,7 +157,7 @@ export default function () {
 
       setMessage({
         ...errorMessage,
-        pmcookerErr: e.target.value.lenght == 0 ? "يجب تدخل المعاد المتاح لك " : "",
+        pmcookerErr:  e.target.value<= 0 || e.target.value >=13 ? "يجب تدخل المعاد المتاح لك  من 1 حتي 12" : "",
       });
     }
     else if (e.target.name == "amcookerselect") {
@@ -158,7 +171,7 @@ export default function () {
         amcookerselectErr:
           e.target.value.length === 0 ? "يجب أن تختر  صباحا او مساء" : null,
       });
-    } 
+    }
     else if (e.target.name == "pmcookerselect") {
       setData({
         ...data,
@@ -168,58 +181,105 @@ export default function () {
       setMessage({
         ...errorMessage,
         pmcookerselectErr:
-        e.target.value.length === 0 ? "يجب أن تختر  صباحا او مساء" : null,
+          e.target.value.length === 0 ? "يجب أن تختر  صباحا او مساء" : null,
       });
-    } 
+    }
   };
   const onSubmitefunction = (e) => {
     e.preventDefault()
-    console.log(vaildition()+"done")
-    if (vaildition()){
-console.log("done")
+    console.log(vaildition() + "done")
+
+    if (vaildition()) {
+      try {
+        //
+        updateDoc(doc(db, "cookers", `${JSON.parse(localStorage.getItem("user")).uid}`), {
+
+          fullName: data.namecooker,
+          typeofworkcooker: data.typeofworkcooker,
+          detailscooker: data.detailscooker,
+          address: data.addresscooker,
+          phone: data.phonecooker,
+          amcooker: data.amcooker,
+          pmcooker: data.pmcooker,
+          amcookerselect: data.amcookerselect,
+          pmcookerselect: data.pmcookerselect
+
+
+        });
+        console.log('bbbbbbbbb')
+
+
+            for(let i=0;i<8;i++){
+              // console.log(e.target[i].value='');
+              if(e.target[i].name!=('btnremove')){
+
+               e.target[i].value=""
+
+              }
+            }
+              setData(   {
+                namecooker: "",
+                typeofworkcooker: "",
+                detailscooker:"",
+                addresscooker: "",
+                phonecooker: "",
+                amcooker: 0,
+                pmcooker:0,
+                amcookerselect: "",
+                pmcookerselect:"",
+              })
+            
+              textarea.current.value=""
+        //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
+
+
+
+      } catch (err) {
+        console.log(err);
+      }
     }
     else {
       console.log("notvalid");
       console.log(data.foodName == "");
       data.namecooker == ""
         ? setMessage({
-            ...errorMessage,
-            namecookerErr: "يجب ان تدخل الاسم ",
-          })
+          ...errorMessage,
+          namecookerErr: "يجب ان تدخل الاسم ",
+        })
         : data.addresscooker == ""
-        ? setMessage({
+          ? setMessage({
             ...errorMessage,
             addresscookerErr: " العنوان ",
           })
-        :data.detailscooker == ""
-        ? setMessage({
-            ...errorMessage,
-            detailscookerErr: "يجب ان تدخل نبذة عنك",
-          })
-        : data.amcooker <= 0
-        ? setMessage({
-            ...errorMessage,
-            amcookerErr: "يجب أن تدخل المعاد المتاح",
-          })
-        : data.pmcooker <= 0
-        ? setMessage({
-            ...errorMessage,
-            pmcookerErr: "يجب أن تدخل المعاد المتاح",
-          })
-        : data.phonecooker == ""
-        ? setMessage({
-            ...errorMessage,
-            phonecookerErr: "يجب أن تدخل رقم التليفون",
-          }): data.amcookerselect == ""
-          ? setMessage({
-              ...errorMessage,
-              amcookerselectErr: "يجب أن تختر  صباحا او مساءا ",
-            }): data.pmcookerselect == ""
+          : data.detailscooker == ""
             ? setMessage({
+              ...errorMessage,
+              detailscookerErr: "يجب ان تدخل نبذة عنك",
+            })
+            : data.amcooker <=0 || data.amcooker >=13
+              ? setMessage({
                 ...errorMessage,
-                pmcookerselectErr:"يجب أن تختر  صباحا او مساءا ",
+                amcookerErr: " يجب أن تدخل المعاد المتاح الصحيح" ,
               })
-        : console.log("done");
+              : data.pmcooker <= 0 || data.pmcooker >=13
+                ? setMessage({
+                  ...errorMessage,
+                  pmcookerErr:  " يجب أن تدخل المعاد المتاح الصحيح" ,
+                })
+                : data.phonecooker == ""
+                  ? setMessage({
+                    ...errorMessage,
+                    phonecookerErr: "يجب أن تدخل رقم التليفون",
+                  }) : data.amcookerselect == ""
+                    ? setMessage({
+                      ...errorMessage,
+                      amcookerselectErr: "يجب أن تختر  صباحا او مساءا ",
+                    }) : data.pmcookerselect == ""
+                      ? setMessage({
+                        ...errorMessage,
+                        pmcookerselectErr: "يجب أن تختر  صباحا او مساءا ",
+                      })
+                      : console.log("done");
     }
   }
   const vaildition = () => {
@@ -231,19 +291,22 @@ console.log("done")
       rgex["addresscooker"].test(data.addresscooker) &&
       data.amcookerselect.length !== 0 &&
       data.pmcookerselect.length !== 0 &&
-      data.amcooker != 0 &&
-      data.pmcooker != 0
+      data.amcooker >0 && data.amcooker<13 &&
+      data.pmcooker >0 && data.pmcooker<13 
 
 
     ) {
       return true;
+
     } else {
       return false;
     }
+
   };
   return (
 
     <div className="ChiefPersonal">
+      {console.log(props.cookerpersonal)}
       <div className="formContainer">
         <div className="formWrapper">
           <span className="logo">تعديل معلوماتي الشخصية <MdEdit style={{ fontSize: 30 }}></MdEdit></span>
@@ -252,8 +315,9 @@ console.log("done")
           <form onSubmit={onSubmitefunction}>
             <input
               name="namecooker"
-              // defaultValue={data.foodName}
+
               type="text"
+              defaultValue={data.namecooker}
               placeholder=" اسمك ثلاثي"
               onChange={(e) => changeData(e)}
             />
@@ -261,7 +325,7 @@ console.log("done")
 
             <input
               name="typeofworkcooker"
-              // defaultValue={data.foodName}
+              defaultValue={data.typeofworkcooker}
               type="text"
               placeholder=" ماذا تقدم"
               onChange={(e) => changeData(e)}
@@ -270,7 +334,7 @@ console.log("done")
 
             <input
               name="addresscooker"
-              // defaultValue={data.foodName}
+              defaultValue={data.addresscooker}
               type="text"
               placeholder=" عنوانك بالكامل"
               onChange={(e) => changeData(e)}
@@ -278,7 +342,7 @@ console.log("done")
             <small className="text-danger">{errorMessage.addresscookerErr}</small>
             <input
               name="phonecooker"
-              // defaultValue={data.foodName}
+              defaultValue={data.phonecooker}
               type="text"
               placeholder=" رقم تليفونك"
               onChange={(e) => changeData(e)}
@@ -290,10 +354,10 @@ console.log("done")
               name="detailscooker"
               form="usrform"
               onChange={(e) => changeData(e)}
-              // ref={textarea}
+              ref={textarea}
               placeholder=" نبذة عنك وعن ما تقدمه"
             >
-              {/* {data.foodTextarea} */}
+              {data.detailscooker}
             </textarea>
             <small className="text-danger">
               {errorMessage.detailscookerErr}
@@ -304,29 +368,29 @@ console.log("done")
               <label>مواعيد العمل المتاحه لك </label>
               <br />
               <label >: من </label>
-              <input type="number" className='mx-2' name="amcooker" min="1" max="12" style={{ width: "40px" }}  onChange={(e) => changeData(e)}/>
-              <select  onChange={(e) => changeData(e)} name="amcookerselect">
+              <input type="number" className='mx-2' defaultValue={data.amcooker} name="amcooker" min="1" max="12" style={{ width: "45px" }} onChange={(e) => changeData(e)} />
+              <select onChange={(e) => changeData(e)} name="amcookerselect">
                 <option selected disabled hidden>
-
+                  {ArbicCategorycook[`${data.amcookerselect}`]}
                 </option>
-                <option >
+                <option value="am">
                   صَبَاحًا
                 </option>
-                <option >
+                <option value="pm" >
                   مَساءً
                 </option>
               </select>
               <label>:الي </label>
 
-              <input type="number" className='mx-2' name="pmcooker" style={{ width: "40px" }}  onChange={(e) => changeData(e)}/>
-              <select  onChange={(e) => changeData(e)}  name="pmcookerselect">
+              <input type="number" className='mx-4' defaultValue={data.pmcooker} name="pmcooker" min="1" max="12" style={{ width: "45px" }} onChange={(e) => changeData(e)} />
+              <select onChange={(e) => changeData(e)} name="pmcookerselect">
                 <option selected disabled hidden>
-
+                  {ArbicCategorycook[`${data.pmcookerselect}`]}
                 </option>
-                <option >
+                <option value="pm">
                   مَساءً
                 </option>
-                <option >
+                <option value="am">
                   صَبَاحًا
                 </option>
               </select>
