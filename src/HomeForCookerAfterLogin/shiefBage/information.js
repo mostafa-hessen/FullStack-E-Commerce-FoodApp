@@ -7,6 +7,7 @@ function InformationComponent(props) {
   return (
     <>
      <div className='container'>
+ 
         <div className='row position-relative justify-content-center mt-5 border border-success rounded-4 p-3 py-5'>
         {/* <MdEdit className='position-absolute top-0 end-0' >< /MdEdit> */}
         <i className="fa-solid fa-pencil position-absolute top-20  fa-xl   "style={{left:'18px',top:"26px",width:"20px",color:"black",cursor:"pointer"}} ></i>
