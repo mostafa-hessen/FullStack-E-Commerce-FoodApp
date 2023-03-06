@@ -13,6 +13,8 @@ import {onSnapshot, collection, query, where} from 'firebase/firestore';
 import { db } from '../../../firebase';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { orderBy } from "firebase/firestore"; 
+
 export default function CheifMenu({id}) {
 
     const [cookerFood, setCookerFood] = useState([]);
