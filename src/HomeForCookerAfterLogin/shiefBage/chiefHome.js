@@ -33,8 +33,8 @@ function ChiefHome() {
 
   return (
      <>
-     <HeaderComponent Name = {userInfo.fullName} photo={user? user.photoURL:profile}></HeaderComponent>
-<InformationComponent phone={userInfo.phone} address={userInfo.address} country={userInfo.country}></InformationComponent>
+     <HeaderComponent Name = {userInfo.fullName} photo={user? user.photoURL:profile} typeofworkcooker={userInfo.typeofworkcooker}></HeaderComponent>
+<InformationComponent  alldata={userInfo} phone={userInfo.phone} address={userInfo.address} country={userInfo.country}></InformationComponent>
 <RateChiefComponent></RateChiefComponent>
      </>
 
