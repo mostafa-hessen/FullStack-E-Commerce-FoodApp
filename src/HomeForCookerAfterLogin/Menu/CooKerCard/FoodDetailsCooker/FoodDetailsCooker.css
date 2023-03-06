@@ -12,5 +12,6 @@
   padding-left: 20px;
 }
 .clicked{
-  border: 5px solid black;
+  border: 5px solid rgb(137, 120, 120);
+  box-shadow: rgba(254, 131, 74, 0.2) 0px 7px 29px 0px;
 }

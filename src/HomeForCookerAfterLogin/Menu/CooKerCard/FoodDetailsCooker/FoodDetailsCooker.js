@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../../../firebase';
+// import { checkActionCode } from 'firebase/auth';
 
 // import FormGroup from '@mui/material/FormGroup';
 // import FormControlLabel from '@mui/material/FormControlLabel';
@@ -14,7 +15,8 @@ import { db } from '../../../../firebase';
 export default function FoodDetailsCooker() {
     const  { id } = useParams();
     console.log(id)
-    const [food1, setCartfood1] = useState([])
+    const [food1, setCartfood1] = useState('')
+   const [wordData, setWordData] = useState('')
     
 
 
@@ -25,6 +27,7 @@ export default function FoodDetailsCooker() {
             .then((docRef) => {
             
                 setCartfood1(docRef.data())
+                setWordData(docRef.data().foodImg[0])
              
             })
             .catch((error) => {
@@ -46,7 +49,7 @@ export default function FoodDetailsCooker() {
 //     { id: 2, value: food1.foodImg[2] },
 //   ]
 
-  const [wordData, setWordData] = useState('http://static1.squarespace.com/static/5f14d04ebd60fa3de12e3960/t/5fdcc21b84630471db04a0e9/1608303136517/IMG_9417.jpeg?format=1500w')
+  // 'http://static1.squarespace.com/static/5f14d04ebd60fa3de12e3960/t/5fdcc21b84630471db04a0e9/1608303136517/IMG_9417.jpeg?format=1500w')
   const handleClick = (index) => {
     console.log(index)
     const wordSlider = food1.foodImg[index];
@@ -56,15 +59,21 @@ export default function FoodDetailsCooker() {
 
   return (
     <>
-      {/* {food1?console.log(JSON.parse(food1.foodImg)):console.log("not done")} */}
+      {/* {food1?setWordData(food1.foodImg[0]):console.log("not done")} */}
       <div className="main">
-        <img src={wordData} height="300" width="500" />
+        <div className='rounded-4 ' style={{height:"300px", maxWidth:"500px",margin:"auto",overflow:'hidden'}}>
+        <img src={wordData} style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center"}}  />
+        </div>
         <div className='flex_row'>
-          {/* {food1?.foodImg.map((data, i) =>
+        {/* {food1.foodImg&&setWordData(food1.foodImg[0])} */}
+
+          {food1.foodImg&&food1.foodImg.map((data, i) =>
             <div className="thumbnail" key={i} >
-              <img  src={data} onClick={() => handleClick(i)} height="70" width="100" />
+        <div className={`rounded-4 ${food1.foodImg.indexOf(wordData) == i ? "clicked" : ""}`} style={{maxHeight:"70px", maxWidth:"90px",margin:"auto",overflow:'hidden'}}>
+              <img  src={data} onClick={() => handleClick(i)}style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",cursor:"pointer"}}   />
+        </div>
             </div>
-          )} */}
+          )}
         </div>
 
       </div>
