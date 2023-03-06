@@ -12,13 +12,13 @@ export default function DeleteFood(props) {
    const handleDelete=()=>{
     setShow(false)
     console.log(props.targetitem)
- /*    deleteDoc(doc(db,"foods",`${props.targetitem.id}`))
+     deleteDoc(doc(db,"foods",`${props.targetitem.id}`))
     .then(() => {
       console.log("Entire Document has been deleted successfully.");
     })
     .catch((error) => {
       console.log(error);
-    }); */
+    });  
    }
   return (
     <>

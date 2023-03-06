@@ -8,6 +8,8 @@ import React, { useState } from "react";
 function Login(){
   const [err, setErr] = useState(false);
   const navigate = useHistory();
+let user=
+JSON.parse(localStorage.getItem("user"))
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,13 +18,12 @@ function Login(){
     try {
       const res= await signInWithEmailAndPassword(auth, displayEmail, displayPassword);
       let y= res.user.displayName
-      console.log(y);
-      let x= res.user.displayName.split('@')[1]
-      localStorage.setItem('user',JSON.stringify(res.user))
-      sessionStorage.setItem(`authorized${x}`,true)
+      await console.log(res);
+       let x=res.user&& user.displayName.split('@')[1]
+    //   sessionStorage.setItem(`authorized${x}`,true)
       console.log(x)
 
-     x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker")
+      res.user&&(x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker"))
 
     } catch (err) {
       console.log(err);
