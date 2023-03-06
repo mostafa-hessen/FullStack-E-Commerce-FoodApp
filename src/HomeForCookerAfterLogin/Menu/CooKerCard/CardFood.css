@@ -39,23 +39,26 @@ text-align: center;
  margin:17px auto;
 
 }
-.team .box a {
+.team .box .a-container {
     background-color: orange !important;
     clip-path: circle(50% at 51% 50%);
  display: block;
-  width: 33px;
- height: 33px; 
+ width: 33px;
+ height: 33px;
  position: absolute;
  right: 3.5%;
  top: 3%;
  transition: 1s all;
- /* border-radius: 50%; */
- display: flex;
+ /*border-radius: 50%;
+ */display: flex;
  flex-direction: column;
- /* align-items: center; */
- justify-content: center;
+ /*align-items: center;
+ */justify-content: center;
  text-decoration: none;
-
+ -webkit-transition: 1s all;
+ -moz-transition: 1s all;
+ -ms-transition: 1s all;
+ -o-transition: 1s all;
 }
 .team  .box a .openicon{
     transition: 1s all;
