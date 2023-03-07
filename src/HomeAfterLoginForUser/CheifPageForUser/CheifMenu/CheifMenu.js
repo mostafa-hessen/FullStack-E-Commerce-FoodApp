@@ -9,18 +9,28 @@ import hamam from "../../../assets/hamam.jpg";
 import fish from "../../../assets/fish.jpg";
 import './CheifMenu.css'
 import { Link } from 'react-router-dom';
-export default function CheifMenu() {
-    const food1 = [
-        {img:chicken, offer:'فرخة كيلو ونصف مشويه علي الفحم بسعر ١٢٠  جنية'},
-        {img:potatoKofta, offer:'نصف كيلو كفتة بطاطس بالجبنه إللي تختارها بسعر ٤٠  جنية'},
-        {img:pizza, offer:'بيتزا الحجم الكبير والحشو علي زوقك بسعر ٦٠ جنية'}
-    ]
-    const food2 = [
-        {img:hamam, offer:'حمام محمر بالسمنة البلدي محشي فريك سعر الجوز ١٢٠ جنيه'},
-        {img:mahshi, offer:'محشي ورق عنب والتفاصيل عليك سعر الكيلو ٥٠ جنيه'},
-        {img:fish, offer:'سمك مقلي معاه طحنة وسلطة سعر الكيلو ٦٠ جنيه'}
-    ]
+import {onSnapshot, collection, query, where} from 'firebase/firestore';
+import { db } from '../../../firebase';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { orderBy } from "firebase/firestore"; 
 
+export default function CheifMenu({id}) {
+
+    const [cookerFood, setCookerFood] = useState([]);
+
+    useEffect(() => {
+        const q = query(collection(db, "foods"), where("userid", "==", `${id}`));
+        onSnapshot(q, (snapshot) => {
+          const data = snapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }));
+          setCookerFood(data);
+            
+          })
+    }, [])
+    console.log(cookerFood)
     return (
         <div dir="rtl" className="container justify-content-center rounded-5 mt-5 p-4" style={{ backgroundColor: '#dce6d5' }}>
             <div className="row" >
@@ -30,35 +40,18 @@ export default function CheifMenu() {
             </div>
             <CardGroup>
             {
-            food1.map((item, index)=>{
+            cookerFood.map((item, index)=>{
                 return(
                 <Card key={index}  className=" mb-4 position-relative rounded-2 mx-2 card-item">
-                    <Card.Img variant="top" src={item.img} className='rounded-2 menu-img'/>
+                    <Card.Img variant="top" src={item?.foodImg[0]} className='rounded-2 menu-img'/>
                     <Card.Body>
+                    <Card.Text  style={{textAlign:'right'}}>
+                          {item?.foodName}
+                       </Card.Text>
                         <Card.Text  style={{textAlign:'right'}}>
-                          {item.offer}
+                          {item?.foodDiscription}
                        </Card.Text>
-                       <Link to={`/HomeUser/ChiefList/Cheif/details/${index}`} style={{textDecoration:'none'}} className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></Link>
-                       <Button className='btnCar' style={{ backgroundColor:'#7e8e72', borderColor:'#6e7c63' }}><i class="fa-solid fa-cart-shopping" style={{color:'#fff'}}></i></Button>
-                       <a href='' className='star'><i className="fa-solid fa-star"></i></a>
-                    </Card.Body>
-                </Card>
-                )
-            })
-            }
-            </CardGroup>
-
-            <CardGroup>
-            {
-            food2.map((item, index)=>{
-                return(
-                <Card key={index}  className=" mb-4 position-relative rounded-2 mx-2 card-item">
-                    <Card.Img variant="top" src={item.img} className='rounded-2 menu-img'/>
-                    <Card.Body>
-                        <Card.Text style={{textAlign:'right'}}>
-                          {item.offer}
-                       </Card.Text>
-                       <Link to={`/HomeUser/ChiefList/Cheif/details/${index}`} style={{textDecoration:'none'}} className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></Link>
+                       <Link to={`/HomeUser/ChiefList/Cheif/details/${item?.id}`} style={{textDecoration:'none'}} className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></Link>
                        <Button className='btnCar' style={{ backgroundColor:'#7e8e72', borderColor:'#6e7c63' }}><i class="fa-solid fa-cart-shopping" style={{color:'#fff'}}></i></Button>
                        <a href='' className='star'><i className="fa-solid fa-star"></i></a>
                     </Card.Body>
