@@ -3,7 +3,6 @@ import Delivery from "../Delivery/Delivery";
 import { useHistory } from "react-router-dom";
 
 function Navbar() {
- // let history = useHistory();
 
   return (
       <nav className="d-flex flex-column justify-content-between">

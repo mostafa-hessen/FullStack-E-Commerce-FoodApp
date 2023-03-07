@@ -51,9 +51,7 @@ export default function CheifMenu({id}) {
                         <Card.Text  style={{textAlign:'right'}}>
                           {item?.foodDiscription}
                        </Card.Text>
-                       <Link to={`/HomeUser/ChiefList/Cheif/details/${item?.id}`} style={{textDecoration:'none'}} className='open'><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#4f5b47'}}></i></Link>
-                       <Button className='btnCar' style={{ backgroundColor:'#7e8e72', borderColor:'#6e7c63' }}><i class="fa-solid fa-cart-shopping" style={{color:'#fff'}}></i></Button>
-                       <a href='' className='star'><i className="fa-solid fa-star"></i></a>
+                       <Link to={`/HomeUser/ChiefList/Cheif/details/${item?.id}`} style={{textDecoration:'none', width:45, backgroundColor:"#7e8e72",borderRadius:"50%"}} className='open btn '><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#fff'}}></i></Link>
                     </Card.Body>
                 </Card>
                 )
