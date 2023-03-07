@@ -12,12 +12,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = createStore(reducer)
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+   {/*<Provider store={store}>
         <App />
-    </Provider>
+</Provider>*/}
 
-     {/* // <AuthContextProvider> */}
-    {/* </AuthContextProvider> */}
+     <AuthContextProvider>
+     <Provider store={store}>
+     <App />
+     </Provider>
+     </AuthContextProvider> 
   </React.StrictMode>
 );
 

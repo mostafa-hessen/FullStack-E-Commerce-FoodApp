@@ -1,6 +1,6 @@
 import './Login.css'
 import {useHistory} from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
 

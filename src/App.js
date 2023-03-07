@@ -5,13 +5,14 @@ import HomeAfterLoginForUser from "./HomeAfterLoginForUser/HomeAfterLoginForUser
 //import logo from './logo.svg';
 import './App.css';
 import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import HomeForCookerAfterLogin from "./HomeForCookerAfterLogin/HomeForCookerAfterLogin";
 import SignPage from "./LoginSignupPopUp/SignPage";
+import { useContext } from "react";
 // import { useContext, useEffect } from "react";
 
 // import { Redirect } from 'react-router-dom'
-// import { AuthContext} from "./contexts/AuthContext";
+ import { AuthContext} from "./contexts/AuthContext";
 
 
 
@@ -19,15 +20,15 @@ function  App() {
   //let authFromSessionUser = setTimeout(sessionStorage.getItem('authorizeduser')?JSON.parse(sessionStorage.getItem('authorizeduser')):false,400)
  // let authFromSessionCooker = setTimeout(sessionStorage.getItem('authorizedcook')?JSON.parse(sessionStorage.getItem('authorizedcook')):false,400)
 
-// const { currentUser } = useContext(AuthContext);
+const { currentUser } = useContext(AuthContext);
+  const ProtectedRoute = ({ children }) => {
+    console.log("currentUser", currentUser)
+  if (!currentUser) {
+    return <Redirect to = '/'/>;
+  }
 
-//  const ProtectedRoute = ({ children }) => {
-  // if (!currentUser) {
-  //   return <Redirect to = '/'/>;
-  // }
-
-//   return children
-// }; 
+  return children
+ }; 
 
   return (
     <div className="App">
@@ -38,15 +39,15 @@ function  App() {
           }/>
 
           <Route path="/HomeUser" component={() =>
-          // <ProtectedRoute>
+          <ProtectedRoute>
           <HomeAfterLoginForUser/>
-          // </ProtectedRoute>
+           </ProtectedRoute>
           }/>
 
          <Route path="/HomeCooker" component={() =>
-        //  <ProtectedRoute>
+         <ProtectedRoute>
              <HomeForCookerAfterLogin />
-          // </ProtectedRoute>
+         </ProtectedRoute>
           }/>
 
          {/* <Route path="/SignPage">
