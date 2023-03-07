@@ -56,15 +56,16 @@ export default function FoodDetailsCooker() {
 
   return (
     <>
-      {/* {food1?console.log(JSON.parse(food1.foodImg)):console.log("not done")} */}
+     
+      {/* {food1?console.log(JSON.parse(food1.foodImg)):console.log("not done")}  */}
       <div className="main">
         <img src={wordData} height="300" width="500" />
         <div className='flex_row'>
-          {/* {food1?.foodImg.map((data, i) =>
+          {food1?.foodImg.map((data, i) =>
             <div className="thumbnail" key={i} >
               <img  src={data} onClick={() => handleClick(i)} height="70" width="100" />
             </div>
-          )} */}
+          )}  
         </div>
 
       </div>
