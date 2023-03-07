@@ -8,8 +8,9 @@ import Home from "../../HomeAfterLoginForUser/HomeUser/Home/Home";
 import FoodDetailsCooker from "../../HomeForCookerAfterLogin/Menu/CooKerCard/FoodDetailsCooker/FoodDetailsCooker";
 function UserRoutes() {
     return (
-        <BrowserRouter>
-            <Switch>
+        <>
+        {/* // <BrowserRouter>
+        //     <Switch> */}
                 <Route exact path="/HomeUser/" component={Home}/>
                 
                 <Route exact path="/HomeUser/Home"  component={Home}/>
@@ -23,8 +24,10 @@ function UserRoutes() {
                 <Route exact path="/HomeUser/AddToFav" component={AddToFav}/>
 
                 <Route exact path="/HomeUser/Cart" component={Basket}/>
-            </Switch>
-        </BrowserRouter>
+        {/* //     </Switch>
+        // </BrowserRouter> */}
+        {/* </Switch> */}
+        </>
     )
 }
 export default UserRoutes;

@@ -32,6 +32,7 @@ function  App() {
   return (
     <div className="App">
     <BrowserRouter>
+    
       <Switch>
           <Route exact path="/" component={() =>
             <Homebeforelogin />

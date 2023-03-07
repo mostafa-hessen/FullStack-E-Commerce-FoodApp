@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css'
 import { Navbar ,Container ,Nav } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import Delivery from './Delivery/Delivery';
 const Navs =()=>{
@@ -18,19 +18,19 @@ const Navs =()=>{
 
           <ul class="ul">
           <li>
-            <a href='/HomeCooker/Home'>
+            <Link to='/HomeCooker/Home'>
               <i class="fa-solid fa-house icon"></i> <span>الرئيسية</span>
-           </a>
+           </Link  >
             </li>
             <li>
-              <a href='/HomeCooker/Menue'>
+              <Link to='/HomeCooker/Menue'>
               <i class="fa-regular fa-heart icon"></i> <span>أكلاتي</span>
-              </a>
+              </Link  >
             </li>
             <li>
-              <a href='/HomeCooker/Orders'>
+              <Link to='/HomeCooker/Orders'>
               <i class="fa-solid fa-cart-shopping icon"></i> <span>طلباتي</span>
-              </a>
+              </Link  >
             </li>
            
           </ul>
