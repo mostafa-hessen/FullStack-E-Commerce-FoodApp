@@ -5,6 +5,7 @@ import CheifList from "../../HomeAfterLoginForUser/CheifList/CheifList";
 import CheifPage from "../../HomeAfterLoginForUser/CheifPageForUser/CheifPage";
 import Details from "../../HomeAfterLoginForUser/Details/Details";
 import Home from "../../HomeAfterLoginForUser/HomeUser/Home/Home";
+import Navbar from "../../HomeAfterLoginForUser/HomeUser/Navbar/NavbarForUser";
 import FoodDetailsCooker from "../../HomeForCookerAfterLogin/Menu/CooKerCard/FoodDetailsCooker/FoodDetailsCooker";
 function UserRoutes() {
     return (

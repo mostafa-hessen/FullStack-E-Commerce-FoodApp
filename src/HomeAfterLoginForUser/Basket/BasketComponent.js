@@ -1,6 +1,5 @@
 import React from 'react'
 import { FaCartPlus, FaStar } from "react-icons/fa";
-import { Redirect } from 'react-router-dom';
 
 import item1 from '../../assets/photo_2023-02-14_19-46-55.jpg'
 import './Basket.css'
@@ -39,8 +38,8 @@ function Basket() {
         <div className='row justify-content-center border border-3 rounded-4 mt-2  zoom'>
 
           <div className='col-lg-3 col-md-3 mt-3 mb-3 col-9 '>
-            <img src={item1} className='w-100 w-md-25 w-lg-25 rounded-2 zoom' ></img>
-            <p>برجر حار بالكاتشب</p>
+            <img src={item1} className='w-50 w-md-25 w-lg-25 zoom h-50' style={{borderRadius:"50%"}}></img>
+            <p className='mt-3'>برجر حار بالكاتشب</p>
           </div>
           <div className='col-lg-3 col-md-3 mt-5 mb-3 col-5'>
             <input className='w-25 ' type="number" defaultValue={1}></input>
