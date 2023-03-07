@@ -1,12 +1,9 @@
 import React from 'react';
 import './Navbar.css'
-import { Navbar ,Container ,Nav } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+//import { Navbar ,Container ,Nav } from 'react-bootstrap';
 import logo from '../../assets/logo.png'
 import Delivery from './Delivery/Delivery';
 const Navs =()=>{
-  
-   //let history = useHistory();
 
     return(
       <nav className="d-flex flex-column justify-content-between">
@@ -18,17 +15,17 @@ const Navs =()=>{
 
           <ul class="ul">
           <li>
-            <a href='/HomeCooker/Home'>
+            <a href='/HomeCooker/Home' className="d-flex align-items-center" style={{textDecoration:'none', color:'#000'}}>
               <i class="fa-solid fa-house icon"></i> <span>الرئيسية</span>
            </a>
             </li>
             <li>
-              <a href='/HomeCooker/Menue'>
+              <a href='/HomeCooker/Menue' className="d-flex align-items-center" style={{textDecoration:'none', color:'#000'}}>
               <i class="fa-regular fa-heart icon"></i> <span>أكلاتي</span>
               </a>
             </li>
             <li>
-              <a href='/HomeCooker/Orders'>
+              <a href='/HomeCooker/Orders' className="d-flex align-items-center" style={{textDecoration:'none', color:'#000'}}>
               <i class="fa-solid fa-cart-shopping icon"></i> <span>طلباتي</span>
               </a>
             </li>

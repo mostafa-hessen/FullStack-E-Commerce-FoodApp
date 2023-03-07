@@ -15,8 +15,6 @@ function CheifPage() {
 const { id } = useParams()
 const [cookerInfo, setCookerInfo] = useState('')
 
-
-
 useEffect(() => {
   const q = doc(db, "cookers", id);
   

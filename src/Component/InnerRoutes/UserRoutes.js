@@ -13,7 +13,7 @@ function UserRoutes() {
                 <Route exact path="/HomeUser/" component={Home}/>
                 
                 <Route exact path="/HomeUser/Home"  component={Home}/>
-                <Route exact path="/HomeUser/Home/useFoodDetailes/:id" component={FoodDetailsCooker}/>
+                <Route exact path="/HomeUser/Home/useFoodDetailes/:id" component={Details}/>
                 <Route exact path="/HomeUser/ChiefList" component={CheifList}/>
 
                 <Route exact path="/HomeUser/ChiefList/Cheif/:id" component={CheifPage}/>

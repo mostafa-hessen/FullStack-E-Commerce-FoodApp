@@ -12,39 +12,24 @@ function Navbar() {
             <img src="https://via.placeholder.com/50/09f/fff.png " />
           </div>
           <h4 className="text-center">سهيله حماده</h4>
-
-        {/*  <ul class="ul">
-            <li onClick={()=>{history.push('/HomeUser/Home')}}>
-              <i class="fa-solid fa-house icon"></i> <span>الرئيسية</span>
-            </li>
-            <li onClick={()=>{history.push('/HomeUser/AddToFav')}}>
-              <i class="fa-regular fa-heart icon"></i> <span>المفضلة</span>
-            </li>
-            <li onClick={()=>{history.push('/HomeUser/Cart')}}>
-              <i class="fa-solid fa-cart-shopping icon"></i> <span>سلة التسوق</span>
-            </li>
-            <li onClick={()=>{history.push('/HomeUser/ChiefList')}}>
-              <i class="fa-solid fa-utensils icon"></i> <span>الطباخين</span>
-            </li>
-          </ul>*/}
           <ul class="ul">
             <li>
-              <a href="/HomeUser/Home">
+              <a href="/HomeUser/Home" className="d-flex align-items-center" style={{textDecoration:'none', color:'#000'}}>
               <i class="fa-solid fa-house icon"></i> <span>الرئيسية</span>
               </a>
             </li>
             <li>
-              <a href="/HomeUser/AddToFav">
+              <a href="/HomeUser/AddToFav" className="d-flex align-items-center" style={{textDecoration:'none', color:'#000'}}>
               <i class="fa-regular fa-heart icon"></i> <span>المفضلة</span>
               </a>
             </li>
             <li>
-              <a href="/HomeUser/Cart">
+              <a href="/HomeUser/Cart" className="d-flex align-items-center" style={{textDecoration:'none', color:'#000'}}>
               <i class="fa-solid fa-cart-shopping icon"></i> <span>سلة التسوق</span>
               </a>
             </li>
             <li>
-              <a href="/HomeUser/ChiefList">
+              <a href="/HomeUser/ChiefList" className="d-flex align-items-center" style={{textDecoration:'none', color:'#000'}}>
               <i class="fa-solid fa-utensils icon"></i> <span>الطباخين</span>
                 </a>
             </li>
