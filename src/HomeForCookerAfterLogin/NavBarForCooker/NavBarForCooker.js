@@ -5,8 +5,6 @@ import { Link, useHistory } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import Delivery from './Delivery/Delivery';
 const Navs =()=>{
-  
-   //let history = useHistory();
 
     return(
       <nav className="d-flex flex-column justify-content-between">
