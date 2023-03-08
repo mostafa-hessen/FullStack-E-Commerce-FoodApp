@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDocs,onSnapshot,query,collection } from 'firebase/firestore';
 import { db } from '../../firebase';
 // import Navbar from '../HomeUser/Navbar/Navbar'
 import profile from "../../assets/Eat.jpg"
@@ -15,26 +15,18 @@ function ChiefHome() {
 
 
   useEffect(() => {
-     const docRef = doc(db, "cookers", user.uid);
-     getDoc(docRef)
-        .then((docRef) => {
-        
-           setuserInfo( docRef.data() )
-          // console.log(docRef.data())
-          // console.log(JSON.parse( docRef.data()))
-         
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    const q = doc(db, "cookers",`${user.uid}`);
+    onSnapshot(q, (snapshot) => {
+     console.log(snapshot.data())
+     setuserInfo( snapshot.data() )
+      })
 
- 
  },[])
 
   return (
      <>
-     <HeaderComponent Name = {userInfo.fullName} photo={user? user.photoURL:profile}></HeaderComponent>
-<InformationComponent phone={userInfo.phone} address={userInfo.address} country={userInfo.country}></InformationComponent>
+     <HeaderComponent Name = {userInfo?.fullName} photo={user? user.photoURL:profile} typeofworkcooker={userInfo?.typeofworkcooker}></HeaderComponent>
+<InformationComponent  alldata={userInfo} phone={userInfo?.phone} address={userInfo?.address} country={userInfo?.country}></InformationComponent>
 <RateChiefComponent></RateChiefComponent>
      </>
 

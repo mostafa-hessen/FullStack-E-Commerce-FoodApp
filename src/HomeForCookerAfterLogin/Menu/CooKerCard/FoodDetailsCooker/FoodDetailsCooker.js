@@ -1,11 +1,18 @@
 import React from 'react'
-//import './FoodDetailsCooker.css'
+import './FoodDetailsCooker.css'
 import { useState,useEffect } from 'react';
+//import { Redirect } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { doc, getDoc, updateDoc,arrayUnion} from 'firebase/firestore';
-import { db } from '../../firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../../../firebase';
+// import { checkActionCode } from 'firebase/auth';
 
-export default function Details() {
+// import FormGroup from '@mui/material/FormGroup';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
+
+
+export default function FoodDetailsCooker() {
     const  { id } = useParams();
     console.log(id)
     const [food1, setCartfood1] = useState('')
@@ -35,6 +42,12 @@ export default function Details() {
      },[])
 
      console.log(food1)
+   
+//   const imgs = [
+//     { id: 0, value: food1.foodImg[0] },
+//     { id: 1, value: food1.foodImg[1] },
+//     { id: 2, value: food1.foodImg[2] },
+//   ]
 
   // 'http://static1.squarespace.com/static/5f14d04ebd60fa3de12e3960/t/5fdcc21b84630471db04a0e9/1608303136517/IMG_9417.jpeg?format=1500w')
   const handleClick = (index) => {
@@ -43,25 +56,7 @@ export default function Details() {
     setWordData(wordSlider)
   }
   
-  const [fav, setFav] = useState([])
-  const addToFavBtn = (favEle) => {
-    let user=JSON.parse(localStorage.getItem('user'))
-    console.log( user.uid,"id")
 
-  const q = doc(db, "users", user.uid);
-  updateDoc(q, {
-    favoriteFood:arrayUnion((favEle)),
-  })
-    .then((q) => {
-      console.log(
-        "A New Document Field has been added to an existing document"
-      );
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-console.log(fav,"favArr")
   return (
     <>
       {/* {food1?setWordData(food1.foodImg[0]):console.log("not done")} */}
@@ -84,32 +79,19 @@ console.log(fav,"favArr")
       </div>
 
       <div className='row pt-5'>
-        <div className='col-lg-6 mx-auto'>
-
-          <div className='d-flex align-items-center' style={{direction:"rtl", width:"70%", margin:"auto"}}>
-          <input type="checkbox" id="" name="" value="" className='ms-2'/>
-          <h5 style={{margin:0}}>عائلي : {food1?.bigPrice} جنيه مصري </h5>
-          </div>
-          
-          <div className='d-flex align-items-center' style={{direction:"rtl", width:"70%", margin:"auto"}}>
-          <input type="checkbox" id="" name="" value="" className='ms-2'/>
-          <h5 style={{margin:0}}> وسط : {food1?.middlePrice} جنيه مصري </h5>
-          </div>
-      
-          <div className='d-flex align-items-center' style={{direction:"rtl", width:"70%", margin:"auto"}}>
-          <input type="checkbox" id="" name="" value="" className='ms-2'/>
-          <h5 style={{margin:0}}> صغير : {food1?.smallPrice} جنيه مصري</h5>
-          </div>
-
-          <button className='btn mt-4 inline-flex align-items-center' style={{width:45, backgroundColor:"#069c54",borderRadius:"50%"}}><i className="fas fa-shopping-cart mt-2 text-light"></i></button>
-          <button className='star mt-2' onClick={()=>addToFavBtn(food1)}><i className="fa-solid fa-star"></i></button>
-        </div >
+        <div className='col-lg-6'>
+          <h5> {food1?.bigPrice} عائلي : جنيه مصري </h5>
+          <h5> {food1?.middlePrice} وسط : جنيه مصري </h5>
+          <h5> {food1?.smallPrice} صغير : جنيه مصري </h5>
+        
+        </div>
         <div className='col-lg-6'>
           <h1 style={{color:'orange'}}>{food1?.foodName} </h1>
           <p> {food1?.foodDiscription} </p>
          
+      
         </div>
-       
+
       </div>
 
     </>

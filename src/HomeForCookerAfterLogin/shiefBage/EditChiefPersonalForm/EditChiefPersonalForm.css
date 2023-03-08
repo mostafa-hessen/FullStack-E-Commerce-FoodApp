@@ -1,0 +1,90 @@
+
+.ChiefPersonal .formContainer {
+    /* background-color: #a7bcff; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ .ChiefPersonal .formContainer .formWrapper {
+    box-shadow: rgba(79, 132, 74, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    border:2px solid #5b8d61;
+  }
+  .ChiefPersonal .formContainer .formWrapper .logo {
+    color: #5b8d61;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 50px;
+  }
+  .ChiefPersonal .formContainer .formWrapper .title {
+    color: #5d5b8d;
+    font-size: 12px;
+  }
+  .ChiefPersonal .formContainer .formWrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+ .ChiefPersonal .formContainer .formWrapper form input {
+    padding: 8px;
+    /* border: none; */
+    width: 400px;
+    border-bottom: 1px solid #a7bcff;
+    direction: rtl;
+    border:1px solid #5b8d61;
+    border-radius: 8px;
+
+  }
+  .ChiefPersonal .formContainer .formWrapper form input::placeholder {
+    color: #afafaf;
+  }
+ .ChiefPersonal .formContainer .formWrapper form button {
+    background-color: #5b8d61;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+ .ChiefPersonal .formContainer .formWrapper form label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5b8d61;
+    font-size: 12px;
+    cursor: pointer;
+    direction: rtl;
+  }
+.ChiefPersonal  .formContainer .formWrapper form label img {
+    width: 32px;
+  }
+ .ChiefPersonal .formContainer .formWrapper p {
+    color: #5b8d61;
+    font-size: 12px;
+    /* margin-top: 10px; */
+  }
+
+ 
+  .ChiefPersonal .formContainer .formWrapper form textarea {
+    direction: rtl;
+    border-radius: 8px;
+    padding: 6px;
+  }
+
+ 
+
+
+ 
+
+
+ 

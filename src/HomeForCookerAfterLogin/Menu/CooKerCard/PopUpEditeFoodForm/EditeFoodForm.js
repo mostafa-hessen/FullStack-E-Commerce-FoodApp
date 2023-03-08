@@ -4,7 +4,7 @@ import { uploadBytes, listAll, list } from "firebase/storage";
 import { v4 } from "uuid";
 import imageForm1 from "../../../../assets/potatoKofta.jpg";
 import imageForm2 from "../../../../assets/kofta.jpg";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../../firebase";
@@ -17,6 +17,13 @@ function EditFoodForm(props) {
   const [selectedImages, setSelectedImages] = useState(props.targetEditeItem.foodImg?props.targetEditeItem.foodImg:[]);
   const [myimages, setmyimages] = useState([]);
   const textarea = useRef('')
+
+  useEffect(() => {
+    console.log('hhhhhhh')
+  
+    
+  }, [])
+  
 
   const onSelectFile = (event) => {
     const selectedFiles = event.target.files;//2 images file
@@ -35,8 +42,8 @@ function EditFoodForm(props) {
     setSelectedImages((previousImages) => previousImages.concat(imagesArray)); // 2 urls 
     setmyimages((previousImages) => previousImages.concat(selectedFilesArray));// 2 files
     event.target.value = "";
-    console.log(selectedImages + "selectedimageses")
-    console.log(myimages +"myimages")
+   // console.log(selectedImages + "selectedimageses")
+   
   }
 
   else{
@@ -45,11 +52,33 @@ function EditFoodForm(props) {
   }
   };
 
-  function deleteHandler(image) {
+  function deleteHandler(element,image) {
     setSelectedImages(selectedImages.filter((e, i) => i !== image));
     setmyimages(myimages.filter((e, i) => i !== image));
     URL.revokeObjectURL(image);
-  }
+    console.log(props.targetEditeItem.foodImg.includes(element))
+    console.log(props.targetEditeItem.foodImg)
+     let myimagesafterdelete=props.targetEditeItem.foodImg.length>1?props.targetEditeItem.foodImg.filter(e=>element!=e):props.targetEditeItem.foodImg
+   // let myimagesafterdelete=props.targetEditeItem.foodImg.filter(e=>element!=e)
+    console.log(myimagesafterdelete)
+    
+    const docRef = doc(db, "foods", `${props.targetEditeItem.id}`);
+
+    updateDoc(docRef, {
+        foodImg:myimagesafterdelete
+
+    })
+        .then((docRef) => {
+            console.log(
+                "A New Document Field has been updated to an existing document"
+            );
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+ 
 
   let rgex = {
     foodName:
@@ -175,10 +204,11 @@ function EditFoodForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(data);
+    console.log(myimages +"myimages")
     if (vaildition()) {
       try {
-     /*    let x = `${data.foodName}${v4()}`;
-        setDoc(doc(db, "foods", x), {
+        
+        updateDoc(doc(db, "foods", props.targetEditeItem.id), {
           foodName: data.foodName,
           foodCateogry: data.cateogry,
           bigPrice: data.bigPrice,
@@ -189,19 +219,18 @@ function EditFoodForm(props) {
           userName: user.displayName,
           userid: user.uid,
           
-        }); */
-
-     
-       /*  myimages.map((ele) => {
+        }); 
+         console.log('bbbbbbbbb')
+         myimages.map((ele) => {
           const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
           uploadBytes(imageRef, ele).then((snapshot) => {
             getDownloadURL(snapshot.ref).then(async (url) => {
-              await updateDoc(doc(db, "foods", x), {
+              await updateDoc(doc(db, "foods",  props.targetEditeItem.id), {
                 foodImg: arrayUnion(url),
               });
             });
           });
-        }); */
+        }); 
 
         for(let i=0;i<8;i++){
           // console.log(e.target[i].value='');
@@ -275,7 +304,7 @@ function EditFoodForm(props) {
           })
         : console.log("done");
     }
-    console.log("hi nadeen", vaildition());
+    //console.log("hi nadeen", vaildition());
   };
 
   const vaildition = () => {
@@ -334,13 +363,13 @@ function EditFoodForm(props) {
                 {/* style={{,backgroundImage:`url(${imageForm1})`}} */}
                 {/* <img src={imageForm1} />  */}
 
-                <label htmlFor="file" className="file">
+                <label htmlFor="myimginediteform" className="file">
                   {/* <img src={Add} alt="" /> */}
                   <input
                     name="images"
                     style={{ display: "none" }}
                     type="file"
-                    id="file"
+                    id="myimginediteform"
                     disabled={selectedImages.length >= 3}
                     multiple="multiple"
                     onChange={(e) => changeData(e)}
@@ -381,7 +410,7 @@ function EditFoodForm(props) {
                       <button
                       name="btnremove"
                         className="btn bg-danger mt-2 "
-                        onClick={() => deleteHandler(index)}
+                        onClick={() => deleteHandler(ele,index)}
                       >
                         X
                       </button>

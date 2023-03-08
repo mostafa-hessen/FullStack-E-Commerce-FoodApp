@@ -8,81 +8,51 @@ import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import HomeForCookerAfterLogin from "./HomeForCookerAfterLogin/HomeForCookerAfterLogin";
 import SignPage from "./LoginSignupPopUp/SignPage";
-import React, { useEffect } from "react";
-//import Login from "./LoginSignupPopUp/tab/Login/Login";
-import PrivateRoute from "./PrivateRoute";
-import { AuthProvider } from "./contexts/AuthContext";
+// import { useContext, useEffect } from "react";
+
+// import { Redirect } from 'react-router-dom'
+// import { AuthContext} from "./contexts/AuthContext";
 
 
-/* 
-const fakeAuth={
-  isAuthenticated:false,
-  authenticate(cb){
-    this.isAuthenticated=true
-    setTimeout(cb,100)
-  },
-  signout(cb){
-    this.isAuthenticated=false
-    setTimeout(cb,100)
-  }
- } 
- function PrivatRoute({children,...rest}){
-  return(
-    <Route {...rest} 
-    render={()=>{
-      return fakeAuth.isAuthenticated === true
-      ? children 
-      :<Redirect to='/'></Redirect>
-    }}
-    />
-   /*    {children}
-    </Route> 
-  )
-   }
 
-
-   function Log(){
-    const [redirectToReferrer,
-      setRedirecteToReferrer]=
-      React.useState(false)
-
-      const login =()=>{
-        fakeAuth.authenticate(()=>{
-          setRedirecteToReferrer(true)
-        })
-      }
-if(redirectToReferrer === true){
-  return <Redirect to='/HomeCooker'></Redirect>
-}
- return(<>
- <Login log={login}></Login>
- </>)
-   } */
 function  App() {
   //let authFromSessionUser = setTimeout(sessionStorage.getItem('authorizeduser')?JSON.parse(sessionStorage.getItem('authorizeduser')):false,400)
  // let authFromSessionCooker = setTimeout(sessionStorage.getItem('authorizedcook')?JSON.parse(sessionStorage.getItem('authorizedcook')):false,400)
- 
 
- return (
+// const { currentUser } = useContext(AuthContext);
+
+//  const ProtectedRoute = ({ children }) => {
+  // if (!currentUser) {
+  //   return <Redirect to = '/'/>;
+  // }
+
+//   return children
+// }; 
+
+  return (
     <div className="App">
     <BrowserRouter>
     <AuthProvider>
       <Switch>
-          <Route exact path="/">
+          <Route exact path="/" component={() =>
             <Homebeforelogin />
-          </Route>
+          }/>
 
-          {/* <Route path="/HomeUser" >
-          <HomeAfterLoginForUser  authorized={setTimeout(sessionStorage.getItem('authorizeduser')?JSON.parse(sessionStorage.getItem('authorizeduser')):false,400)}/>
-          </Route> */}
+          <Route path="/HomeUser" component={() =>
+          // <ProtectedRoute>
+              <HomeAfterLoginForUser/>
+          // </ProtectedRoute>
+          }/>
 
-         <PrivateRoute path="/HomeCooker">
-            <HomeForCookerAfterLogin/>
-         </PrivateRoute>
+         <Route path="/HomeCooker" component={() =>
+        //  <ProtectedRoute>
+             <HomeForCookerAfterLogin />
+          // </ProtectedRoute>
+          }/>
 
-          <Route path="/SignPage">
+         {/* <Route path="/SignPage">
            <SignPage/>
-          </Route>
+        </Route>*/}
           
         </Switch>
         </AuthProvider>

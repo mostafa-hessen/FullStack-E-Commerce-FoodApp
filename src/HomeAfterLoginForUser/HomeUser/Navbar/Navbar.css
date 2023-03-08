@@ -1,8 +1,8 @@
- nav{
+ nav.navbaruser{
  max-height: 100%;
  
  }
-nav .ul{
+nav.navbaruser .ul{
     list-style:none;
      max-width:400px;
      min-height:100px; 
@@ -10,10 +10,11 @@ nav .ul{
      /* background-color:red  ; */
      padding:0px;
      text-align: right;
+     margin-top: 30px;
      
      
    }
-   nav .icon{
+   nav.navbaruser .icon{
    width:40px;
      height:40px;
      background-color:green;
@@ -25,7 +26,7 @@ nav .ul{
      justify-content: center;
      align-items: center;
    }
-   nav .image{
+   nav.navbaruser .image{
      
      background-color:white;
      padding:8px;
@@ -40,7 +41,7 @@ nav .ul{
    
    }
    
-   nav .image img{
+   nav.navbaruser .image img{
      width:100%;
      border-radius:15px;
      display: block;
@@ -48,18 +49,28 @@ nav .ul{
      
    }
    
-   nav .ul li  {
+   nav.navbaruser .ul li  {
      padding:10px;
      display: flex;
      justify-content: space-between;
      direction: rtl;
      align-items: center;
      text-align: right;
+     margin-bottom: 20px;
      
    }
-   nav .ul li span{
+   nav.navbaruser .ul li span{
     text-align: right;
     display: block;
     margin-left: auto;
     margin-right: 15px;
    }
+
+   nav.navbaruser li a {
+    font-size: 17px;
+    text-decoration: none;
+    color: black !important;
+    display: flex;
+    align-items: center;
+    /* margin-left: auto; */
+  }
