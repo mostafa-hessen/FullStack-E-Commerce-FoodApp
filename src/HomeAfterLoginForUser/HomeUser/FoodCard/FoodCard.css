@@ -5,7 +5,7 @@
       margin: 95px auto 65px;
       background-color: rgb(255, 255, 255);
       width: 100%;
-      min-height: 250px;
+      min-height: 220px;
       padding: 15px;
  
   
@@ -15,9 +15,10 @@
       display: flex;
       flex-direction: column;
       
-      justify-content: space-between;
+      justify-content: flex-end;
       transition: all 2s;
-
+      position: relative;
+/* padding-top: 40px; */
 
   }
   .FoodCardForUser .box .boxDetails{
@@ -58,13 +59,20 @@
   }
   .FoodCardForUser .boximg{
     margin: auto;
-    margin-top: -40%;
+    /*margin-top: -40%;
+    */position: absolute;
     transition: all 2s;
     cursor: pointer;
-    width:70%;
-    height: 100px;
-
-  }
+    /*width:70%;
+    */width:110px;
+    height: 110px;
+    top: -34%;
+    /* transform:translateX(50%) !importnt ;
+    -webkit-transform:translateX(50%) !importnt ;
+    -moz-transform:translateX(50%) !importnt ;
+    -ms-transform:translateX(50%) !importnt ;
+    -o-transform:translateX(50%) !importnt ; */
+}
    .FoodCardForUser .box img{
     
         /* width: 70%;
@@ -82,8 +90,10 @@
   }
     @media (min-width : 590px) and (max-width:768px) { 
       .boxImg  {
-         width: 40% !important;
-         margin-top: -30%;
+         /* width: 40% !important; */
+         /* margin-top: -30%; */
+         width:150px !important;
+    height: 150px !important;
         
       }
       

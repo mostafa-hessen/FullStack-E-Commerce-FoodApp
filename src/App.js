@@ -39,7 +39,7 @@ function  App() {
 
           <Route path="/HomeUser" component={() =>
           // <ProtectedRoute>
-          <HomeAfterLoginForUser/>
+              <HomeAfterLoginForUser/>
           // </ProtectedRoute>
           }/>
 

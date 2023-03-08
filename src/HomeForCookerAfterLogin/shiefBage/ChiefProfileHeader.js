@@ -38,7 +38,7 @@ function HeaderComponent(props) {
         <div className='col-lg-3 col-md-4 col-5  ' dir='rtl' >
             {/* <h5 className='col-12'>{user.displayName.split('@')[0]} </h5> */}
            <h5 className='col-12'>{props.Name} </h5> 
-            <p className='col-12'>{props.typeofworkcooker}<span><MdFastfood></MdFastfood></span></p>
+            <p className='col-12' style={{wordBreak:"break-word"}}>{props.typeofworkcooker?props.typeofworkcooker:"اكتب تخصصك هنا"}<span><MdFastfood></MdFastfood></span></p>
           </div>
           <div className='col-lg-2 col-md-3 col-4 '>
 
