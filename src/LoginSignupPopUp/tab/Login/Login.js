@@ -3,10 +3,12 @@ import {   useHistory} from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
-
+import { onAuthStateChanged } from "firebase/auth";
 
 function Login(){
   const [err, setErr] = useState(false);
+  const [currentUser, setCurrentUser] = useState()
+  const [loading, setLoading] = useState(true)
   const navigate = useHistory();
 
   const handleSubmit = async (e) => {
@@ -23,6 +25,11 @@ function Login(){
       console.log(x)
 
      x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker")
+     auth.onAuthStateChanged( user => { 
+      setCurrentUser(user)
+      console.log(user);
+      setLoading(false)});
+     
 
     } catch (err) {
       console.log(err);
@@ -39,7 +46,7 @@ return(
           <input type="email" placeholder="أدخل البريد الالكتروني" />
           <input type="password" placeholder="أدخل كلمه السر " />
           {err && <span style={{color:'red',direction :'rtl'}}>ادخل البريد الالكتروني او الرقم السر صحيحا </span>}
-          <button>تسجيل الدخول</button>
+          <button  >تسجيل الدخول</button>
          
         </form>
         {/* <p>You don't have an account? <a href="/register">Register</a></p> */}

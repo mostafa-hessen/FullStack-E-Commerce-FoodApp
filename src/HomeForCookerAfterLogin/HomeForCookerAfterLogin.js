@@ -2,10 +2,10 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import Main from "../Component/Main/Main";
 import "./HomeForCookerAfterLogin.css" 
-function HomeForCookerAfterLogin({authorized}) {
-  if(!authorized){
+function HomeForCookerAfterLogin() {
+ /*  if(!authorized){
     return <Redirect to = '/'/>
-  }
+  } */
 
   return (
     <div className="HomeForCookerAfterLogin">
