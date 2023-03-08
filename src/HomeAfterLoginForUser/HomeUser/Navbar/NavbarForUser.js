@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 function Navbar() {
 
   return (
-      <nav className="d-flex flex-column justify-content-between">
+      <nav className="d-flex flex-column justify-content-between navbaruser">
         <div>
           <div class="image">
             <img src="https://via.placeholder.com/50/09f/fff.png " />

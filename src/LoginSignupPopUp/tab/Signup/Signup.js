@@ -20,8 +20,12 @@ export default function Signup() {
       /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     email: /^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,
     password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/,
+    // address:
+    //   /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     address:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
+    /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,
+    
+
     phone: /^01[0125][0-9]{8}$/,
   };
   const [show, setShow] = useState(false);
@@ -480,7 +484,7 @@ export default function Signup() {
             onChange={(e) => changeData(e)}
             required
           >
-           <option value="" >اختر نوع حسابك</option>
+           <option value=""   hidden >اختر نوع حسابك</option>
 
             <option value="user">عميل</option>
             <option value="cook">طباخ</option>

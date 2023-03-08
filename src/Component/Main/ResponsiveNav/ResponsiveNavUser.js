@@ -25,7 +25,7 @@ function ResponsiveNavUser() {
   const logOut=()=>{
     
     navigate.push('/')
-    // localStorage.removeItem("user")
+    localStorage.removeItem("user")
   }
   return (
     <>

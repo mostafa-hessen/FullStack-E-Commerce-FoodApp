@@ -18,29 +18,27 @@ function Main(props) {
       className="row homNavContainer  rounded-3 "
       style={{ backgroundColor: "rgb(155, 193, 155)" }}
     >
-      <BrowserRouter>
-        <Switch>
-          {/* <Route exact path="/HomeUser/" component={Home}/>
-                
-                <Route exact path="/HomeUser/Home"  component={Home}/>
-             
-            </Switch> */}
+            {console.log(props)}
+
+      {/* <BrowserRouter> */}
+
+        {/* <Switch> */}
+      
           <div
             className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4"
             style={{ backgroundColor: "#fff", overflowY: "scroll" }}
           >
             {/* <ResponsiveNav /> */}
             {/* <Route  path="/" component={Homebeforelogin}></Route> */}
-          {props.kindOfuser == "user" ? <ResponsiveNavUser />:  <ResponsiveNavCooker />}
-
-
+            {console.log(props)}
+            {props.kindOfuser == "user" ? <ResponsiveNavUser />:  <ResponsiveNavCooker />}
             {props.kindOfuser == "user" ? <UserRoutes /> : <CookerRoutes />}
           </div>
-        </Switch>
+        {/* </Switch> */}
         <div className="col-2 d-none d-lg-flex">
           {props.kindOfuser == "user" ? <NavbarForUser /> : <NavbarForCooker />}
         </div>
-      </BrowserRouter>
+   {/* </BrowserRouter> */}
     </div>
   );
 }

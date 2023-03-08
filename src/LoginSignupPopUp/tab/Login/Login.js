@@ -19,12 +19,14 @@ JSON.parse(localStorage.getItem("user"))
     try {
       const res= await signInWithEmailAndPassword(auth, displayEmail, displayPassword);
       let y= res.user.displayName
-      await console.log(res);
-       let x=res.user&& user.displayName.split('@')[1]
+      // await console.log(res.user.uid,y);
+       let x=res.user&&res.user.displayName.split('@')[1]
+       localStorage.setItem("user",JSON.stringify(res.user))
     //   sessionStorage.setItem(`authorized${x}`,true)
-      console.log(x)
+    
+      // console.log(x)
 
-      res.user&&(x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker"))
+     await res.user&&(x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker"))
 
     } catch (err) {
       console.log(err);

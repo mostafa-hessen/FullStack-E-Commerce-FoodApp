@@ -23,8 +23,8 @@ const navigate=useHistory()
   };
   const logOut=()=>{
     
-    // navigate.push('./')
-    // localStorage.removeItem("user")
+    navigate.push('/')
+    localStorage.removeItem("user")
   }
   return (
     <>
@@ -62,7 +62,7 @@ const navigate=useHistory()
             
           </li> */}
           <li className={`${fade}`}>
-          <Link to='/'  onClick={() => UnfadeNav()}>طلباتي</Link  >
+          <Link to='/HomeCooker/Orders'  onClick={() => UnfadeNav()}>طلباتي</Link  >
           <img
               src={cartImg}
             />
@@ -76,7 +76,7 @@ const navigate=useHistory()
           </li> */}
 
           <li className={`${fade}`}>
-            <Link to="/" onClick={()=>logOut()}> الخروج</Link  >
+            <Link  onClick={()=>logOut()}> الخروج</Link  >
             <img
               src={signOuttImg}
             />

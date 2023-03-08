@@ -5,7 +5,8 @@ import {TbListDetails} from "react-icons/tb";
 import './ChiefBage.css'
 import PopUpEditCheifPerson from './EditChiefPersonalForm/PopUpEditCheifPerson';
 function InformationComponent(props) {
-  return (
+    const arabic ={pm:"مَساءً", am:"صَبَاحًا"}
+    return (
     <>
      <div className='container'>
  
@@ -19,7 +20,14 @@ function InformationComponent(props) {
                 </div>
                 
                 <div className='col-6 '>
-                <h5>    {`  ${props.alldata?.amcooker}   ${props.alldata?.amcooker}  ${props.alldata?.pmcookerselect} ${props.alldata?.amcookerselect} ` }</h5>
+                    {
+                        props.alldata.amcookerselect?
+                        <p className=' text-center'>من <span style={{color:'black'}}>{props.alldata?.amcooker} {arabic[`${props.alldata?.amcookerselect}`]}  </span>الــي <span style={{color:'black'}}> {props.alldata?.pmcooker} { arabic[`${props.alldata?.pmcookerselect}`]}</span></p>
+                        :
+                        <p className=' text-center'> <span style={{color:'black'}}> أدخل المواعيد المتاحه لك  </span> من والي</p>
+
+                    }
+                {/* <h5>    {`  ${props.alldata?.amcooker}   ${props.alldata?.amcooker}  ${props.alldata?.pmcookerselect} ${props.alldata?.amcookerselect} ` }</h5> */}
                 </div>
                
             </div>
@@ -50,24 +58,27 @@ function InformationComponent(props) {
                 </div>
                 <div className='col-1'>
                 </div>
-            </div>
-            </div>
+            </div> 
+        </div>
+                  
 
             <div className='col-lg-8 col-md-9 col-12   info mt-4'>
+
             <div dir='rtl' className='row justify-content-around align-items-center py-2'>
                 <div className='col-6'>
                 <h4 className='infosize'><span><TbListDetails></TbListDetails></span> عن الطباخ</h4>
                 </div>
                 
                 <div className='col-6 '>
-                <h5 >{props.alldata?.detailscooker}  </h5>
+                <h5 style={{wordBreak:"break-word"}} >{props.alldata?.detailscooker}  </h5>
                 </div>
                
             </div>
             </div>
-        </div>
+     </div>
      </div>
     </>
+    
   )
 }
 
