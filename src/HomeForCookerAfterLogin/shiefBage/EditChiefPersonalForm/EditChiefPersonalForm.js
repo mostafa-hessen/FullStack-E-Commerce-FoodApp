@@ -19,7 +19,7 @@ export default function (props) {
   const textarea = useRef('')
   let rgex = {
     namecooker:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
+      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{3,20}$/i,
     typeofworkcooker:
       /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{4,200}$/i,
     detailscooker:
@@ -187,11 +187,20 @@ export default function (props) {
   };
   const onSubmitefunction = (e) => {
     e.preventDefault()
-    console.log(vaildition() + "done")
+    console.log( vaildition()  ,
+    rgex["namecooker"].test(data.namecooker) &&
+    rgex["detailscooker"].test(data.detailscooker) &&
+    rgex["phonecooker"].test(data.phonecooker) &&
+    rgex["typeofworkcooker"].test(data.typeofworkcooker) &&
+    rgex["addresscooker"].test(data.addresscooker) &&
+    data.amcookerselect.length !== 0 &&
+    data.pmcookerselect.length !== 0 &&
+    data.amcooker >0 ||data.amcooker<13 &&
+    data.pmcooker >0 || data.pmcooker<13, data.namecooker.length>3 )
 
     if (vaildition()) {
       try {
-        //
+    
         updateDoc(doc(db, "cookers", `${JSON.parse(localStorage.getItem("user")).uid}`), {
 
           fullName: data.namecooker,
@@ -296,8 +305,12 @@ export default function (props) {
       rgex["addresscooker"].test(data.addresscooker) &&
       data.amcookerselect.length !== 0 &&
       data.pmcookerselect.length !== 0 &&
-      data.amcooker >0 ||data.amcooker<13 &&
-      data.pmcooker >0 || data.pmcooker<13 
+      data.amcooker >0 
+      // ||data.amcooker<13
+       &&
+      data.pmcooker >0 
+    //  || data.pmcooker<13 &&
+      // data.namecooker.length>3
 
 
     ) {

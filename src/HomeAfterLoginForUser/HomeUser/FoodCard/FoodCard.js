@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 function FoodCard(){
     const [allfood, setallFood] = useState([])
     const [editedFood, setEDitedFood] = useState([])
-    const myFilterValue=useSelector((state)=>state)
+    const myFilterValue=useSelector((state)=>state.FilterItem.currentFilter    )
 
     useEffect(() => {
    
@@ -28,10 +28,12 @@ function FoodCard(){
         }, [])
 
 
+        console.log(myFilterValue);
+
 
         useEffect(()=>{
    
-          setEDitedFood(allfood&&myFilterValue?.currentFilter!="all"?allfood.filter(ele=>ele.foodCateogry==myFilterValue.currentFilter):allfood)
+          setEDitedFood(allfood&&myFilterValue!="all"?allfood.filter(ele=>ele.foodCateogry==myFilterValue):allfood)
        
 
         },[myFilterValue])
