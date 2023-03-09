@@ -120,7 +120,7 @@ export default function CardFood() {
                                             <div className='boxDetails'>
                                                 <h4> {CheifItem.foodName}</h4> 
                                                  <h6 style={{color:'orange'}} className="p-content">{CheifItem.foodDiscription}</h6>
-                                                <p style={{ fontWeight: 'bold' }}>{CheifItem.bigPrice}</p>
+                                                {/* <p style={{ fontWeight: 'bold' }}>{CheifItem.bigPrice} </p> */}
 
                                             </div>
                                            

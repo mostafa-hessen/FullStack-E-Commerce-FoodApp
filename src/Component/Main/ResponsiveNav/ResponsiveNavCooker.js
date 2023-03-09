@@ -9,9 +9,14 @@ import avatarImg from '../../../assets/animatedIcon/21-avatar-outline.gif'
 import avatarChefImg from '../../../assets/animatedIcon/268-avatar-man-outline.gif'
 import "./ResponsiveNav.css";
 import { Link, useHistory } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { authStatuesForCooker } from "../../Redux/action";
+import { auth } from "../../../firebase";
 function ResponsiveNavCooker() {
   const [open, setopen] = useState("");
   const [fade, setfade] = useState("");
+  const dispatch =useDispatch()
   const fadeNav = () => {
     setopen("open");
     setfade("fade");
@@ -21,11 +26,19 @@ const navigate=useHistory()
     setopen("");
     setfade("");
   };
-  const logOut=()=>{
+ 
     
-    navigate.push('/')
-    localStorage.removeItem("user")
-  }
+    const logOut=()=>{
+      signOut(auth).then(() => {
+        dispatch(authStatuesForCooker(false))
+        sessionStorage.removeItem("authCooker")
+      
+      }).catch((error) => {
+        // An error happened.
+        alert(error)
+      });
+    }
+  
   return (
     <>
       <nav className="d-lg-none mt-2">

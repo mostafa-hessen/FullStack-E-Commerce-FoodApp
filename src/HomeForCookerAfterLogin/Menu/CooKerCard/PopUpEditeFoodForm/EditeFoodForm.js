@@ -203,7 +203,7 @@ function EditFoodForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
+    console.log(e.target.name);
     console.log(myimages +"myimages")
     if (vaildition()) {
       try {
@@ -408,7 +408,7 @@ function EditFoodForm(props) {
                         <img src={ele} key={index} />
                       </div>
                       <button
-                      name="btnremove"
+                         name="btnremove"
                         className="btn bg-danger mt-2 "
                         onClick={() => deleteHandler(ele,index)}
                       >
@@ -477,7 +477,7 @@ function EditFoodForm(props) {
                 errorMessage.bigPriceErr}
             </small>
 
-            <button>حـــــــفـــــــظ </button>
+            <button name="save">حـــــــفـــــــظ </button>
             {/* {loading && "Uploading and compressing the image please wait..."} */}
             {/* {err && <span>Something went wrong</span>} */}
           </form>

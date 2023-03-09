@@ -9,9 +9,15 @@ import avatarImg from "../../../assets/animatedIcon/21-avatar-outline.gif";
 import avatarChefImg from "../../../assets/animatedIcon/268-avatar-man-outline.gif";
 import "./ResponsiveNav.css";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authStatues, authStatuesForUser } from "../../Redux/action";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase";
 function ResponsiveNavUser() {
   const [open, setopen] = useState("");
   const [fade, setfade] = useState("");
+  const dispatch=useDispatch()
+
   const fadeNav = () => {
     setopen("open");
     setfade("fade");
@@ -23,9 +29,14 @@ function ResponsiveNavUser() {
     setfade("");
   };
   const logOut=()=>{
+    signOut(auth).then(() => {
+      dispatch(authStatuesForUser(false))
+      sessionStorage.removeItem("authUser")
     
-    navigate.push('/')
-    localStorage.removeItem("user")
+    }).catch((error) => {
+      // An error happened.
+      alert(error)
+    });
   }
   return (
     <>
