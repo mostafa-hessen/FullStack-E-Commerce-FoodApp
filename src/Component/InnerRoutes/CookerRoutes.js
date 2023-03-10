@@ -5,8 +5,7 @@ import Orders from "../../HomeForCookerAfterLogin/Orders/Orders";
 import ChiefHome from "../../HomeForCookerAfterLogin/shiefBage/chiefHome";
 function CookerRoutes() {
     return (
-        <BrowserRouter>
-            <Switch>
+     <>
                 <Route exact path="/HomeCooker/" component={ChiefHome}/>
 
                 <Route exact path="/HomeCooker/Home" component={ChiefHome}/>
@@ -16,8 +15,7 @@ function CookerRoutes() {
                 <Route exact path="/HomeCooker/Orders" component={Orders}/>
                 <Route exact path="/HomeCooker/FoodDetailsCooker/:id" component={FoodDetailsCooker}/>
                 
-            </Switch>
-        </BrowserRouter>
+        </>
     )
 }
 export default CookerRoutes;

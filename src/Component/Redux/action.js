@@ -4,3 +4,20 @@ export const filter=(payload)=>{
         payload
     }
 }
+
+
+export const authStatuesForUser=(payload)=>{
+    return {
+        type: "AUTH-USER",
+        payload
+    }
+}
+
+
+
+export const authStatuesForCooker=(payload)=>{
+    return {
+        type: "AUTH-COOKER",
+        payload
+    }
+}

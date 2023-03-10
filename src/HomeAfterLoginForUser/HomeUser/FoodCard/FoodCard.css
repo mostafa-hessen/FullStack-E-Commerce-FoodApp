@@ -5,7 +5,7 @@
       margin: 95px auto 65px;
       background-color: rgb(255, 255, 255);
       width: 100%;
-      min-height: 250px;
+      min-height: 220px;
       padding: 15px;
  
   
@@ -15,9 +15,10 @@
       display: flex;
       flex-direction: column;
       
-      justify-content: space-between;
+      justify-content: flex-end;
       transition: all 2s;
-
+      position: relative;
+/* padding-top: 40px; */
 
   }
   .FoodCardForUser .box .boxDetails{
@@ -56,15 +57,7 @@
     /*padding: 0px 10px;*/
   
   }
-  .FoodCardForUser .boximg{
-    margin: auto;
-    margin-top: -40%;
-    transition: all 2s;
-    cursor: pointer;
-    width:70%;
-    height: 100px;
 
-  }
    .FoodCardForUser .box img{
     
         /* width: 70%;
@@ -80,11 +73,77 @@
     transform: scale(1.1);
     
   }
-    @media (min-width : 590px) and (max-width:768px) { 
-      .boxImg  {
-         width: 40% !important;
-         margin-top: -30%;
-        
-      }
+   
+
+
+
+    @media (min-width:993px) {
+      .FoodCardForUser .boximg{
+        margin: auto;
+        transition: all 2s;
+        cursor: pointer;
+        width:110px;
+        height: 110px;
+         margin-top: -40%;
+    
+     
+    }
       
     }
+    /* @media (min-width : 590px) and (max-width:768px) { 
+      .FoodCardForUser   .boxImg  {
+            width:150px !important;
+            height: 150px !important;
+           
+         }
+         
+       } */
+
+    @media(max-width:992px) { 
+      .FoodCardForUser .boximg{
+        margin-right: auto;
+        transition: all 2s;
+        cursor: pointer;
+        width:130px;
+        height: 130px;
+        margin-top: -24%;
+        -webkit-transition: all 2s;
+        -moz-transition: all 2s;
+        -ms-transition: all 2s;
+        -o-transition: all 2s;
+}
+        .S{
+          background-color: red;
+        }
+       }
+
+       @media(max-width:490px) { 
+        .FoodCardForUser .boximg{
+          margin: auto;
+          transition: all 2s;
+          cursor: pointer;
+          width:135px;
+          height: 135px;
+           margin-top: -33%;
+      
+       
+      }
+          .S{
+            background-color: red;
+          }
+         }
+
+       /* @media (min-width : 590px) and (max-width:768px) { 
+        .FoodCardForUser .boximg{
+          margin: auto;
+          transition: all 2s;
+          cursor: pointer;
+          width:110px;
+          height: 110px;
+           margin-top: -20%;
+      
+       
+      }
+        
+      } */
+  

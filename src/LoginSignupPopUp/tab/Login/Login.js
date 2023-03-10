@@ -1,12 +1,15 @@
 import './Login.css'
 import {useHistory} from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
-
+import { useDispatch } from 'react-redux';
+import { AuthStatues } from '../../../Component/Redux/reducer';
+import { authStatuesForCooker, authStatuesForUser, authStatuesForUSer } from '../../../Component/Redux/action';
 
 function Login(){
   const [err, setErr] = useState(false);
+  const dispatch=useDispatch()
   const navigate = useHistory();
 let user=
 JSON.parse(localStorage.getItem("user"))
@@ -19,12 +22,40 @@ JSON.parse(localStorage.getItem("user"))
     try {
       const res= await signInWithEmailAndPassword(auth, displayEmail, displayPassword);
       let y= res.user.displayName
-      await console.log(res);
-       let x=res.user&& user.displayName.split('@')[1]
+      // await console.log(res.user.uid,y);
+       let x=res.user&&res.user.displayName.split('@')[1]
+       localStorage.setItem("user",JSON.stringify(res.user))
     //   sessionStorage.setItem(`authorized${x}`,true)
-      console.log(x)
+    
+      console.log(res.user)
 
-      res.user&&(x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker"))
+
+
+      onAuthStateChanged(auth, (user) => {
+      
+        if (user.displayName.split('@')[1]=="user") {
+          console.log(user);
+
+          dispatch(authStatuesForUser(true))
+          sessionStorage.setItem('authUser',true)
+          sessionStorage.removeItem('authCooker')
+                
+        } 
+
+
+
+        else if(user.displayName.split('@')[1]=="cook"){
+          dispatch(authStatuesForCooker(true))
+          sessionStorage.setItem('authCooker',true)
+          sessionStorage.removeItem('authUser')
+        }
+        else {
+          console.log("else",user);
+        }
+      }
+      )
+      
+     await res.user&&(x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker"))
 
     } catch (err) {
       console.log(err);

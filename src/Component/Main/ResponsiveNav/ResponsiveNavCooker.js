@@ -8,18 +8,37 @@ import cartImg from '../../../assets/animatedIcon/146-basket-trolley-shopping-ca
 import avatarImg from '../../../assets/animatedIcon/21-avatar-outline.gif'
 import avatarChefImg from '../../../assets/animatedIcon/268-avatar-man-outline.gif'
 import "./ResponsiveNav.css";
-function ResponsiveNav() {
+import { Link, useHistory } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { authStatuesForCooker } from "../../Redux/action";
+import { auth } from "../../../firebase";
+function ResponsiveNavCooker() {
   const [open, setopen] = useState("");
   const [fade, setfade] = useState("");
+  const dispatch =useDispatch()
   const fadeNav = () => {
     setopen("open");
     setfade("fade");
   };
-
+const navigate=useHistory()
   const UnfadeNav = () => {
     setopen("");
     setfade("");
   };
+ 
+    
+    const logOut=()=>{
+      signOut(auth).then(() => {
+        dispatch(authStatuesForCooker(false))
+        sessionStorage.removeItem("authCooker")
+      
+      }).catch((error) => {
+        // An error happened.
+        alert(error)
+      });
+    }
+  
   return (
     <>
       <nav className="d-lg-none mt-2">
@@ -36,41 +55,41 @@ function ResponsiveNav() {
 
           <li className={`${fade}`}>
            
-            <a href="#">الرئيسيه</a>
+          <Link to='/HomeCooker/Home'  onClick={() => UnfadeNav()}>الرئيسيه</Link  >
             <img
               src={homeImg}
             />
           
           </li>
           <li className={`${fade}`}>
-            <a href="#">المفضله</a>
+          <Link to='/HomeCooker/Menue'  onClick={() => UnfadeNav()}>اكلاتي</Link  >
             <img
               src={favouriteImg}
             />
           </li>
-          <li className={`${fade}`}>
-            <a href="#">السله</a>
+          {/* <li className={`${fade}`}>
+            <Link to="#">السله</Link  >
             <img
               src={cartImg}
             />
             
-          </li>
+          </li> */}
           <li className={`${fade}`}>
-            <a href="#">الشيف</a>
-            <img
-              src={avatarChefImg}
+          <Link to='/HomeCooker/Orders'  onClick={() => UnfadeNav()}>طلباتي</Link  >
+          <img
+              src={cartImg}
             />
           </li>
-          <li className={`${fade}`}>
-            <a href="#">صفحتي</a>
+          {/* <li className={`${fade}`}>
+            <Link to="#">صفحتي</Link  >
             <img
               src={avatarImg}
             />
             
-          </li>
+          </li> */}
 
           <li className={`${fade}`}>
-            <a href="#"> الخروج</a>
+            <Link  onClick={()=>logOut()}> الخروج</Link  >
             <img
               src={signOuttImg}
             />
@@ -81,4 +100,4 @@ function ResponsiveNav() {
   );
 }
 
-export default ResponsiveNav;
+export default ResponsiveNavCooker;

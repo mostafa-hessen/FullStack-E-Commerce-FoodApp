@@ -19,25 +19,25 @@ export default function (props) {
   const textarea = useRef('')
   let rgex = {
     namecooker:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
+      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{3,20}$/i,
     typeofworkcooker:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{5,200}$/i,
+      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{4,200}$/i,
     detailscooker:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{20,200}$/i,
+      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{28,200}$/i,
     addresscooker:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
+      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,
     phonecooker: /^01[0125][0-9]{8}$/,
   };
   const [data, setData] = useState({
     namecooker: props.cookerpersonal.fullName,
-    typeofworkcooker: props.cookerpersonal.typeofworkcooker ? props.cookerpersonal.typeofworkcooker : "طباخ",
-    detailscooker:props.cookerpersonal.detailscooker ? props.cookerpersonal.detailscooker : "معلومات عني",
+    typeofworkcooker: props.cookerpersonal.typeofworkcooker && props.cookerpersonal.typeofworkcooker ,
+    detailscooker:props.cookerpersonal.detailscooker ? props.cookerpersonal.detailscooker :"",
     addresscooker: props.cookerpersonal.address,
     phonecooker: props.cookerpersonal.phone,
-    amcooker: props.cookerpersonal.amcooker ? props.cookerpersonal.amcooker : "3",
-    pmcooker: props.cookerpersonal.pmcooker ? props.cookerpersonal.pmcooker : "11",
-    amcookerselect: props.cookerpersonal.amcookerselect ? props.cookerpersonal.amcookerselect : "am",
-    pmcookerselect: props.cookerpersonal.pmcookerselect ? props.cookerpersonal.pmcookerselect : "pm",
+    amcooker: props.cookerpersonal.amcooker ? props.cookerpersonal.amcooker : "",
+    pmcooker: props.cookerpersonal.pmcooker ? props.cookerpersonal.pmcooker : "",
+    amcookerselect: props.cookerpersonal.amcookerselect ? props.cookerpersonal.amcookerselect : "",
+    pmcookerselect: props.cookerpersonal.pmcookerselect ? props.cookerpersonal.pmcookerselect : "",
   });
   const [errorMessage, setMessage] = useState({
     namecookerErr: "",
@@ -187,11 +187,20 @@ export default function (props) {
   };
   const onSubmitefunction = (e) => {
     e.preventDefault()
-    console.log(vaildition() + "done")
+    console.log( vaildition()  ,
+    rgex["namecooker"].test(data.namecooker) &&
+    rgex["detailscooker"].test(data.detailscooker) &&
+    rgex["phonecooker"].test(data.phonecooker) &&
+    rgex["typeofworkcooker"].test(data.typeofworkcooker) &&
+    rgex["addresscooker"].test(data.addresscooker) &&
+    data.amcookerselect.length !== 0 &&
+    data.pmcookerselect.length !== 0 &&
+    data.amcooker >0 ||data.amcooker<13 &&
+    data.pmcooker >0 || data.pmcooker<13, data.namecooker.length>3 )
 
     if (vaildition()) {
       try {
-        //
+    
         updateDoc(doc(db, "cookers", `${JSON.parse(localStorage.getItem("user")).uid}`), {
 
           fullName: data.namecooker,
@@ -240,11 +249,16 @@ export default function (props) {
     }
     else {
       console.log("notvalid");
-      console.log(data.foodName == "");
+      console.log(data);
       data.namecooker == ""
         ? setMessage({
           ...errorMessage,
           namecookerErr: "يجب ان تدخل الاسم ",
+        })
+        : data.typeofworkcooker == undefined
+        ? setMessage({
+          ...errorMessage,
+          typeofworkcookerErr: "يجب ان تدخل تخصصك ",
         })
         : data.addresscooker == ""
           ? setMessage({
@@ -291,8 +305,12 @@ export default function (props) {
       rgex["addresscooker"].test(data.addresscooker) &&
       data.amcookerselect.length !== 0 &&
       data.pmcookerselect.length !== 0 &&
-      data.amcooker >0 && data.amcooker<13 &&
-      data.pmcooker >0 && data.pmcooker<13 
+      data.amcooker >0 
+      // ||data.amcooker<13
+       &&
+      data.pmcooker >0 
+    //  || data.pmcooker<13 &&
+      // data.namecooker.length>3
 
 
     ) {
@@ -306,7 +324,7 @@ export default function (props) {
   return (
 
     <div className="ChiefPersonal">
-      {console.log(props.cookerpersonal)}
+      {/* {console.log(props.cookerpersonal)} */}
       <div className="formContainer">
         <div className="formWrapper">
           <span className="logo">تعديل معلوماتي الشخصية <MdEdit style={{ fontSize: 30 }}></MdEdit></span>
@@ -325,10 +343,11 @@ export default function (props) {
 
             <input
               name="typeofworkcooker"
-              defaultValue={data.typeofworkcooker}
               type="text"
               placeholder=" ماذا تقدم"
-              onChange={(e) => changeData(e)}
+              // placeholder={`${data.typeofworkcooker}`}
+              defaultValue={`${props.cookerpersonal.typeofworkcooker?data.typeofworkcooker:""}`}
+                            onChange={(e) => changeData(e)}
             />
             <small className="text-danger">{errorMessage.typeofworkcookerErr}</small>
 
@@ -357,7 +376,7 @@ export default function (props) {
               ref={textarea}
               placeholder=" نبذة عنك وعن ما تقدمه"
             >
-              {data.detailscooker}
+              {props.cookerpersonal.detailscooker&&data.detailscooker}
             </textarea>
             <small className="text-danger">
               {errorMessage.detailscookerErr}
