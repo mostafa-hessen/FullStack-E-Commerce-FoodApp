@@ -3,14 +3,14 @@ import {useHistory} from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
-<<<<<<< HEAD
+
 import { onAuthStateChanged } from "firebase/auth";
 
 function Login(){
   const [err, setErr] = useState(false);
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
-=======
+
 import { useDispatch } from 'react-redux';
 import { AuthStatues } from '../../../Component/Redux/reducer';
 import { authStatuesForCooker, authStatuesForUser, authStatuesForUSer } from '../../../Component/Redux/action';
@@ -18,7 +18,7 @@ import { authStatuesForCooker, authStatuesForUser, authStatuesForUSer } from '..
 function Login(){
   const [err, setErr] = useState(false);
   const dispatch=useDispatch()
->>>>>>> b80a5cb9fdd58595f7bf03b189388e4257817552
+
   const navigate = useHistory();
 let user=
 JSON.parse(localStorage.getItem("user"))
@@ -91,5 +91,5 @@ return(
     </>
 )
 
-}
+}}
 export default Login
