@@ -146,6 +146,10 @@
 
   }
 
+
+  .nav-links.open {
+    margin: 0px !important;
+  }
 /* 
   
   .nav-links {

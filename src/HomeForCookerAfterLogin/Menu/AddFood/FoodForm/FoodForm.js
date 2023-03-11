@@ -197,6 +197,7 @@ function FoodForm() {
           timestamP: myserverTimestamp,
           userName: user.displayName,
           userid: user.uid,
+          foodId:x
           
         });
 

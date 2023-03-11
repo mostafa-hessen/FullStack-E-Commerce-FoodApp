@@ -18,11 +18,19 @@ import { useHistory } from "react-router-dom";
       </div>
     <div className='boxDetails'>
     <h4>   {props.element?.foodName} </h4>
-    <p className="p-content"> {props.element?.foodDiscription}</p>
+    <p className="p-content" style={{wordBreak:"break-word"}}> {props.element?.foodDiscription}</p>
     <p style={{fontWeight: 'bold'}}>EGP {props.element?.middlePrice}</p>
     </div>
     
-    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    {/* <a href="#"><i class="fas fa-shopping-cart"></i></a> */}
+    <a href="#">
+    <lord-icon
+    src="https://cdn.lordicon.com/udwhdpod.json"
+    trigger="hover"
+    // style="width:250px;height:250px"
+    >
+</lord-icon>
+</a>
 </div>
   )
 }

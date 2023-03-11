@@ -16,14 +16,14 @@
     -o-border-radius: 5px;
 }
 .homeContainer{
-  max-height :90vh !important;
+  max-height :96vh !important;
   
 
 }
 
 
   .homNavContainer{
-    padding: 30px ;
+    padding: 15px ;
     height: 96.5vh !important;
     
   }

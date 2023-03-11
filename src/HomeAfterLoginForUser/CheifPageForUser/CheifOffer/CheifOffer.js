@@ -22,8 +22,11 @@ export default function CheifOffer() {
             {
             Offers.map((item, index)=>{
                 return(
-                <Card key={index}  className=" mb-4 position-relative rounded-2 mx-2 offer-card">
-                    <Card.Img variant="top" src={item.img} className='rounded-2 offer-img'/>
+                <Card key={index}  className=" mb-4 position-relative rounded-4 overflow-hidden mx-2 offer-card">
+                        <div className=""  style={{height:"140px",width:"100%",overflow:"hidden"}} >
+                      {/* <Card.Img  style={{width:"100%",objectFit:"cover",objectPosition:"top",height:"100%"}} variant="top" src={item?.foodImg[0]} className='meu-img'/> */}
+                    <Card.Img variant="top" src={item?.img}  style={{width:"100%",objectFit:"cover",objectPosition:"top",height:"100%"}}   />
+                    </div>
                     <Card.Body>
                         <Card.Text style={{textAlign:'right'}}>
                           {item.offer}
