@@ -32,7 +32,7 @@ function  App() {
   return (
     <div className="App">
     <BrowserRouter>
-    <AuthProvider>
+  {/*   <AuthProvider> */}
       <Switch>
           <Route exact path="/" component={() =>
             <Homebeforelogin />
@@ -55,7 +55,7 @@ function  App() {
         </Route>*/}
           
         </Switch>
-        </AuthProvider>
+        {/* </AuthProvider> */}
       </BrowserRouter>
     </div>
   )
