@@ -1,9 +1,23 @@
 import "./Navbar.css";
 import Delivery from "../Delivery/Delivery";
 import { Link, useHistory } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase";
+import { useDispatch } from "react-redux";
+import { authStatuesForUser } from "../../../Component/Redux/action";
 
 function Navbar() {
-
+  const dispatch=useDispatch()
+  const logOut=()=>{
+    signOut(auth).then(() => {
+      dispatch(authStatuesForUser(false))
+      sessionStorage.removeItem("authUser")
+    
+    }).catch((error) => {
+      // An error happened.
+      alert(error)
+    });
+  }
   return (
       <nav className="d-flex flex-column justify-content-between navbaruser">
         <div>
@@ -37,6 +51,11 @@ function Navbar() {
               <Link to="/HomeUser/ChiefList">
               <i class="fa-solid fa-utensils icon"></i> <span>الطباخين</span>
                 </Link>
+            </li>
+
+            <li>
+            <Link onClick={() =>logOut()}> <i class="fas fa-sign-out icon"></i><span>الخروج</span></Link>
+
             </li>
             </ul>
 

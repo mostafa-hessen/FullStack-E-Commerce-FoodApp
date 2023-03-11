@@ -25,7 +25,7 @@ function Main(props) {
         {/* <Switch> */}
       
           <div
-            className="col-12 col-lg-10 py-4  px-3 homeContainer rounded-4"
+            className="col-12 col-lg-10 py-3  px-2 homeContainer rounded-4"
             style={{ backgroundColor: "#fff", overflowY: "scroll" }}
           >
             {/* <ResponsiveNav /> */}
@@ -44,3 +44,18 @@ function Main(props) {
 }
 
 export default Main;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

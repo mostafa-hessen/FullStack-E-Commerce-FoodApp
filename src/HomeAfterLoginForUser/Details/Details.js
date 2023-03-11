@@ -74,7 +74,7 @@ console.log(fav,"favArr")
 
           {food1.foodImg&&food1.foodImg.map((data, i) =>
             <div className="thumbnail" key={i} >
-        <div className={`rounded-4 ${food1.foodImg.indexOf(wordData) == i ? "clicked" : ""}`} style={{maxHeight:"70px", maxWidth:"90px",margin:"auto",overflow:'hidden'}}>
+        <div className={`rounded-4 ${food1.foodImg.indexOf(wordData) == i ? "clicked" : ""}`} style={{height:"70px", width:"90px",margin:"auto",overflow:'hidden'}}>
               <img  src={data} onClick={() => handleClick(i)}style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",cursor:"pointer"}}   />
         </div>
             </div>

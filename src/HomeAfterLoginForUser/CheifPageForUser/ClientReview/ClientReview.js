@@ -26,6 +26,9 @@ function ClientReview() {
                                   <div className="row justify-content-center w-100">
                                    <div className="col-7">
                                         <img className="w-100 mt-4" src={user.img} style={{borderRadius:'50%'}}></img>
+                                        {/* <div style={{height:"250px",width:"250px",overflow:"hidden",borderRadius:'50%'}}> */}
+                                           {/* <img src={user.img} style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}}></img>
+                                        </div> */}
                                     </div>
                                 <div className="col-2 me-4 mt-5 mt-lg-3">
                                     <h5>{user.name}</h5>
