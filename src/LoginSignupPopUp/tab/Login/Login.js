@@ -1,14 +1,24 @@
 import './Login.css'
 import {useHistory} from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { onAuthStateChanged } from "firebase/auth";
 
 function Login(){
   const [err, setErr] = useState(false);
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
+=======
+import { useDispatch } from 'react-redux';
+import { AuthStatues } from '../../../Component/Redux/reducer';
+import { authStatuesForCooker, authStatuesForUser, authStatuesForUSer } from '../../../Component/Redux/action';
+
+function Login(){
+  const [err, setErr] = useState(false);
+  const dispatch=useDispatch()
+>>>>>>> b80a5cb9fdd58595f7bf03b189388e4257817552
   const navigate = useHistory();
 let user=
 JSON.parse(localStorage.getItem("user"))
@@ -26,8 +36,34 @@ JSON.parse(localStorage.getItem("user"))
        localStorage.setItem("user",JSON.stringify(res.user))
     //   sessionStorage.setItem(`authorized${x}`,true)
     
-      // console.log(x)
+      console.log(res.user)
 
+
+
+      onAuthStateChanged(auth, (user) => {
+      
+        if (user.displayName.split('@')[1]=="user") {
+          console.log(user);
+
+          dispatch(authStatuesForUser(true))
+          sessionStorage.setItem('authUser',true)
+          sessionStorage.removeItem('authCooker')
+                
+        } 
+
+
+
+        else if(user.displayName.split('@')[1]=="cook"){
+          dispatch(authStatuesForCooker(true))
+          sessionStorage.setItem('authCooker',true)
+          sessionStorage.removeItem('authUser')
+        }
+        else {
+          console.log("else",user);
+        }
+      }
+      )
+      
      await res.user&&(x=='user' ?navigate.push("/HomeUser"):navigate.push("/HomeCooker"))
 
     } catch (err) {

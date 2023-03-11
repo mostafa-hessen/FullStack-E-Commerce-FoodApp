@@ -8,51 +8,32 @@ import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import HomeForCookerAfterLogin from "./HomeForCookerAfterLogin/HomeForCookerAfterLogin";
 import SignPage from "./LoginSignupPopUp/SignPage";
+import PrivateRoute1 from "./PrivateRout1";
+import PrivateRoute2 from "./PrivateRout2";
 // import { useContext, useEffect } from "react";
 
 // import { Redirect } from 'react-router-dom'
 // import { AuthContext} from "./contexts/AuthContext";
 
-
+// import PrivateRoute from './PrivateRout'
 
 function  App() {
-  //let authFromSessionUser = setTimeout(sessionStorage.getItem('authorizeduser')?JSON.parse(sessionStorage.getItem('authorizeduser')):false,400)
- // let authFromSessionCooker = setTimeout(sessionStorage.getItem('authorizedcook')?JSON.parse(sessionStorage.getItem('authorizedcook')):false,400)
-
-// const { currentUser } = useContext(AuthContext);
-
-//  const ProtectedRoute = ({ children }) => {
-  // if (!currentUser) {
-  //   return <Redirect to = '/'/>;
-  // }
-
-//   return children
-// }; 
-
+ 
   return (
     <div className="App">
     <BrowserRouter>
   {/*   <AuthProvider> */}
       <Switch>
-          <Route exact path="/" component={() =>
-            <Homebeforelogin />
-          }/>
+          <Route exact path="/" component={() => <Homebeforelogin /> }/>
 
-          <Route path="/HomeUser" component={() =>
-          // <ProtectedRoute>
-              <HomeAfterLoginForUser/>
-          // </ProtectedRoute>
-          }/>
+          <PrivateRoute1  path="/HomeUser" component={HomeAfterLoginForUser}/> 
 
-         <Route path="/HomeCooker" component={() =>
-        //  <ProtectedRoute>
-             <HomeForCookerAfterLogin />
-          // </ProtectedRoute>
-          }/>
+          <PrivateRoute2  path="/HomeCooker" component={HomeForCookerAfterLogin}/>
 
-         {/* <Route path="/SignPage">
+{/* 
+         <Route path="/SignUp">
            <SignPage/>
-        </Route>*/}
+        </Route> */}
           
         </Switch>
         {/* </AuthProvider> */}
@@ -63,4 +44,76 @@ function  App() {
 export default App;
 
 
-//authorized={setTimeout(sessionStorage.getItem('authorizedcook')?JSON.parse(sessionStorage.getItem('authorizedcook')):false,400)} 
+
+// import React from 'react';
+// import {
+//   BrowserRouter,
+//   Route,
+//   Switch,
+//   Redirect
+// } from 'react-router-dom';
+// import decode from 'jwt-decode';
+// import SignPage from "./LoginSignupPopUp/SignPage";
+
+// // import Home from './Home';
+// // import Register from './Register';
+// // import Login from './Login';
+// // import { Redirect } from 'react-router-dom';
+
+// // import PrivateComponent1 from './PrivateComponent1';
+// // import PrivateComponent2 from './PrivateComponent2';
+// import HomeAfterLoginForUser from "./HomeAfterLoginForUser/HomeAfterLoginForUser";
+// // 
+
+// const isAuthenticated = () => {
+//   const token = localStorage.getItem('token');
+//   const refreshToken = localStorage.getItem('refreshToken');
+//   try {
+//     decode(token);
+//     decode(refreshToken);
+//     console.log([decode(token),decode(refreshToken)])
+//     return true;
+//   } catch (error) {
+//     return false;
+//   }
+// }
+
+// function PrivateRoute({ component: Component, ...rest }) {
+//   return (
+//     <Route
+//       {...rest}
+//       render={props =>
+//         isAuthenticated() ? (
+//           <Component {...props} />
+//         ) : (
+//           <Redirect
+//             to={{
+//               pathname: "/login",
+//             }}
+//           />
+//         )
+//       }
+//     />
+//   );
+// }
+
+// export default function  App(){
+
+//   return ( <BrowserRouter>
+//     <Switch>
+//       {/* <Route path="/" exact component={}/> */}
+//       <Route path="/HomeUser" component={() => // <ProtectedRoute>
+//             <HomeAfterLoginForUser/>
+//           // </ProtectedRoute>
+//           }/>
+//       {/* <Route path="/register" exact component={Register}/> */}
+//       {/* <Route path="/login" exact component={Login}/> */}
+//       <Route path="/SignPage">
+//             <SignPage/>
+//        </Route>
+//       {/* <PrivateRoute path="/private1/:id?" exact component={PrivateComponent1}/>
+//       <PrivateRoute path="/private2" exact component={PrivateComponent2}/> */}
+//     </Switch>
+//   </BrowserRouter>
+//   )
+// }  

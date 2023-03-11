@@ -7,9 +7,10 @@ import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './contexts/AuthContext';
 import {createStore} from "redux" 
-import reducer from './Component/Redux/reducer';
+// import reducer from './Component/Redux/reducer';
+import reducers from './Component/Redux/compainedReducer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const store = createStore(reducer)
+const store = createStore(reducers)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
