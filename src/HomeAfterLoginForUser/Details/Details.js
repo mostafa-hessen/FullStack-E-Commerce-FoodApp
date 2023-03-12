@@ -10,8 +10,15 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+  
 
+
+
+// food{عائلي :"bigPrice"}
+
+  // ele.food[${`chossenprice`}]//   ele.bigPrice
 export default function Details() {
+  const [currentPriceChanged, setcurrentPriceChanged] = useState('')
   const { id } = useParams();
   console.log(id); //اكله%20من%20عمو%20مصطفي33a09d9f-eb34-405e-a32b-3869948ef3a1
   const [food1, setCartfood1] = useState("");
@@ -91,7 +98,7 @@ export default function Details() {
 
    myCart.cart?.find((value, index) => {
     // Delete element 5 on first iteration
-    if (value.foodId==ele.foodId) {
+    if (value.foodId==ele.foodId&&value.choosenPrice==ele.choosenPrice) {
       value.quantity+=1
          const docRef = doc(db, "users", user.uid);
         updateDoc(docRef, {
@@ -101,7 +108,7 @@ export default function Details() {
   });
    
 
-  if( !myCart.cart.find(myele=>myele.foodId==ele.foodId)){
+  if( !myCart.cart.find(myele=>myele.foodId==ele.foodId&&myele.choosenPrice==ele.choosenPrice)){
     myCart.cart.push(ele)
      const docRef = doc(db, "users", user.uid);
        updateDoc(docRef, {
@@ -117,10 +124,17 @@ export default function Details() {
 
   };
   const addTocart = (target) => {
-    setwww(Date.now())
-    // 1 if cart have this before
-    checkIfRepeated(target);
 
+    setwww(Date.now())
+    if(currentPriceChanged){
+      // 1 if cart have this before
+      target.choosenPrice=currentPriceChanged
+      checkIfRepeated(target);
+      console.log(currentPriceChanged);
+}
+else{
+  alert("you must choose price")
+}
 
     // ====== 3- update firebase ===== 
 
@@ -188,7 +202,7 @@ export default function Details() {
             className="d-flex align-items-center"
             style={{ direction: "rtl", width: "70%", margin: "auto" }}
           >
-            <input type="checkbox" id="" name="" value="" className="ms-2" />
+            <input type="radio" id="" name="price" value={food1?.bigPrice} className="ms-2"  onChange={()=>setcurrentPriceChanged("كبير")}/>
             <h5 style={{ margin: 0 }}>عائلي : {food1?.bigPrice} جنيه مصري </h5>
           </div>
 
@@ -196,7 +210,7 @@ export default function Details() {
             className="d-flex align-items-center"
             style={{ direction: "rtl", width: "70%", margin: "auto" }}
           >
-            <input type="checkbox" id="" name="" value="" className="ms-2" />
+            <input type="radio" id="" name="price" value={food1?.middlePrice} className="ms-2"  onChange={()=>setcurrentPriceChanged("وسط")}/>
             <h5 style={{ margin: 0 }}>
               {" "}
               وسط : {food1?.middlePrice} جنيه مصري{" "}
@@ -207,7 +221,7 @@ export default function Details() {
             className="d-flex align-items-center"
             style={{ direction: "rtl", width: "70%", margin: "auto" }}
           >
-            <input type="checkbox" id="" name="" value="" className="ms-2" />
+            <input type="radio" id=""  name="price" value={food1?.smallPrice} className="ms-2" onChange={()=>setcurrentPriceChanged("صغير")} />
             <h5 style={{ margin: 0 }}> صغير : {food1?.smallPrice} جنيه مصري</h5>
           </div>
 
