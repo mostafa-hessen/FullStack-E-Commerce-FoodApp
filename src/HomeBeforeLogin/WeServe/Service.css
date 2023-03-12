@@ -71,3 +71,11 @@ text-align: center;
     position: relative;
     z-index: 4;
 }
+
+
+@media (max-width:450px) {
+    .service ul{
+        padding-left: 20px;
+    }
+    
+}

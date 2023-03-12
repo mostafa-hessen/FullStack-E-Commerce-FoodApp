@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, storage, db, myserverTimestamp } from '../../../firebase';
-
 import "./Signup.css";
-import { ElementFlags } from "typescript";
-import { Alert, Button } from "react-bootstrap";
+ import { Alert } from "react-bootstrap";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { doc, setDoc } from "@firebase/firestore";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {  authStatuesForCooker, authStatuesForUser } from "../../../Component/Redux/action";
 
-// import { doc } from "prettier";
-// import { log } from 'console';
 
 export default function Signup() {
+  const dispatch=useDispatch()
   let navigate= useHistory()
   let rgex = {
     fName: /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
@@ -20,8 +19,8 @@ export default function Signup() {
       /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     email: /^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,
     password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/,
-    address:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
+      address:
+    /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,    
     phone: /^01[0125][0-9]{8}$/,
   };
   const [show, setShow] = useState(false);
@@ -144,6 +143,31 @@ export default function Signup() {
           
 
         );
+
+        onAuthStateChanged(auth, (user) => {
+      
+          if (user.displayName.split('@')[1]=="user") {
+            console.log(user);
+  
+            dispatch(authStatuesForUser(true))
+            sessionStorage.setItem('authUser',true)
+            sessionStorage.removeItem('authCooker')
+                  
+          } 
+  
+  
+  
+          else if(user.displayName.split('@')[1]=="cook"){
+            dispatch(authStatuesForCooker(true))
+            sessionStorage.setItem('authCooker',true)
+            sessionStorage.removeItem('authUser')
+          }
+          else {
+            console.log("else",user);
+          }
+        }
+        
+        )
 
       }
       catch (err){ 
@@ -480,7 +504,7 @@ export default function Signup() {
             onChange={(e) => changeData(e)}
             required
           >
-           <option value="" >اختر نوع حسابك</option>
+           <option value=""   hidden >اختر نوع حسابك</option>
 
             <option value="user">عميل</option>
             <option value="cook">طباخ</option>
@@ -510,7 +534,7 @@ export default function Signup() {
               {errorMessage.photoErr}
             </small>
 
-            <input type="submit" value="إنشاء حساب" />
+            <input type="submit" value="إنشاء حساب" className="mybtn"/>
           </form>
         </div>
       </div>

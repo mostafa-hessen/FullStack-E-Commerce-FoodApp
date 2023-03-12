@@ -6,8 +6,8 @@ import { doc, getDoc, updateDoc,arrayUnion} from 'firebase/firestore';
 import { db } from '../../firebase';
 
 export default function Details() {
-    const  { id } = useParams();
-    console.log(id)
+    const  { id } = useParams(); 
+    console.log(id) //اكله%20من%20عمو%20مصطفي33a09d9f-eb34-405e-a32b-3869948ef3a1
     const [food1, setCartfood1] = useState('')
    const [wordData, setWordData] = useState('')
     
@@ -19,7 +19,7 @@ export default function Details() {
        await  getDoc(docRef)
             .then((docRef) => {
             
-                setCartfood1(docRef.data())
+                setCartfood1(docRef.data())//{fooname:vfds,}
                 setWordData(docRef.data().foodImg[0])
              
             })
@@ -42,7 +42,7 @@ export default function Details() {
     const wordSlider = food1.foodImg[index];
     setWordData(wordSlider)
   }
-  
+  let arr=[];//rr.push => ["",""]
   const [fav, setFav] = useState([])
   const addToFavBtn = (favEle) => {
     let user=JSON.parse(localStorage.getItem('user'))
@@ -50,7 +50,7 @@ export default function Details() {
 
   const q = doc(db, "users", user.uid);
   updateDoc(q, {
-    favoriteFood:arrayUnion((favEle)),
+    favoriteFood:arrayUnion((favEle)),// arr 
   })
     .then((q) => {
       console.log(
@@ -74,7 +74,7 @@ console.log(fav,"favArr")
 
           {food1.foodImg&&food1.foodImg.map((data, i) =>
             <div className="thumbnail" key={i} >
-        <div className={`rounded-4 ${food1.foodImg.indexOf(wordData) == i ? "clicked" : ""}`} style={{maxHeight:"70px", maxWidth:"90px",margin:"auto",overflow:'hidden'}}>
+        <div className={`rounded-4 ${food1.foodImg.indexOf(wordData) == i ? "clicked" : ""}`} style={{height:"70px", width:"90px",margin:"auto",overflow:'hidden'}}>
               <img  src={data} onClick={() => handleClick(i)}style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center",cursor:"pointer"}}   />
         </div>
             </div>

@@ -1,63 +1,15 @@
-/* .footer{
-    background: orange;
-
-}
-.list {
-    margin: 15px 0px 10px;
-}
-
-.list ul li {
-    display: inline-block;
-    margin: 0 6px;
-}
-
-.work{
-list-style-type: none;
-}
-
-.list ul li a {
-    margin: 0;
-    padding: 0;
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-   color: orange;
-    box-shadow: 4px 4px 8px #d0d0d0, -4px -4px 8px #ffffff;
-  background-color: #ffffff;
-    font-size: 19px;
-}
-
-
-.list ul li a:hover {
-    background: #ff8243;
+ 
+  .footer {
     
-}
-
-.list ul li a:hover i {
-    color: #ffffff !important;
-} */
-.footer {
-    position: relative;
-    margin-top: 45px;
-    padding-top: 90px;
     background: rgba(0, 0, 0, .04);
 }
 
-.footer .footer-contact,
-.footer .footer-link,
-.footer .footer-newsletter {
-    position: relative;
-    margin-bottom: 45px;
-    color: #454545;
-}
+ 
 
+ 
 .footer .footer-contact h2,
 .footer .footer-link h2,
 .footer .footer-newsletter h2 {
-    position: relative;
     margin-bottom: 30px;
     padding-bottom: 10px;
     font-size: 22px;
@@ -68,7 +20,6 @@ list-style-type: none;
 .footer .footer-contact h2::after,
 .footer .footer-link h2::after,
 .footer .footer-newsletter h2::after {
-    position: absolute;
     content: "";
     width: 80px;
     height: 2px;
@@ -77,27 +28,34 @@ list-style-type: none;
     background: #ffffff;
 
 }
-
+.footer .footer-link .row >*{
+    padding: 0 !important;
+}
 .footer .footer-link a {
     display: block;
     margin-bottom: 10px;
     color: #454545;
     transition: .3s;
     text-decoration: none;
+    max-width: 130px;
+    position: relative;
+    margin: auto;
 }
 
 .footer .footer-link a::before {
-    position: relative;
     content: "\f105";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     margin-right: 10px;
     color: #fbaf32;
+    position: absolute;
+    left: 0;
 }
 
 .footer .footer-link a:hover {
     color: #fbaf32;
     letter-spacing: 1px;
+
 }
 
 .footer .footer-contact p i {
@@ -148,7 +106,6 @@ list-style-type: none;
 }
 
 .footer .footer-newsletter .btn {
-    position: absolute;
     top: 8px;
     right: 8px;
     height: 44px;
@@ -158,6 +115,7 @@ list-style-type: none;
 }
 
 .footer .copyright {
+    margin-top: 30px;
     position: relative;
     width: 100%;
     padding: 30px 0;
@@ -177,4 +135,18 @@ list-style-type: none;
 
 .footer .copyright p a:hover {
     color: black;
+}
+
+.footer .footer-social {
+  justify-content: center;
+}   
+
+
+
+@media (max-width:768px) {
+    .footer .callus{
+            margin-top: 32px;
+            margin-bottom: 32px;
+    }
+    
 }
