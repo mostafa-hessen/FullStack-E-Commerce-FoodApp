@@ -7,14 +7,13 @@ import { useEffect, useState } from 'react';
 import './AddToFav.css'
 import { db } from '../../firebase';
 import { useHistory } from 'react-router-dom';
+import img from '../../assets/1.png'
 function AddToFav() {
 
 let activeItem = ['', '', '', '']
 const [myactive, setmyactive] = useState(activeItem)
 const navigate=useHistory()
 const changeActive = (status) => {
-  
- 
 
 myactive [status]== 'active'?activeItem  = ['', '', '', ''] : activeItem [status]= 'active'
     setmyactive(activeItem)
@@ -73,12 +72,12 @@ const removeFav = (item) =>{
     <div className={`card1 mycard ${myactive[index]} align-items-center d-flex flex-direction-row`} style={{width:'100%'}} >
     <i class="fa-solid fa-ellipsis-vertical" style={{ position:'absolute', left:'3%', top:'5%',cursor:'pointer'}} onClick={()=>changeActive(index)}></i>
     <div className='myimg'>
-<img src={item.foodImg[0]} alt="..."/>
+<img src={item.foodImg?item.foodImg[0]:img} alt="..."/>
 
     </div>
 <div class="card-body">
-<h5 class="card-title " style={{color:'orange'}}>{item.foodName}</h5>
-<p class="card-text mt-2" style={{wordBreak:"break-word"}}>{item.foodDiscription}</p>
+<h5 class="card-title " style={{color:'orange'}}>{item?.foodName}</h5>
+<p class="card-text mt-2" style={{wordBreak:"break-word"}}>{item?.foodDiscription}</p>
 
 </div>
 </div>
