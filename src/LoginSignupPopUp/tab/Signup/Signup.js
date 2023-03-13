@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, storage, db, myserverTimestamp } from '../../../firebase';
-
+import {useDropzone} from 'react-dropzone';
 import "./Signup.css";
 import { ElementFlags } from "typescript";
 import { Alert, Button } from "react-bootstrap";
@@ -14,13 +14,44 @@ import { authStatues, authStatuesForCooker, authStatuesForUser } from "../../../
 // import { doc } from "prettier";
 // import { log } from 'console';
 
-export default function Signup() {
+export default function Signup(props) {
+  const {
+    acceptedFiles,
+    fileRejections,
+    getRootProps,
+    getInputProps
+  } = useDropzone({
+    accept: {
+      'image/jpeg': [],
+      'image/png': []
+    }
+  });
+let n = 0;
+  const acceptedFileItems = acceptedFiles.map(file => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+
+  const fileRejectionItems = fileRejections.map(({ file, errors }) => (
+   
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+      <ul>
+        {errors.map(e => (
+          <li key={e.code}>{e.message}</li>
+        ))}
+      </ul>
+    </li>
+  ));
+        
+
   const dispatch=useDispatch()
   let navigate= useHistory()
   let rgex = {
-    fName: /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
+    fName: /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
     lastName:
-      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
+    /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
     email: /^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,
     password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/,
     // address:
@@ -188,6 +219,40 @@ export default function Signup() {
       }
 
     } else {
+
+    
+      data.fName == ""
+      ? setMessage({
+        ...errorMessage,
+        FNameErr: "يجب أن تدخل الاسم الاول ",
+      })
+      : data.lName == ""
+        ? setMessage({
+          ...errorMessage,
+          LNameErr: "يجب أن تدخل الاسم الثاني ",
+        }) : data.email == ""
+          ? setMessage({
+            ...errorMessage,
+            emailErr: "يجب أن تدخل البريد الالكتروني  ",
+          })
+          :
+          data.password == ""
+            ? setMessage({
+              ...errorMessage,
+              passwordErr: "يجب أن تختر نوع حسابك",
+            })
+            :
+            data.phone == ""
+              ? setMessage({
+                ...errorMessage,
+                phoneErr: "يجب أن تختر تليفونك ",
+              })
+              : data.address == ""
+                ? setMessage({
+                  ...errorMessage,
+                  addressErrِ: "يجب أن تختر عنوانك ",
+                })
+                :
       data.kindUser == ""
         ? setMessage({
           ...errorMessage,
@@ -204,6 +269,7 @@ export default function Signup() {
               photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
             })
             : console.log("done");
+
 
       console.log(e.target.files);
     }
@@ -340,7 +406,7 @@ export default function Signup() {
 
       setMessage({
         ...errorMessage,
-        photoErr: !e.target.files[0] ? "يجب أن تختر صوره " : "",
+        photoErr:!e.target.files[0]? "يجب أن تختر صوره " :"" ,
       });
     }
   };
@@ -382,7 +448,7 @@ export default function Signup() {
             <div className="d-flex justify-content-between">
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
-                  required
+                  
                   type="text"
                   placeholder="الاسم الثاني "
                   autoComplete="name"
@@ -394,7 +460,7 @@ export default function Signup() {
               </div>
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
-                  required
+                  
                   type="text"
                   placeholder="الاسم الأول"
                   autoComplete="name"
@@ -409,7 +475,7 @@ export default function Signup() {
               </div>
             </div>
             <input
-              required
+              
               type="email"
               placeholder="البريد الإلكتروني"
               name="email"
@@ -419,7 +485,7 @@ export default function Signup() {
               {errorMessage.emailErr}
             </small>
             <input
-              required
+              
               type="password"
               placeholder="كلمة المرور"
               name="password"
@@ -437,7 +503,7 @@ export default function Signup() {
               {errorMessage.passwordErr}
             </small>
             <input
-              required
+              
               type="tel"
               placeholder=" رقم التليفون"
               name="phone"
@@ -510,7 +576,7 @@ export default function Signup() {
             name="kindUser"
             id="kindUser"
             onChange={(e) => changeData(e)}
-            required
+            
           >
            <option value=""   hidden >اختر نوع حسابك</option>
 
@@ -524,11 +590,14 @@ export default function Signup() {
             <input
               style={{ display: "none" }}
               type="file"
-              accept="image/*"
+              accept="image/x-png,image/gif,image/jpeg"
               id="file"
               name="photo"
               onChange={(e) => changeData(e)}
+              // {...getInputProps()}
             />
+           
+       
             <label htmlFor="file">
               <span className="d-flex align-items-center">
                 <i
@@ -538,8 +607,16 @@ export default function Signup() {
                 إرفع صورتك
               </span>
             </label>
+            <small className="text-success" style={{ textAlign: "right" }}>
+             
+              {/* <ul>{acceptedFileItems}</ul> */}
+ 
+            </small>
             <small className="text-danger" style={{ textAlign: "right" }}>
               {errorMessage.photoErr}
+            
+     
+     {/* <ul>{fileRejectionItems}</ul> */}
             </small>
 
             <input type="submit" value="إنشاء حساب" />
