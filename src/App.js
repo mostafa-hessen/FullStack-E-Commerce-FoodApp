@@ -5,7 +5,7 @@ import HomeAfterLoginForUser from "./HomeAfterLoginForUser/HomeAfterLoginForUser
 //import logo from './logo.svg';
 import './App.css';
 import Homebeforelogin from './HomeBeforeLogin/Homebeforelogin'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import HomeForCookerAfterLogin from "./HomeForCookerAfterLogin/HomeForCookerAfterLogin";
 import SignPage from "./LoginSignupPopUp/SignPage";
 import PrivateRoute1 from "./PrivateRout1";
@@ -13,7 +13,7 @@ import PrivateRoute2 from "./PrivateRout2";
 // import { useContext, useEffect } from "react";
 
 // import { Redirect } from 'react-router-dom'
-// import { AuthContext} from "./contexts/AuthContext";
+ import { AuthContext} from "./contexts/AuthContext";
 
 // import PrivateRoute from './PrivateRout'
 
