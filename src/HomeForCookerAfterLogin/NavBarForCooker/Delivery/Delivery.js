@@ -6,7 +6,7 @@ function Delivery(){
   return(
 
     <>
-     <div className="boxDelivery">
+     <div className="boxDelivery boxDeliveryCooker  ">
    <div><img src={DeliveryImg}/></div>  
     <div className='boxDeliveryDetails'>
     <h4>توصيل سريع</h4>

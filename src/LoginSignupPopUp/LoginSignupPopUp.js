@@ -93,7 +93,7 @@ export default function LoginSignupPopUp() {
     <>
      
       {/* <i className="fa-solid fa-pen-to-square" onClick={handleShow}></i> */}
-    <RxAvatar   onClick={handleShow} style={{fontSize:'35px'}}></RxAvatar>
+    <RxAvatar   onClick={handleShow} style={{fontSize:'35px'}} className="avataricon"></RxAvatar>
 
       <Modal show={show} onHide={handleClose} className="my" >
       

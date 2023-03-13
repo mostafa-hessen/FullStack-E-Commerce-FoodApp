@@ -23,7 +23,7 @@ import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../../firebase";
 import { async } from "@firebase/util";
 
-function FoodForm() {
+function FoodForm(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const [ImageUrlsFromFireBase, setImageUrlsFromFireBase] = useState([]);
   const [selectedImages, setSelectedImages] = useState([]);
@@ -186,6 +186,7 @@ function FoodForm() {
     console.log(vaildition());
     if (vaildition()) {
       try {
+        props.clickFun()
         let x = `${data.foodName}${v4()}`;
         setDoc(doc(db, "foods", x), {
           foodName: data.foodName,
@@ -195,8 +196,10 @@ function FoodForm() {
           middlePrice: data.middlePrice,
           foodDiscription:data.foodTextarea,
           timestamP: myserverTimestamp,
-          userName: user.displayName,
+          cookerName: user.displayName,
           userid: user.uid,
+          foodId:x,
+          quantity:1
           
         });
 
@@ -450,7 +453,7 @@ function FoodForm() {
                 errorMessage.bigPriceErr}
             </small>
 
-            <button>حـــــــفـــــــظ </button>
+            <button >حـــــــفـــــــظ </button>
             {/* {loading && "Uploading and compressing the image please wait..."} */}
             {/* {err && <span>Something went wrong</span>} */}
           </form>

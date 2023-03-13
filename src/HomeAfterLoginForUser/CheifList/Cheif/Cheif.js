@@ -49,7 +49,10 @@ function Cheif() {
                     <div className="col-lg-4 col-md-6 col-sm-6"  key={index}>
                         <div className="team-item">
                             <div className="team-img">
-                                <img src={CheifItem.photo} alt="Cheif Image"/>
+                                {/* <img src={CheifItem.photo} alt="Cheif Image"/> */}
+                                <div style={{height:"250px",width:"100%",overflow:"hidden"}}>
+                                <img src={CheifItem.photo} alt="Cheif Image" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}}/>
+                                </div>
                                 <div className="team-rate">
                                     <a href="">  <i className="fa-solid fa-star" ></i></a>
                                     <a href="">  <i className="fa-solid fa-star" ></i></a>
@@ -59,7 +62,7 @@ function Cheif() {
                                 </div>
                             </div>
                             <div className="team-text">
-                            <Link to={`/HomeUser/ChiefList/Cheif/${CheifItem.userid}`} style={{textDecoration:'none'}}>
+                            <Link to={`/HomeUser/ChiefList/Cheif/${CheifItem.userid}`} style={{textDecoration:'none',color:"black",wordBreak:"break-word",fontWeight:"normal"}}>
                                 <h2>{CheifItem.fullName}</h2>   
                             </Link>
                             </div>

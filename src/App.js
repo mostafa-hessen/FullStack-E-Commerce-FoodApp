@@ -13,7 +13,7 @@ import PrivateRoute2 from "./PrivateRout2";
 // import { useContext, useEffect } from "react";
 
 // import { Redirect } from 'react-router-dom'
-// import { AuthContext} from "./contexts/AuthContext";
+ import { AuthContext} from "./contexts/AuthContext";
 
 // import PrivateRoute from './PrivateRout'
 
