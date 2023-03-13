@@ -1,44 +1,19 @@
 import React from "react";
 import { FaCartPlus, FaStar } from "react-icons/fa";
-
 import item1 from "../../assets/photo_2023-02-14_19-46-55.jpg";
 import "./Basket.css";
-
 import { useState, useEffect } from "react";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 function Basket() {
+
   let user = JSON.parse(localStorage.getItem("user"));
 
   const removeFromCart = (element) => {
     console.log(myCart);
-    const x = (elem) => {
-      if (
-        elem!=element
-      ) {
-
-        return elem;
-      }
-
-      console.log(  elem!=element);
-    };
-    // setmyCart(myCart.filter((elem) => x(elem)))
-    console.log(   myCart.filter((elem) => x(elem)));
-    console.log(myCart);
-
     const q = doc(db, "users", user.uid);
-    updateDoc(q, { cart: myCart.filter((elem) => x(elem)) });
+    updateDoc(q, {cart:(myCart?.filter(ele=> ele != element)),})
   };
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -60,7 +35,7 @@ function Basket() {
     console.log(+e.target.value != 0);
     // console.log(myCart,);
 
-    if (+e.target.value != 0) {
+   if (+e.target.value > 0) {
       console.log("h");
       myCart.find((ele) => {
         if (ele.id == current.id && ele.choosenPrice == current.choosenPrice) {
@@ -71,12 +46,20 @@ function Basket() {
       });
     }
 
-    // else{
-    //   removeFromCart(current)
-    //   console.log(e.target.value);
-    //   console.log(myCart);
-    // }
-  };
+     else{
+       removeFromCart(current)
+    }
+  }
+ 
+  let firstSum = 0
+const total1 = () =>{
+    myCart.map(item =>{
+      firstSum = firstSum + (Number(item[priceTranslate[item.choosenPrice]]) * Number(item.quantity)) 
+    })
+    return firstSum
+}
+
+let deliveryFees = 17
 
   return (
     <>
@@ -109,9 +92,9 @@ function Basket() {
           </div>
         </div>
 
-        {myCart?.map((ele) => {
+        {myCart?.map((ele,index) => {
           return (
-            <div className="row justify-content-center border border-3 rounded-4 mt-2  zoom">
+            <div className="row justify-content-center border border-3 rounded-4 mt-2  zoom" key={index}>
               {console.log(ele)}
               <div className="col-lg-2 col-md-2 mt-3 mb-3 col-9 ">
                 <img
@@ -125,13 +108,12 @@ function Basket() {
                 <input
                   className="w-25 "
                   type="number"
-                  defaultValue={+ele?.quantity}
+                  value={+ele?.quantity}
                   onChange={(e) => quantutyFunc(ele, e)}
                 ></input>
 
                 {+ele?.quantity}
               </div>
-              {/* {console.log(ele.foodImge,ele.foodImg[0])}/ */}
               <div className=" col-lg-2 col-md-2 mt-5 mb-3 col-3">
                 <h4> {ele[priceTranslate[ele.choosenPrice]]}</h4>
               </div>
@@ -140,9 +122,10 @@ function Basket() {
               </div>
               <div className="col-lg-2 col-md-2 mt-5 mb-3 col-3  ">
                 <h4>
-                  {+ele[priceTranslate[ele.choosenPrice]] * +ele.quantity}
+                  {
+                  +ele[priceTranslate[ele.choosenPrice]] * +ele.quantity
+                  }
                 </h4>
-
                 {/* {console.log(+ele[priceTranslate[ele.choosenPrice] ] * +ele.quantity )} */}
               </div>
               <div className="col-lg-1 col-md-1 mt-5 mb-3 col-1  ">
@@ -155,14 +138,14 @@ function Basket() {
         <div className="row justify-content-between ">
           <div className="col-lg-3 mt-3 mb-3 col-6 border border-3 rounded-4 mt-2 ">
             <div className="col-lg-11 m-3">
-              <p>الحساب الخاص بك : 110ج</p>
+              <p>الحساب الخاص بك : {total1()}ج</p>
             </div>
             <div className="col-lg-11 m-3">
-              <p>ضريبة التوصيل: 15ج</p>
+              <p>ضريبة التوصيل: {deliveryFees}ج</p>
             </div>
 
             <div className="col-lg-11 m-3">
-              <p>الحساب الصافي : 125ج</p>
+              <p>الحساب الصافي : {firstSum == 0 ? 0: firstSum + deliveryFees}ج</p>
             </div>
             <div className="col-lg-11 m-3 text-center">
               <button className="btn btn-success">دفع</button>
