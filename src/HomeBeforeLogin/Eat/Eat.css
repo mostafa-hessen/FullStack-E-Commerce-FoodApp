@@ -1,12 +1,13 @@
 
 #Eat{
     margin-top: 50px;
-max-width: 100%;
-   max-height: 500px;
-    border-radius: 100px;
-
- 
-
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -moz-border-radius: 70px;
+    -ms-border-radius: 70px;
+    -o-border-radius: 70px;
 }
 @media(max-width:768px){
   

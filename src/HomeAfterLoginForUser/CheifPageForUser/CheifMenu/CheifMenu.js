@@ -40,10 +40,12 @@ export default function CheifMenu({id}) {
             </div>
             <CardGroup>
             {
-            cookerFood.map((item, index)=>{
+            cookerFood!=[]?cookerFood?.map((item, index)=>{
                 return(
-                <Card key={index}  className=" mb-4 position-relative rounded-2 mx-2 card-item">
-                    <Card.Img variant="top" src={item?.foodImg[0]} className='rounded-2 menu-img'/>
+                <Card key={index}  className=" mb-4 position-relative rounded-4 overflow-hidden mx-2 card-item">
+                    <div className="bger"  style={{height:"250px",width:"100%",overflow:"hidden"}} >
+                      <Card.Img  style={{width:"100%",objectFit:"cover",objectPosition:"top",height:"100%"}} variant="top" src={item?.foodImg[0]} className='meu-img'/>
+                    </div>
                     <Card.Body>
                     <Card.Text  style={{textAlign:'right'}}>
                           {item?.foodName}
@@ -51,12 +53,21 @@ export default function CheifMenu({id}) {
                         <Card.Text  style={{textAlign:'right'}}>
                           {item?.foodDiscription}
                        </Card.Text>
-                       <Link to={`/HomeUser/ChiefList/Cheif/details/${item?.id}`} style={{textDecoration:'none', width:45, backgroundColor:"#7e8e72",borderRadius:"50%"}} className='open btn '><i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#fff'}}></i></Link>
+                       <Link to={`/HomeUser/ChiefList/Cheif/details/${item?.id}`} style={{textDecoration:'none',}} className='open btn '>
+                        {/* <i class="fa-solid fa-arrow-up-right-from-square" style={{color:'#fff'}}></i> */}
+                        <lord-icon
+    src="https://cdn.lordicon.com/udwhdpod.json"
+    trigger="hover"
+    // style="width:250px;height:250px"
+    >
+</lord-icon>
+                        
+                        </Link>
                     </Card.Body>
                 </Card>
                 )
-            })
-            }
+            }):"mmmmmmm"
+        }
             </CardGroup>
         </div>
     )

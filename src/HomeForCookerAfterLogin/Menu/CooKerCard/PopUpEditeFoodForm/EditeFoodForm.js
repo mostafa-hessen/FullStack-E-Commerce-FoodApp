@@ -216,8 +216,8 @@ function EditFoodForm(props) {
           middlePrice: data.middlePrice,
           foodDiscription:data.foodTextarea,
           timestamP: myserverTimestamp,
-          userName: user.displayName,
-          userid: user.uid,
+          cookerName: user.displayName,
+          cookerId: user.uid,
           
         }); 
          console.log('bbbbbbbbb')
