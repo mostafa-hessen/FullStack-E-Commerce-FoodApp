@@ -196,9 +196,10 @@ function FoodForm(props) {
           middlePrice: data.middlePrice,
           foodDiscription:data.foodTextarea,
           timestamP: myserverTimestamp,
-          userName: user.displayName,
+          cookerName: user.displayName,
           userid: user.uid,
-          foodId:x
+          foodId:x,
+          quantity:1
           
         });
 
