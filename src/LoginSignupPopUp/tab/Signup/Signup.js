@@ -2,25 +2,25 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, storage, db, myserverTimestamp } from '../../../firebase';
 import "./Signup.css";
- import { Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { doc, setDoc } from "@firebase/firestore";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {  authStatuesForCooker, authStatuesForUser } from "../../../Component/Redux/action";
+import { authStatuesForCooker, authStatuesForUser } from "../../../Component/Redux/action";
 
 
 export default function Signup() {
-  const dispatch=useDispatch()
-  let navigate= useHistory()
+  const dispatch = useDispatch()
+  let navigate = useHistory()
   let rgex = {
     fName: /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     lastName:
       /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     email: /^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,
     password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/,
-      address:
-    /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,    
+    address:
+      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,
     phone: /^01[0125][0-9]{8}$/,
   };
   const [show, setShow] = useState(false);
@@ -85,27 +85,27 @@ export default function Signup() {
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
               await console.log(downloadURL);
 
-            await updateProfile(res.user, {
-              displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
-              photoURL: downloadURL,
-            });
+              await updateProfile(res.user, {
+                displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
+                photoURL: downloadURL,
+              });
 
-            console.log("res.kindUser",data.kindUser)
-            await setDoc(doc(db, `${data.kindUser == "cook" ? "cookers":"users"}`, res.user.uid), {
-              userid: res.user.uid,
-              fullName: data.fName + " " + data.lName,
-              email: data.email,
-              phone: data.phone,
-              address: data.address,
-              country: data.country,
-              kindUser: data.kindUser,
-              photo: downloadURL,
-              registerTime: myserverTimestamp
-            })
+              console.log("res.kindUser", data.kindUser)
+              await setDoc(doc(db, `${data.kindUser == "cook" ? "cookers" : "users"}`, res.user.uid), {
+                userid: res.user.uid,
+                fullName: data.fName + " " + data.lName,
+                email: data.email,
+                phone: data.phone,
+                address: data.address,
+                country: data.country,
+                kindUser: data.kindUser,
+                photo: downloadURL,
+                registerTime: myserverTimestamp
+              })
 
-            localStorage.setItem("user",JSON.stringify(res.user))
+              localStorage.setItem("user", JSON.stringify(res.user))
 
-            {/* if (data.kindUser == "cook") {
+              {/* if (data.kindUser == "cook") {
                 await setDoc(doc(db, "cookers", res.user.uid), {
                   userid: res.user.uid,
                   fullName: data.fName + " " + data.lName,
@@ -132,70 +132,102 @@ export default function Signup() {
                 favourite: [],
               });
             }*/}
-           await setShow(true)
-           await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
-  
+              await setShow(true)
+              await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
+
             });
             // data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
 
-             
+
           }
-          
+
 
         );
 
         onAuthStateChanged(auth, (user) => {
-      
-          if (user.displayName.split('@')[1]=="user") {
+
+          if (user.displayName.split('@')[1] == "user") {
             console.log(user);
-  
+
             dispatch(authStatuesForUser(true))
-            sessionStorage.setItem('authUser',true)
+            sessionStorage.setItem('authUser', true)
             sessionStorage.removeItem('authCooker')
-                  
-          } 
-  
-  
-  
-          else if(user.displayName.split('@')[1]=="cook"){
+
+          }
+
+
+
+          else if (user.displayName.split('@')[1] == "cook") {
             dispatch(authStatuesForCooker(true))
-            sessionStorage.setItem('authCooker',true)
+            sessionStorage.setItem('authCooker', true)
             sessionStorage.removeItem('authUser')
           }
           else {
-            console.log("else",user);
+            console.log("else", user);
           }
         }
-        
+
         )
 
       }
-      catch (err){ 
+      catch (err) {
         console.log(err)
         setMessage({
           ...errorMessage,
-          emailErr:"البريد الإلكتروني مسجل سابقاً"
+          emailErr: "البريد الإلكتروني مسجل سابقاً"
         });
 
       }
 
     } else {
-      data.kindUser == ""
+      data.fName == ""
         ? setMessage({
           ...errorMessage,
-          kindUserErr: "يجب أن تختر نوع حسابك",
+          FNameErr: "يجب أن تدخل الاسم الاول ",
         })
-        : data.country == ""
+        : data.lName == ""
           ? setMessage({
             ...errorMessage,
-            countryErr: "يجب أن تختر بلدتك ",
-          })
-          : !data.photo
+            LNameErr: "يجب أن تدخل الاسم الثاني ",
+          }) : data.email == ""
             ? setMessage({
               ...errorMessage,
-              photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
+              emailErr: "يجب أن تدخل البريد الالكتروني  ",
             })
-            : console.log("done");
+            :
+            data.password == ""
+              ? setMessage({
+                ...errorMessage,
+                passwordErr: "يجب أن تختر نوع حسابك",
+              })
+              :
+              data.phone == ""
+                ? setMessage({
+                  ...errorMessage,
+                  phoneErr: "يجب أن تختر تليفونك ",
+                })
+                : data.address == ""
+                  ? setMessage({
+                    ...errorMessage,
+                    addressErrِ: "يجب أن تختر عنوانك ",
+                  })
+                  :
+                  data.kindUser == ""
+                    ? setMessage({
+                      ...errorMessage,
+                      kindUserErr: "يجب أن تختر نوع حسابك",
+                    })
+                    : data.country == ""
+                      ? setMessage({
+                        ...errorMessage,
+                        countryErr: "يجب أن تختر بلدتك ",
+                      })
+                      : !data.photo
+                        ? setMessage({
+                          ...errorMessage,
+                          photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
+                        })
+                        : console.log("done");
 
       console.log(e.target.files);
     }
@@ -345,6 +377,12 @@ export default function Signup() {
       rgex["password"].test(data.password) &&
       rgex["address"].test(data.address) &&
       rgex["phone"].test(data.phone) &&
+      data.fName.length !== 0 &&
+      data.lName.length !== 0 &&
+      data.email.length !== 0 &&
+      data.password.length !== 0 &&
+      data.address.length !== 0 &&
+      data.phone.length !== 0 &&
       data.country.length !== 0 &&
       data.kindUser.length !== 0 &&
       data.photo.length !== 0
@@ -374,7 +412,7 @@ export default function Signup() {
             <div className="d-flex justify-content-between">
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
-                  required
+
                   type="text"
                   placeholder="الاسم الثاني "
                   autoComplete="name"
@@ -386,7 +424,7 @@ export default function Signup() {
               </div>
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
-                  required
+
                   type="text"
                   placeholder="الاسم الأول"
                   autoComplete="name"
@@ -394,6 +432,7 @@ export default function Signup() {
                   value={data.fName}
                   style={{ width: "100%" }}
                   onChange={(e) => changeData(e)}
+                  
                 />
                 <small className="text-danger " style={{ textAlign: "right" }}>
                   {errorMessage.FNameErr}
@@ -401,7 +440,7 @@ export default function Signup() {
               </div>
             </div>
             <input
-              required
+
               type="email"
               placeholder="البريد الإلكتروني"
               name="email"
@@ -411,7 +450,7 @@ export default function Signup() {
               {errorMessage.emailErr}
             </small>
             <input
-              required
+
               type="password"
               placeholder="كلمة المرور"
               name="password"
@@ -429,7 +468,7 @@ export default function Signup() {
               {errorMessage.passwordErr}
             </small>
             <input
-              required
+
               type="tel"
               placeholder=" رقم التليفون"
               name="phone"
@@ -497,21 +536,21 @@ export default function Signup() {
               </div>
             </div>
 
-          <label htmlFor="kindUser">نوع الحساب:</label>
-          <select
-            name="kindUser"
-            id="kindUser"
-            onChange={(e) => changeData(e)}
-            required
-          >
-           <option value=""   hidden >اختر نوع حسابك</option>
+            <label htmlFor="kindUser">نوع الحساب:</label>
+            <select
+              name="kindUser"
+              id="kindUser"
+              onChange={(e) => changeData(e)}
 
-            <option value="user">عميل</option>
-            <option value="cook">طباخ</option>
-          </select>
-          <small className="text-danger" style={{ textAlign: "right" }}>
-            {errorMessage.kindUserErr}
-          </small>
+            >
+              <option value="" hidden >اختر نوع حسابك</option>
+
+              <option value="user">عميل</option>
+              <option value="cook">طباخ</option>
+            </select>
+            <small className="text-danger" style={{ textAlign: "right" }}>
+              {errorMessage.kindUserErr}
+            </small>
 
             <input
               style={{ display: "none" }}
@@ -534,7 +573,7 @@ export default function Signup() {
               {errorMessage.photoErr}
             </small>
 
-            <input type="submit" value="إنشاء حساب" className="mybtn"/>
+            <input type="submit" value="إنشاء حساب" className="mybtn" />
           </form>
         </div>
       </div>
