@@ -20,7 +20,8 @@ function Basket() {
         return elem;
       }
 
-      console.log(  elem!=element);
+
+      // console.log(  elem!=element);
     };
     // setmyCart(myCart.filter((elem) => x(elem)))
     console.log(   myCart.filter((elem) => x(elem)));
