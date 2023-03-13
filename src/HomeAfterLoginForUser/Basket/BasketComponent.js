@@ -3,7 +3,7 @@ import { FaCartPlus, FaStar } from "react-icons/fa";
 import item1 from "../../assets/photo_2023-02-14_19-46-55.jpg";
 import "./Basket.css";
 import { useState, useEffect } from "react";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 function Basket() {
 
@@ -60,6 +60,34 @@ const total1 = () =>{
 }
 
 let deliveryFees = 17
+
+//  send order to cooker
+
+const sendorder= ()=>{
+     console.log(myCart[0].cookerId)
+     console.log(myCart[1].cookerId)
+
+
+     myCart?.map(ele=>{
+
+
+       const q = doc(db, "cookers", ele.cookerId);
+
+      //  [
+      //   {mostafa:[{},{},{}]},
+      //  ]
+
+       /*
+        [
+        {ele.cookerID:[{food1},{food2},{food2}]},
+       ]
+
+       */
+       updateDoc(q, { order: arrayUnion(ele) });
+})
+}
+
+
 
   return (
     <>
@@ -148,7 +176,7 @@ let deliveryFees = 17
               <p>الحساب الصافي : {firstSum == 0 ? 0: firstSum + deliveryFees}ج</p>
             </div>
             <div className="col-lg-11 m-3 text-center">
-              <button className="btn btn-success">دفع</button>
+              <button className="btn btn-success"  onClick={()=> sendorder()}>دفع</button>
             </div>
           </div>
         </div>
