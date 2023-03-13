@@ -22,15 +22,24 @@ function Orders() {
   const q = doc(db, "cookers",user.uid);
   onSnapshot(q, (snapshot) => {
      
-    setcurrentuserinfo(snapshot.data().order);
-      
-    })
+    setcurrentuserinfo(snapshot.data().order); })
 
  
   
  }, [ ])
   
 //  if order.useOrderdID 
+
+// const checkdifrent=()=>{
+//  let i=[]
+//   const sumWithInitial = currentuserinfo.reduce(
+//     (accumulator, currentValue) => accumulator == currentValue,
+//    i
+//   );
+  
+
+
+// }
 
 
   let activeOrder = ['', '', '', '']
@@ -50,7 +59,7 @@ function Orders() {
           <h2>طلباتي <i className="fa-solid fa-clipboard" style={{ color: '#87a087' }}></i></h2>
         </div>
       </div>
-{console.log(currentuserinfo)}
+{/* {console.log(currentuserinfo,sumWithInitial)} */}
       <div className='m-4'>
         {
           currentuserinfo?.map((order, idx) => {
