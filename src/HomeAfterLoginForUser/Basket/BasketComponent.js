@@ -5,6 +5,7 @@ import "./Basket.css";
 import { useState, useEffect } from "react";
 import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 function Basket() {
 
   let user = JSON.parse(localStorage.getItem("user"));
@@ -64,27 +65,16 @@ let deliveryFees = 17
 //  send order to cooker
 
 const sendorder= ()=>{
-     console.log(myCart[0].cookerId)
-     console.log(myCart[1].cookerId)
+    //  console.log(myCart[0].cookerId)
+     console.log("order has been set to db")
 
 
-     myCart?.map(ele=>{
+//      myCart?.map(ele=>{
 
 
-       const q = doc(db, "cookers", ele.cookerId);
-
-      //  [
-      //   {mostafa:[{},{},{}]},
-      //  ]
-
-       /*
-        [
-        {ele.cookerID:[{food1},{food2},{food2}]},
-       ]
-
-       */
-       updateDoc(q, { order: arrayUnion(ele) });
-})
+//        const q = doc(db, "cookers", ele.cookerId);
+//        updateDoc(q, { order: arrayUnion(ele) });
+// })
 }
 
 
@@ -176,7 +166,28 @@ const sendorder= ()=>{
               <p>الحساب الصافي : {firstSum == 0 ? 0: firstSum + deliveryFees}ج</p>
             </div>
             <div className="col-lg-11 m-3 text-center">
-              <button className="btn btn-success"  onClick={()=> sendorder()}>دفع</button>
+              {/* <button className="btn btn-success"  onClick={()=> sendorder()}>دفع</button> */}
+              <PayPalScriptProvider options={{ "client-id": "AYqaKElgqrBNzGijar7sOja8NvjgV-X4LssO7u4ahxUwts9_LazEoFtUmTx6v5YtbFXqQjdNi8J6tMS4" }}>
+            <PayPalButtons style={{ layout: "horizontal" }}
+            
+            createOrder={(data, actions) => {
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: `${(firstSum)}`,
+                    },
+                  },
+                ],
+              });
+            }}
+            onApprove={async (data, actions) => {
+              const details = await actions.order.capture();
+              const name = details.payer.name.given_name;
+              sendorder()
+              alert("Transaction completed by " + name);
+            }}/>
+        </PayPalScriptProvider>
             </div>
           </div>
         </div>
