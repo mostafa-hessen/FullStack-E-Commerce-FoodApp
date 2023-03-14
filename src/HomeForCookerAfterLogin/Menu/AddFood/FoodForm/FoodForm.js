@@ -197,7 +197,7 @@ function FoodForm(props) {
           foodDiscription:data.foodTextarea,
           timestamP: myserverTimestamp,
           cookerName: user.displayName,
-          userid: user.uid,
+          cookerId: user.uid,
           foodId:x,
           quantity:1
           

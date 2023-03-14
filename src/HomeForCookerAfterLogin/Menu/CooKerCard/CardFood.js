@@ -96,7 +96,7 @@ export default function CardFood() {
 
 
                              userfood&&
-                            userfood?.filter(ele=>ele.userid==user.uid)?.map((CheifItem, index) => {
+                            userfood?.filter(ele=>ele.cookerId==user.uid)?.map((CheifItem, index) => {
                                 return (
 
                                     <div key={index} className='col-lg-4 col-md-6 col-sm-6'>

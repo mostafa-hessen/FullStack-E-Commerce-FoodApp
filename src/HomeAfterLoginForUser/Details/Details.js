@@ -129,6 +129,9 @@ export default function Details() {
     if(currentPriceChanged){
       // 1 if cart have this before
       target.choosenPrice=currentPriceChanged
+      target.userOrderId= user.uid
+      target.userOrderName=user.displayName
+
       checkIfRepeated(target);
       console.log(currentPriceChanged);
 }

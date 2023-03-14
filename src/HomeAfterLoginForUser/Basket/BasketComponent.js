@@ -3,12 +3,19 @@ import { FaCartPlus, FaStar } from "react-icons/fa";
 import item1 from "../../assets/photo_2023-02-14_19-46-55.jpg";
 import "./Basket.css";
 import { useState, useEffect } from "react";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import Payment from "./payment";
+import { Route, useHistory } from "react-router-dom";
+import { TotalPrice } from "../../Component/Redux/reducer";
+import { useDispatch } from "react-redux";
+import { myAllorders, myCartOrderAction, totalPrice } from "../../Component/Redux/action";
 function Basket() {
-
+  const [Allorders, setAllorders] = useState([])
+const dispatch =useDispatch()
   let user = JSON.parse(localStorage.getItem("user"));
-
+let navigate = useHistory()
   const removeFromCart = (element) => {
     console.log(myCart);
     const q = doc(db, "users", user.uid);
@@ -27,6 +34,12 @@ function Basket() {
     const q = doc(db, "users", user.uid);
     onSnapshot(q, (snapshot) => {
       setmyCart(snapshot.data().cart);
+    });
+
+
+    const q2 = doc(db, "orders", user.uid);
+    onSnapshot(q2, (snapshot) => {
+      setAllorders(snapshot.data().orders);
     });
   }, []);
 
@@ -51,15 +64,34 @@ function Basket() {
     }
   }
  
-  let firstSum = 0
+
+let deliveryFees = 17
+
+//  send order to cooker
+
+
+let firstSum = 0
 const total1 = () =>{
     myCart.map(item =>{
-      firstSum = firstSum + (Number(item[priceTranslate[item.choosenPrice]]) * Number(item.quantity)) 
+    return  firstSum = firstSum + (Number(item[priceTranslate[item.choosenPrice]]) * Number(item.quantity)) 
     })
     return firstSum
 }
+const callPaypal= ()=>{
+   console.log(firstSum)
+   if(firstSum){
 
-let deliveryFees = 17
+     dispatch(totalPrice(firstSum))
+     dispatch(myCartOrderAction(myCart))
+     dispatch(myAllorders(Allorders))
+     navigate.push("/HomeUser/Cart/f")
+   }
+   
+   else{
+    alert ('you must add food')
+   }
+}
+
 
   return (
     <>
@@ -112,7 +144,7 @@ let deliveryFees = 17
                   onChange={(e) => quantutyFunc(ele, e)}
                 ></input>
 
-                {+ele?.quantity}
+                {/* {+ele?.quantity} */}
               </div>
               <div className=" col-lg-2 col-md-2 mt-5 mb-3 col-3">
                 <h4> {ele[priceTranslate[ele.choosenPrice]]}</h4>
@@ -148,7 +180,11 @@ let deliveryFees = 17
               <p>الحساب الصافي : {firstSum == 0 ? 0: firstSum + deliveryFees}ج</p>
             </div>
             <div className="col-lg-11 m-3 text-center">
-              <button className="btn btn-success">دفع</button>
+              <button className="btn btn-success"  onClick={()=> callPaypal() }>دفع</button>
+
+                  
+
+             
             </div>
           </div>
         </div>
