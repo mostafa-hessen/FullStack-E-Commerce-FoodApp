@@ -3,7 +3,7 @@ import { FaCartPlus, FaStar } from "react-icons/fa";
 import item1 from "../../assets/photo_2023-02-14_19-46-55.jpg";
 import "./Basket.css";
 import { useState, useEffect } from "react";
-import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, onSnapshot, orderBy, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import Payment from "./payment";
@@ -33,7 +33,7 @@ let navigate = useHistory()
   useEffect(() => {
     const q = doc(db, "users", user.uid);
     onSnapshot(q, (snapshot) => {
-      setmyCart(snapshot.data().cart);
+      setmyCart(snapshot.data().cart.reverse());
     });
 
 

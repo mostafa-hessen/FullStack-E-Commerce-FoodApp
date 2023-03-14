@@ -10,10 +10,6 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-  
-
-
-
 // food{عائلي :"bigPrice"}
 
   // ele.food[${`chossenprice`}]//   ele.bigPrice
@@ -131,9 +127,8 @@ export default function Details() {
       target.choosenPrice=currentPriceChanged
       target.userOrderId= user.uid
       target.userOrderName=user.displayName
-
+      target.timeAddedTocart = new Date()
       checkIfRepeated(target);
-      console.log(currentPriceChanged);
 }
 else{
   alert("you must choose price")
@@ -251,3 +246,5 @@ else{
     </>
   );
 }
+
+
