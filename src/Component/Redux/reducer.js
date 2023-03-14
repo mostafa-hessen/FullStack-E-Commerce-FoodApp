@@ -63,3 +63,61 @@ export  function AuthStatuesForCooker (state = InitialValue3, action)  {
       return state;
   }
 };
+
+
+  // ===== total price =======
+  const InitialValue4 = {
+    price:0
+  }
+   
+  export  function TotalPrice (state = InitialValue4, action)  {
+    console.log("=>",action.payload  , action.type);
+    switch (action.type) {
+        case "TOTAL-PRICE":
+            return{
+                ...state,
+                price:action.payload  
+            }
+        
+      default:
+        return state;
+    }
+  };
+
+
+    // ===== my cart orders  =======
+    const InitialValue5 = {
+      MyCartOrders:0
+    }
+     
+    export  function MyCart (state = InitialValue4, action)  {
+      console.log("=>",action.payload  , action.type);
+      switch (action.type) {
+          case "MYCART-ORDERES":
+              return{
+                  ...state,
+                  MyCartOrders:action.payload  
+              }
+          
+        default:
+          return state;
+      }
+    };
+    // ===== my MYORDERS =======
+    const InitialValue6 = {
+      MYORDERS:0
+    }
+     
+    export  function MYORDERS (state = InitialValue5, action)  {
+      console.log("=>",action.payload  , action.type);
+      switch (action.type) {
+          case "MYORDERS":
+              return{
+                  ...state,
+                  MYORDERS:action.payload  
+              }
+          
+        default:
+          return state;
+      }
+    };

@@ -21,3 +21,25 @@ export const authStatuesForCooker=(payload)=>{
         payload
     }
 }
+
+
+export const totalPrice=(payload)=>{
+    return {
+        type: "TOTAL-PRICE",
+        payload
+    }
+}
+export const myCartOrderAction=(payload)=>{
+    return {
+        type: "MYCART-ORDERES",
+        payload
+    }
+}
+
+
+export const myAllorders=(payload)=>{
+    return {
+        type: "MYORDERS",
+        payload
+    }
+}
