@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, storage, db, myserverTimestamp } from '../../../firebase';
-import { useDropzone } from 'react-dropzone';
+//import { useDropzone } from 'react-dropzone';
 import "./Signup.css";
 import { Alert } from "react-bootstrap";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
@@ -12,7 +12,7 @@ import { authStatuesForCooker, authStatuesForUser } from "../../../Component/Red
 
 
 export default function Signup(props) {
-  const {
+  /*const {
     acceptedFiles,
     fileRejections,
     getRootProps,
@@ -22,17 +22,17 @@ export default function Signup(props) {
       'image/jpeg': [],
       'image/png': []
     }
-  });
-  let n = 0;
+  });*/
+  /*let n = 0;
   const acceptedFileItems = acceptedFiles.map(file => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
   ));
+*/
+ // const fileRejectionItems = fileRejections.map(({ file, errors }) => (
 
-  const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-
-    <li key={file.path}>
+    /*<li key={file.path}>
       {file.path} - {file.size} bytes
       <ul>
         {errors.map(e => (
@@ -41,9 +41,9 @@ export default function Signup(props) {
 
       </ul>
     </li>
-  ));
+  ));*/
 
-  console.log(fileRejectionItems)
+ // console.log(fileRejectionItems)
 
 
   const dispatch = useDispatch()
@@ -454,7 +454,7 @@ export default function Signup(props) {
       return false;
     }
   };
-  console.log(data.photo.type, 'pppppppppppppppppppp')
+  //console.log(data.photo.type, 'pppppppppppppppppppp')
 
 
   return (
