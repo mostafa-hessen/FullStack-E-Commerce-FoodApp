@@ -26,6 +26,7 @@ const [x, setx] = useState([])
 
 
  <PayPalScriptProvider options={{ "client-id":"AYqaKElgqrBNzGijar7sOja8NvjgV-X4LssO7u4ahxUwts9_LazEoFtUmTx6v5YtbFXqQjdNi8J6tMS4" }}>
+
     <PayPalButtons style={{ layout: "horizontal" }}
     
     createOrder={(data, actions) => {
@@ -42,6 +43,7 @@ const [x, setx] = useState([])
     onApprove={async (data, actions) => {
       const details = await actions.order.capture();
       const name = details.payer.name.given_name;
+      
       console.log("nbvcx",myTotalPrice);
       setOrder()
 
