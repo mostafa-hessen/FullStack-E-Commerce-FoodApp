@@ -6,10 +6,16 @@ import { useState, useEffect } from "react";
 import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import Payment from "./payment";
+import { Route, useHistory } from "react-router-dom";
+import { TotalPrice } from "../../Component/Redux/reducer";
+import { useDispatch } from "react-redux";
+import { myAllorders, myCartOrderAction, totalPrice } from "../../Component/Redux/action";
 function Basket() {
-
+  const [Allorders, setAllorders] = useState([])
+const dispatch =useDispatch()
   let user = JSON.parse(localStorage.getItem("user"));
-
+let navigate = useHistory()
   const removeFromCart = (element) => {
     console.log(myCart);
     const q = doc(db, "users", user.uid);
@@ -28,6 +34,12 @@ function Basket() {
     const q = doc(db, "users", user.uid);
     onSnapshot(q, (snapshot) => {
       setmyCart(snapshot.data().cart);
+    });
+
+
+    const q2 = doc(db, "orders", user.uid);
+    onSnapshot(q2, (snapshot) => {
+      setAllorders(snapshot.data().orders);
     });
   }, []);
 
@@ -52,31 +64,33 @@ function Basket() {
     }
   }
  
-  let firstSum = 0
-const total1 = () =>{
-    myCart.map(item =>{
-      firstSum = firstSum + (Number(item[priceTranslate[item.choosenPrice]]) * Number(item.quantity)) 
-    })
-    return firstSum
-}
 
 let deliveryFees = 17
 
 //  send order to cooker
 
-const sendorder= ()=>{
-    //  console.log(myCart[0].cookerId)
-     console.log("order has been set to db")
 
-
-//      myCart?.map(ele=>{
-
-
-//        const q = doc(db, "cookers", ele.cookerId);
-//        updateDoc(q, { order: arrayUnion(ele) });
-// })
+let firstSum = 0
+const total1 = () =>{
+    myCart.map(item =>{
+    return  firstSum = firstSum + (Number(item[priceTranslate[item.choosenPrice]]) * Number(item.quantity)) 
+    })
+    return firstSum
 }
+const callPaypal= ()=>{
+   console.log(firstSum)
+   if(firstSum){
 
+     dispatch(totalPrice(firstSum))
+     dispatch(myCartOrderAction(myCart))
+     dispatch(myAllorders(Allorders))
+     navigate.push("/HomeUser/Cart/f")
+   }
+   
+   else{
+    alert ('you must add food')
+   }
+}
 
 
   return (
@@ -130,7 +144,7 @@ const sendorder= ()=>{
                   onChange={(e) => quantutyFunc(ele, e)}
                 ></input>
 
-                {+ele?.quantity}
+                {/* {+ele?.quantity} */}
               </div>
               <div className=" col-lg-2 col-md-2 mt-5 mb-3 col-3">
                 <h4> {ele[priceTranslate[ele.choosenPrice]]}</h4>
@@ -166,28 +180,11 @@ const sendorder= ()=>{
               <p>الحساب الصافي : {firstSum == 0 ? 0: firstSum + deliveryFees}ج</p>
             </div>
             <div className="col-lg-11 m-3 text-center">
-              {/* <button className="btn btn-success"  onClick={()=> sendorder()}>دفع</button> */}
-              <PayPalScriptProvider options={{ "client-id": "AYqaKElgqrBNzGijar7sOja8NvjgV-X4LssO7u4ahxUwts9_LazEoFtUmTx6v5YtbFXqQjdNi8J6tMS4" }}>
-            <PayPalButtons style={{ layout: "horizontal" }}
-            
-            createOrder={(data, actions) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      value: `${(firstSum)}`,
-                    },
-                  },
-                ],
-              });
-            }}
-            onApprove={async (data, actions) => {
-              const details = await actions.order.capture();
-              const name = details.payer.name.given_name;
-              sendorder()
-              alert("Transaction completed by " + name);
-            }}/>
-        </PayPalScriptProvider>
+              <button className="btn btn-success"  onClick={()=> callPaypal() }>دفع</button>
+
+                  
+
+             
             </div>
           </div>
         </div>
