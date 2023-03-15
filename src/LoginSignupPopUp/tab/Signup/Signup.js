@@ -173,10 +173,7 @@ export default function Signup(props) {
             });
             // data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
 
-
           }
-
-
         );
 
         onAuthStateChanged(auth, (user) => {
@@ -189,8 +186,6 @@ export default function Signup(props) {
             sessionStorage.removeItem('authCooker')
 
           }
-
-
 
           else if (user.displayName.split('@')[1] == "cook") {
             dispatch(authStatuesForCooker(true))
@@ -215,7 +210,7 @@ export default function Signup(props) {
       }
 
     } else {
-      let check =[]
+    /*  let check =[]
       for (const item in data){
         
         if (data[item]== ""){
@@ -238,7 +233,7 @@ export default function Signup(props) {
          
         console.log(variable ,'vvvvvvvvvvv')
       })
-
+*/
 
       // !data.photo
       //   ? setMessage({
@@ -426,9 +421,10 @@ export default function Signup(props) {
 
       setMessage({
         ...errorMessage,
-        photoErr: !e.target.files[0] ? "يجب أن تختر صوره " : data.photo.type != 'image/jpeg' || data.photo.type != 'image/png' ? 'يجب ان تختار صوره فقط' : "",
+        photoErr: e.target.files[0].length == 0 ? "يجب أن تختر صوره " : data.photo.type != 'image/jpeg' || data.photo.type != 'image/png' ? 'يجب ان تختار صوره فقط' : "",
       });
     }
+   
   };
 
   const vaildition = () => {
@@ -456,7 +452,6 @@ export default function Signup(props) {
   };
   //console.log(data.photo.type, 'pppppppppppppppppppp')
 
-
   return (
     <>
       {
@@ -483,7 +478,7 @@ export default function Signup(props) {
                   style={{ width: "100%" }}
                   onChange={(e) => changeData(e)}
                 />
-                <small className="text-danger">{errorMessage.LNameErr}</small>
+                <small className="text-danger">{errorMessage.lNameErr}</small>
               </div>
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
@@ -495,7 +490,6 @@ export default function Signup(props) {
                   value={data.fName}
                   style={{ width: "100%" }}
                   onChange={(e) => changeData(e)}
-
                 />
                 <small className="text-danger " style={{ textAlign: "right" }}>
                   {errorMessage.fNameErr}
@@ -503,7 +497,6 @@ export default function Signup(props) {
               </div>
             </div>
             <input
-
               type="email"
               placeholder="البريد الإلكتروني"
               name="email"
@@ -513,12 +506,12 @@ export default function Signup(props) {
               {errorMessage.emailErr}
             </small>
             <input
-
               type="password"
               placeholder="كلمة المرور"
               name="password"
               onChange={(e) => changeData(e)}
             />
+
             <small
               className="text-danger"
               style={{
@@ -531,7 +524,6 @@ export default function Signup(props) {
               {errorMessage.passwordErr}
             </small>
             <input
-
               type="tel"
               placeholder=" رقم التليفون"
               name="phone"
@@ -618,7 +610,7 @@ export default function Signup(props) {
             <input
               style={{ display: "none" }}
               type="file"
-              accept="image/x-png,image/gif,image/jpeg"
+              accept="image/png,image/jpeg"
               id="file"
               name="photo"
               onChange={(e) => changeData(e)}

@@ -1,5 +1,6 @@
 import OrderMeal from '../../assets/order.jpg';
 import './OrdersStyle.css';
+import OrderTime from './orderTime';
 function Order(props) {
     return (
         <div className='row'>
@@ -35,9 +36,9 @@ function Order(props) {
                         
 
                     <div className='col-7 d-flex justify-content-evenly mx-auto'>
-                        {/* <h6 style={{ display: 'inline-block' }} className='mt-2'>التسليم: {props.data.time}</h6> */}
-                        <i class="fa-solid fa-check choose" style={{ color: '#6cad6c', fontSize: 32 }}></i>
-                        <i class="fa-solid fa-xmark choose" style={{ color: '#e45248', fontSize: 32 }}></i>
+                       {/* <h6 style={{ display: 'inline-block' }} className='mt-2'>التسليم: غداً بعد العصر</h6>*/}
+                        <OrderTime order={props.data} index={props.index}/>
+                      {/* <i class="fa-solid fa-xmark choose" style={{ color: '#e45248', fontSize: 32 }}></i>*/}
                     </div>
                 </div>
 

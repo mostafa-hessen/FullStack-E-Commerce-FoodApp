@@ -69,7 +69,6 @@ let deliveryFees = 17
 
 //  send order to cooker
 
-
 let firstSum = 0
 const total1 = () =>{
     myCart.map(item =>{
