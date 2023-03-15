@@ -30,7 +30,7 @@ let navigate = useHistory()
   useEffect(() => {
     const q = doc(db, "users", user.uid);
     onSnapshot(q, (snapshot) => {
-      setmyCart(snapshot.data().cart.reverse());
+      setmyCart(snapshot.data().cart);
     });
 
 
@@ -48,7 +48,7 @@ let navigate = useHistory()
    if (+e.target.value > 0) {
       console.log("h");
       myCart.find((ele) => {
-        if (ele.id == current.id && ele.choosenPrice == current.choosenPrice) {
+        if (ele.foodId == current.foodId && ele.choosenPrice == current.choosenPrice) {
           ele.quantity = +e.target.value;
           const q = doc(db, "users", user.uid);
           updateDoc(q, { cart: myCart });
