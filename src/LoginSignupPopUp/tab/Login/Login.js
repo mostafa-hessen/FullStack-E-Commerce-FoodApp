@@ -4,16 +4,15 @@ import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
 
-import { onAuthStateChanged } from "firebase/auth";
 
 import { useDispatch } from 'react-redux';
 import { AuthStatues } from '../../../Component/Redux/reducer';
 import { authStatuesForCooker, authStatuesForUser, authStatuesForUSer } from '../../../Component/Redux/action';
 
-function Login(){
+/* function Login(){
   const [err, setErr] = useState(false);
   const [currentUser, setCurrentUser] = useState()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true) */
 
 function Login(){
   const [err, setErr] = useState(false);
@@ -91,5 +90,5 @@ return(
     </>
 )
 
-}}
+}
 export default Login

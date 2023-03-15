@@ -51,8 +51,13 @@ let navigate = useHistory()
    if (+e.target.value > 0) {
       console.log("h");
       myCart.find((ele) => {
-        if (ele.id == current.id && ele.choosenPrice == current.choosenPrice) {
-          ele.quantity = +e.target.value;
+       /*  console.log(ele ,"takwa"); */
+        if (ele.foodId == current.foodId && ele.choosenPrice == current.choosenPrice) {
+          console.log(JSON.stringify( ele )+"ttttttttt");
+          console.log( JSON.stringify( current )+"aaaaaaaaaaaa");
+          ele.quantity = e.target.value;
+          console.log(ele.quantity ,"takwa");
+          console.log(e.target.value ,"takwa");
           const q = doc(db, "users", user.uid);
           updateDoc(q, { cart: myCart });
         }
@@ -140,11 +145,11 @@ const callPaypal= ()=>{
                 <input
                   className="w-25 "
                   type="number"
-                  value={+ele?.quantity}
-                  onChange={(e) => quantutyFunc(ele, e)}
+                  value={(+ele?.quantity)}
+                  onChange={(e) => quantutyFunc(ele , e)}
                 ></input>
 
-                {/* {+ele?.quantity} */}
+                {+ele?.quantity}
               </div>
               <div className=" col-lg-2 col-md-2 mt-5 mb-3 col-3">
                 <h4> {ele[priceTranslate[ele.choosenPrice]]}</h4>
