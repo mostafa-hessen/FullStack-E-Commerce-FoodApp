@@ -5,10 +5,7 @@ import "./Basket.css";
 import { useState, useEffect } from "react";
 import { arrayUnion, doc, onSnapshot, orderBy, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import Payment from "./payment";
 import { Route, useHistory } from "react-router-dom";
-import { TotalPrice } from "../../Component/Redux/reducer";
 import { useDispatch } from "react-redux";
 import { myAllorders, myCartOrderAction, totalPrice } from "../../Component/Redux/action";
 function Basket() {
@@ -79,13 +76,11 @@ const total1 = () =>{
 const callPaypal= ()=>{
    console.log(firstSum)
    if(firstSum){
-
      dispatch(totalPrice(firstSum))
      dispatch(myCartOrderAction(myCart))
      dispatch(myAllorders(Allorders))
      navigate.push("/HomeUser/Cart/f")
    }
-   
    else{
     alert ('you must add food')
    }
@@ -142,8 +137,6 @@ const callPaypal= ()=>{
                   value={+ele?.quantity}
                   onChange={(e) => quantutyFunc(ele, e)}
                 ></input>
-
-                {/* {+ele?.quantity} */}
               </div>
               <div className=" col-lg-2 col-md-2 mt-5 mb-3 col-3">
                 <h4> {ele[priceTranslate[ele.choosenPrice]]}</h4>
@@ -157,7 +150,6 @@ const callPaypal= ()=>{
                   +ele[priceTranslate[ele.choosenPrice]] * +ele.quantity
                   }
                 </h4>
-                {/* {console.log(+ele[priceTranslate[ele.choosenPrice] ] * +ele.quantity )} */}
               </div>
               <div className="col-lg-1 col-md-1 mt-5 mb-3 col-1  ">
                 <button onClick={() => removeFromCart(ele)}>remove</button>
@@ -180,10 +172,6 @@ const callPaypal= ()=>{
             </div>
             <div className="col-lg-11 m-3 text-center">
               <button className="btn btn-success"  onClick={()=> callPaypal() }>دفع</button>
-
-                  
-
-             
             </div>
           </div>
         </div>

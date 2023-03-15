@@ -1,12 +1,14 @@
+.noteContainer{
+  max-height :53vh !important;
+  overflow: auto;
+}
 .noteCon{
-    margin: auto;
+   margin: auto;
 }
 .headerNote{
     width: 200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 .noteBoxStyle{
     background-color: #fff;
@@ -35,8 +37,10 @@
     margin-bottom: 7px;
 }
 .note-btn{
-    background-color: #5e935e;
+    background-color: #4c784c;
     color:#fff;
     border-radius: 8px;
     padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import { db } from '../../../../firebase';
 import './notification.css'
 import logo from '../../../../assets/logo.png'
+import { padding } from '@mui/system';
+//import ScrollView, { ScrollElement } from "react-scroll";
 export default function Notification() {
 
   const [show, setShow] = useState(false);
@@ -28,16 +30,21 @@ export default function Notification() {
     }, [ ])
 })
 
+const removeFromNote = () => {
+  const q = doc(db, "users", user.uid);
+  updateDoc(q, {notifications:[],})
+};
+
   return (
     <>
-     <i className={`ms-3 me-2 fa-regular fa-bell fa-lg`}  style={{ color: '#6cad6c', fontSize: 32 }} onClick={handleShow}></i>
+     <i className={`ms-3 me-2 fa-regular fa-bell fa-lg ${notifications.length > 0 ?'notificationIcon':''}`} style={{ color: '#6cad6c', fontSize: 32 }} onClick={handleShow}></i>
       <Modal show={show} onHide={handleClose} >
         <div className='headerNote'>
         <img src={logo} className='logo'/>
         <p className='logoTxt'>الأكيله</p>
         </div>
         <Modal.Body style={{display:'flex', justifyContent:'center', backgroundColor:'#F5F5F5'}}>
-        <div className='container'> 
+        <div className='container noteContainer'>
         {
         notifications.map((ele,inx)=>{
         return(
@@ -63,7 +70,7 @@ export default function Notification() {
       </div>
         </Modal.Body>
         <Modal.Footer style={{display:'flex', justifyContent:'center', flexDirection:'row'}}>
-          <button className='note-btn'>مسح الكل</button>
+          <button className='note-btn' onClick={() => removeFromNote()}>مسح كل الإشعارات</button>
            </Modal.Footer>
       </Modal>
     </>
