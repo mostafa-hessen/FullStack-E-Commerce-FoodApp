@@ -1,13 +1,7 @@
 import React from 'react'
-import foodimg1 from '../../../assets/6.png'
 import './box.css'
 
 import { useHistory } from "react-router-dom";
-
-// import { doc } from "prettier";
-// import { log } from 'console';
-
-// export default function Signup() {
   
   function Box(props) {
   let navigate= useHistory()
@@ -22,12 +16,10 @@ import { useHistory } from "react-router-dom";
     <p style={{fontWeight: 'bold'}}>EGP {props.element?.middlePrice}</p>
     </div>
     
-    {/* <a href="#"><i class="fas fa-shopping-cart"></i></a> */}
     <a href="#">
     <lord-icon
     src="https://cdn.lordicon.com/udwhdpod.json"
     trigger="hover"
-    // style="width:250px;height:250px"
     >
 </lord-icon>
 </a>

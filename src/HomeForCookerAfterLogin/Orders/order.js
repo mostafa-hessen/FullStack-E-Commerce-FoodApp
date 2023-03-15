@@ -12,14 +12,12 @@ function Order(props) {
                 </div>
 
                 <div className='mt-4'>
-                    
-                       
+
                                 <div className=" col-11 align-self-center mx-auto my-3 rounded-4 py-3 box-style">
                                     <div className='col-12 my-3 d-flex  justify-content-evenly'>
                                         <img src={props.data.foodImg[0]&&props.data.foodImg[0]} alt="" className='mealImg' />
                                         <div className='order-item '>
                                             <h5>{props.data?.foodName}</h5>
-                                            {/* <h6 style={{ color: '#6b6e71' }}>{props.data.note}</h6> */}
                                         </div>
 
                                         <div className='order-item '>
@@ -32,13 +30,9 @@ function Order(props) {
 
                                     </div>
                                 </div>
-                      
-                        
 
                     <div className='col-7 d-flex justify-content-evenly mx-auto'>
-                       {/* <h6 style={{ display: 'inline-block' }} className='mt-2'>التسليم: غداً بعد العصر</h6>*/}
                         <OrderTime order={props.data} index={props.index}/>
-                      {/* <i class="fa-solid fa-xmark choose" style={{ color: '#e45248', fontSize: 32 }}></i>*/}
                     </div>
                 </div>
 

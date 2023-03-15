@@ -1,14 +1,10 @@
 
-//import "./FoodForm.css";
-import { uploadBytes, listAll, list } from "firebase/storage";
+import { uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
-import imageForm1 from "../../../../assets/potatoKofta.jpg";
-import imageForm2 from "../../../../assets/kofta.jpg";
-import { useEffect, useRef, useState } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useRef, useState } from "react";
+import { ref, getDownloadURL } from "firebase/storage";
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../../firebase";
-import { async } from "@firebase/util";
 
 function EditFoodForm(props) {
   const ArbicCategory={pizza:"بيتزا", chicken:"فراخ", meet:"لحمة" , chees:"جبن" , sweet:"حلويات" }
@@ -18,23 +14,11 @@ function EditFoodForm(props) {
   const [myimages, setmyimages] = useState([]);
   const textarea = useRef('')
 
-  useEffect(() => {
-    console.log('hhhhhhh')
-  
-    
-  }, [])
-  
-
   const onSelectFile = (event) => {
     const selectedFiles = event.target.files;//2 images file
-// console.log(selectedFiles + "1")
     if(selectedFiles.length<=3)
     {
-
-    // console.log(selectedFiles + "2");
     const selectedFilesArray = Array.from(selectedFiles);
-   
-
     const imagesArray = selectedFilesArray.map((file) => {
       return URL.createObjectURL(file);
     });
@@ -42,13 +26,10 @@ function EditFoodForm(props) {
     setSelectedImages((previousImages) => previousImages.concat(imagesArray)); // 2 urls 
     setmyimages((previousImages) => previousImages.concat(selectedFilesArray));// 2 files
     event.target.value = "";
-   // console.log(selectedImages + "selectedimageses")
-   
   }
 
   else{
     alert("you must choos only three images")
-    // console.log(myimages + "3");
   }
   };
 
@@ -56,29 +37,16 @@ function EditFoodForm(props) {
     setSelectedImages(selectedImages.filter((e, i) => i !== image));
     setmyimages(myimages.filter((e, i) => i !== image));
     URL.revokeObjectURL(image);
-    console.log(props.targetEditeItem.foodImg.includes(element))
-    console.log(props.targetEditeItem.foodImg)
      let myimagesafterdelete=props.targetEditeItem.foodImg.length>1?props.targetEditeItem.foodImg.filter(e=>element!=e):props.targetEditeItem.foodImg
-   // let myimagesafterdelete=props.targetEditeItem.foodImg.filter(e=>element!=e)
-    console.log(myimagesafterdelete)
-    
     const docRef = doc(db, "foods", `${props.targetEditeItem.id}`);
-
     updateDoc(docRef, {
         foodImg:myimagesafterdelete
 
     })
-        .then((docRef) => {
-            console.log(
-                "A New Document Field has been updated to an existing document"
-            );
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+    .catch((error) => {
+      console.log(error);
+    });
 }
-
- 
 
   let rgex = {
     foodName:
@@ -108,9 +76,7 @@ function EditFoodForm(props) {
   });
 
   const changeData = (e) => {
-    console.log(e.target.name);
     if (e.target.name === "foodName") {
-      console.log("j");
       setData({
         ...data,
         foodName: e.target.value,
@@ -132,7 +98,6 @@ function EditFoodForm(props) {
         ...data,
         cateogry: e.target.value,
       });
-      console.log("dsa", e.target.value);
       setMessage({
         ...errorMessage,
         cateogryErr:
@@ -162,7 +127,6 @@ function EditFoodForm(props) {
         ...data,
         images: myimages,// 2 files
       });
-      // console.log(myimages);
       setMessage({
         ...errorMessage,
         imagesErr:
@@ -203,8 +167,6 @@ function EditFoodForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.name);
-    console.log(myimages +"myimages")
     if (vaildition()) {
       try {
         
@@ -218,9 +180,7 @@ function EditFoodForm(props) {
           timestamP: myserverTimestamp,
           cookerName: user.displayName,
           cookerId: user.uid,
-          
         }); 
-         console.log('bbbbbbbbb')
          myimages.map((ele) => {
           const imageRef = ref(storage, `foodimages/${ele.name + v4()}`);
           uploadBytes(imageRef, ele).then((snapshot) => {
@@ -232,12 +192,9 @@ function EditFoodForm(props) {
           });
         }); 
 
-        for(let i=0;i<8;i++){
-          // console.log(e.target[i].value='');
+      for(let i=0;i<8;i++){
           if(e.target[i].name!=('btnremove')){
-
            e.target[i].value=""
-           
           }
         }
           setData(   {
@@ -251,12 +208,9 @@ function EditFoodForm(props) {
           })
           setSelectedImages([])
           textarea.current.value=""
-    //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
-
-
         
       } catch {
-        console.log("errrrrrrrrrrrrrrrrrrrrr");
+        console.log("err");
       }
     } else {
       console.log("notvalid");
@@ -265,8 +219,7 @@ function EditFoodForm(props) {
             ...errorMessage,
             imagesErr: selectedImages.length == 0 ? "يجب أن تختر صوره " : "",
           })
-        : console.log("F");
-      console.log(data.foodName == "");
+        : console.log("err");
       data.foodName == ""
         ? setMessage({
             ...errorMessage,
@@ -304,7 +257,6 @@ function EditFoodForm(props) {
           })
         : console.log("done");
     }
-    //console.log("hi nadeen", vaildition());
   };
 
   const vaildition = () => {
@@ -316,23 +268,17 @@ function EditFoodForm(props) {
       data.bigPrice != 0 &&
       data.middlePrice != 0 &&
       data.smallPrice != 0
-
-      // data.kindUser.length !== 0 &&
     ) {
       return true;
     } else {
       return false;
     }
   };
-  // console.log(ImageUrlsFromFireBase)
   return (
     <div className="baseFoodForm">
       <div className="formContainer">
         <div className="formWrapper">
           <span className="logo">🤤اضف اكله جديده </span>
-          {/* <span className="title">add</span> */}
-          {/* <img src=""/> */}
-
           <form onSubmit={handleSubmit}>
             <input
               name="foodName"
@@ -342,8 +288,6 @@ function EditFoodForm(props) {
               onChange={(e) => changeData(e)}
             />
             <small className="text-danger">{errorMessage.foodNameErr}</small>
-
-            {/* <label htmlFor="Cateogry">تصنيف الاكله  </label> */}
             <select
               name="cateogry"
               id="Cateogry"
@@ -360,11 +304,8 @@ function EditFoodForm(props) {
 
             <div className="imageForm">
               <div className="prevImg">
-                {/* style={{,backgroundImage:`url(${imageForm1})`}} */}
-                {/* <img src={imageForm1} />  */}
 
                 <label htmlFor="myimginediteform" className="file">
-                  {/* <img src={Add} alt="" /> */}
                   <input
                     name="images"
                     style={{ display: "none" }}
@@ -392,14 +333,6 @@ function EditFoodForm(props) {
                 className="foodImages"
                 style={{ display: "flex", margin: "10px", direction: "rtl" }}
               >
-                {/*      
-
-{
-
-}
-          <img src={imageForm2} height={'80px'} width={'100px'} style={{margin:'10px' ,borderRadius:'6px'}}/>
-          <img src={imageForm1} height={'80px'} width={'100px'} style={{margin:'10px',borderRadius:'6px'}}/>
-          <img src={imageForm2} height={'80px'} width={'100px'} style={{margin:'10px',borderRadius:'6px'}}/> */}
 
                 {selectedImages &&
                   selectedImages.map((ele, index) => (
@@ -432,7 +365,6 @@ function EditFoodForm(props) {
               {errorMessage.foodTextareaErr}
             </small>
 
-            {/* <input required type="" placeholder="password" /> */}
             <div className="price">
               <div className="pricee ">
                 <label htmlFor="price1">عائلي : </label>
@@ -476,13 +408,8 @@ function EditFoodForm(props) {
                 errorMessage.middlePriceErr ||
                 errorMessage.bigPriceErr}
             </small>
-
             <button name="save">حـــــــفـــــــظ </button>
-            {/* {loading && "Uploading and compressing the image please wait..."} */}
-            {/* {err && <span>Something went wrong</span>} */}
           </form>
-
-          {/* {!err ? console.log("done") : console.log("you have errore")} */}
         </div>
       </div>
     </div>

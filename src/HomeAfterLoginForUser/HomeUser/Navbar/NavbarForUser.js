@@ -29,9 +29,6 @@ function Navbar() {
 
           <ul class="ul">
             <li>
-              {/* <a to="/HomeUser/Home">
-              <i class="fa-solid fa-house icon"></i> <span>الرئيسية</span>
-              </Link> */}
 
               <Link to="/HomeUser/Home">
                     <i class="fa-solid fa-house icon"></i> <span>الرئيسية</span>
