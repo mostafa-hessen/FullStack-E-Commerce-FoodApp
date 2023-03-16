@@ -5,8 +5,12 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase";
 import { useDispatch } from "react-redux";
 import { authStatuesForUser } from "../../../Component/Redux/action";
-
+import React, { useEffect, useState } from 'react';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { db } from '../../../firebase';
 function Navbar() {
+  const [us, setus] = useState({})
+  const user = JSON.parse(localStorage.getItem("user"));
   const dispatch=useDispatch()
   const logOut=()=>{
     signOut(auth).then(() => {
@@ -18,13 +22,20 @@ function Navbar() {
       alert(error)
     });
   }
+
+  useEffect (() => {
+    const q = doc(db, "users", user.uid);
+    onSnapshot(q, (snapshot) => {
+      setus(snapshot.data());})
+    }, [ ])
+
   return (
       <nav className="d-flex flex-column justify-content-between navbaruser">
         <div>
           <div class="image">
-            <img src="https://via.placeholder.com/50/09f/fff.png " />
+            <img src={us.photo && us.photo} style={{height:90}}/>
           </div>
-          <h4 className="text-center">سهيله حماده</h4>
+          <h4 className="text-center mt-3">{us.fullName && us.fullName}</h4>
 
 
           <ul class="ul">
