@@ -32,7 +32,7 @@ function Cheif() {
                             <div className='sec-title text-center mb-5'>
                                 <h3 className="h3-title main-title" >أفضل الطباخين لدينا</h3>
                                 <div className='sec-title-shape '>
-                                    <img src={shape} className='line col-lg-2 col-md-4 col-sm-4'/>
+                                    {/* <img src={shape} className='line col-lg-2 col-md-4 col-sm-4'/> */}
                                 </div>
                             </div>
                         </div>

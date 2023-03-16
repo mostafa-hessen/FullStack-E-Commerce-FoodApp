@@ -1,33 +1,34 @@
-.noteContainer{
+.notifcations .noteContainer{
   max-height :53vh !important;
   overflow: auto;
+  cursor: pointer;
 }
-.noteCon{
+.notifcations .noteCon{
    margin: auto;
 }
-.headerNote{
+.notifcations .headerNote{
     width: 200px;
     margin-left: auto;
     margin-right: auto;
 }
-.noteBoxStyle{
+.notifcations .noteBoxStyle{
     background-color: #fff;
     box-shadow: #d7d7d7 0px 7px 29px 0px;
 }
-.logo{
+.notifcations .logo{
     width: 120px; 
     height: 120px;
     margin-left: 40px;
 }
-.logoTxt{
+.notifcations .logoTxt{
     font-size: 23px;
     text-align: center;
     margin-top: -20px;
 }
-.note-item{ 
+.notifcations .note-item{ 
    text-align: center;
 }
-.note-img{
+.notifcations .note-img{
     width: 95px;
     height: 95px;
     border-radius: 15px;
@@ -36,11 +37,11 @@
     margin-top: 7px;
     margin-bottom: 7px;
 }
-.note-btn{
+.notifcations .note-btn{
     background-color: #008000;
     color:#fff;
     border-radius: 8px;
     padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
+ }

@@ -1,27 +1,21 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, storage, db, myserverTimestamp } from '../../../firebase';
-//import { useDropzone } from 'react-dropzone';
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  updateProfile,
-} from "firebase/auth";
-import { auth, storage, db, myserverTimestamp } from "../../../firebase";
-import { useDropzone } from "react-dropzone";
+import { useDropzone } from 'react-dropzone';
 import "./Signup.css";
-import { Alert } from "react-bootstrap";
+import { ElementFlags } from "typescript";
+import { Alert, Button } from "react-bootstrap";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { doc, setDoc } from "@firebase/firestore";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  authStatuesForCooker,
-  authStatuesForUser,
-} from "../../../Component/Redux/action";
+import { authStatues, authStatuesForCooker, authStatuesForUser } from "../../../Component/Redux/action";
+
+// import { doc } from "prettier";
+// import { log } from 'console';
 
 export default function Signup(props) {
-  /*const {
+  const {
     acceptedFiles,
     fileRejections,
     getRootProps,
@@ -31,49 +25,41 @@ export default function Signup(props) {
       'image/jpeg': [],
       'image/png': []
     }
-  });*/
-  /*let n = 0;
-  const acceptedFileItems = acceptedFiles.map(file => (
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
-    useDropzone({
-      accept: {
-        "image/jpeg": [],
-        "image/png": [],
-      },
-    });
+  });
   let n = 0;
-  const acceptedFileItems = acceptedFiles.map((file) => (
+  const acceptedFileItems = acceptedFiles.map(file => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
   ));
-*/
- // const fileRejectionItems = fileRejections.map(({ file, errors }) => (
 
-    /*<li key={file.path}>
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
+
     <li key={file.path}>
       {file.path} - {file.size} bytes
       <ul>
-        {errors.map((e) => (
+        {errors.map(e => (
           <li key={e.code}>{e.message}</li>
         ))}
       </ul>
     </li>
-  ));*/
+  ));
 
- // console.log(fileRejectionItems)
-  console.log(fileRejectionItems);
 
-  const dispatch = useDispatch();
-  let navigate = useHistory();
+  const dispatch = useDispatch()
+  let navigate = useHistory()
   let rgex = {
     fName: /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
-    lastName: /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
+    lastName:
+      /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
     email: /^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,
     password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/,
+    // address:
+    //   /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     address:
       /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,
+
+
     phone: /^01[0125][0-9]{8}$/,
   };
   const [show, setShow] = useState(false);
@@ -90,8 +76,8 @@ export default function Signup(props) {
     photo: "",
   });
   const [errorMessage, setMessage] = useState({
-    fNameErr: null,
-    lNameErr: null,
+    FNameErr: null,
+    LNameErr: null,
     emailErr: null,
     passwordErr: null,
     phoneErr: null,
@@ -103,7 +89,7 @@ export default function Signup(props) {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    // console.log("d");
+    console.log("d");
     console.log("func", vaildition());
 
     if (vaildition()) {
@@ -111,19 +97,21 @@ export default function Signup(props) {
       //auth=getauth() , creatWithEmailAndPAsword(auth,email,password)
 
       try {
-        // ==== auth ====
+
+        // ==== auth ==== 
         const res = await createUserWithEmailAndPassword(
           auth,
           data.email,
           data.password
         );
 
-        // console.log(res.user);
 
-        // mostafa.png sohail.png sohaila166389189209202.png =>
-        let date = Date.now();
+        console.log(res.user);
 
-        // ==== upload img and get this  url
+        // mostafa.png sohail.png sohaila166389189209202.png => 
+        let date = Date.now()
+
+        // ==== upload img and get this  url 
         const storageRef = ref(storage, `${data.lName}${date}`);
 
         const uploadTask = uploadBytesResumable(storageRef, data.photo);
@@ -133,50 +121,71 @@ export default function Signup(props) {
             console.log(error);
           },
           () => {
-            getDownloadURL(uploadTask.snapshot.ref).then(
-              async (downloadURL) => {
-                await console.log(downloadURL);
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+              await console.log(downloadURL);
 
-                await updateProfile(res.user, {
-                  displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
-                  photoURL: downloadURL,
-                });
+              await updateProfile(res.user, {
+                displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
+                photoURL: downloadURL,
+              });
 
-                console.log("res.kindUser", data.kindUser);
-                await setDoc(
-                  doc(
-                    db,
-                    `${data.kindUser == "cook" ? "cookers" : "users"}`,
-                    res.user.uid
-                  ),
-                  {
-                    userid: res.user.uid,
-                    fullName: data.fName + " " + data.lName,
-                    email: data.email,
-                    phone: data.phone,
-                    address: data.address,
-                    country: data.country,
-                    kindUser: data.kindUser,
-                    photo: downloadURL,
-                    registerTime: myserverTimestamp,
-                  }
-                );
+              console.log("res.kindUser", data.kindUser)
+              await setDoc(doc(db, `${data.kindUser == "cook" ? "cookers" : "users"}`, res.user.uid), {
+                userid: res.user.uid,
+                fullName: data.fName + " " + data.lName,
+                email: data.email,
+                phone: data.phone,
+                address: data.address,
+                country: data.country,
+                kindUser: data.kindUser,
+                photo: downloadURL,
+                registerTime: myserverTimestamp
+              })
 
-                localStorage.setItem("user", JSON.stringify(res.user));
+              localStorage.setItem("user", JSON.stringify(res.user))
 
-                await setShow(true);
-                (await data.kindUser) == "user"
-                  ? navigate.push("/HomeUser")
-                  : navigate.push("/HomeCooker");
-              }
-            );
+              {/* if (data.kindUser == "cook") {
+                await setDoc(doc(db, "cookers", res.user.uid), {
+                  userid: res.user.uid,
+                  fullName: data.fName + " " + data.lName,
+                  email: data.email,
+                  phone: data.phone,
+                  address: data.address,
+                  country: data.country,
+                  kindUser: data.kindUser,
+                 //photo: downloadURL,
+                  registerTime: myserverTimestamp
+
+              });
+            } else {
+              await setDoc(doc(db, "users", res.user.uid), {
+                userid: res.user.uid,
+                fullName: data.fName +" "+data.lName,
+                email: data.email,
+                phone: data.phone,
+                address:data.address,
+                country: data.country,
+                kindUser:data.kindUser,
+                photo: downloadURL,
+                cart: [],
+                favourite: [],
+              });
+            }*/}
+              await setShow(true)
+              await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
+
+            });
             // data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
 
+
           }
+
+
         );
 
         onAuthStateChanged(auth, (user) => {
-          if (user.displayName.split("@")[1] == "user") {
+
+          if (user.displayName.split('@')[1] == "user") {
             console.log(user);
 
             dispatch(authStatuesForUser(true))
@@ -185,183 +194,88 @@ export default function Signup(props) {
 
           }
 
+
+
           else if (user.displayName.split('@')[1] == "cook") {
             dispatch(authStatuesForCooker(true))
             sessionStorage.setItem('authCooker', true)
             sessionStorage.removeItem('authUser')
           }
           else {
-            dispatch(authStatuesForUser(true));
-            sessionStorage.setItem("authUser", true);
-            sessionStorage.removeItem("authCooker");
-          } else if (user.displayName.split("@")[1] == "cook") {
-            dispatch(authStatuesForCooker(true));
-            sessionStorage.setItem("authCooker", true);
-            sessionStorage.removeItem("authUser");
-          } else {
             console.log("else", user);
           }
-        });
-      } catch (err) {
-        console.log(err);
+        }
+
+        )
+
+      }
+      catch (err) {
+        console.log(err)
         setMessage({
           ...errorMessage,
-          emailErr: "البريد الإلكتروني مسجل سابقاً",
+          emailErr: "البريد الإلكتروني مسجل سابقاً"
         });
+
       }
+
     } else {
-    /*  let check =[]
-      for (const item in data){
-        
-        if (data[item]== ""){
-          check.push(item)
-        }
-      // let check =[]
-      // for (const item in data){
-
-      //   if (data[item]== ""){
-      //     check.push(item)
-      //   }
-
-      // }
 
 
-      console.log(check)
-      let variable =''
-
-      check.map(ele=>{
-        variable=`${ele}Err`
-        // setMessage({
-        //       ...errorMessage,
-        //       variable :  "يجب أن تكمل البيانات الناقصه  " ,
-        //     })
-         errorMessage[variable]="يجب أن تكمل البيانات الناقصه  "
-         
-        console.log(variable ,'vvvvvvvvvvv')
-      })
-*/
-
-      // !data.photo
-      //   ? setMessage({
-      //     ...errorMessage,
-      //     photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
-      //   })
-      //   :
-      //   data.kindUser == ""
-      //     ? setMessage({
-      //       ...errorMessage,
-      //       fNameErr: "يجب أن تدخل الاسم الاول ",
-      //     })
-      //     : data.lName == ""
-      //       ? setMessage({
-      //         ...errorMessage,
-      //        lNameErr: "يجب أن تدخل الاسم الثاني ",
-      //       }) : data.email == ""
-      //         ? setMessage({
-      //           ...errorMessage,
-      //           emailErr: "يجب أن تدخل البريد الالكتروني  ",
-      //         })
-      //         :
-      //         data.password == ""
-      //           ? setMessage({
-      //             ...errorMessage,
-      //             passwordErr: "يجب أن تختر نوع حسابك",
-      //           })
-      //           :
-      //           data.phone == ""
-      //             ? setMessage({
-      //               ...errorMessage,
-      //               phoneErr: "يجب أن تختر تليفونك ",
-      //             })
-      //             : data.address == ""
-      //               ? setMessage({
-      //                 ...errorMessage,
-      //                 addressErrِ: "يجب أن تختر عنوانك ",
-      //               })
-      //               :
-      //               data.kindUser == ""
-      //                 ? setMessage({
-      //                   ...errorMessage,
-      //                   kindUserErr: "يجب أن تختر نوع حسابك",
-      //                 })
-      //                 : data.country == ""
-      //                   ? setMessage({
-      //                     ...errorMessage,
-      //                     countryErr: "يجب أن تختر بلدتك ",
-      //                   })
-      //                   : console.log("done");
-
-      //fnma
-      // console.log(check)
-      // let variable =''
-      // check.map(ele=>{
-      //   variable=`${ele}Err`
-      //   // `set${ele}Err`
-      //   //  errorMessage[variable]="يجب أن تكمل البيانات الناقصه  "
-      //   setMessage({
-      //      fNameErr:"يجب أن تكمل البيانات الناقص",
-      //     //  [variable] :"يجب أن تكمل البيانات الناقص",
-      //      kindUserErr :"يجب أن تكمل البيانات الناقص",
-      //      passwordErr :"يجب أن تكمل البيانات الناقص",
-      //      phoneErr :"يجب أن تكمل البيانات الناقص",
-      //      photoErr :"يجب أن تكمل البيانات الناقص",
-      //      addressErr :"يجب أن تكمل البيانات الناقص",
-      //      countryErr :"يجب أن تكمل البيانات الناقص",
-      //     //  Err :"يجب أن تكمل البيانات الناقص",
-      //   });
-      //   console.log(errorMessage ,'vvvvvvvvvvv')
-      // })
-
-      !data.photo
+      data.fName == ""
         ? setMessage({
-            ...errorMessage,
-            photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
-          })
-        : data.kindUser == ""
-        ? setMessage({
-            ...errorMessage,
-            fNameErr: "يجب أن تدخل الاسم الاول ",
-          })
+          ...errorMessage,
+          FNameErr: "يجب أن تدخل الاسم الاول ",
+        })
         : data.lName == ""
-        ? setMessage({
+          ? setMessage({
             ...errorMessage,
-            lNameErr: "يجب أن تدخل الاسم الثاني ",
-          })
-        : data.email == ""
-        ? setMessage({
-            ...errorMessage,
-            emailErr: "يجب أن تدخل البريد الالكتروني  ",
-          })
-        : data.password == ""
-        ? setMessage({
-            ...errorMessage,
-            passwordErr: "يجب أن تختر نوع حسابك",
-          })
-        : data.phone == ""
-        ? setMessage({
-            ...errorMessage,
-            phoneErr: "يجب أن تختر تليفونك ",
-          })
-        : data.address == ""
-        ? setMessage({
-            ...errorMessage,
-            addressErrِ: "يجب أن تختر عنوانك ",
-          })
-        : data.kindUser == ""
-        ? setMessage({
-            ...errorMessage,
-            kindUserErr: "يجب أن تختر نوع حسابك",
-          })
-        : data.country == ""
-        ? setMessage({
-            ...errorMessage,
-            countryErr: "يجب أن تختر بلدتك ",
-          })
-        : console.log("done");
+            LNameErr: "يجب أن تدخل الاسم الثاني ",
+          }) : data.email == ""
+            ? setMessage({
+              ...errorMessage,
+              emailErr: "يجب أن تدخل البريد الالكتروني  ",
+            })
+            :
+            data.password == ""
+              ? setMessage({
+                ...errorMessage,
+                passwordErr: "يجب أن تختر نوع حسابك",
+              })
+              :
+              data.phone == ""
+                ? setMessage({
+                  ...errorMessage,
+                  phoneErr: "يجب أن تختر تليفونك ",
+                })
+                :
+                data.address == ""
+                  ? setMessage({
+                    ...errorMessage,
+                    addressErr: "يجب أن تختر عنوانك ",
+                  })
 
-      // console.log(e.target.files);
+                  : data.kindUser == ""
+                    ? setMessage({
+                      ...errorMessage,
+                      kindUserErr: "يجب أن تختر نوع حسابك",
+                    })
+                    : data.country == ""
+                      ? setMessage({
+                        ...errorMessage,
+                        countryErr: "يجب أن تختر بلدتك ",
+                      })
+                      : !data.photo
+                        ? setMessage({
+                          ...errorMessage,
+                          photoErr: !e.target.files? "يجب أن تختر صوره " : "",
+                        })
+                        : console.log("done");
+
+
+      console.log(e.target.files);
     }
   };
+
 
   const changeData = (e) => {
     if (e.target.name === "fName") {
@@ -374,12 +288,12 @@ export default function Signup(props) {
         : (e.target.style.border = "1px solid red");
       setMessage({
         ...errorMessage,
-        fNameErr:
+        FNameErr:
           e.target.value.length === 0
             ? "يجب أن تدخل الاسم"
             : rgex["fName"].test(e.target.value)
-            ? null
-            : "الاسم يجب أن لا يقل عن 2 أحرف",
+              ? null
+              : "الاسم يجب أن لا يقل عن ٣ أحرف",
       });
     } else if (e.target.name == "lName") {
       setData({
@@ -391,12 +305,12 @@ export default function Signup(props) {
         : (e.target.style.border = "1px solid red");
       setMessage({
         ...errorMessage,
-        lNameErr:
+        LNameErr:
           e.target.value.length === 0
             ? "يجب أن تدخل الاسم"
             : rgex["lastName"].test(e.target.value)
-            ? null
-            : "الاسم يجب أن لا يقل عن 2  أحرف",
+              ? null
+              : "الاسم يجب أن لا يقل عن ٣  أحرف",
       });
     } else if (e.target.name == "email") {
       setData({
@@ -412,8 +326,8 @@ export default function Signup(props) {
           e.target.value.length === 0
             ? "يجب أن تدخل البريد الإلكتروني"
             : rgex["email"].test(e.target.value)
-            ? null
-            : "البريد الإلكتروني غير صحيح",
+              ? null
+              : "البريد الإلكتروني غير صحيح",
       });
     } else if (e.target.name == "password") {
       setData({
@@ -429,8 +343,8 @@ export default function Signup(props) {
           e.target.value.length === 0
             ? "يجب أن تدخل كلمة المرور"
             : rgex["password"].test(e.target.value)
-            ? null
-            : "كلمة المرور يجب أن تحتوي علي الأقل ٨ أحرف إنجليزية، حرف كبير علي الأقل، حرف صغير علي الأقل، رقم واحد علي الأقل، علامة ترقيم واحدة علي الأقل.",
+              ? null
+              : "كلمة المرور يجب أن تحتوي علي الأقل ٨ أحرف إنجليزية، حرف كبير علي الأقل، حرف صغير علي الأقل، رقم واحد علي الأقل، علامة ترقيم واحدة علي الأقل.",
       });
     } else if (e.target.name == "phone") {
       setData({
@@ -446,8 +360,8 @@ export default function Signup(props) {
           e.target.value.length === 0
             ? "يجب أن تدخل رقم الموبايل"
             : rgex["phone"].test(e.target.value)
-            ? null
-            : "رقم الموبايل غير صحيح",
+              ? null
+              : "رقم الموبايل غير صحيح",
       });
     } else if (e.target.name == "street-address") {
       setData({
@@ -463,8 +377,8 @@ export default function Signup(props) {
           e.target.value.length === 0
             ? "يجب أن تدخل العنوان"
             : rgex["address"].test(e.target.value)
-            ? null
-            : "العنوان غير صحيح",
+              ? null
+              : "العنوان غير صحيح",
       });
     } else if (e.target.name == "country") {
       setData({
@@ -493,15 +407,9 @@ export default function Signup(props) {
 
       setMessage({
         ...errorMessage,
-        photoErr: e.target.files[0].length == 0 ? "يجب أن تختر صوره " : data.photo.type != 'image/jpeg' || data.photo.type != 'image/png' ? 'يجب ان تختار صوره فقط' : "",
-        photoErr: !e.target.files[0]
-          ? "يجب أن تختر صوره "
-          : data.photo.type != "image/jpeg" || data.photo.type != "image/png"
-          ? "يجب ان تختار صوره فقط"
-          : "",
+        photoErr: !e.target.files[0] ? "يجب أن تختر صوره " : data.photo.type != 'image/jpeg' || data.photo.type != 'image/png' || data.photo.type != 'image/PNG' || data.photo.type != 'image/jpg'? 'يجب ان تختار صوره فقط' : "",
       });
     }
-   
   };
 
   const vaildition = () => {
@@ -512,12 +420,6 @@ export default function Signup(props) {
       rgex["password"].test(data.password) &&
       rgex["address"].test(data.address) &&
       rgex["phone"].test(data.phone) &&
-      data.fName.length !== 0 &&
-      data.lName.length !== 0 &&
-      data.email.length !== 0 &&
-      data.password.length !== 0 &&
-      data.address.length !== 0 &&
-      data.phone.length !== 0 &&
       data.country.length !== 0 &&
       data.kindUser.length !== 0 &&
       data.photo.length !== 0
@@ -527,18 +429,12 @@ export default function Signup(props) {
       return false;
     }
   };
-  //console.log(data.photo.type, 'pppppppppppppppppppp')
-  // console.log(data.photo.type, 'pppppppppppppppppppp')
+
 
   return (
     <>
       {
-        <Alert
-          show={show}
-          variant="success"
-          onClose={() => setShow(false)}
-          dismissible
-        >
+        <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
           <Alert.Heading>success</Alert.Heading>
           {/* <Button onClick={() => setShow(false)} variant="outline-success">
             Close me y'all!
@@ -546,12 +442,14 @@ export default function Signup(props) {
         </Alert>
       }
       <div className="formContainer">
+
         <div className="formWrapper1">
           <span className="logo">الاكيله</span>
           <form onSubmit={handleClick}>
             <div className="d-flex justify-content-between">
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
+
                   type="text"
                   placeholder="الاسم الثاني "
                   autoComplete="name"
@@ -559,10 +457,11 @@ export default function Signup(props) {
                   style={{ width: "100%" }}
                   onChange={(e) => changeData(e)}
                 />
-                <small className="text-danger">{errorMessage.lNameErr}</small>
+                <small className="text-danger">{errorMessage.LNameErr}</small>
               </div>
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
+
                   type="text"
                   placeholder="الاسم الأول"
                   autoComplete="name"
@@ -572,11 +471,12 @@ export default function Signup(props) {
                   onChange={(e) => changeData(e)}
                 />
                 <small className="text-danger " style={{ textAlign: "right" }}>
-                  {errorMessage.fNameErr}
+                  {errorMessage.FNameErr}
                 </small>
               </div>
             </div>
             <input
+
               type="email"
               placeholder="البريد الإلكتروني"
               name="email"
@@ -586,12 +486,12 @@ export default function Signup(props) {
               {errorMessage.emailErr}
             </small>
             <input
+
               type="password"
               placeholder="كلمة المرور"
               name="password"
               onChange={(e) => changeData(e)}
             />
-
             <small
               className="text-danger"
               style={{
@@ -604,6 +504,7 @@ export default function Signup(props) {
               {errorMessage.passwordErr}
             </small>
             <input
+
               type="tel"
               placeholder=" رقم التليفون"
               name="phone"
@@ -676,10 +577,9 @@ export default function Signup(props) {
               name="kindUser"
               id="kindUser"
               onChange={(e) => changeData(e)}
+
             >
-              <option value="" hidden>
-                اختر نوع حسابك
-              </option>
+              <option value="" hidden >اختر نوع حسابك</option>
 
               <option value="user">عميل</option>
               <option value="cook">طباخ</option>
@@ -691,12 +591,13 @@ export default function Signup(props) {
             <input
               style={{ display: "none" }}
               type="file"
-              accept="image/png,image/jpeg"
+              accept="image/x-png,image/gif,image/jpeg"
               id="file"
               name="photo"
               onChange={(e) => changeData(e)}
-              // {...getInputProps()}
+            // {...getInputProps()}
             />
+
 
             <label htmlFor="file">
               <span className="d-flex align-items-center">
@@ -707,16 +608,13 @@ export default function Signup(props) {
                 إرفع صورتك
               </span>
             </label>
-            <small className="text-success" style={{ textAlign: "right" }}>
-              {/* <ul>{acceptedFileItems}</ul> */}
-            </small>
+            
             <small className="text-danger" style={{ textAlign: "right" }}>
               {errorMessage.photoErr}
-              {/* <ul>{fileRejectionItems}</ul> */}
-            </small>
-            {/* {  console.log(fileRejectionItems)}  */}
 
-            <input type="submit" value="إنشاء حساب" className="mybtn" />
+            </small>
+
+            <input type="submit" value="إنشاء حساب" />
           </form>
         </div>
       </div>

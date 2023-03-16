@@ -48,6 +48,8 @@ nav.navbaruser .ul{
      width:100%;
      border-radius:15px;
      display: block;
+     object-fit: cover;
+     object-position: top;
     /* margin-bottom: 20px;*/
      
    }

@@ -17,16 +17,18 @@ const Navs =()=>{
   useEffect (() => {
     const q = doc(db, "cookers", user.uid);
     onSnapshot(q, (snapshot) => {
-      setus(snapshot.data());})
+      setus(snapshot.data())
+    })
     }, [ ])
 
     return(
       <nav className="d-flex flex-column justify-content-between navforcooker">
         <div>
+          {console.log(us,user.uid)}
           <div className="image mt-3">
-            <img src={us.photo && us.photo} />
+            <img src={us?us.photo:""} />
           </div>
-          <h4 className="text-center mt-3">{us.fullName && us.fullName}</h4>
+          <h4 className="text-center mt-3">{us? us.fullName: 'هذا الحساب غير مسجل'}</h4>
 
           <ul className="ul">
           <li>
