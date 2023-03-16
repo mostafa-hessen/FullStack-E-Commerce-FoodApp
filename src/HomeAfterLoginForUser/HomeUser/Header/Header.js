@@ -20,7 +20,7 @@ function Header(props) {
 
                 <div className="col-9 d-flex justify-content-between align-items-center">
                      <div className="image  d-flex align-items-center">
-                           <img  className='d-lg-none w-100' src={us.photo && us.photo} />
+                           <img  className='d-lg-none w-100 border-5' src={us.photo && us.photo} />
                            <Notification/>
                      </div>
                     <div className="search-box d-flex align-items-center">
