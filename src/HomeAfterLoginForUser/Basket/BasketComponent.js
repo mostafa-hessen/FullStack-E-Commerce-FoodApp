@@ -140,12 +140,14 @@ const callPaypal= ()=>{
            {/*  <div className="row col-lg-12 justify-content-evenly " > */}
               {console.log(ele)}
               <div className="row mx-auto col-lg-10 justify-content-lg-evenly justify-content-md-center justify-content-center rounded-2 mt-3 basket carthieght "key={index}>
-              <div className="col-lg-2 col-md-10  mt-lg-3 mb-lg-2 col-11 mt-lg-4 mt-3 ">
+              <div className="col-lg-2 col-md-12  mt-lg-3 mb-lg-2 col-11 mt-lg-4 mt-3 ">
+             <div className="cartimage">
                 <img
                   src={ele.foodImg[0] && ele.foodImg[0]}
-                  className="w-50 w-md-50 w-lg-25  h-50 "
-                  style={{ borderRadius: "50%" }}
+                  className="w-100 "
+                  
                 ></img>
+                </div>
                 <p className="mt-3">{ele?.foodName}</p>
               </div>
               <div className="col-lg-2 col-md-3 mt-lg-5 mb-lg-3 mb-4 col-3  textmargin">
@@ -183,7 +185,7 @@ const callPaypal= ()=>{
         })}
 
         <div className=" mx-lg-auto me-1 row justify-content-start  rounded-2 col-10  ">
-          <div className="col-lg-5 col-6 mt-4 mb-3   rounded-2  basket justify-content-start">
+          <div className="col-lg-5 col-8 mt-4 mb-3   rounded-2  basket justify-content-start">
             <div className="col-lg-11 col-12 m-3">
               <p>الحساب الخاص بك : {total1()}ج</p>
             </div>
