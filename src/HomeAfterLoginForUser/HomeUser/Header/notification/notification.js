@@ -36,17 +36,18 @@ const removeFromNote = () => {
 };
 
   return (
-    <>
-     <i className={`ms-3 me-2 fa-regular fa-bell fa-lg ${notifications.length > 0 ?'notificationIcon':''}`} style={{ color: '#6cad6c', fontSize: 32 }} onClick={handleShow}></i>
+    // <div className='notifcations'>
+    < >
+     <i className={`ms-3 me-2 fa-regular fa-bell fa-lg ${notifications?.length > 0 ?'notificationIcon':''}`} style={{ color: '#6cad6c', fontSize: 32 }} onClick={handleShow}></i>
       <Modal show={show} onHide={handleClose} >
         <div className='headerNote'>
-        <img src={logo} className='logo'/>
+        <img src={logo} className='minlogo'/>
         <p className='logoTxt'>الأكيله</p>
         </div>
         <Modal.Body style={{display:'flex', justifyContent:'center', backgroundColor:'#F5F5F5'}}>
         <div className='container noteContainer'>
         {
-        notifications.map((ele,inx)=>{
+        notifications?.map((ele,inx)=>{
         return(
         <div className=" row col-11 align-self-center mx-auto my-3 rounded-3 noteBoxStyle" dir='rtl' key={inx}>
             <div className='col-12 my-2 d-flex align-items-center'>

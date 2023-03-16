@@ -22,7 +22,7 @@ function Orders() {
   const q = doc(db, "cookers",user.uid);
   onSnapshot(q, (snapshot) => {
      
-    setcurrentuserinfo(snapshot.data().order); })
+    setcurrentuserinfo(snapshot.data().order.reverse()); })
 
  
   

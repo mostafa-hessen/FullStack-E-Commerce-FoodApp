@@ -1,33 +1,34 @@
-.noteContainer{
+/*  .noteContainer{
   max-height :53vh !important;
   overflow: auto;
+  cursor: pointer;
 }
-.noteCon{
+ .noteCon{
    margin: auto;
 }
-.headerNote{
+ .headerNote{
     width: 200px;
     margin-left: auto;
     margin-right: auto;
 }
-.noteBoxStyle{
+ .noteBoxStyle{
     background-color: #fff;
     box-shadow: #d7d7d7 0px 7px 29px 0px;
 }
-.logo{
+ .logo{
     width: 120px; 
     height: 120px;
     margin-left: 40px;
 }
-.logoTxt{
+ .logoTxt{
     font-size: 23px;
     text-align: center;
     margin-top: -20px;
 }
-.note-item{ 
+ .note-item{ 
    text-align: center;
 }
-.note-img{
+ .note-img{
     width: 95px;
     height: 95px;
     border-radius: 15px;
@@ -36,11 +37,62 @@
     margin-top: 7px;
     margin-bottom: 7px;
 }
-.note-btn{
+ .note-btn{
     background-color: #008000;
     color:#fff;
     border-radius: 8px;
     padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
+ } */
+
+
+
+  .noteContainer{
+    max-height :53vh !important;
+    overflow: auto;
+    cursor: pointer;
+  }
+   .noteCon{
+     margin: auto;
+  }
+   .headerNote{
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+   .noteBoxStyle{
+      background-color: #fff;
+      box-shadow: #d7d7d7 0px 7px 29px 0px;
+  }
+   .minlogo{
+      width: 120px; 
+      height: 120px;
+      margin-left: 40px;
+  }
+   .logoTxt{
+      font-size: 23px;
+      text-align: center;
+      margin-top: -20px;
+  }
+   .note-item{ 
+     text-align: center;
+  }
+   .note-img{
+      width: 95px;
+      height: 95px;
+      border-radius: 15px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 7px;
+      margin-bottom: 7px;
+  }
+   .note-btn{
+      background-color: #008000;
+      color:#fff;
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+   }
+  

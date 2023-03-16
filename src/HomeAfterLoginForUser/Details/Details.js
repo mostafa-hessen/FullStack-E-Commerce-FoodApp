@@ -95,7 +95,7 @@ export default function Details() {
    myCart.cart?.find((value, index) => {
     // Delete element 5 on first iteration
     if (value.foodId==ele.foodId&&value.choosenPrice==ele.choosenPrice) {
-      value.quantity+=1
+       value.quantity+=1
          const docRef = doc(db, "users", user.uid);
         updateDoc(docRef, {
           cart:myCart.cart,
@@ -124,6 +124,8 @@ export default function Details() {
     setwww(Date.now())
     if(currentPriceChanged){
       // 1 if cart have this before
+      // target.choosenSize=currentPriceChanged[0]
+      // target.choosenPrice=currentPriceChanged[1]
       target.choosenPrice=currentPriceChanged
       target.userOrderId= user.uid
       target.userOrderName=user.displayName

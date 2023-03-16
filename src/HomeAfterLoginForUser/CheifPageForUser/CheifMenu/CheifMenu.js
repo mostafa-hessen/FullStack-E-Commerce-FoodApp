@@ -20,7 +20,7 @@ export default function CheifMenu({id}) {
     const [cookerFood, setCookerFood] = useState([]);
 
     useEffect(() => {
-        const q = query(collection(db, "foods"), where("userid", "==", `${id}`));
+        const q = query(collection(db, "foods"), where("cookerId", "==", `${id}`));
         onSnapshot(q, (snapshot) => {
           const data = snapshot.docs.map((doc) => ({
             ...doc.data(),
