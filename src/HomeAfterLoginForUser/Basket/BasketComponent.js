@@ -33,7 +33,7 @@ let navigate = useHistory()
   useEffect(() => {
     const q = doc(db, "users", user.uid);
     onSnapshot(q, (snapshot) => {
-      setmyCart(snapshot.data().cart.reverse());
+      setmyCart(snapshot.data().cart);
     });
 
 
