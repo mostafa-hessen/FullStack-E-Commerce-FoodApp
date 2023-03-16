@@ -30,7 +30,7 @@ const InitialValue2 = {
   }
    
 export  function AuthStatuesForUser (state = InitialValue2, action)  {
-    console.log("=>",action.payload  , action.type);
+    //console.log("=>",action.payload  , action.type);
     switch (action.type) {
         case "AUTH-USER":
             return{
@@ -51,7 +51,7 @@ const InitialValue3 = {
 }
  
 export  function AuthStatuesForCooker (state = InitialValue3, action)  {
-  console.log("=>",action.payload  , action.type);
+  //console.log("=>",action.payload  , action.type);
   switch (action.type) {
       case "AUTH-COOKER":
           return{
@@ -71,7 +71,7 @@ export  function AuthStatuesForCooker (state = InitialValue3, action)  {
   }
    
   export  function TotalPrice (state = InitialValue4, action)  {
-    console.log("=>",action.payload  , action.type);
+   // console.log("=>",action.payload  , action.type);
     switch (action.type) {
         case "TOTAL-PRICE":
             return{
@@ -91,7 +91,7 @@ export  function AuthStatuesForCooker (state = InitialValue3, action)  {
     }
      
     export  function MyCart (state = InitialValue4, action)  {
-      console.log("=>",action.payload  , action.type);
+      //console.log("=>",action.payload  , action.type);
       switch (action.type) {
           case "MYCART-ORDERES":
               return{
@@ -109,7 +109,7 @@ export  function AuthStatuesForCooker (state = InitialValue3, action)  {
     }
      
     export  function MYORDERS (state = InitialValue5, action)  {
-      console.log("=>",action.payload  , action.type);
+      //console.log("=>",action.payload  , action.type);
       switch (action.type) {
           case "MYORDERS":
               return{

@@ -1,5 +1,3 @@
-
-
 /*============ sohaila ============ */
 
 .search-box{
@@ -11,11 +9,6 @@
     transition: all 1s;
     direction:rtl;
     margin-left: auto;
-
-    
-    /* width: fit-content; */
-
-
 }
 
 
@@ -26,9 +19,6 @@
     visibility:hidden;
     transition: all 0.5s;
     margin-right: 5px;
-   
-    
-
 }
 .search-box:hover {
     width: 200px;
@@ -40,17 +30,12 @@
     visibility:visible;
 }
 
-
 .header .image{
-    /* background-color:rgb(217, 174, 174); */
-    /* padding:8px; */
    width:65px;
    height:65px;
     border-radius:50%;
     text-align:center;
     margin: 0 !important;
-    /* direction: rtl; */
-    
 }
   
   .header .image img{
@@ -58,6 +43,7 @@
     height: 100%;
     border-radius:50%;
     display: block;
+    
     
 }
 .header .notificationIcon{
@@ -68,7 +54,7 @@
     content: '';
     display: block;
     position: absolute;
-    background-color: red;
+    background-color: #d86634;
     font-size: 5px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -90,7 +76,6 @@
 
 .header   .myHeaderText  p{
     margin: 0;
-
    }
 
 @media(min-width:500px) and (max-width:768px) {
@@ -101,30 +86,20 @@
     .header .search-box:hover {
         width: 170px;
         border-radius: 10px;
-        
-        
-    
     }
 
 
     .header   .myHeaderText{
      font-size: 20px !important;
     }
-    
-
-    
 
 .header .image{
-   
    width:55px;
    height:55px;
     border-radius:50%;
     text-align:center;
-    margin: 0 !important;
- 
-    
+    margin: 0 !important;   
 }
-  
 }
 
 
@@ -132,7 +107,6 @@
     .header{
        padding-inline: 50px;
     }
-
 }
 
 
@@ -142,29 +116,20 @@
     }
     .header .search-box:hover {
          width: 150px;
-         border-radius: 10px;
-         
-         
-     
+         border-radius: 10px;    
      }
- /*  */
  
      .header   .myHeaderText{
       font-size: 14px !important;
      }
      
- 
-     
- 
  .header .image{
      background-color:transparent !important;
      width:55px;
     height:55px;
      border-radius:50%;
      text-align:center;
-     margin: 0 !important;
-     /* direction: rtl; */
-     
+     margin: 0 !important;    
  }
 
  .header .image img{
@@ -175,24 +140,15 @@
  .header .myHeaderText{
     text-align: right;
  }
+
  .search-box {
    width: 150px;
-   
-    
-
 }
 
 .search-box input{
     visibility:visible!important;
     
  }
-/* .search-box:hover {
-    width: 200px;
-    border-radius: 10px;
-    
-    
-
-} */
  }
 
 
@@ -200,14 +156,10 @@
 
     .search-box {
         min-width: 180px;
-        
-         
-     
      }
      
      .search-box input{
          visibility:visible!important;
-         
       }
 
 
@@ -221,7 +173,6 @@
 
       .header .notificationIcon::after{
         content: '';
-     
         width: 6px;
         height: 6px;
         bottom: 10px;

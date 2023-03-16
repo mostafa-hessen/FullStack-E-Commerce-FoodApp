@@ -21,6 +21,12 @@ const [x, setx] = useState([])
         const q = doc(db, "orders", user.uid);
         setDoc(q,{orders:arrayUnion(...MYORDERS,...myCart)})
     }
+
+    const empty = () =>{
+      const q = doc(db, "users", user.uid);
+      updateDoc(q, { cart: [] });
+    }
+
   return (
 
 
@@ -46,7 +52,7 @@ const [x, setx] = useState([])
       
       console.log("nbvcx",myTotalPrice);
       setOrder()
-
+      empty()
     //  await sendorder()
       // alert("Transaction completed by " + name);
     }}/>

@@ -11,11 +11,7 @@ export default function DeleteFood(props) {
   const handleShow = () => setShow(true);
    const handleDelete=()=>{
     setShow(false)
-    console.log(props.targetitem)
     deleteDoc(doc(db,"foods",`${props.targetitem.id}`))
-    .then(() => {
-      console.log("Entire Document has been deleted successfully.");
-    })
     .catch((error) => {
       console.log(error);
     }); 

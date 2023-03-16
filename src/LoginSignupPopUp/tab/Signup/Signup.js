@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { auth, storage, db, myserverTimestamp } from '../../../firebase';
+//import { useDropzone } from 'react-dropzone';
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -18,6 +21,19 @@ import {
 } from "../../../Component/Redux/action";
 
 export default function Signup(props) {
+  /*const {
+    acceptedFiles,
+    fileRejections,
+    getRootProps,
+    getInputProps
+  } = useDropzone({
+    accept: {
+      'image/jpeg': [],
+      'image/png': []
+    }
+  });*/
+  /*let n = 0;
+  const acceptedFileItems = acceptedFiles.map(file => (
   const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
     useDropzone({
       accept: {
@@ -31,7 +47,10 @@ export default function Signup(props) {
       {file.path} - {file.size} bytes
     </li>
   ));
+*/
+ // const fileRejectionItems = fileRejections.map(({ file, errors }) => (
 
+    /*<li key={file.path}>
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
@@ -41,8 +60,9 @@ export default function Signup(props) {
         ))}
       </ul>
     </li>
-  ));
+  ));*/
 
+ // console.log(fileRejectionItems)
   console.log(fileRejectionItems);
 
   const dispatch = useDispatch();
@@ -151,6 +171,7 @@ export default function Signup(props) {
               }
             );
             // data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
+
           }
         );
 
@@ -158,6 +179,18 @@ export default function Signup(props) {
           if (user.displayName.split("@")[1] == "user") {
             console.log(user);
 
+            dispatch(authStatuesForUser(true))
+            sessionStorage.setItem('authUser', true)
+            sessionStorage.removeItem('authCooker')
+
+          }
+
+          else if (user.displayName.split('@')[1] == "cook") {
+            dispatch(authStatuesForCooker(true))
+            sessionStorage.setItem('authCooker', true)
+            sessionStorage.removeItem('authUser')
+          }
+          else {
             dispatch(authStatuesForUser(true));
             sessionStorage.setItem("authUser", true);
             sessionStorage.removeItem("authCooker");
@@ -177,6 +210,12 @@ export default function Signup(props) {
         });
       }
     } else {
+    /*  let check =[]
+      for (const item in data){
+        
+        if (data[item]== ""){
+          check.push(item)
+        }
       // let check =[]
       // for (const item in data){
 
@@ -185,6 +224,72 @@ export default function Signup(props) {
       //   }
 
       // }
+
+
+      console.log(check)
+      let variable =''
+
+      check.map(ele=>{
+        variable=`${ele}Err`
+        // setMessage({
+        //       ...errorMessage,
+        //       variable :  "يجب أن تكمل البيانات الناقصه  " ,
+        //     })
+         errorMessage[variable]="يجب أن تكمل البيانات الناقصه  "
+         
+        console.log(variable ,'vvvvvvvvvvv')
+      })
+*/
+
+      // !data.photo
+      //   ? setMessage({
+      //     ...errorMessage,
+      //     photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
+      //   })
+      //   :
+      //   data.kindUser == ""
+      //     ? setMessage({
+      //       ...errorMessage,
+      //       fNameErr: "يجب أن تدخل الاسم الاول ",
+      //     })
+      //     : data.lName == ""
+      //       ? setMessage({
+      //         ...errorMessage,
+      //        lNameErr: "يجب أن تدخل الاسم الثاني ",
+      //       }) : data.email == ""
+      //         ? setMessage({
+      //           ...errorMessage,
+      //           emailErr: "يجب أن تدخل البريد الالكتروني  ",
+      //         })
+      //         :
+      //         data.password == ""
+      //           ? setMessage({
+      //             ...errorMessage,
+      //             passwordErr: "يجب أن تختر نوع حسابك",
+      //           })
+      //           :
+      //           data.phone == ""
+      //             ? setMessage({
+      //               ...errorMessage,
+      //               phoneErr: "يجب أن تختر تليفونك ",
+      //             })
+      //             : data.address == ""
+      //               ? setMessage({
+      //                 ...errorMessage,
+      //                 addressErrِ: "يجب أن تختر عنوانك ",
+      //               })
+      //               :
+      //               data.kindUser == ""
+      //                 ? setMessage({
+      //                   ...errorMessage,
+      //                   kindUserErr: "يجب أن تختر نوع حسابك",
+      //                 })
+      //                 : data.country == ""
+      //                   ? setMessage({
+      //                     ...errorMessage,
+      //                     countryErr: "يجب أن تختر بلدتك ",
+      //                   })
+      //                   : console.log("done");
 
       //fnma
       // console.log(check)
@@ -388,6 +493,7 @@ export default function Signup(props) {
 
       setMessage({
         ...errorMessage,
+        photoErr: e.target.files[0].length == 0 ? "يجب أن تختر صوره " : data.photo.type != 'image/jpeg' || data.photo.type != 'image/png' ? 'يجب ان تختار صوره فقط' : "",
         photoErr: !e.target.files[0]
           ? "يجب أن تختر صوره "
           : data.photo.type != "image/jpeg" || data.photo.type != "image/png"
@@ -395,6 +501,7 @@ export default function Signup(props) {
           : "",
       });
     }
+   
   };
 
   const vaildition = () => {
@@ -420,6 +527,7 @@ export default function Signup(props) {
       return false;
     }
   };
+  //console.log(data.photo.type, 'pppppppppppppppppppp')
   // console.log(data.photo.type, 'pppppppppppppppppppp')
 
   return (
@@ -451,7 +559,7 @@ export default function Signup(props) {
                   style={{ width: "100%" }}
                   onChange={(e) => changeData(e)}
                 />
-                <small className="text-danger">{errorMessage.LNameErr}</small>
+                <small className="text-danger">{errorMessage.lNameErr}</small>
               </div>
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
@@ -483,6 +591,7 @@ export default function Signup(props) {
               name="password"
               onChange={(e) => changeData(e)}
             />
+
             <small
               className="text-danger"
               style={{
@@ -582,7 +691,7 @@ export default function Signup(props) {
             <input
               style={{ display: "none" }}
               type="file"
-              accept="image/x-png,image/gif,image/jpeg"
+              accept="image/png,image/jpeg"
               id="file"
               name="photo"
               onChange={(e) => changeData(e)}

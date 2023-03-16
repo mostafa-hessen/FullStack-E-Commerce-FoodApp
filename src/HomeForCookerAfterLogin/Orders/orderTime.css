@@ -1,0 +1,26 @@
+.mytimePopUp .modal-header {
+    border: none !important;
+  }
+.checkOk:hover{
+background-color: white;
+font-size: 40;
+border: none !important;
+}
+.timeTxt{
+  width:280px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #5c955c;
+  padding: 10px;
+}
+.timeTxt:focus{
+  outline: #5b8e5b  solid 1px;
+  border: none;
+  box-shadow: 0px 0px 3px 3px #5c955c63;
+}
+.hide{
+  display: none;
+}
+.showTxt{
+  display: inline-block;
+}
