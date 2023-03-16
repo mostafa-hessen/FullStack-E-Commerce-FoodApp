@@ -36,11 +36,12 @@ const removeFromNote = () => {
 };
 
   return (
-    <div className='notifcations'>
+    // <div className='notifcations'>
+    < >
      <i className={`ms-3 me-2 fa-regular fa-bell fa-lg ${notifications?.length > 0 ?'notificationIcon':''}`} style={{ color: '#6cad6c', fontSize: 32 }} onClick={handleShow}></i>
       <Modal show={show} onHide={handleClose} >
         <div className='headerNote'>
-        <img src={logo} className='logo'/>
+        <img src={logo} className='minlogo'/>
         <p className='logoTxt'>الأكيله</p>
         </div>
         <Modal.Body style={{display:'flex', justifyContent:'center', backgroundColor:'#F5F5F5'}}>
@@ -73,7 +74,7 @@ const removeFromNote = () => {
           <button className='note-btn' onClick={() => removeFromNote()}>مسح كل الإشعارات</button>
            </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 }
 
