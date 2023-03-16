@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import first from '../../assets/potatoKofta.jpg'
 import sec from '../../assets/chicken.jpg'
-import { doc, onSnapshot, updateDoc} from 'firebase/firestore';
+import { doc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import './AddToFav.css'
 import { db } from '../../firebase';
@@ -20,35 +20,35 @@ myactive [status]== 'active'?activeItem  = ['', '', '', ''] : activeItem [status
 
   }
 
-let user=JSON.parse(localStorage.getItem('user'))
-const [favFoodInfo, setFavFoodInfo] = useState([])
+  let user = JSON.parse(localStorage.getItem('user'))
+  const [favFoodInfo, setFavFoodInfo] = useState([])
 
-useEffect(() => {
-  const q = doc(db, "users", user.uid);
-  onSnapshot(q, (snapshot) => {
-   console.log(snapshot.data(), "fav food info")
-   setFavFoodInfo( snapshot.data().favoriteFood )
+  useEffect(() => {
+    const q = doc(db, "users", user.uid);
+    onSnapshot(q, (snapshot) => {
+      console.log(snapshot.data(), "fav food info")
+      setFavFoodInfo(snapshot.data().favoriteFood)
     })
 
-},[])
+  }, [])
 
 
-const removeFav = (item) =>{
-  let removeArr = favFoodInfo?.filter(ele=> ele != item)
-  
-  const q = doc(db, "users", user.uid);
-  updateDoc(q, {
-    favoriteFood:(removeArr),
-  })
-    .then((q) => {
-      console.log(
-        "An item has been removed from an existing Field"
-      );
+  const removeFav = (item) => {
+    let removeArr = favFoodInfo?.filter(ele => ele != item)
+
+    const q = doc(db, "users", user.uid);
+    updateDoc(q, {
+      favoriteFood: (removeArr),
     })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+      .then((q) => {
+        console.log(
+          "An item has been removed from an existing Field"
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className=' parent' >

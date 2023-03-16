@@ -10,7 +10,7 @@ import pea from '../../assets/pea.jpg';
 import { useEffect, useState } from 'react';
 import Order from './order';
 import { Redirect } from 'react-router-dom';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 
