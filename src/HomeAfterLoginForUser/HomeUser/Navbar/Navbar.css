@@ -1,5 +1,7 @@
  nav.navbaruser{
  max-height: 100%;
+ max-height:   96.5vh ;
+ /* background-color: red; */
  
  }
 nav.navbaruser .ul{
@@ -10,13 +12,13 @@ nav.navbaruser .ul{
      /* background-color:red  ; */
      padding:0px;
      text-align: right;
-     margin-top: 30px;
+     margin-top: 16px;
      
      
    }
    nav.navbaruser .icon{
-   width:40px;
-     height:40px;
+   width:35px;
+     height:35px;
      background-color:green;
      padding:4px 10px;
      border-radius:10px;
@@ -26,18 +28,19 @@ nav.navbaruser .ul{
      justify-content: center;
      align-items: center;
    }
+
+   nav.navbaruser h4{
+    font-size: 19px;
+   }
    nav.navbaruser .image{
      
      background-color:white;
-     padding:8px;
+     border: 5px solid #fff;
      width:100px;
      height:100px;
      border-radius:20px;
      text-align:center;
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 20px;
-    margin-bottom: 20px;
+     margin: auto;
    
    }
    
@@ -45,7 +48,9 @@ nav.navbaruser .ul{
      width:100%;
      border-radius:15px;
      display: block;
-     margin-bottom: 20px;
+     object-fit: cover;
+     object-position: top;
+    /* margin-bottom: 20px;*/
      
    }
    
@@ -56,7 +61,7 @@ nav.navbaruser .ul{
      direction: rtl;
      align-items: center;
      text-align: right;
-     margin-bottom: 20px;
+     margin-bottom: 5px;
      
    }
    nav.navbaruser .ul li span{

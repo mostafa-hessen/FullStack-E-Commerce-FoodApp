@@ -14,3 +14,9 @@
 .clicked{
   border: 5px solid black;
 }
+.detailsFoodSize{
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  padding-top: 20px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}

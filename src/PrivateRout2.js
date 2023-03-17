@@ -14,9 +14,9 @@ if(AuthStatues||mysessionStorageForCooker){
 return (
     <>
     <Redirect to={"/"}/>
-    {
+    {/* {
     setTimeout(()=>alert("سجل الدخول اولا"),1000)
-    }
+    } */}
     
     </>)
     

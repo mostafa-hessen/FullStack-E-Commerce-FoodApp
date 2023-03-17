@@ -16,16 +16,16 @@ const PrivateRoute1 =(props)=>{
 
      
   if(AuthStatues||mysessionStorageForUSer){
-    return <Route {...props}/> // <Rout path="/Homeuse" componen ={HomeAfterLoginUser}/>
+    return <Route {...props}/> 
 
 }
 
 return (
 <>
 <Redirect to={"/"}/>
-{
+{/* {
 setTimeout(()=>alert("سجل الدخول اولا"),1000)
-}
+} */}
 
 </>)
 

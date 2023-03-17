@@ -3,13 +3,21 @@ import {useHistory} from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 import React, { useState } from "react";
+
+
 import { useDispatch } from 'react-redux';
 import { AuthStatues } from '../../../Component/Redux/reducer';
 import { authStatuesForCooker, authStatuesForUser, authStatuesForUSer } from '../../../Component/Redux/action';
 
+/* function Login(){
+  const [err, setErr] = useState(false);
+  const [currentUser, setCurrentUser] = useState()
+  const [loading, setLoading] = useState(true) */
+
 function Login(){
   const [err, setErr] = useState(false);
   const dispatch=useDispatch()
+
   const navigate = useHistory();
 let user=
 JSON.parse(localStorage.getItem("user"))
@@ -72,7 +80,7 @@ return(
           <input type="email" placeholder="أدخل البريد الالكتروني" />
           <input type="password" placeholder="أدخل كلمه السر " />
           {err && <span style={{color:'red',direction :'rtl'}}>ادخل البريد الالكتروني او الرقم السر صحيحا </span>}
-          <button>تسجيل الدخول</button>
+          <button  >تسجيل الدخول</button>
          
         </form>
         {/* <p>You don't have an account? <a href="/register">Register</a></p> */}

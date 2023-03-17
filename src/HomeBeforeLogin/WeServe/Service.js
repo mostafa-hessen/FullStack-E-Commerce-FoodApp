@@ -13,20 +13,13 @@ const Service = () => {
                 {" "}
                 نحن أكثر من مجرد خدمة متعددة{" "}
               </h1>
-              <h5 className="text">
+              <h5 className="text mt-4">
                 نصنع كل شيء يدويًا بأفضل المكونات الممكنة
               </h5>
               <div className="row p-3">
                 <div className="col-6">
                   <ul>
-                    <li>
-                      <p>مشويات</p> <i class="fa-solid fa-drumstick-bite "></i>{" "}
-                    </li>
-                    <li>
-                      <p>محاشي</p>
-                      <i class="fa-solid fa-bowl-food"></i>{" "}
-                    </li>
-                    <li>
+                    <li> 
                       <p>حلويات</p>
                       <i class="fa-solid fa-cake-candles"></i>{" "}
                     </li>
@@ -44,14 +37,6 @@ const Service = () => {
                     <li>
                       <p>محاشي</p>
                       <i class="fa-solid fa-bowl-food"></i>{" "}
-                    </li>
-                    <li>
-                      <p>حلويات</p>
-                      <i class="fa-solid fa-cake-candles"></i>{" "}
-                    </li>
-                    <li>
-                      <p>عصائر</p>
-                      <i class="fa-solid fa-champagne-glasses"></i>{" "}
                     </li>
                   </ul>
                 </div>

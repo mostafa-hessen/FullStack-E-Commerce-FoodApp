@@ -6,6 +6,7 @@
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
     "@mui/material": "latest",
+    "@paypal/react-paypal-js": "^7.8.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -27,6 +28,8 @@
     "react-scroll": "^1.8.9",
     "react-simple-star-rating": "^5.1.7",
     "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
+    "scroller": "^0.0.3",
     "typescript": "latest",
     "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"

@@ -383,12 +383,15 @@ export default function (props) {
             </small>
 
 
-            <div style={{ direction: "rtl", display: 'flex' }}>
-              <label>مواعيد العمل المتاحه لك </label>
+            <div style={{ direction: "rtl"}} className="d-flex allTimes ">
+              <label className='avivbalAt'>مواعيد العمل المتاحه لك </label>
               <br />
-              <label >: من </label>
-              <input type="number" className='mx-2' defaultValue={data.amcooker} name="amcooker" min="1" max="12" style={{ width: "45px" }} onChange={(e) => changeData(e)} />
-              <select onChange={(e) => changeData(e)} name="amcookerselect">
+
+              <div className='d-flex align-items-center'>
+
+              <label style={{width:'22px'}} > من :</label>
+              <input type="number" className=' timeSelected' defaultValue={data.amcooker} name="amcooker" min="1" max="12" style={{ width: "45px" }} onChange={(e) => changeData(e)} />
+              <select onChange={(e) => changeData(e)} name="amcookerselect" className='selectTimeAmPm'>
                 <option selected disabled hidden>
                   {ArbicCategorycook[`${data.amcookerselect}`]}
                 </option>
@@ -399,10 +402,10 @@ export default function (props) {
                   مَساءً
                 </option>
               </select>
-              <label>:الي </label>
+              <label className='me-2' style={{width:"23px"}}>الي :</label>
 
-              <input type="number" className='mx-4' defaultValue={data.pmcooker} name="pmcooker" min="1" max="12" style={{ width: "45px" }} onChange={(e) => changeData(e)} />
-              <select onChange={(e) => changeData(e)} name="pmcookerselect">
+              <input type="number" className=' timeSelected' defaultValue={data.pmcooker} name="pmcooker" min="1" max="12" style={{ width: "45px" }} onChange={(e) => changeData(e)} />
+              <select onChange={(e) => changeData(e)} name="pmcookerselect" className='selectTimeAmPm'>
                 <option selected disabled hidden>
                   {ArbicCategorycook[`${data.pmcookerselect}`]}
                 </option>
@@ -413,6 +416,7 @@ export default function (props) {
                   صَبَاحًا
                 </option>
               </select>
+              </div>
             </div>
             <small className="text-danger">
               {errorMessage.amcookerErr ||

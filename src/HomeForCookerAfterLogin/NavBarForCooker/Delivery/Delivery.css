@@ -1,23 +1,22 @@
-.boxDelivery{
+.boxDeliveryCooker.boxDelivery{
     margin: 78px auto 0px;
     background-color: rgb(255, 255, 255);
     width: 100%;
     min-height: 130px;
     padding: 10px;
-
-
     position: relative;
     border-radius: 20px;
     box-shadow: 0 0.2rem 1rem rgb(0 0 0 / 13%);
     display: flex;
     flex-direction: column;
-    
     justify-content: space-between;
     transition: all 2s;
-
-
+    -webkit-transition: all 2s;
+    -moz-transition: all 2s;
+    -ms-transition: all 2s;
+    -o-transition: all 2s;
 }
-.boxDelivery .boxDeliveryDetails{
+.boxDeliveryCooker.boxDelivery .boxDeliveryDetails{
  text-align: right;
  margin-right: 10px;
  padding-top: 5px; 
@@ -36,7 +35,7 @@
   margin:17px 0px;
   margin-left: auto;
 } */
- .boxDelivery a {
+ .boxDeliveryCooker.boxDelivery a {
  
   /* display: block;
   width: 40px;
@@ -53,7 +52,7 @@
 
 }
 
- .boxDelivery a i {
+ .boxDeliveryCooker.boxDelivery a i {
   color: black;
   font-size: 15px;
   /* text-align: center;background-color: red; */
@@ -62,7 +61,7 @@
 
 }
 
- .boxDelivery img{
+ .boxDeliveryCooker.boxDelivery img{
   
       width: 49%;
     margin: auto;
@@ -73,24 +72,24 @@
 
    
 } 
-.boxDelivery:hover img{
+.boxDeliveryCooker.boxDelivery:hover img{
   
   transform: scale(1.1);
   
 }
- .boxDelivery:hover {
+ .boxDeliveryCooker.boxDelivery:hover {
   
 }
  
 @media (max-width:1200px) {
- .boxDelivery .boxDeliveryDetails h4 {
+ .boxDeliveryCooker.boxDelivery .boxDeliveryDetails h4 {
     
   font-size: 16px !important;
      
 
     
   }
-  .boxDelivery .boxDeliveryDetails p{
+  .boxDeliveryCooker.boxDelivery .boxDeliveryDetails p{
     font-size: 13px !important;
   }
 

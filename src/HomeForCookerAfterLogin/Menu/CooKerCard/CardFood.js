@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import "./CardFood.css";
 import chicken from "../../../assets/photo_2023-02-14_19-45-58.jpg";
 import mahshi from "../../../assets/mahshi.jpg";
@@ -9,19 +7,12 @@ import burger from "../../../assets/photo_2023-02-14_19-47-18.jpg";
 import pizza from "../../../assets/photo_2023-02-14_19-47-58.jpg";
 import kofta from "../../../assets/potatoKofta.jpg";
 import Popupeditefood from "./PopUpEditeFoodForm/Popupeditefood";
-import ve from "../../../assets/animatedIcon/original-0525abb512e57734018fefe96706d1e0.mp4";
-/* 
-import { border } from '@mui/system' */
 import DeleteFood from './DeleteFood/DeleteFood';
-// import { collection, doc, getDoc, getDocs, query, onSnapshot } from 'firebase/firestore';
-import { collection, doc, getDoc, getDocs, onSnapshot, onSnapshotsInSync, query } from 'firebase/firestore';
+import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from '../../../firebase';
-import FoodDetailsCooker from './FoodDetailsCooker/FoodDetailsCooker'
 import { Link } from 'react-router-dom';
 
-
 export default function CardFood() {
-  // const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,8 +22,6 @@ export default function CardFood() {
   const [show,setShow]=useState(true)
 
   useEffect(() => {
-   
-
     const q = query(collection(db, "foods"));
     onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
@@ -40,10 +29,7 @@ export default function CardFood() {
         id: doc.id,
       }));
       setuserfood(data);
-        
       })
-
- 
     }, [])
 
     return (
@@ -55,11 +41,8 @@ export default function CardFood() {
                     <div className="row">
                         <h1 style={{ color: 'black' }} onClick={()=>console.log(userfood)}><i className="fa-solid fa-bowl-food" ></i> أكلاتي </h1>
                         {
-                          // .filter(ele=>ele.userid==user.uid)
-
-
                              userfood&&
-                            userfood?.filter(ele=>ele.userid==user.uid)?.map((CheifItem, index) => {
+                            userfood?.filter(ele=>ele.cookerId==user.uid)?.map((CheifItem, index) => {
                                 return (
 
                                     <div key={index} className='col-lg-4 col-md-6 col-sm-6'>
@@ -72,8 +55,6 @@ export default function CardFood() {
                                                 <Link to={`/HomeCooker/FoodDetailsCooker/${CheifItem.id}`}>  <i class="fa-solid fa-arrow-up-right-from-square"
                                                 style={{ color: "#4f5b47" }} ></i></Link>
 
-                                                {/* <FoodDetailsCooker/> */}
-
                                             </div>              
                                             </a>
 
@@ -83,7 +64,6 @@ export default function CardFood() {
                                             <div className='boxDetails'>
                                                 <h4> {CheifItem.foodName}</h4> 
                                                  <h6 style={{color:'orange'}} className="p-content">{CheifItem.foodDiscription}</h6>
-                                                {/* <p style={{ fontWeight: 'bold' }}>{CheifItem.bigPrice} </p> */}
 
                                             </div>
                                            
@@ -96,8 +76,6 @@ export default function CardFood() {
                                     </div>
                                 )
                             }) 
-                        //userfood&&
-                      // console.log(userfood)
                     }
                     </div>
                 </div>

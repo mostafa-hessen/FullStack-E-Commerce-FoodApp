@@ -1,12 +1,8 @@
-
 import React from 'react'
 import './Offer.css'
 import offerImg from '../../../assets/COOLPIZZA.png';
-import offerImg2 from '../../../assets/img6.png';
-
 
 function Offer
-
 
 () {
   return (

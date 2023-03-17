@@ -24,8 +24,8 @@
     }
     
 }
-.addFood:hover{
-    height: 900px;
+.addFood.active{
+    height: 980px;
     width: 100%;
     border: 1px dashed rgb(35, 147, 35) !important;
 }
@@ -38,7 +38,7 @@
     -o-transition: 2s all  ease-in;
     transition-delay: .4s,0s;
 }
-.addFood:hover .foodForm{
+.addFood .foodForm.active{
     /* background-color: red; */
     opacity: 1;
 }
@@ -63,12 +63,12 @@ justify-content: center;
 
 @media (max-width: 576px){
     .addFood {
-        height: 900px;
+        /* height: 900px; */
         /* cursor: pointer; */
         /* background-color: green; */
     
     }
     .addFood .foodForm{
-        opacity: 1;
+        /* opacity: 1;/ */
     }
 }

@@ -7,7 +7,7 @@ import {Link as ScrollLink} from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 const Navs =()=>{
     return(
-        <Navbar  style={{direction:'rtl'}} expand="lg">
+        <Navbar  style={{direction:'rtl'}} expand="lg" className="navOfIndex">
         <Container>
           
           <ScrollLink to="home" spy={true} smooth={true} id="logo"  offset={-70} duration={400}>
@@ -22,8 +22,7 @@ const Navs =()=>{
             <ScrollLink to="list" spy={true} smooth={true} offset={-70} duration={400} className='link me-3'>قائمة الطعام</ScrollLink>
             <ScrollLink to="reviews" spy={true} smooth={true} offset={-50} duration={400} className='link me-3'>عملاؤنا</ScrollLink>
             <ScrollLink to="app" spy={true} smooth={true} offset={30} duration={400} className='link me-3'>التطبيق</ScrollLink>
-            {/* <RouterLink to={`/SignPage`} className='link me-3'><PopUp/></RouterLink> */}
-             <PopUp/>  
+             <PopUp className="Icon"/>  
           
           </Nav>
           </Navbar.Collapse>

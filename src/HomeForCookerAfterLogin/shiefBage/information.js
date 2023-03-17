@@ -12,7 +12,7 @@ function InformationComponent(props) {
  
         <div className='row position-relative justify-content-center mt-5 border border-success rounded-4 p-3 py-5'>
         {/* <MdEdit className='position-absolute top-0 end-0' >< /MdEdit> */}
-<PopUpEditCheifPerson editecookerpersonal={props.alldata}/>
+<PopUpEditCheifPerson editecookerpersonal={props?.alldata}/>
             <div className='col-lg-8 col-md-9 col-12      info '>
             <div dir='rtl' className='row justify-content-around align-items-center py-2'>
                 <div className='col-6'>
@@ -21,7 +21,7 @@ function InformationComponent(props) {
                 
                 <div className='col-6 '>
                     {
-                        props.alldata.amcookerselect?
+                        props.alldata?.amcookerselect?
                         <p className=' text-center'>من <span style={{color:'black'}}>{props.alldata?.amcooker} {arabic[`${props.alldata?.amcookerselect}`]}  </span>الــي <span style={{color:'black'}}> {props.alldata?.pmcooker} { arabic[`${props.alldata?.pmcookerselect}`]}</span></p>
                         :
                         <p className=' text-center'> <span style={{color:'black'}}> أدخل المواعيد المتاحه لك  </span> من والي</p>

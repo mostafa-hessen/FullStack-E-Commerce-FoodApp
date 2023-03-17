@@ -22,16 +22,7 @@ export default function Popupeditefood(props) {
         <Modal.Header  style={{background:"transaprent"}} closeButton>
         </Modal.Header>
           <EditeFoodForm targetEditeItem={props.targetEditeItem}/>
-          {/* <Tab/> */}
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

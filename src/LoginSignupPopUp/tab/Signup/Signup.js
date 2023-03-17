@@ -577,10 +577,17 @@ export default function Signup(props) {
               name="kindUser"
               id="kindUser"
               onChange={(e) => changeData(e)}
+<<<<<<< HEAD
 
             >
               <option value="" hidden >اختر نوع حسابك</option>
 
+=======
+
+            >
+              <option value="" hidden >اختر نوع حسابك</option>
+
+>>>>>>> 31d1ecdb76881cf3c26682f011e416c7e47abeff
               <option value="user">عميل</option>
               <option value="cook">طباخ</option>
             </select>
@@ -609,10 +616,17 @@ export default function Signup(props) {
               </span>
             </label>
             
+<<<<<<< HEAD
             <small className="text-danger" style={{ textAlign: "right" }}>
               {errorMessage.photoErr}
 
             </small>
+=======
+           {/* <small className="text-danger" style={{ textAlign: "right" }}>
+              {errorMessage.photoErr}
+
+            </small>*/}
+>>>>>>> 31d1ecdb76881cf3c26682f011e416c7e47abeff
 
             <input type="submit" value="إنشاء حساب" />
           </form>
