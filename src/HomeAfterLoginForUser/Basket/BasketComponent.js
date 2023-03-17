@@ -189,13 +189,13 @@ const callPaypal= ()=>{
             <div className="col-lg-11 col-12 m-3">
               <p>الحساب الخاص بك : {total1()}ج</p>
             </div>
-            <div className="col-lg-11 col-12 m-3">
+           {/*  <div className="col-lg-11 col-12 m-3">
               <p>ضريبة التوصيل: {deliveryFees}ج</p>
             </div>
 
             <div className="col-lg-11 col-12 m-3">
               <p>الحساب الصافي : {firstSum == 0 ? 0: firstSum + deliveryFees}ج</p>
-            </div>
+            </div> */}
             <div className="col-lg-11 col-12 m-3 ">
             <button className="btn  w-50 fs-5 ms-3 " style={{backgroundColor:'#046d02',color:'#fff'}} onClick={()=> callPaypal() }>دفع</button>
             </div>
