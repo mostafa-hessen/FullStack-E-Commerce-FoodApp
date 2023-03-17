@@ -192,16 +192,19 @@ else{
         </div>
       </div>
 
-        <div className="col-lg-7 mx-auto mt-5">
+
+{/* mx-auto - mx-auto */}
+{/* <div className="row align-items-center" style={{direction:"rtl"}}> */}
+        <div className="col-lg-5  mx-auto  mt-3">
           <h1 style={{ color:  "#049504" }}>{food1?.foodName} </h1>
           <p> {food1?.foodDiscription} </p>
            </div>
 
-          <div className="col-lg-7 mx-auto mt-5">
+          <div className="col-lg-5  mx-auto mt-5 d-flex  flex-column align-items-center">
           <h3 style={{ color:  "#049504" }}>حجم وسعر الأكلة</h3>
           <div
             className="d-flex align-items-center "
-            style={{ direction: "rtl", width: "70%", margin: "auto" }} >
+            style={{ direction: "rtl", margin: "auto" }} >
             <input type="radio" id="" name="price" value={food1?.bigPrice} className="ms-2"  onChange={()=>setcurrentPriceChanged("كبير")}/>
             <h5 style={{ margin: 0 }}>عائلي : {food1?.bigPrice} جنيه مصري </h5>
             </div>
@@ -209,7 +212,7 @@ else{
 
           <div
             className="d-flex align-items-center"
-            style={{ direction: "rtl", width: "70%", margin: "auto" }}>
+            style={{ direction: "rtl", margin: "auto" }}>
             <input type="radio" id="" name="price" value={food1?.middlePrice} className="ms-2"  onChange={()=>setcurrentPriceChanged("وسط")}/>
             <h5 style={{ margin: 0 }}>
               {" "}
@@ -219,14 +222,14 @@ else{
 
           <div
             className="d-flex align-items-center"
-            style={{ direction: "rtl", width: "70%", margin: "auto" }}>
+            style={{ direction: "rtl", margin: "auto" }}>
             <input type="radio" id=""  name="price" value={food1?.smallPrice} className="ms-2" onChange={()=>setcurrentPriceChanged("صغير")} />
             <h5 style={{ margin: 0 }}> صغير : {food1?.smallPrice} جنيه مصري</h5>
           </div>
 
           <div
             className="d-flex align-items-center"
-            style={{ direction: "rtl", width: "70%", margin: "auto" }}>
+            style={ { margin: "auto" }}>
           <button
             className="btn mt-4 inline-flex align-items-center rounded-5 me-5"
             style={{
@@ -248,6 +251,7 @@ else{
           </button>
           </div>
         </div>
+{/* </div> */}
     </>
   );
 }
