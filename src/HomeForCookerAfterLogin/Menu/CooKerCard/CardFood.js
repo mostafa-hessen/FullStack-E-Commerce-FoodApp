@@ -25,44 +25,7 @@ export default function CardFood() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const Cheifs = [
-    {
-      img: chicken,
-      name: "فراخ مشوية",
-      price: "السعر : 100 ج",
-      details: "تحتوي ع كل ما تشتهيه",
-    },
-    {
-      img: mahshi,
-      name: " محاشي",
-      price: "السعر : 100 ج",
-      details: "تحتوي ع كل ما تشتهيه",
-    },
-    {
-      img: kofta,
-      name: " كفتة فراخ",
-      price: "السعر : 100 ج",
-      details: "تحتوي ع كل ما تشتهيه",
-    },
-    {
-      img: burger,
-      name: "برجر بيتي",
-      price: "السعر : 100 ج",
-      details: "تحتوي ع كل ما تشتهيه",
-    },
-    {
-      img: pizza,
-      name: "بييتزا بيتي",
-      price: "السعر : 100 ج",
-      details: "تحتوي ع كل ما تشتهيه",
-    },
-    {
-      img: chicken,
-      name: "مكرونة بشاميل",
-      price: "السعر : 100 ج",
-      details: "تحتوي ع كل ما تشتهيه",
-    },
-  ];
+  
   let user = JSON.parse(localStorage.getItem("user"));
   const [userfood, setuserfood] = useState([]);
   const [show,setShow]=useState(true)

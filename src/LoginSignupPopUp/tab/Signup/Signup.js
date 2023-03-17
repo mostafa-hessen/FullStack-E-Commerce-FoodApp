@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, storage, db, myserverTimestamp } from '../../../firebase';
-import {useDropzone} from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 import "./Signup.css";
 import { ElementFlags } from "typescript";
 import { Alert, Button } from "react-bootstrap";
@@ -26,7 +26,7 @@ export default function Signup(props) {
       'image/png': []
     }
   });
-let n = 0;
+  let n = 0;
   const acceptedFileItems = acceptedFiles.map(file => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
@@ -34,7 +34,7 @@ let n = 0;
   ));
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-   
+
     <li key={file.path}>
       {file.path} - {file.size} bytes
       <ul>
@@ -44,21 +44,21 @@ let n = 0;
       </ul>
     </li>
   ));
-        
 
-  const dispatch=useDispatch()
-  let navigate= useHistory()
+
+  const dispatch = useDispatch()
+  let navigate = useHistory()
   let rgex = {
     fName: /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
     lastName:
-    /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
+      /^[a-zA-Z\u0600-\u06FF]{2,20}$/i,
     email: /^[a-z0-9._]+@gmail\?|.com|.org|.net|.edu|.eg$/,
     password: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%?-_*&]).{8,}/,
     // address:
     //   /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,20}$/i,
     address:
-    /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,
-    
+      /^\S[a-zA-Z\u0600-\u06FF,-\s\d][\s\d\a-zA-Z\u0600-\u06FF,-]{1,50}$/i,
+
 
     phone: /^01[0125][0-9]{8}$/,
   };
@@ -124,27 +124,27 @@ let n = 0;
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
               await console.log(downloadURL);
 
-            await updateProfile(res.user, {
-              displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
-              photoURL: downloadURL,
-            });
+              await updateProfile(res.user, {
+                displayName: `${data.fName} ${data.lName}@${data.kindUser}`,
+                photoURL: downloadURL,
+              });
 
-            console.log("res.kindUser",data.kindUser)
-            await setDoc(doc(db, `${data.kindUser == "cook" ? "cookers":"users"}`, res.user.uid), {
-              userid: res.user.uid,
-              fullName: data.fName + " " + data.lName,
-              email: data.email,
-              phone: data.phone,
-              address: data.address,
-              country: data.country,
-              kindUser: data.kindUser,
-              photo: downloadURL,
-              registerTime: myserverTimestamp
-            })
+              console.log("res.kindUser", data.kindUser)
+              await setDoc(doc(db, `${data.kindUser == "cook" ? "cookers" : "users"}`, res.user.uid), {
+                userid: res.user.uid,
+                fullName: data.fName + " " + data.lName,
+                email: data.email,
+                phone: data.phone,
+                address: data.address,
+                country: data.country,
+                kindUser: data.kindUser,
+                photo: downloadURL,
+                registerTime: myserverTimestamp
+              })
 
-            localStorage.setItem("user",JSON.stringify(res.user))
+              localStorage.setItem("user", JSON.stringify(res.user))
 
-            {/* if (data.kindUser == "cook") {
+              {/* if (data.kindUser == "cook") {
                 await setDoc(doc(db, "cookers", res.user.uid), {
                   userid: res.user.uid,
                   fullName: data.fName + " " + data.lName,
@@ -171,104 +171,105 @@ let n = 0;
                 favourite: [],
               });
             }*/}
-           await setShow(true)
-           await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
-  
+              await setShow(true)
+              await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
+
             });
             // data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
 
-             
+
           }
-          
+
 
         );
 
         onAuthStateChanged(auth, (user) => {
-      
-          if (user.displayName.split('@')[1]=="user") {
+
+          if (user.displayName.split('@')[1] == "user") {
             console.log(user);
-  
+
             dispatch(authStatuesForUser(true))
-            sessionStorage.setItem('authUser',true)
+            sessionStorage.setItem('authUser', true)
             sessionStorage.removeItem('authCooker')
-                  
-          } 
-  
-  
-  
-          else if(user.displayName.split('@')[1]=="cook"){
+
+          }
+
+
+
+          else if (user.displayName.split('@')[1] == "cook") {
             dispatch(authStatuesForCooker(true))
-            sessionStorage.setItem('authCooker',true)
+            sessionStorage.setItem('authCooker', true)
             sessionStorage.removeItem('authUser')
           }
           else {
-            console.log("else",user);
+            console.log("else", user);
           }
         }
-        
+
         )
 
       }
-      catch (err){ 
+      catch (err) {
         console.log(err)
         setMessage({
           ...errorMessage,
-          emailErr:"البريد الإلكتروني مسجل سابقاً"
+          emailErr: "البريد الإلكتروني مسجل سابقاً"
         });
 
       }
 
     } else {
 
-    
+
       data.fName == ""
-      ? setMessage({
-        ...errorMessage,
-        FNameErr: "يجب أن تدخل الاسم الاول ",
-      })
-      : data.lName == ""
         ? setMessage({
           ...errorMessage,
-          LNameErr: "يجب أن تدخل الاسم الثاني ",
-        }) : data.email == ""
+          FNameErr: "يجب أن تدخل الاسم الاول ",
+        })
+        : data.lName == ""
           ? setMessage({
             ...errorMessage,
-            emailErr: "يجب أن تدخل البريد الالكتروني  ",
-          })
-          :
-          data.password == ""
+            LNameErr: "يجب أن تدخل الاسم الثاني ",
+          }) : data.email == ""
             ? setMessage({
               ...errorMessage,
-              passwordErr: "يجب أن تختر نوع حسابك",
+              emailErr: "يجب أن تدخل البريد الالكتروني  ",
             })
             :
-            data.phone == ""
+            data.password == ""
               ? setMessage({
                 ...errorMessage,
-                phoneErr: "يجب أن تختر تليفونك ",
+                passwordErr: "يجب أن تختر نوع حسابك",
               })
-              : data.address == ""
+              :
+              data.phone == ""
                 ? setMessage({
                   ...errorMessage,
-                  addressErrِ: "يجب أن تختر عنوانك ",
+                  phoneErr: "يجب أن تختر تليفونك ",
                 })
                 :
-      data.kindUser == ""
-        ? setMessage({
-          ...errorMessage,
-          kindUserErr: "يجب أن تختر نوع حسابك",
-        })
-        : data.country == ""
-          ? setMessage({
-            ...errorMessage,
-            countryErr: "يجب أن تختر بلدتك ",
-          })
-          : !data.photo
-            ? setMessage({
-              ...errorMessage,
-              photoErr: !e.target.files ? "يجب أن تختر صوره " : "",
-            })
-            : console.log("done");
+                data.address == ""
+                  ? setMessage({
+                    ...errorMessage,
+                    addressErr: "يجب أن تختر عنوانك ",
+                  })
+
+                  : data.kindUser == ""
+                    ? setMessage({
+                      ...errorMessage,
+                      kindUserErr: "يجب أن تختر نوع حسابك",
+                    })
+                    : data.country == ""
+                      ? setMessage({
+                        ...errorMessage,
+                        countryErr: "يجب أن تختر بلدتك ",
+                      })
+                      : !data.photo
+                        ? setMessage({
+                          ...errorMessage,
+                          photoErr: !e.target.files? "يجب أن تختر صوره " : "",
+                        })
+                        : console.log("done");
 
 
       console.log(e.target.files);
@@ -406,7 +407,7 @@ let n = 0;
 
       setMessage({
         ...errorMessage,
-        photoErr:!e.target.files[0]? "يجب أن تختر صوره " :"" ,
+        photoErr: !e.target.files[0] ? "يجب أن تختر صوره " : data.photo.type != 'image/jpeg' || data.photo.type != 'image/png' || data.photo.type != 'image/PNG' || data.photo.type != 'image/jpg'? 'يجب ان تختار صوره فقط' : "",
       });
     }
   };
@@ -448,7 +449,7 @@ let n = 0;
             <div className="d-flex justify-content-between">
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
-                  
+
                   type="text"
                   placeholder="الاسم الثاني "
                   autoComplete="name"
@@ -460,7 +461,7 @@ let n = 0;
               </div>
               <div className="d-flex flex-column" style={{ width: "49%" }}>
                 <input
-                  
+
                   type="text"
                   placeholder="الاسم الأول"
                   autoComplete="name"
@@ -475,7 +476,7 @@ let n = 0;
               </div>
             </div>
             <input
-              
+
               type="email"
               placeholder="البريد الإلكتروني"
               name="email"
@@ -485,7 +486,7 @@ let n = 0;
               {errorMessage.emailErr}
             </small>
             <input
-              
+
               type="password"
               placeholder="كلمة المرور"
               name="password"
@@ -503,7 +504,7 @@ let n = 0;
               {errorMessage.passwordErr}
             </small>
             <input
-              
+
               type="tel"
               placeholder=" رقم التليفون"
               name="phone"
@@ -571,21 +572,21 @@ let n = 0;
               </div>
             </div>
 
-          <label htmlFor="kindUser">نوع الحساب:</label>
-          <select
-            name="kindUser"
-            id="kindUser"
-            onChange={(e) => changeData(e)}
-            
-          >
-           <option value=""   hidden >اختر نوع حسابك</option>
+            <label htmlFor="kindUser">نوع الحساب:</label>
+            <select
+              name="kindUser"
+              id="kindUser"
+              onChange={(e) => changeData(e)}
 
-            <option value="user">عميل</option>
-            <option value="cook">طباخ</option>
-          </select>
-          <small className="text-danger" style={{ textAlign: "right" }}>
-            {errorMessage.kindUserErr}
-          </small>
+            >
+              <option value="" hidden >اختر نوع حسابك</option>
+
+              <option value="user">عميل</option>
+              <option value="cook">طباخ</option>
+            </select>
+            <small className="text-danger" style={{ textAlign: "right" }}>
+              {errorMessage.kindUserErr}
+            </small>
 
             <input
               style={{ display: "none" }}
@@ -594,10 +595,10 @@ let n = 0;
               id="file"
               name="photo"
               onChange={(e) => changeData(e)}
-              // {...getInputProps()}
+            // {...getInputProps()}
             />
-           
-       
+
+
             <label htmlFor="file">
               <span className="d-flex align-items-center">
                 <i
@@ -607,16 +608,10 @@ let n = 0;
                 إرفع صورتك
               </span>
             </label>
-            <small className="text-success" style={{ textAlign: "right" }}>
-             
-              {/* <ul>{acceptedFileItems}</ul> */}
- 
-            </small>
+            
             <small className="text-danger" style={{ textAlign: "right" }}>
               {errorMessage.photoErr}
-            
-     
-     {/* <ul>{fileRejectionItems}</ul> */}
+
             </small>
 
             <input type="submit" value="إنشاء حساب" />
