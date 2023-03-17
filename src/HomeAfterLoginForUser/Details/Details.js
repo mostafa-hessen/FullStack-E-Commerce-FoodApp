@@ -10,12 +10,8 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-  
-
-
-
 // food{عائلي :"bigPrice"}
-
+//import './Details.css'
   // ele.food[${`chossenprice`}]//   ele.bigPrice
 export default function Details() {
   const [currentPriceChanged, setcurrentPriceChanged] = useState('')
@@ -84,7 +80,7 @@ export default function Details() {
 
   const checkIfRepeated = (ele) => {
 
-   console.log('');
+   //console.log('');
     // ===== 1- set cart if not have it ====
     if (!myCart.cart) {
       // console.log("first");
@@ -99,7 +95,7 @@ export default function Details() {
    myCart.cart?.find((value, index) => {
     // Delete element 5 on first iteration
     if (value.foodId==ele.foodId&&value.choosenPrice==ele.choosenPrice) {
-      value.quantity+=1
+       value.quantity+=1
          const docRef = doc(db, "users", user.uid);
         updateDoc(docRef, {
           cart:myCart.cart,
@@ -116,41 +112,38 @@ export default function Details() {
        });
 
   }
-
-
-
-
-
-
   };
   const addTocart = (target) => {
 
     setwww(Date.now())
     if(currentPriceChanged){
       // 1 if cart have this before
+      // target.choosenSize=currentPriceChanged[0]
+      // target.choosenPrice=currentPriceChanged[1]
       target.choosenPrice=currentPriceChanged
       target.userOrderId= user.uid
       target.userOrderName=user.displayName
-
+      target.timeAddedTocart = new Date()
       checkIfRepeated(target);
-      console.log(currentPriceChanged);
 }
 else{
   alert("you must choose price")
 }
-
     // ====== 3- update firebase ===== 
+}
 
-  };
+
   return (
     <>
-      {/* {food1?setWordData(food1.foodImg[0]):console.log("not done")} */}
+      <div className="conttaner">
+      {/*<div className="d-flex justify-content-lg-end justify-content-center mt-lg-5 mt-5 col-12">
+      <div className="col-lg-4 col-7 me-lg-3">*/}
       <div className="main">
         <div
-          className="rounded-4 "
+          className="rounded-2"
           style={{
-            height: "300px",
-            maxWidth: "500px",
+            height: "260px",
+            maxWidth: "460px",
             margin: "auto",
             overflow: "hidden",
           }}
@@ -166,18 +159,17 @@ else{
           />
         </div>
         <div className="flex_row">
-          {/* {food1.foodImg&&setWordData(food1.foodImg[0])} */}
 
           {food1.foodImg &&
             food1.foodImg.map((data, i) => (
               <div className="thumbnail" key={i}>
                 <div
-                  className={`rounded-4 ${
+                  className={`rounded-2 ${
                     food1.foodImg.indexOf(wordData) == i ? "clicked" : ""
                   }`}
                   style={{
-                    height: "70px",
-                    width: "90px",
+                    height: "80px",
+                    width: "100px",
                     margin: "auto",
                     overflow: "hidden",
                   }}
@@ -197,22 +189,27 @@ else{
               </div>
             ))}
         </div>
+        </div>
       </div>
 
-      <div className="row pt-5">
-        <div className="col-lg-6 mx-auto">
+        <div className="col-lg-7 mx-auto mt-5">
+          <h1 style={{ color:  "#049504" }}>{food1?.foodName} </h1>
+          <p> {food1?.foodDiscription} </p>
+           </div>
+
+          <div className="col-lg-7 mx-auto mt-5">
+          <h3 style={{ color:  "#049504" }}>حجم وسعر الأكلة</h3>
           <div
-            className="d-flex align-items-center"
-            style={{ direction: "rtl", width: "70%", margin: "auto" }}
-          >
+            className="d-flex align-items-center "
+            style={{ direction: "rtl", width: "70%", margin: "auto" }} >
             <input type="radio" id="" name="price" value={food1?.bigPrice} className="ms-2"  onChange={()=>setcurrentPriceChanged("كبير")}/>
             <h5 style={{ margin: 0 }}>عائلي : {food1?.bigPrice} جنيه مصري </h5>
-          </div>
+            </div>
+
 
           <div
             className="d-flex align-items-center"
-            style={{ direction: "rtl", width: "70%", margin: "auto" }}
-          >
+            style={{ direction: "rtl", width: "70%", margin: "auto" }}>
             <input type="radio" id="" name="price" value={food1?.middlePrice} className="ms-2"  onChange={()=>setcurrentPriceChanged("وسط")}/>
             <h5 style={{ margin: 0 }}>
               {" "}
@@ -222,32 +219,35 @@ else{
 
           <div
             className="d-flex align-items-center"
-            style={{ direction: "rtl", width: "70%", margin: "auto" }}
-          >
+            style={{ direction: "rtl", width: "70%", margin: "auto" }}>
             <input type="radio" id=""  name="price" value={food1?.smallPrice} className="ms-2" onChange={()=>setcurrentPriceChanged("صغير")} />
             <h5 style={{ margin: 0 }}> صغير : {food1?.smallPrice} جنيه مصري</h5>
           </div>
 
+          <div
+            className="d-flex align-items-center"
+            style={{ direction: "rtl", width: "70%", margin: "auto" }}>
           <button
-            className="btn mt-4 inline-flex align-items-center"
+            className="btn mt-4 inline-flex align-items-center rounded-5 me-5"
             style={{
               width: 45,
-              backgroundColor: "#069c54",
-              borderRadius: "50%",
+              backgroundColor: "#049504"
             }}
-            onClick={() => addTocart(food1)}
-          >
+            onClick={() => addTocart(food1)}>
             <i className="fas fa-shopping-cart mt-2 text-light"></i>
           </button>
-          <button className="star mt-2" onClick={() => addToFavBtn(food1)}>
-            <i className="fa-solid fa-star"></i>
+
+          <button 
+          className=" btn mt-4 inline-flex align-items-center rounded-5 p-2 me-2" 
+          onClick={() => addToFavBtn(food1)} 
+          style={{
+              width: 45,
+              backgroundColor: "#049504"
+            }}>
+            <i className="fa-solid fa-star text-light"></i>
           </button>
+          </div>
         </div>
-        <div className="col-lg-6">
-          <h1 style={{ color: "orange" }}>{food1?.foodName} </h1>
-          <p> {food1?.foodDiscription} </p>
-        </div>
-      </div>
     </>
   );
 }

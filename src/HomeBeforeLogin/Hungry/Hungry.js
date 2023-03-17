@@ -4,11 +4,9 @@ import app from "../../assets/app.png"
 import apple from "../../assets/apple.png"
 import Android from "../../assets/Android.png"
 
-
 const Hungry =()=>{
 return(
 <>
-
      <div className='container' id="app">
         <div className='row align-items-center Hungry'>
        
@@ -28,13 +26,10 @@ return(
 
     </div>
 </div>
-
-
-        </div>
-        
-            </div>
-     </div>
-     </>
+</div>
+</div>
+</div>
+</>
 )
 }
 export default Hungry;

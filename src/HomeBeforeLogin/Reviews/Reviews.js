@@ -15,14 +15,12 @@ export default function Reviews() {
                                     الاراء
                                 </p>
                                 <h2 class="h2-title" > ماذا يقول عملائنا <span> عن خدمتنا </span></h2>
-                                {/* <h2 class="h2-title" > ماذا يقول عملائنا <span>&#128525;عن خدمتنا </span></h2> */}
                                 <div className='sec-title-shape '>
                                     <img src={shape}  />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* reviews section */}
                     <div className='row'>
                         <div className='col-12 col-lg-5 mb-3'>
                             <div className='testimonials-img '>

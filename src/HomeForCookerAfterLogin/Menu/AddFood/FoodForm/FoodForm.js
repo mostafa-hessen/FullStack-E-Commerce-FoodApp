@@ -1,27 +1,10 @@
-/*
-
-1) validation => regex (done) - satedata  (done) - stateErr (done) - show err - show success 
-Name
-cateogru
-images
-textarea
-price
-
-2) multible image => 3 images max - add and elete every image  
- 
- 
- */
-
 import "./FoodForm.css";
 import { uploadBytes, listAll, list } from "firebase/storage";
 import { v4 } from "uuid";
-import imageForm1 from "../../../../assets/potatoKofta.jpg";
-import imageForm2 from "../../../../assets/kofta.jpg";
 import { useRef, useState } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, getDownloadURL } from "firebase/storage";
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../../firebase";
-import { async } from "@firebase/util";
 
 function FoodForm(props) {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -34,10 +17,7 @@ function FoodForm(props) {
 
     if(selectedFiles.length<=3)
     {
-
-    console.log(selectedFiles);
     const selectedFilesArray = Array.from(selectedFiles);
-    //console.log(selectedFilesArray);
 
     const imagesArray = selectedFilesArray.map((file) => {
       return URL.createObjectURL(file);
@@ -50,7 +30,6 @@ function FoodForm(props) {
 
   else{
     alert("you must choos only three images")
-    console.log(myimages);
   }
   };
 
@@ -88,9 +67,7 @@ function FoodForm(props) {
   });
 
   const changeData = (e) => {
-    console.log(e.target.name);
     if (e.target.name === "foodName") {
-      console.log("j");
       setData({
         ...data,
         foodName: e.target.value,
@@ -112,7 +89,6 @@ function FoodForm(props) {
         ...data,
         cateogry: e.target.value,
       });
-      console.log("dsa", e.target.value);
       setMessage({
         ...errorMessage,
         cateogryErr:
@@ -142,7 +118,6 @@ function FoodForm(props) {
         ...data,
         images: myimages,// 2 files
       });
-      // console.log(myimages);
       setMessage({
         ...errorMessage,
         imagesErr:
@@ -183,7 +158,6 @@ function FoodForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(vaildition());
     if (vaildition()) {
       try {
         props.clickFun()
@@ -216,7 +190,6 @@ function FoodForm(props) {
         });
 
         for(let i=0;i<8;i++){
-          // console.log(e.target[i].value='');
           if(e.target[i].name!=('btnremove')){
 
            e.target[i].value=""
@@ -234,20 +207,17 @@ function FoodForm(props) {
           })
           setSelectedImages([])
           textarea.current.value=""
-       //  console.log(     textarea.current.textContent, textarea, textarea.current,textarea.textContent)
       }
        catch {
-        console.log("errrrrrrrrrrrrrrrrrrrrr");
+        console.log("error");
       }
     } else {
-      console.log("notvalid");
       !selectedImages == []
         ? setMessage({
             ...errorMessage,
             imagesErr: selectedImages.length == 0 ? "يجب أن تختر صوره " : "",
           })
-        : console.log("F");
-      console.log(data.foodName == "");
+        : console.log("err");
       data.foodName == ""
         ? setMessage({
             ...errorMessage,
@@ -285,7 +255,6 @@ function FoodForm(props) {
           })
         : console.log("done");
     }
-    console.log("hi nadeen", vaildition());
   };
 
   const vaildition = () => {
@@ -298,21 +267,17 @@ function FoodForm(props) {
       data.middlePrice != 0 &&
       data.smallPrice != 0
 
-      // data.kindUser.length !== 0 &&
     ) {
       return true;
     } else {
       return false;
     }
   };
-  // console.log(ImageUrlsFromFireBase)
   return (
     <div className="baseFoodForm">
       <div className="formContainer">
         <div className="formWrapper">
           <span className="logo">🤤اضف اكله جديده </span>
-          {/* <span className="title">add</span> */}
-          {/* <img src=""/> */}
 
           <form onSubmit={handleSubmit}>
             <input
@@ -322,8 +287,6 @@ function FoodForm(props) {
               onChange={(e) => changeData(e)}
             />
             <small className="text-danger">{errorMessage.foodNameErr}</small>
-
-            {/* <label htmlFor="Cateogry">تصنيف الاكله  </label> */}
             <select
               name="cateogry"
               id="Cateogry"
@@ -339,11 +302,8 @@ function FoodForm(props) {
 
             <div className="imageForm">
               <div className="prevImg">
-                {/* style={{,backgroundImage:`url(${imageForm1})`}} */}
-                {/* <img src={imageForm1} />  */}
 
                 <label htmlFor="file" className="file">
-                  {/* <img src={Add} alt="" /> */}
                   <input
                     name="images"
                     style={{ display: "none" }}
@@ -371,14 +331,6 @@ function FoodForm(props) {
                 className="foodImages"
                 style={{ display: "flex", margin: "10px", direction: "rtl" }}
               >
-                {/*      
-
-{
-
-}
-          <img src={imageForm2} height={'80px'} width={'100px'} style={{margin:'10px' ,borderRadius:'6px'}}/>
-          <img src={imageForm1} height={'80px'} width={'100px'} style={{margin:'10px',borderRadius:'6px'}}/>
-          <img src={imageForm2} height={'80px'} width={'100px'} style={{margin:'10px',borderRadius:'6px'}}/> */}
 
                 {selectedImages &&
                   selectedImages.map((ele, index) => (
@@ -405,13 +357,12 @@ function FoodForm(props) {
               ref={textarea}
               placeholder="تفاصيل الاكله"
            >
-              {/* تفاصيل الاكله */}
+
             </textarea>
             <small className="text-danger">
               {errorMessage.foodTextareaErr}
             </small>
 
-            {/* <input required type="" placeholder="password" /> */}
             <div className="price">
               <div className="pricee ">
                 <label htmlFor="price1">عائلي : </label>
@@ -452,13 +403,8 @@ function FoodForm(props) {
                 errorMessage.middlePriceErr ||
                 errorMessage.bigPriceErr}
             </small>
-
             <button >حـــــــفـــــــظ </button>
-            {/* {loading && "Uploading and compressing the image please wait..."} */}
-            {/* {err && <span>Something went wrong</span>} */}
           </form>
-
-          {/* {!err ? console.log("done") : console.log("you have errore")} */}
         </div>
       </div>
     </div>

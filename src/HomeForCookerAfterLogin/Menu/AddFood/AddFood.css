@@ -25,7 +25,7 @@
     
 }
 .addFood.active{
-    height: 910px;
+    height: 980px;
     width: 100%;
     border: 1px dashed rgb(35, 147, 35) !important;
 }

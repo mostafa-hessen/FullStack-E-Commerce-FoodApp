@@ -7,8 +7,6 @@ import Eat from './Eat/Eat';
 import Reviews from './Reviews/Reviews';
 import Hungry from './Hungry/Hungry';
 import Footer from './Footer/Footer';
-import Signup from '../LoginSignupPopUp/tab/Signup/Signup';
-import Tab from '../LoginSignupPopUp/tab/Tab';
 
 export default function Homebeforelogin() {
   return (
@@ -20,8 +18,6 @@ export default function Homebeforelogin() {
    <Reviews/>
    <Hungry/>
    <Footer/>
-   {/* <Signup/>
-  <Tab/> */}
     </div>
   )
 }
