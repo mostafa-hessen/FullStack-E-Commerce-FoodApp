@@ -99,7 +99,7 @@ const callPaypal= ()=>{
           </div>
         </div>
 
-        <div className="row justify-content-center border border-3 rounded-4  ">
+        <div className="row justify-content-evenly border border-3 rounded-1 col-10">
           <div className="col-lg-2 col-md-3 mt-5 mb-3 col-3  d-none d-md-block d-lg-block">
             <h4>العنصر</h4>
           </div>
@@ -110,17 +110,17 @@ const callPaypal= ()=>{
             <h4>السعر </h4>
           </div>
 
-          <div className="col-lg-3 col-md-2 mt-5 mb-3 col-2  d-none d-md-block d-lg-block">
+          <div className="col-lg-2 col-md-2 mt-5 mb-3 col-2  d-none d-md-block d-lg-block">
             <h4>الحجم </h4>
           </div>
-          <div className="col-lg-3 col-md-2 mt-5 mb-3 col-3 d-none d-md-block d-lg-block">
+          <div className="col-lg-2 col-md-2 mt-5 mb-3 col-2 d-none d-md-block d-lg-block">
             <h4>المجموع </h4>
           </div>
         </div>
 
         {myCart?.map((ele,index) => {
           return (
-            <div className="row justify-content-center border border-3 rounded-4 mt-2  zoom" key={index}>
+            <div className="row justify-content-evenly border border-3 rounded-1 mt-2  zoom col-10" key={index}>
               {console.log(ele)}
               <div className="col-lg-2 col-md-2 mt-3 mb-3 col-9 ">
                 <img
@@ -151,9 +151,9 @@ const callPaypal= ()=>{
                   }
                 </h4>
               </div>
-              <div className="col-lg-1 col-md-1 mt-5 mb-3 col-1  ">
-                <button onClick={() => removeFromCart(ele)}>remove</button>
-              </div>
+               {/* <div className="col-lg-1 col-md-1 mt-5 mb-3 col-1  ">
+              <button onClick={() => removeFromCart(ele)}><i className="fa-solid fa-xmark"></i></button>
+              </div>*/}
             </div>
           );
         })}
