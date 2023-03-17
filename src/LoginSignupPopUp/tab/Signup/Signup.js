@@ -609,10 +609,10 @@ export default function Signup(props) {
               </span>
             </label>
             
-            <small className="text-danger" style={{ textAlign: "right" }}>
+           {/* <small className="text-danger" style={{ textAlign: "right" }}>
               {errorMessage.photoErr}
 
-            </small>
+            </small>*/}
 
             <input type="submit" value="إنشاء حساب" />
           </form>

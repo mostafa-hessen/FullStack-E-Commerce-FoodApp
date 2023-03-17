@@ -14,7 +14,7 @@ function Home() {
         <Offer/>
         <Bestfood className="d-none"/>
       </div>
-      <div className="col-12 col-lg-8 p-4"   >
+      <div className="col-12 col-lg-7 p-4"   >
       <Header hello='مرحبا بك في' helloCon='🤤الاكيله'/>
         
         <FilterItems/>
