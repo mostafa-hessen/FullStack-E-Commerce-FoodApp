@@ -23,18 +23,17 @@ function Header(props) {
                            <img  className='d-lg-none w-100 border-5' src={us.photo && us.photo} />
                            <Notification/>
                      </div>
-                    <div className="search-box d-flex align-items-center">
+                   {/* <div className="search-box d-flex align-items-center">
                         <div className="search-btn">
                             <i className="fas fa-search "></i>
                         </div>
                         <input type="text" placeholder="ابحث عن اكلتك" />
-                    </div>               
+                        </div> */}              
                 </div>
 
                 <div className="col-3 text-center myHeaderText">
-                    <p >{props.hello}
-                    </p>
-                    <p>{props.helloCon}</p>
+                    <p >{props.hello}</p>
+                   <p>{props.helloCon}</p>
                 </div>
             </div>
         </>
