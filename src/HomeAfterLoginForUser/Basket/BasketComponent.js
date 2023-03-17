@@ -111,16 +111,10 @@ const callPaypal= ()=>{
           </div> */}
         </div>
 
-<<<<<<< HEAD
-        <div className="row justify-content-evenly border border-3 rounded-1 col-10">
-          <div className="col-lg-2 col-md-3 mt-5 mb-3 col-3  d-none d-md-block d-lg-block">
-            <h4>العنصر</h4>
-=======
         <div className=" mx-auto row justify-content-evenly headercart rounded-2 col-10  ">
          
           <div className="col-lg-2 col-md-3 mt-3 mb-3 col-3  d-none d-md-none d-lg-block ">
             <h4 className="headercartmid">العنصر</h4>
->>>>>>> 62afc17f697c10c3158072e5a07e4fe35aabb432
           </div>
           <div className="col-lg-2 col-md-2 mt-3 mb-3 col-3  d-none d-md-none d-lg-block">
             <h4 className="headercartmid">الكمية </h4>
@@ -129,19 +123,11 @@ const callPaypal= ()=>{
             <h4 className="headercartmid">السعر </h4>
           </div>
 
-<<<<<<< HEAD
-          <div className="col-lg-2 col-md-2 mt-5 mb-3 col-2  d-none d-md-block d-lg-block">
-            <h4>الحجم </h4>
-          </div>
-          <div className="col-lg-2 col-md-2 mt-5 mb-3 col-2 d-none d-md-block d-lg-block">
-            <h4>المجموع </h4>
-=======
           <div className="col-lg-2 col-md-2 mt-3 mb-3 col-2  d-none d-md-none d-lg-block">
             <h4 className="headercartmid">الحجم </h4>
           </div>
           <div className="col-lg-2 col-md-2 mt-3 mb-3 col-3 d-none d-md-none d-lg-block headercartmid">
             <h4 className="headercartmid">المجموع </h4>
->>>>>>> 62afc17f697c10c3158072e5a07e4fe35aabb432
           </div>
           <div className="col-lg-1 col-md-1 mt-5 mb-3 col-1  ">
               
@@ -150,12 +136,8 @@ const callPaypal= ()=>{
        
         {myCart?.map((ele,index) => {
           return (
-<<<<<<< HEAD
-            <div className="row justify-content-evenly border border-3 rounded-1 mt-2  zoom col-10" key={index}>
-=======
             <>
            {/*  <div className="row col-lg-12 justify-content-evenly " > */}
->>>>>>> 62afc17f697c10c3158072e5a07e4fe35aabb432
               {console.log(ele)}
               <div className="row mx-auto col-lg-10 justify-content-lg-evenly justify-content-md-center justify-content-center rounded-2 mt-3 basket carthieght "key={index}>
               <div className="col-lg-2 col-md-12  mt-lg-3 mb-lg-2 col-11 mt-lg-4 mt-3 ">
@@ -192,15 +174,9 @@ const callPaypal= ()=>{
                   }
                 </h4>
               </div>
-<<<<<<< HEAD
-               {/* <div className="col-lg-1 col-md-1 mt-5 mb-3 col-1  ">
-              <button onClick={() => removeFromCart(ele)}><i className="fa-solid fa-xmark"></i></button>
-              </div>*/}
-=======
               <div className="col-lg-1 col-md-1 mt-lg-5  mb-4 col-1 ms-lg-0 ms-1  textmargin">
                 <button className="back zoom" onClick={() => removeFromCart(ele)}><i className="fs-5  text-danger fa-sharp fa-solid fa-xmark "></i></button>
               </div>  
->>>>>>> 62afc17f697c10c3158072e5a07e4fe35aabb432
             </div>
              
               
@@ -216,7 +192,6 @@ const callPaypal= ()=>{
            {/*  <div className="col-lg-11 col-12 m-3">
               <p>ضريبة التوصيل: {deliveryFees}ج</p>
             </div>
-
             <div className="col-lg-11 col-12 m-3">
               <p>الحساب الصافي : {firstSum == 0 ? 0: firstSum + deliveryFees}ج</p>
             </div> */}
