@@ -23,9 +23,9 @@ const PrivateRoute1 =(props)=>{
 return (
 <>
 <Redirect to={"/"}/>
-{
+{/* {
 setTimeout(()=>alert("سجل الدخول اولا"),1000)
-}
+} */}
 
 </>)
 

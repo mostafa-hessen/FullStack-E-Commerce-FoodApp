@@ -12,6 +12,7 @@ function  App() {
     <div className="App">
    
     <BrowserRouter>
+  {/*   <AuthProvider> */}
       <Switch>
           <Route exact path="/" component={() => <Homebeforelogin /> }/>
 
@@ -20,6 +21,7 @@ function  App() {
           <PrivateRoute2  path="/HomeCooker" component={HomeForCookerAfterLogin}/>
           
         </Switch>
+        {/* </AuthProvider> */}
       </BrowserRouter>
     </div>
   )
