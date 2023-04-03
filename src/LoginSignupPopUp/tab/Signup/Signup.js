@@ -170,7 +170,36 @@ export default function Signup(props) {
                 cart: [],
                 favourite: [],
               });
-            }*/}
+
+
+              
+            }*/
+          
+            onAuthStateChanged(auth, (user) => {
+
+              if (user.displayName.split('@')[1] == "user") {
+                console.log(user);
+    
+                dispatch(authStatuesForUser(true))
+                sessionStorage.setItem('authUser', true)
+                sessionStorage.removeItem('authCooker')
+    
+              }
+    
+    
+    
+              else if (user.displayName.split('@')[1] == "cook") {
+                dispatch(authStatuesForCooker(true))
+                sessionStorage.setItem('authCooker', true)
+                sessionStorage.removeItem('authUser')
+              }
+              else {
+                console.log("else", user);
+              }
+            }
+    
+            )
+    }
               await setShow(true)
               await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
 
@@ -183,30 +212,30 @@ export default function Signup(props) {
 
         );
 
-        onAuthStateChanged(auth, (user) => {
+        // onAuthStateChanged(auth, (user) => {
 
-          if (user.displayName.split('@')[1] == "user") {
-            console.log(user);
+        //   if (user.displayName.split('@')[1] == "user") {
+        //     console.log(user);
 
-            dispatch(authStatuesForUser(true))
-            sessionStorage.setItem('authUser', true)
-            sessionStorage.removeItem('authCooker')
+        //     dispatch(authStatuesForUser(true))
+        //     sessionStorage.setItem('authUser', true)
+        //     sessionStorage.removeItem('authCooker')
 
-          }
+        //   }
 
 
 
-          else if (user.displayName.split('@')[1] == "cook") {
-            dispatch(authStatuesForCooker(true))
-            sessionStorage.setItem('authCooker', true)
-            sessionStorage.removeItem('authUser')
-          }
-          else {
-            console.log("else", user);
-          }
-        }
+        //   else if (user.displayName.split('@')[1] == "cook") {
+        //     dispatch(authStatuesForCooker(true))
+        //     sessionStorage.setItem('authCooker', true)
+        //     sessionStorage.removeItem('authUser')
+        //   }
+        //   else {
+        //     console.log("else", user);
+        //   }
+        // }
 
-        )
+        // )
 
       }
       catch (err) {

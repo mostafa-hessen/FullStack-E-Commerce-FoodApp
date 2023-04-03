@@ -1,5 +1,7 @@
 import React from "react";
 //import './FoodDetailsCooker.css'
+import { ToastContainer, toast } from 'react-toastify';
+
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -10,9 +12,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-// food{عائلي :"bigPrice"}
-//import './Details.css'
-  // ele.food[${`chossenprice`}]//   ele.bigPrice
+ 
 export default function Details() {
   const [currentPriceChanged, setcurrentPriceChanged] = useState('')
   const { id } = useParams();
@@ -38,6 +38,26 @@ export default function Details() {
 
   //  console.log(food1)
   let user = JSON.parse(localStorage.getItem("user"));
+  const notifySuccess = () => toast.success("تم اضافه العنصر بنجاح ",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+  });
+  const notifyWarn = () => toast.warn("يجب اختيار حجم الاكله اولا ",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+  });
 
   // 'http://static1.squarespace.com/static/5f14d04ebd60fa3de12e3960/t/5fdcc21b84630471db04a0e9/1608303136517/IMG_9417.jpeg?format=1500w')
   const handleClick = (index) => {
@@ -49,15 +69,14 @@ export default function Details() {
   const [fav, setFav] = useState([]);
   const addToFavBtn = (favEle) => {
     // console.log( user.uid,"id")
-
+    
     const q = doc(db, "users", user.uid);
     updateDoc(q, {
       favoriteFood: arrayUnion(favEle), // arr
     })
       .then((q) => {
-        console.log(
-          "A New Document Field has been added to an existing document"
-        );
+        notifySuccess()
+        // console.log("FDS");
       })
       .catch((error) => {
         console.log(error);
@@ -99,7 +118,8 @@ export default function Details() {
          const docRef = doc(db, "users", user.uid);
         updateDoc(docRef, {
           cart:myCart.cart,
-        });
+        }).then(ele=>notifySuccess("تم اضافه الاكله الي السله بنجاح"));
+
    }
   });
    
@@ -109,7 +129,7 @@ export default function Details() {
      const docRef = doc(db, "users", user.uid);
        updateDoc(docRef, {
          cart:myCart.cart,
-       });
+        }).then(ele=>notifySuccess("تم اضافه الاكله الي السله بنجاح"));
 
   }
   };
@@ -117,9 +137,7 @@ export default function Details() {
 
     setwww(Date.now())
     if(currentPriceChanged){
-      // 1 if cart have this before
-      // target.choosenSize=currentPriceChanged[0]
-      // target.choosenPrice=currentPriceChanged[1]
+  
       target.choosenPrice=currentPriceChanged
       target.userOrderId= user.uid
       target.userOrderName=user.displayName
@@ -127,7 +145,9 @@ export default function Details() {
       checkIfRepeated(target);
 }
 else{
-  alert("you must choose price")
+  // alert("you must choose price")())
+  notifyWarn()
+
 }
     // ====== 3- update firebase ===== 
 }
@@ -249,6 +269,8 @@ else{
             }}>
             <i className="fa-solid fa-star text-light"></i>
           </button>
+
+          {/* <button onClick={notify}>Notify!</button> */}
           </div>
         </div>
 {/* </div> */}

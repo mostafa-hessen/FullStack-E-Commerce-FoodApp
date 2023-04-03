@@ -55,7 +55,12 @@ nav.navforcooker .ul{
      align-items: center;
      text-align: right;
      margin-bottom: 15px;
+     border-radius: 10px;
+     transition: all 1s ease-in-out;
      
+   }
+   nav.navforcooker .ul li:hover,nav.navforcooker .ul li.active  {
+    background-color: rgb(194, 223, 194);
    }
    nav.navforcooker .ul li span{
     text-align: right;

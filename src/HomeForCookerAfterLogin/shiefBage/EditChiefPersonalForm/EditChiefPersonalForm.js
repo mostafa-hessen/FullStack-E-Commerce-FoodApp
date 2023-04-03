@@ -13,6 +13,7 @@ import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 
 
 import { async } from "@firebase/util";
+import { toast } from 'react-toastify';
 export default function (props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const ArbicCategorycook = { am: "صَبَاحًا", pm: "مَساءً" }
@@ -38,6 +39,16 @@ export default function (props) {
     pmcooker: props.cookerpersonal.pmcooker ? props.cookerpersonal.pmcooker : "",
     amcookerselect: props.cookerpersonal.amcookerselect ? props.cookerpersonal.amcookerselect : "",
     pmcookerselect: props.cookerpersonal.pmcookerselect ? props.cookerpersonal.pmcookerselect : "",
+  });
+  const notifySuccess = () => toast.success("تم تعديل  البيانات  بنجاح ",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
   });
   const [errorMessage, setMessage] = useState({
     namecookerErr: "",
@@ -214,7 +225,7 @@ export default function (props) {
           pmcookerselect: data.pmcookerselect
 
 
-        });
+        }).then(ele=> notifySuccess());
         console.log('bbbbbbbbb')
 
 
