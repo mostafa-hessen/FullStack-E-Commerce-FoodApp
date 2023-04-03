@@ -130,7 +130,7 @@
     clip-path: circle(1000px at 90% 10%);
     -webkit-clip-path: circle(1500px at 100% 10%);
     pointer-events: all;
-    z-index: 12;
+    z-index: 9999;
   }
   
 

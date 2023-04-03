@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { ref, getDownloadURL } from "firebase/storage";
 import { arrayUnion, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db, myserverTimestamp, storage } from "../../../../firebase";
+import { toast } from "react-toastify";
 
 function FoodForm(props) {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -12,6 +13,27 @@ function FoodForm(props) {
   const [selectedImages, setSelectedImages] = useState([]);
   const [myimages, setmyimages] = useState([]);
   const textarea = useRef('')
+  const notifySuccess = () => toast.success("تم اضافه الاكله  بنجاح ",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+  });
+  const notifyWarn = () => toast.warn("لايمكنك اختيار اكتر من  ثلاث صور ",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+  });
+
   const onSelectFile = (event) => {
     const selectedFiles = event.target.files;//2 images file
 
@@ -29,7 +51,8 @@ function FoodForm(props) {
   }
 
   else{
-    alert("you must choos only three images")
+    // alert("you must choos only three images")
+    notifyWarn()
   }
   };
 
@@ -175,7 +198,7 @@ function FoodForm(props) {
           foodId:x,
           quantity:1
           
-        });
+        }).then(ele=> notifySuccess());
 
      
         myimages.map((ele) => {
@@ -188,7 +211,7 @@ function FoodForm(props) {
             });
           });
         });
-
+  
         for(let i=0;i<8;i++){
           if(e.target[i].name!=('btnremove')){
 

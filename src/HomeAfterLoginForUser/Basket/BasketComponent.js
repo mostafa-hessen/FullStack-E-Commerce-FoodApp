@@ -9,7 +9,10 @@ import { Route, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { myAllorders, myCartOrderAction, totalPrice } from "../../Component/Redux/action";
 import { margin } from "@mui/system";
+import { toast } from "react-toastify";
+
 function Basket() {
+  const notify = () => toast("Wow so easy!");
   const [Allorders, setAllorders] = useState([])
 const dispatch =useDispatch()
   let user = JSON.parse(localStorage.getItem("user"));
