@@ -77,7 +77,7 @@ return(
         <span className="logo">الاكيله</span>
         {/* <span className="title">تسجيل الدخول </span> */}
         <form onSubmit={handleSubmit} >
-          <input type="email" placeholder="أدخل البريد الالكتروني" />
+          <input type="email" placeholder="أدخل البريد الالكتروني" id="jj" />
           <input type="password" placeholder="أدخل كلمه السر " />
           {err && <span style={{color:'red',direction :'rtl'}}>ادخل البريد الالكتروني او الرقم السر صحيحا </span>}
           <button  >تسجيل الدخول</button>

@@ -170,7 +170,36 @@ export default function Signup(props) {
                 cart: [],
                 favourite: [],
               });
-            }*/}
+
+
+              
+            }*/
+          
+            onAuthStateChanged(auth, (user) => {
+
+              if (user.displayName.split('@')[1] == "user") {
+                console.log(user);
+    
+                dispatch(authStatuesForUser(true))
+                sessionStorage.setItem('authUser', true)
+                sessionStorage.removeItem('authCooker')
+    
+              }
+    
+    
+    
+              else if (user.displayName.split('@')[1] == "cook") {
+                dispatch(authStatuesForCooker(true))
+                sessionStorage.setItem('authCooker', true)
+                sessionStorage.removeItem('authUser')
+              }
+              else {
+                console.log("else", user);
+              }
+            }
+    
+            )
+    }
               await setShow(true)
               await data.kindUser == 'user' ? navigate.push("/HomeUser") : navigate.push("/HomeCooker")
 
@@ -183,30 +212,30 @@ export default function Signup(props) {
 
         );
 
-        onAuthStateChanged(auth, (user) => {
+        // onAuthStateChanged(auth, (user) => {
 
-          if (user.displayName.split('@')[1] == "user") {
-            console.log(user);
+        //   if (user.displayName.split('@')[1] == "user") {
+        //     console.log(user);
 
-            dispatch(authStatuesForUser(true))
-            sessionStorage.setItem('authUser', true)
-            sessionStorage.removeItem('authCooker')
+        //     dispatch(authStatuesForUser(true))
+        //     sessionStorage.setItem('authUser', true)
+        //     sessionStorage.removeItem('authCooker')
 
-          }
+        //   }
 
 
 
-          else if (user.displayName.split('@')[1] == "cook") {
-            dispatch(authStatuesForCooker(true))
-            sessionStorage.setItem('authCooker', true)
-            sessionStorage.removeItem('authUser')
-          }
-          else {
-            console.log("else", user);
-          }
-        }
+        //   else if (user.displayName.split('@')[1] == "cook") {
+        //     dispatch(authStatuesForCooker(true))
+        //     sessionStorage.setItem('authCooker', true)
+        //     sessionStorage.removeItem('authUser')
+        //   }
+        //   else {
+        //     console.log("else", user);
+        //   }
+        // }
 
-        )
+        // )
 
       }
       catch (err) {
@@ -577,17 +606,10 @@ export default function Signup(props) {
               name="kindUser"
               id="kindUser"
               onChange={(e) => changeData(e)}
-<<<<<<< HEAD
 
             >
               <option value="" hidden >اختر نوع حسابك</option>
 
-=======
-
-            >
-              <option value="" hidden >اختر نوع حسابك</option>
-
->>>>>>> 31d1ecdb76881cf3c26682f011e416c7e47abeff
               <option value="user">عميل</option>
               <option value="cook">طباخ</option>
             </select>
@@ -616,17 +638,10 @@ export default function Signup(props) {
               </span>
             </label>
             
-<<<<<<< HEAD
-            <small className="text-danger" style={{ textAlign: "right" }}>
-              {errorMessage.photoErr}
-
-            </small>
-=======
            {/* <small className="text-danger" style={{ textAlign: "right" }}>
               {errorMessage.photoErr}
 
             </small>*/}
->>>>>>> 31d1ecdb76881cf3c26682f011e416c7e47abeff
 
             <input type="submit" value="إنشاء حساب" />
           </form>

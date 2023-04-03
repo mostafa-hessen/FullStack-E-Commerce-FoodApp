@@ -7,6 +7,7 @@
     background: #f1f1f1;
     margin:  auto ;
     word-break: break-all;
+   
     border: 1px solid rgba(0, 0, 0, 0.274);
   }
   
@@ -78,3 +79,65 @@
   .active-content {
     display: block;
   }
+  @media all and (max-width: 900px) and (min-width: 380px) {
+    .containers {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 340px;
+      max-width: 600px;
+      height: fit-content;
+      background: green;
+      
+      word-break: break-all;
+     
+      border: 1px solid rgba(0, 0, 0, 0.274);
+    }
+    
+    .bloc-tabs {
+      display: flex;
+    }
+    .tabs {
+    
+      padding: 15px;
+      text-align: center;
+      width: 50%;
+      background: #c6e9ca;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+      box-sizing: content-box;
+      position: relative;
+      outline: none;
+    }
+    }
+    @media (max-width: 380px) {
+      .containers {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 280px;
+        max-width: 600px;
+        height: fit-content;
+        background: white;
+        
+        word-break: break-all;
+       
+        border: 1px solid rgba(0, 0, 0, 0.274);
+      }
+      
+      .bloc-tabs {
+        display: flex;
+      }
+      .tabs {
+      
+        padding: 15px;
+        text-align: center;
+        width: 50%;
+        background: #c6e9ca;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+        box-sizing: content-box;
+        position: relative;
+        outline: none;
+      }
+      }
