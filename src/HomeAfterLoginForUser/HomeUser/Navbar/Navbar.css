@@ -66,7 +66,7 @@ nav.navbaruser .ul{
      transition: all 1s ease-in-out;
      
    }
-   nav.navforcooker .ul li:hover,nav.navforcooker .ul li.active  {
+   nav.navbaruser .ul li:hover,nav.navbaruser .ul li.active  {
     background-color: rgb(194, 223, 194);
    }
    nav.navbaruser .ul li span{

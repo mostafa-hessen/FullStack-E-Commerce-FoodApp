@@ -8,6 +8,7 @@ import './AddToFav.css'
 import { db } from '../../firebase';
 import { useHistory } from 'react-router-dom';
 import img from '../../assets/1.png'
+import { toast } from 'react-toastify';
 function AddToFav() {
 
 let activeItem = ['', '', '', '']
@@ -31,7 +32,16 @@ myactive [status]== 'active'?activeItem  = ['', '', '', ''] : activeItem [status
     })
 
   }, [])
-
+  const notifySuccess = () => toast.success("تم حذف   العنصر  بنجاح ",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+  });
 
   const removeFav = (item) => {
     let removeArr = favFoodInfo?.filter(ele => ele != item)
@@ -41,9 +51,7 @@ myactive [status]== 'active'?activeItem  = ['', '', '', ''] : activeItem [status
       favoriteFood: (removeArr),
     })
       .then((q) => {
-        console.log(
-          "An item has been removed from an existing Field"
-        );
+        notifySuccess()
       })
       .catch((error) => {
         console.log(error);

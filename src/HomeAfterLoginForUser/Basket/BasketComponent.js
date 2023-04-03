@@ -12,7 +12,16 @@ import { margin } from "@mui/system";
 import { toast } from "react-toastify";
 
 function Basket() {
-  const notify = () => toast("Wow so easy!");
+  const notifySuccess = () => toast.success("تم حذف   العنصر  بنجاح ",{
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+  });
   const [Allorders, setAllorders] = useState([])
 const dispatch =useDispatch()
   let user = JSON.parse(localStorage.getItem("user"));
@@ -20,7 +29,7 @@ let navigate = useHistory()
   const removeFromCart = (element) => {
     console.log(myCart);
     const q = doc(db, "users", user.uid);
-    updateDoc(q, {cart:(myCart?.filter(ele=> ele != element)),})
+    updateDoc(q, {cart:(myCart?.filter(ele=> ele != element))}).then(ele=> notifySuccess())
   };
 
 
